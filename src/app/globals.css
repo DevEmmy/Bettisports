@@ -27,3 +27,7 @@ p{
 .details{
   @apply absolute bottom-0 text-white
 }
+
+.click-options > div{
+  @apply bg-defaultYellow rounded-full p-3 cursor-pointer
+}

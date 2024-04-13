@@ -1,3 +1,4 @@
+import BreakingNews from "@/components/BreakingNews";
 import HeroHighlight from "@/components/HeroHighlight";
 import Image from "next/image";
 
@@ -38,6 +39,8 @@ export default function Home() {
       </div>
 
       <HeroHighlight />
+
+      <BreakingNews />
     </>
   );
 }
