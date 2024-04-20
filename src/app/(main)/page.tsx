@@ -1,5 +1,10 @@
+import Articles from "@/components/Articles";
 import BreakingNews from "@/components/BreakingNews";
+import FootballNews from "@/components/FootballNews";
+import ForYou from "@/components/ForYou";
 import HeroHighlight from "@/components/HeroHighlight";
+import QuickLinks from "@/components/QuickLinks";
+import Stories from "@/components/Stories";
 import Image from "next/image";
 
 export default function Home() {
@@ -41,6 +46,17 @@ export default function Home() {
       <HeroHighlight />
 
       <BreakingNews />
+
+      <Stories />
+      <ForYou />
+      <QuickLinks />
+      <FootballNews title="MEN'S" />
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
+      <Articles />
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
+      <FootballNews title="WOMEN'S"/>
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
+      <Articles />
     </>
   );
 }
