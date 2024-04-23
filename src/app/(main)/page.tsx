@@ -1,6 +1,7 @@
 import Articles from "@/components/Articles";
 import BreakingNews from "@/components/BreakingNews";
 import FootballNews from "@/components/FootballNews";
+import Footer from "@/components/Footer";
 import ForYou from "@/components/ForYou";
 import HeroHighlight from "@/components/HeroHighlight";
 import QuickLinks from "@/components/QuickLinks";
@@ -57,6 +58,10 @@ export default function Home() {
       <FootballNews title="WOMEN'S"/>
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
       <Articles />
+
+
+
+      <Footer />
     </>
   );
 }
