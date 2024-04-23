@@ -2,7 +2,7 @@ import React from 'react'
 
 const Each = ({item}: any) => {
     return (
-        <div className='min-w-[30%] h-[400px] relative'>
+        <div className='min-w-[25%] h-[400px] relative'>
             <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
 
             <div className="overlay" />

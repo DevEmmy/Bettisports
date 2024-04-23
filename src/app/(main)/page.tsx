@@ -4,8 +4,11 @@ import FootballNews from "@/components/FootballNews";
 import Footer from "@/components/Footer";
 import ForYou from "@/components/ForYou";
 import HeroHighlight from "@/components/HeroHighlight";
+import InternationalFootball from "@/components/InternationalFootball";
 import QuickLinks from "@/components/QuickLinks";
 import Stories from "@/components/Stories";
+import MoreStories from "@/components/Stories/MoreStories";
+import VideoComponent from "@/components/Videos";
 import Image from "next/image";
 
 export default function Home() {
@@ -52,14 +55,19 @@ export default function Home() {
       <ForYou />
       <QuickLinks />
       <FootballNews title="MEN'S" />
-      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <Articles />
-      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
-      <FootballNews title="WOMEN'S"/>
-      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5"/>
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
+      <FootballNews title="WOMEN'S" />
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <Articles />
 
+      <MoreStories />
+      
+      <InternationalFootball />
 
+      <Articles />
+      <VideoComponent />
       <img src="./frame.png" className="w-fit h-auto object-contain mx-auto my-10" alt="" />
       <Footer />
     </>
