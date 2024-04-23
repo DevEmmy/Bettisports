@@ -60,7 +60,7 @@ export default function Home() {
       <Articles />
 
 
-
+      <img src="./frame.png" className="w-fit h-auto object-contain mx-auto my-10" alt="" />
       <Footer />
     </>
   );
