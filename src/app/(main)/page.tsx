@@ -4,10 +4,14 @@ import FootballNews from "@/components/FootballNews";
 import Footer from "@/components/Footer";
 import ForYou from "@/components/ForYou";
 import HeroHighlight from "@/components/HeroHighlight";
+import InFocus from "@/components/InFocus";
 import InternationalFootball from "@/components/InternationalFootball";
+import PhotoSplash from "@/components/PhotoSplash";
+import Podcast from "@/components/Podcast";
 import QuickLinks from "@/components/QuickLinks";
 import Stories from "@/components/Stories";
 import MoreStories from "@/components/Stories/MoreStories";
+import Topics from "@/components/Topics";
 import VideoComponent from "@/components/Videos";
 import Image from "next/image";
 
@@ -58,12 +62,20 @@ export default function Home() {
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <Articles />
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
+      <Podcast />
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <FootballNews title="WOMEN'S" />
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <Articles />
+      <PhotoSplash />
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
+
+      <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
+      <Topics />
+      <InFocus />
 
       <MoreStories />
-      
+
       <InternationalFootball />
 
       <Articles />

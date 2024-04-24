@@ -13,6 +13,10 @@ p{
   /* @apply text-[14px] */
 }
 
+img{
+  @apply object-cover
+}
+
 .overlay{
     background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,1));
     width: 100%;
