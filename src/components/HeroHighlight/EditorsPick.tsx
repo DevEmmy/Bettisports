@@ -1,4 +1,5 @@
 import React from 'react'
+import VerticalHeader from '../Shared/VerticalHeader'
 
 const EditorsPick = () => {
 
@@ -21,7 +22,9 @@ const EditorsPick = () => {
   ]
   return (
     <div className=''>
-        <p className='border-b-4 border-b-secondaryBlue py-2 text-[20px] font-[700]'>Editor's Pick</p>
+      
+
+        <VerticalHeader title="Editor's Pick" />
 
         <div className='flex gap-5 flex-col pt-4'>
           {

@@ -66,8 +66,8 @@ const Clubs = ({abb, size}: ClubsProp) => {
     }, [abb])
   return (
     <div className='flex gap-2 items-center'>
-        <p style={{fontSize: size || "14px"}} className='font-[500]'>{club.abb}</p>
         <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
+        <p style={{fontSize: size || "14px"}} className='font-[500]'>{club.abb}</p>
     </div>
   )
 }

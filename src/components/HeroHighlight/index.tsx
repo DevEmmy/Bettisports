@@ -5,7 +5,7 @@ import CategoricalNews from './CategoricalNews'
 
 const HeroHighlight = () => {
   return (
-    <div className='grid grid-cols-[1fr_3fr_1.5fr] px-xPadding my-10 gap-10'>
+    <div className='grid grid-cols-[1fr_3fr_1.5fr] px-xPadding my-10 gap-5'>
         <EditorsPick />
         <MajorHighlight />
         <CategoricalNews />
