@@ -23,7 +23,7 @@ export const data: MatchDetails[] = [
             },
             {
                 logo: "",
-                abb: "CHE"
+                abb: "ARS"
             }
         ],
         leagueType: {
@@ -36,11 +36,11 @@ export const data: MatchDetails[] = [
         clubs: [
             {
                 logo: "",
-                abb: "CHE"
+                abb: "TOT"
             },
             {
                 logo: "",
-                abb: "CHE"
+                abb: "BUR"
             }
         ],
         leagueType: {
@@ -53,11 +53,11 @@ export const data: MatchDetails[] = [
         clubs: [
             {
                 logo: "",
-                abb: "CHE"
+                abb: "MCI"
             },
             {
                 logo: "",
-                abb: "CHE"
+                abb: "SHE"
             }
         ],
         leagueType: {

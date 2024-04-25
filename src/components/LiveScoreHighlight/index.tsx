@@ -1,5 +1,6 @@
 import React from 'react'
 import { MatchDetails, data } from './data'
+import Clubs from '../Shared/Clubs'
 
 const LiveScoreHighlight = () => {
     return (
@@ -12,12 +13,12 @@ const LiveScoreHighlight = () => {
                             return (
                                 <div key={i} className='px-5'>
                                     <div className="flex justify-between items-center">
-                                        <p className='font-[600]'>{item.clubs[0].abb}</p>
+                                        <Clubs abb={item.clubs[0].abb} />
                                         <p>-</p>
                                     </div>
 
                                     <div className="flex justify-between items-center">
-                                        <p className='font-[600]'>{item.clubs[1].abb}</p>
+                                    <Clubs abb={item.clubs[1].abb} />
                                         <p>-</p>
                                     </div>
 
