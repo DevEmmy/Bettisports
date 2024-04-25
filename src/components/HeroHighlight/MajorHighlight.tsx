@@ -1,21 +1,32 @@
-import React from 'react'
+"use client"
+import React from 'react';
+import CarouselComponent from '../Shared/CarouselComponent';
 
 const MajorHighlight = () => {
     return (
         <div className='mt-16'>
-            <div className='w-full h-full relative'>
-                <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
+            <CarouselComponent>
+                {
+                    [1, 2, 3, 4].map((item: any, i: number) => {
+                        return (
+                            <div className='w-full h-[600px] relative'>
+                                <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
 
-                <div className="overlay" />
+                                <div className="overlay" />
 
-                <div className="details p-10">
-                    <p className='text-[10px]'>March 28, 2024</p>
-                    <p className='font-[800] text-[36px] line-clamp-2'>
-                    Two Premier League Clubs Linked With Outgoing Barcelona’s Manager
-                    </p>
-                </div>
+                                <div className="details p-10 text-start">
+                                    <p className='text-[10px]'>March 28, 2024</p>
+                                    <p className='font-[800] text-[36px] line-clamp-2'>
+                                        Two Premier League Clubs Linked With Outgoing Barcelona&apos;s Manager
+                                    </p>
+                                </div>
 
-            </div>
+                            </div>
+                        )
+                    })
+                }
+            </CarouselComponent>
+
         </div>
     )
 }

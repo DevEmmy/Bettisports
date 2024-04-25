@@ -8,7 +8,7 @@ interface Props{
 const VerticalHeader = ({title}: Props) => {
     return (
         <div className='flex flex-col gap-3'>
-            <h1 className='font-[600]'>{title}</h1>
+            <h1 className='font-[600] uppercase'>{title}</h1>
             <Line />
         </div>
     )

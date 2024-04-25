@@ -4,7 +4,8 @@ import {} from "react-icons/fi"
 
 interface ClubsProp{
     abb: string;
-    size?: string
+    size?: string,
+    full?: boolean
 }
 
 interface Club{
@@ -13,7 +14,7 @@ interface Club{
     full: string;
 }
 
-const Clubs = ({abb, size}: ClubsProp) => {
+const Clubs = ({abb, size, full = false}: ClubsProp) => {
     const clubs : Club[] = [
         {
             abb: "Barca",
@@ -64,12 +65,25 @@ const Clubs = ({abb, size}: ClubsProp) => {
         let index = clubs.findIndex((cl: Club)=> cl.abb == abb);
         setClub(clubs[index]);
     }, [abb])
-  return (
+
+if(full){
+   return (
     <div className='flex gap-2 items-center'>
         <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
         <p style={{fontSize: size || "14px"}} className='font-[500]'>{club.abb}</p>
     </div>
-  )
+  ) 
+}
+
+else{
+    return (
+        <div className='flex gap-2 items-center'>
+            <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
+            <p style={{fontSize: size || "14px"}} className='font-[500]'>{club.full}</p>
+        </div>
+      )   
+}
+  
 }
 
 export default Clubs
