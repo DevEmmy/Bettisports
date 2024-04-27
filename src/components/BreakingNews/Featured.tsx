@@ -20,7 +20,7 @@ const Featured = () => {
                     <div className='flex gap-3 flex-col'>
                         <img src="./img.jpg" alt="" />
                         <div>
-                            <p className='text-[20px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+                            <p className='text-[16px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
                             <p className='text-[14px] text-grayColor'>March 23, 2024</p>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ const Featured = () => {
                 <div className='flex gap-3 flex-col'>
                     <img src="./img2.png" alt="" />
                     <div>
-                        <p className='text-[20px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+                        <p className='text-[16px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
                         <p className='text-[14px] text-grayColor'>March 23, 2024</p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ const Featured = () => {
                     <div className='flex gap-3 flex-col'>
                         <img src="./img.jpg" alt="" />
                         <div>
-                            <p className='text-[20px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+                            <p className='text-[16px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
                             <p className='text-[14px] text-grayColor'>March 23, 2024</p>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ const Featured = () => {
                     <div className='flex gap-3 flex-col'>
                         <img src="./img.jpg" alt="" />
                         <div>
-                            <p className='text-[20px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+                            <p className='text-[16px] line-clamp-2'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
                             <p className='text-[14px] text-grayColor'>March 23, 2024</p>
                         </div>
                     </div>

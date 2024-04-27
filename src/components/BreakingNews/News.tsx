@@ -42,7 +42,7 @@ const News = () => {
                 news.map((item:any, i: number)=>{
                     return(
                         <div className={`pr-5 ${i == 0 ? "pl-0" : "pl-5"}`}>
-                            <p className='text-[20px] line-clamp-2'>{item.title}</p>
+                            <p className='text-[16px] line-clamp-2'>{item.title}</p>
                             <p className='text-[14px] text-grayColor'>{item.date}</p>
                         </div>
                     )

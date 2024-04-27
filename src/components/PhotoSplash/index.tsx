@@ -1,9 +1,15 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Line from '../UI/Line'
+import Preview from './Preview';
 
 const PhotoSplash
  = () => {
+    const [images, setImages] = useState<String[] | null>(null);
 
+    const  setState = ()=>{
+        setImages(["img.jpg", "img.jpg", "img.jpg", "img.jpg"])
+    }
     const competition = [
         {
             title: "AFCON"
@@ -29,11 +35,11 @@ const PhotoSplash
             <h1 className='font-[600] uppercase'>BSB PHOTOSPLASH</h1>
             <Line />
 
-            <div className="grid grid-cols-4 gap-10">
+            <div className="grid grid-cols-4 gap-5">
                 {
                     competition.map((comp: any, i: number)=>{
                         return(
-                            <div className={`relative ${(i == 2 || i == 3) && "col-span-2" }`} key={i}>
+                            <div className={`relative ${(i == 2 || i == 3) && "col-span-2" } cursor-pointer`} key={i} onClick={setState}>
                                 <img src="./img.jpg" alt="" className='w-full h-[300px]' />
                                 <div className="overlay"/>
                                 <div className="details p-5">
@@ -45,6 +51,10 @@ const PhotoSplash
                     })
                 }
             </div>
+
+            {
+                images && <Preview images={images} setImages={setImages}/>
+            }
     </div>
   )
 }

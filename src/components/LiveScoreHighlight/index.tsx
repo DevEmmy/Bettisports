@@ -13,7 +13,7 @@ const LiveScoreHighlight = () => {
                             return (
                                 <div key={i} className='px-5'>
                                     <div className="flex justify-between items-center">
-                                        <Clubs abb={item.clubs[0].abb} />
+                                        <Clubs abb={item.clubs[0].abb} full={false} />
                                         <p>-</p>
                                     </div>
 
@@ -32,7 +32,7 @@ const LiveScoreHighlight = () => {
                     }
                 </div>
 
-                <div className='border border-gray-400 text-white px-5 py-3 rounded-full text-sm'>
+                <div className='border-2 cursor-pointer border-gray-400 text-white px- py-3 rounded-full text-[12px] text-center'>
                     Go to Livescores
                 </div>
             </div>

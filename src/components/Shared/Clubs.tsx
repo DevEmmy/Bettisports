@@ -1,21 +1,21 @@
 "use client";
 import React, { useEffect, useState } from 'react'
-import {} from "react-icons/fi"
+import { } from "react-icons/fi"
 
-interface ClubsProp{
+interface ClubsProp {
     abb: string;
     size?: string,
     full?: boolean
 }
 
-interface Club{
+interface Club {
     abb: string;
     icon: string;
     full: string;
 }
 
-const Clubs = ({abb, size, full = false}: ClubsProp) => {
-    const clubs : Club[] = [
+const Clubs = ({ abb, size, full = false }: ClubsProp) => {
+    const clubs: Club[] = [
         {
             abb: "Barca",
             icon: "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1010px-FC_Barcelona_%28crest%29.svg.png",
@@ -46,7 +46,7 @@ const Clubs = ({abb, size, full = false}: ClubsProp) => {
             icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBnbB0zcQMYhAiarnOqrngY_1jMmPBE-gNgsvCd8BCsw&s",
             full: "Totthenham"
         },
-        
+
         {
             abb: "SHE",
             icon: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Sheffield_United_FC_logo.svg/190px-Sheffield_United_FC_logo.svg.png",
@@ -61,29 +61,28 @@ const Clubs = ({abb, size, full = false}: ClubsProp) => {
 
     const [club, setClub] = useState<Club>(clubs[0])
 
-    useEffect(()=>{
-        let index = clubs.findIndex((cl: Club)=> cl.abb == abb);
+    useEffect(() => {
+        let index = clubs.findIndex((cl: Club) => cl.abb == abb);
         setClub(clubs[index]);
     }, [abb])
 
-if(full){
-   return (
-    <div className='flex gap-2 items-center'>
-        <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
-        <p style={{fontSize: size || "14px"}} className='font-[500]'>{club.abb}</p>
-    </div>
-  ) 
-}
+    if (!full) {
+        return (
+            <div className='flex gap-2 items-center'>
+                <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
+                <p style={{ fontSize: size || "14px" }} className='font-[500]'>{club.abb}</p>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div className='flex gap-2 items-center'>
+                <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
+                <p style={{ fontSize: size || "14px" }} className='font-[500]'>{club.full}</p>
+            </div>
+        )
+    }
 
-else{
-    return (
-        <div className='flex gap-2 items-center'>
-            <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
-            <p style={{fontSize: size || "14px"}} className='font-[500]'>{club.full}</p>
-        </div>
-      )   
-}
-  
 }
 
 export default Clubs

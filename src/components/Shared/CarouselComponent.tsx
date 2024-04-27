@@ -10,7 +10,7 @@ const CarouselComponent = ({ children }: any) => {
             infiniteLoop={true}
             showThumbs={false}
             centerMode={false}
-            className='items-start justify-start'
+            className='items-start justify-start h-full'
         >
             {children}
         </Carousel>

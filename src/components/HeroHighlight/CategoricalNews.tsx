@@ -40,11 +40,11 @@ const CategoricalNews = () => {
     ]
   return (
     <div>
-        <div className='flex justify-between items-center border-b border-b-gray-400 pb-3'>
+        <div className='flex justify-between items-center border-b border-b-gray-400 '>
             {
                 filter.map((item: any, i: number)=> {
                     return(
-                        <div className={`text-[20px] text-grayColor ${active === i && "text-black font-[800]"}`}>
+                        <div className={`text-[14px] text-grayColor ${active === i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)}>
                             {item.title}
                         </div>
                     )
@@ -58,7 +58,7 @@ const CategoricalNews = () => {
                     return(
                         <div className='flex justify-between gap-2 py-3'>
                             <div className='flex gap-2 flex-col text-grayColor'>
-                                <p className='text-[18px] font-[500]'>{item.title}</p>
+                                <p className='text-[14px] font-[500]'>{item.title}</p>
                                 <p className='text-[12px] font-[400]'>{item.date}</p>
                             </div>
 
