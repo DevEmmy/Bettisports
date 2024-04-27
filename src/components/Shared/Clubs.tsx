@@ -14,6 +14,14 @@ interface Club {
     full: string;
 }
 
+export const icons = [
+    "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1010px-FC_Barcelona_%28crest%29.svg.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Luton_Town_logo.svg/180px-Luton_Town_logo.svg.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Sheffield_United_FC_logo.svg/190px-Sheffield_United_FC_logo.svg.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBnbB0zcQMYhAiarnOqrngY_1jMmPBE-gNgsvCd8BCsw&s",
+]
+
 const Clubs = ({ abb, size, full = false }: ClubsProp) => {
     const clubs: Club[] = [
         {
@@ -58,6 +66,8 @@ const Clubs = ({ abb, size, full = false }: ClubsProp) => {
             full: "LUTON"
         }
     ]
+
+    
 
     const [club, setClub] = useState<Club>(clubs[0])
 
