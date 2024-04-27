@@ -3,6 +3,7 @@ import ".././globals.css";
 import TopNav from "@/components/TopNav.tsx";
 import LiveScoreHighlight from "@/components/LiveScoreHighlight";
 import MainNav from "@/components/MainNav";
+import Footer from "@/components/Footer";
 
 export default function RootLayout({
   children,
@@ -15,6 +16,7 @@ export default function RootLayout({
         <LiveScoreHighlight />
         <MainNav />
         {children}
+        <Footer />
     </>
   );
 }
