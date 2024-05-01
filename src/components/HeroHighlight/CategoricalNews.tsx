@@ -44,7 +44,7 @@ const CategoricalNews = () => {
             {
                 filter.map((item: any, i: number)=> {
                     return(
-                        <div className={`text-[14px] text-grayColor ${active === i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)}>
+                        <div className={`text-[14px] text-grayColor ${active == i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)}>
                             {item.title}
                         </div>
                     )

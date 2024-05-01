@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiSearch2Line, RiTwitterXFill } from 'react-icons/ri'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
+import CategoricalNews from '../HeroHighlight/CategoricalNews'
 
 const OtherSections = () => {
     const [active, setActive] = useState(0)
@@ -18,7 +19,7 @@ const OtherSections = () => {
     ]
 
   return (
-    <div className='flex flex-col gap-3 p-3'>
+    <div className='flex flex-col gap-10 p-3'>
         <div className='flex gap-2 items-center border rounded-3xl p-3'>
             <RiSearch2Line />
             <input type="search" name="" className='bg-transparent focus:outline-none' id="" />
@@ -52,6 +53,8 @@ const OtherSections = () => {
         </div>
 
         <img src="./ads2.png" alt="" />
+
+        <CategoricalNews />
     </div>
   )
 }

@@ -43,3 +43,23 @@ img{
 .icons > div{
   @apply w-[50px] h-[50px] rounded-full p-1 text-[20px] border border-gray-400 text-gray-400 flex items-center justify-center cursor-pointer
 }
+
+.comment > div > input, .comment > div > textarea{
+  @apply bg-gray-200 p-3 resize-none
+}
+
+.comment > div{
+  @apply flex flex-col gap-2 
+}
+
+.actions > div{
+  @apply flex gap-2 items-center text-sm text-gray-500
+}
+
+.share{
+  @apply flex gap-3 text-sm
+}
+
+.share > div{
+  @apply flex gap-2 items-center
+}
