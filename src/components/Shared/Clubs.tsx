@@ -5,7 +5,8 @@ import { } from "react-icons/fi"
 interface ClubsProp {
     abb: string;
     size?: string,
-    full?: boolean
+    full?: boolean,
+    rev?: boolean
 }
 
 interface Club {
@@ -22,7 +23,7 @@ export const icons = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBnbB0zcQMYhAiarnOqrngY_1jMmPBE-gNgsvCd8BCsw&s",
 ]
 
-const Clubs = ({ abb, size, full = false }: ClubsProp) => {
+const Clubs = ({ abb, size, full = false , rev=false}: ClubsProp) => {
     const clubs: Club[] = [
         {
             abb: "Barca",
@@ -78,9 +79,9 @@ const Clubs = ({ abb, size, full = false }: ClubsProp) => {
 
     if (!full) {
         return (
-            <div className='flex gap-2 items-center'>
+            <div style={{flexDirection: rev ? "row-reverse" : "row"}} className='flex gap-2 items-center'>
                 <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
-                <p style={{ fontSize: size || "14px" }} className='font-[500]'>{club.abb}</p>
+                <p style={{ fontSize: size || "14px" }} className='font-[600]'>{club.abb}</p>
             </div>
         )
     }

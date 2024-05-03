@@ -63,3 +63,7 @@ img{
 .share > div{
   @apply flex gap-2 items-center
 }
+
+.bracket-score{
+  @apply text-[12px] text-gray-500 font-[500]
+}
