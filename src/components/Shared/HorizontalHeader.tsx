@@ -8,12 +8,12 @@ interface Props{
 
 const HorizontalHeader = ({text, endText}: Props) => {
   return (
-    <div className='flex items-center'>
-        <p>{text}</p>
+    <div className='flex items-center gap-10 uppercase'>
+        <p className='font-[600]'>{text}</p>
         <Line />
         {
             endText && 
-            <p>
+            <p className='font-[600]'>
                 {endText}
             </p>
         }
