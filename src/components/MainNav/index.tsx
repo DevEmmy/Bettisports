@@ -1,7 +1,9 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
-import { RiMenu2Fill, RiSearch2Line, RiUser2Fill } from "react-icons/ri"
+import React, { useState } from 'react'
+import { RiArticleLine, RiMenu2Fill, RiSearch2Line, RiUser2Fill } from "react-icons/ri"
 import Button from '../Button'
+import LeftNav from './LeftNav'
 
 const MainNav = () => {
 
@@ -51,6 +53,8 @@ const MainNav = () => {
             link: "/subscribe"
         }
     ]
+
+    const [open, setOpen] = useState(false)
   return (
     <div className='flex items-center justify-around px-xPadding border-b-gray-400 border-b py-5'>
         {
@@ -71,8 +75,10 @@ const MainNav = () => {
                 <RiUser2Fill />
             </button>       
 
-            <RiMenu2Fill />
+            <RiMenu2Fill onClick={()=> setOpen(true)} className='cursor-pointer'/>
         {/* </div> */}
+
+        {open && <LeftNav setOpen={setOpen}/>}
     </div>
   )
 }
