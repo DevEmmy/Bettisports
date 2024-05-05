@@ -6,6 +6,7 @@ const PollContainer = () => {
         "Man United",
         "Man City"
     ]
+    
     return (
         <div className='border border-gray-300 shadow-md'>
             <img src="./img.jpg" alt="" className='h-[150px] w-full' />

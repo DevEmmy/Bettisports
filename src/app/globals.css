@@ -79,3 +79,11 @@ img{
   z-index: 998;
   @apply backdrop-blur-sm
 }
+
+.settings > div{
+  @apply flex items-center justify-between gap-3
+}
+
+.settings > div > p{
+  @apply text-sm
+}
