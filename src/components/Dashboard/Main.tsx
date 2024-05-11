@@ -1,6 +1,7 @@
 import React from 'react'
 import OverviewContainer from '../Shared/OverviewContainer'
 import { RiBarChart2Fill } from 'react-icons/ri'
+import Published from '../Shared/Published'
 
 const Main = () => {
     const data = [
@@ -39,8 +40,8 @@ const Main = () => {
 
                         <div className="grid grid-cols-2 mt-5">
                             {
-                                data.map((item, i)=>{
-                                    return(
+                                data.map((item, i) => {
+                                    return (
                                         <div className='p-4 border'>
                                             <p>{item.title}</p>
                                             <p>{item.value}</p>
@@ -69,9 +70,23 @@ const Main = () => {
                 </OverviewContainer>
 
                 <OverviewContainer title="Activity">
-                    <div>
+                    <div className='flex flex-col gap-3'>
                         <p>Recently Published</p>
+
+                        <div className='flex flex-col gap-3'>
+                            {
+                                [1, 2, 3,4,5,6].map((item, i) => {
+                                    return (
+                                        <div className='odd:bg-blue-50'>
+                                            <Published dateTime='Feb 17th, 11:56am' key={i} title='Where will Kylan Mbappe Go Next? 7 clubs that are in the race' />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
+
+
                 </OverviewContainer>
             </div>
         </div>
