@@ -87,3 +87,15 @@ img{
 .settings > div > p{
   @apply text-sm
 }
+
+.flex-center{
+  @apply flex items-center
+}
+
+.flex-all-center{
+  @apply flex justify-center items-center
+}
+
+.pp{
+  @apply rounded-full size-[60px]
+}
