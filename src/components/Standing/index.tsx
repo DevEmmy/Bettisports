@@ -1,8 +1,13 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import VerticalHeader from '../Shared/VerticalHeader'
 import EachClub from './EachClub'
+import { useGetStandings } from '@/store/standing'
 
 const Standing = () => {
+    const {standings} = useGetStandings();
+    console.log(standings)
+    
   return (
     <div>
         <VerticalHeader title='STANDINGS' />
@@ -18,9 +23,9 @@ const Standing = () => {
 
             <div className='my-2 divide-y'>
                 {
-                    [1,2,3,4,5,6,7,8,9,0].map((item: any, i: number)=>{
+                    standings?.map((item: any, i: number)=>{
                         return(
-                            <EachClub abb='CHE' key={i} keyIndex={i} p={10} w={7} pts={25} />
+                            <EachClub name={item.team.name} logo={item.team.logo} key={i} keyIndex={i} p={item.all.played} w={item.all.win} pts={item.points} />
                         )
                     })
                 }
