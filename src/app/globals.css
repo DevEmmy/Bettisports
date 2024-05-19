@@ -99,3 +99,15 @@ img{
 .pp{
   @apply rounded-full size-[60px]
 }
+
+.categories {
+  @apply flex gap-3
+}
+
+.categories > p > span {
+  @apply text-gray-500
+}
+
+.post-select > select{
+  @apply border p-2 border-black
+}

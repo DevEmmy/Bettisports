@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { HiChevronDown } from 'react-icons/hi'
@@ -9,49 +10,49 @@ const LeftNav = () => {
     const navItems = [
         {
             title: "Dashboard",
-            link: "/dashboard",
+            link: "/dashboard/",
             icon: <RiHome2Fill />
         },
         {
             title: "Posts",
-            link: "/posts",
+            link: "/dashboard/posts",
             icon: <RiPenNibFill />,
             sub: [
                 {
                     title: "All Posts",
-                    link: "/all-posts"
+                    link: "/dashboard/posts"
                 },
                 {
                     title: "Add New Posts",
-                    link: "/add-new-posts"
+                    link: "/dashboard/posts/new"
                 },
                 {
                     title: "Live Football",
-                    link: "/live-football"
+                    link: "/dashboard/posts/live-football"
                 },
                 {
                     title: "Polls",
-                    link: "/polls"
+                    link: "/dashboard/posts/polls"
                 },
                 {
                     title: "Categories",
-                    link: "/categories"
+                    link: "/dashboard/posts/categories"
                 },
             ]
         },
         {
             title: "Media",
-            link: "/media",
+            link: "/dashboard/media",
             icon: <RiPictureInPicture2Fill />
         },
         {
             title: "Comments",
-            link: "/comments",
+            link: "/dashboard/comments",
             icon: <RiChat3Fill />
         },
         {
             title: "Users",
-            link: "/user",
+            link: "/dashboard/user",
             icon: <RiUser3Fill />
         },
 
@@ -64,7 +65,7 @@ const LeftNav = () => {
         <div className='w-1/5 fixed h-[100vh] top-0 left-0 bg-white border-r flex flex-col gap-20 py-5 px-10'>
             <div className='flex-center gap-5'>
                 <RiMenu2Line />
-                <img src="./logo.png" alt="" />
+                <Image src="/./logo.png" width={0} height={0} alt="" className='size-fit' unoptimized />
             </div>
 
             <div className="flex flex-col gap-2">
