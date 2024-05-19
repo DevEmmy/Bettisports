@@ -1,6 +1,6 @@
 import OverviewContainer from '@/components/Shared/OverviewContainer'
 import React from 'react'
-import { HiCog } from 'react-icons/hi'
+import { HiCog, HiTrash } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
 
 const page = () => {
@@ -44,10 +44,21 @@ const page = () => {
                         </button>
                     </div>
 
-                    <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
-                        <HiCog />
-                        Add Media
-                    </button>
+                    <div className='flex-center justify-between '>
+                        <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
+                            <HiCog />
+                            Add Media
+                        </button>
+
+                        <button className='border border-red-600 bg-red-100 text-red-600 flex gap-2 px-5 items-center p-2 w-fit '>
+                            <HiTrash />
+                            Delete
+                        </button>
+                    </div>
+
+                    <div>
+                        
+                    </div>
 
                     <OverviewContainer title={"Excerpt"}>
                         <div className='flex gap-2 flex-col'>
@@ -83,73 +94,6 @@ const page = () => {
                                 <RiCalendar2Fill />
                                 Publish: <span className='font-[600]'>Immediately</span> <span className='text-secondaryBlue underline'>Edit</span>
                             </p>
-                        </div>
-                    </OverviewContainer>
-
-                    <OverviewContainer title={"Categories"} >
-                        <div>
-                            <div className='flex gap-3 divide-x border-b py-3'>
-                                <p>All Categories</p>
-                                <p className='text-secondaryBlue pl-3'>Most Used</p>
-                            </div>
-
-                            <div className='flex-center gap-3 border-b py-3'>
-                                <input type="checkbox" />
-                                <p>Editor's Picks</p>
-                            </div>
-
-                            <div className='flex-center gap-3 border-b py-3'>
-                                <input type="checkbox" />
-                                <p>News Breaking</p>
-                            </div>
-
-                            <div className="grid grid-cols-2 justify-between my-5">
-                                {
-                                    gender.map((g, i) => {
-                                        return (
-                                            <div key={i} className='flex flex-col gap-2'>
-                                                <p className='text-[16px] font-[600] text-secondaryBlue'>{g}</p>
-
-                                                {
-                                                    categories.map((c, j) => {
-                                                        return (
-                                                            <div className='flex-center gap-3 text-sm '>
-                                                                <input type="checkbox" />
-                                                                <p>{c}</p>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-
-                            <div className='flex-center gap-3 border-b py-3'>
-                                <input type="checkbox" />
-                                <p>Fantasy</p>
-                            </div>
-
-                            <p className='text-secondaryBlue underline p-4 text-sm'>+ Add New Category</p>
-                        </div>
-                    </OverviewContainer>
-
-                    <OverviewContainer title={"Format"}>
-                        <div>
-                            {
-                                format.map((f, i) => {
-                                    return (
-                                        <div className='flex-center gap-3 text-gray-600 ' key={i}>
-                                            <input type="radio" name='format' />
-                                            <p className='flex-center gap-2'>
-                                                {f.icon}
-                                                {f.text}
-                                            </p>
-                                        </div>
-                                    )
-                                })
-                            }
                         </div>
                     </OverviewContainer>
 
