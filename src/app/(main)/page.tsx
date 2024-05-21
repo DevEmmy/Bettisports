@@ -7,6 +7,7 @@ import HeroHighlight from "@/components/HeroHighlight";
 import InFocus from "@/components/InFocus";
 import InternationalFootball from "@/components/InternationalFootball";
 import Live from "@/components/Live";
+import LiveTransfer from "@/components/LiveTransfer";
 import MostRead from "@/components/MostRead";
 import PhotoSplash from "@/components/PhotoSplash";
 import Podcast from "@/components/Podcast";
@@ -65,6 +66,7 @@ export default function Home() {
       <Articles />
       <MostRead />
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
+      <LiveTransfer />
       <Podcast />
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <FootballNews title="WOMEN'S" />
