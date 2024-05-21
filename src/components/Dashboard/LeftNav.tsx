@@ -52,8 +52,22 @@ const LeftNav = () => {
         },
         {
             title: "Users",
-            link: "/dashboard/user",
-            icon: <RiUser3Fill />
+            link: "/dashboard/users",
+            icon: <RiUser3Fill />,
+            sub: [
+                {
+                    title: "All Users",
+                    link: "/dashboard/users"
+                },
+                {
+                    title: "Add New User",
+                    link: "/dashboard/users/new"
+                },
+                {
+                    title: "Profile",
+                    link: "/dashboard/users/profile"
+                }
+            ]
         },
 
     ]
