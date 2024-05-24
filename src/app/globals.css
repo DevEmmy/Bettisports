@@ -111,3 +111,15 @@ img{
 .post-select > select{
   @apply border p-2 border-black
 }
+
+.comment-action > p{
+  @apply px-4 cursor-pointer
+}
+
+.ql-container.ql-snow {
+  border: none !important;
+}
+
+.table-items > div, .table-items > p{
+  @apply flex items-center justify-center flex-col text-sm
+}

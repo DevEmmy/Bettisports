@@ -1,5 +1,7 @@
+import Table from '@/components/Tables'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
+import { RiChat1Fill } from 'react-icons/ri'
 
 const page = () => {
     return (
@@ -27,7 +29,7 @@ const page = () => {
                 </div>
             </div>
 
-            <div className='post-select gap-4 flex'>
+            <div className='post-select gap-4 flex text-sm'>
                 <select name="" id="">
                     <option value="">All Dates</option>
                 </select>
@@ -46,6 +48,40 @@ const page = () => {
                 </button>
 
             </div>
+
+            <Table thead={["Title", "Author", "Categories", "Tags", "Comment", "Date"]} 
+            data={[
+                {
+                    "title": "Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race",
+                    author: "Williams Idowu",
+                    categories: 'Men, Articles',
+                    tags: "-",
+                    comment: <RiChat1Fill />,
+                    date:  `Published
+                    2024/01/24 at 10:29px
+                    `
+                },
+                {
+                    "title": "Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race",
+                    author: "Williams Idowu",
+                    categories: 'Men, Articles',
+                    tags: "-",
+                    comment: <RiChat1Fill />,
+                    date:  `Published
+                    2024/01/24 at 10:29px
+                    `
+                },
+                {
+                    "title": "Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race",
+                    author: "Williams Idowu",
+                    categories: 'Polls',
+                    tags: "-",
+                    comment: <RiChat1Fill />,
+                    date:  `Published
+                    2024/01/24 at 10:29pm
+                    `
+                },
+            ]} />
         </div>
     )
 }

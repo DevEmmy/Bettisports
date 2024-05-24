@@ -1,4 +1,5 @@
 import OverviewContainer from '@/components/Shared/OverviewContainer'
+import Table from '@/components/Tables'
 import React from 'react'
 import { HiCog, HiSearch, HiTrash } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
@@ -83,8 +84,8 @@ const page = () => {
                     </button>
                 </div>
 
-                <div>
-                    <div className="flex-center justify-between">
+                <div className='flex flex-col gap-3'>
+                    <div className="flex-center justify-between text-sm">
                         <div className='post-select gap-4 flex'>
                             <select name="" id="">
                                 <option value="">All Dates</option>
@@ -107,6 +108,36 @@ const page = () => {
 
                         <p>28 Items</p>
                     </div>
+
+                    <Table 
+                        thead={["Name", "Description", "Slug", "Count"]}
+                        data={[
+                            {
+                                "name": "International",
+                                description: "-",
+                                slug: "intl",
+                                count: 1
+                            },
+                            {
+                                "name": "International",
+                                description: "-",
+                                slug: "intl",
+                                count: 1
+                            },
+                            {
+                                "name": "International",
+                                description: "-",
+                                slug: "intl",
+                                count: 1
+                            },
+                            {
+                                "name": "International",
+                                description: "-",
+                                slug: "intl",
+                                count: 1
+                            }
+                        ]}
+                    />
                 </div>
             </div>
         </div>

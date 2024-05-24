@@ -1,9 +1,14 @@
+"use client"
 import OverviewContainer from '@/components/Shared/OverviewContainer'
-import React from 'react'
+import React, { useState } from 'react'
 import { HiCog } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';   
 
 const page = () => {
+    const [value, setValue] = useState('');
+
     const gender = [
         'Men', "Women"
     ]
@@ -43,6 +48,8 @@ const page = () => {
                             Edit
                         </button>
                     </div>
+
+                    <ReactQuill theme="snow" value={value} onChange={setValue} className='h-[300px] bg-white'/>
 
                     <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
                         <HiCog />
