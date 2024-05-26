@@ -1,9 +1,9 @@
 "use client"
 import OverviewContainer from '@/components/Shared/OverviewContainer'
-import React, { useState } from 'react'
+import dynamic from 'next/dynamic'
+import React, { useMemo, useState } from 'react'
 import { HiCog } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';   
 
 const page = () => {
@@ -35,6 +35,9 @@ const page = () => {
             icon: <RiMicLine />
         }
     ]
+
+    const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }),[]);
+
     return (
         <div className='flex flex-col gap-5'>
             <p className='text-[20px] font-[600]'>Add New Post</p>
