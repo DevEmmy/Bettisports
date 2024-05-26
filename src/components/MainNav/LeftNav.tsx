@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { HiX } from 'react-icons/hi'
-import { RiArticleLine, RiBarChart2Line, RiBellLine, RiChat3Line, RiDownload2Line, RiFilter2Line, RiGroupLine, RiHeadphoneLine, RiHeart2Line, RiInformationLine, RiSave2Line, RiVideoLine } from 'react-icons/ri'
+import { RiArticleLine, RiBarChart2Line, RiBellLine, RiChat3Line, RiDownload2Line, RiFilter2Line, RiGridLine, RiGroupLine, RiHeadphoneLine, RiHeart2Line, RiInformationLine, RiNewspaperLine, RiSave2Line, RiVideoLine } from 'react-icons/ri'
 
 const LeftNav = ({setOpen}: any) => {
     const leftNav = [
@@ -19,6 +19,11 @@ const LeftNav = ({setOpen}: any) => {
             title: "Livescores",
             link: "/live-scores",
             icon: <RiVideoLine />
+        },
+        {
+            title: "Feeds",
+            link: "/feeds",
+            icon: <RiNewspaperLine />
         },
         {
             title: "Forums",

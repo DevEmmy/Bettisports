@@ -1,37 +1,47 @@
 "use client";
 import GrayLine from '@/components/UI/GrayLine'
-import { login } from '@/requests'
+import { signUp } from '@/requests';
 import Link from 'next/link'
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { RiEyeLine, RiFacebookCircleFill, RiGoogleFill } from 'react-icons/ri'
 
 const Page: React.FC = () => {
     const [email, setEmail] = useState<string>('')
+    const [firstName, setFirstName] = useState<string>('')
+    const [lastName, setLastName] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const [loading, setLoading] = useState<boolean>(false)
 
     const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value)
+    }
+
+    const handleFirstNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setFirstName(e.target.value)
+    }
+
+    const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setLastName(e.target.value)
     }
 
     const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value)
     }
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-        setLoading(true);
-        let feedback = await login({email, password});
-        setLoading(false);
         
+        setLoading(true);
+        let feedback = await signUp({email, password, firstName, lastName});
+        setLoading(false);
     }
 
     return (
         <div className='flex mt-32 flex-col text-start w-2/3 m-auto gap-5'>
             <div>
-                <p className='text-[40px] font-[600]'>Log in</p>
-                <p className='font-[500]'>Welcome back!</p>
+                <p className='text-[40px] font-[600]'>Sign Up</p>
+                <p className='font-[500]'>Welcome to Bettisport.</p>
             </div>
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
@@ -42,24 +52,35 @@ const Page: React.FC = () => {
                     className='focus:outline-secondaryBlue bg-gray-50 focus:bg-white w-full p-4 rounded-xl'
                     placeholder='Email'
                 />
+                <input
+                    type="text"
+                    value={firstName}
+                    onChange={handleFirstNameChange}
+                    className='focus:outline-secondaryBlue bg-gray-50 focus:bg-white w-full p-4 rounded-xl'
+                    placeholder='First Name'
+                />
+                <input
+                    type="text"
+                    value={lastName}
+                    onChange={handleLastNameChange}
+                    className='focus:outline-secondaryBlue bg-gray-50 focus:bg-white w-full p-4 rounded-xl'
+                    placeholder='Last Name'
+                />
                 <div className='flex-center gap-2 w-full p-4 bg-gray-50 focus:outline-secondaryBlue focus:bg-white rounded-xl'>
                     <input
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        className='focus:outline-none w-full bg-transparent focus:bg-transparent'
+                        className='focus:outline-none w-full bg-transparent'
                         placeholder='Password'
                     />
                     <RiEyeLine className='cursor-pointer' />
                 </div>
-                <button type='submit' className={`bg-secondaryBlue text-white p-4 rounded-xl ${loading && "opacity-40"}`}>{loading ? "Logging in" : "Login"}</button>
+                <button type='submit' className={`bg-secondaryBlue text-white p-4 rounded-xl ${loading && "opacity-40"}`}>{loading ? "Signing Up" : "Sign Up"}</button>
             </form>
 
-            <Link href="/reset-password" className='text-secondaryBlue text-center text-[18px] font-[500]'>
-                Forgot your Password?
-            </Link>
             <p className='text-center text-[18px] font-[500]'>
-                I don&apos;t have an account <Link href="/sign-up" className='text-secondaryBlue'>Sign Up</Link>
+                I have an account <Link href="/sign-in" className='text-secondaryBlue'>Login</Link>
             </p>
 
             <div className='flex-center justify-center gap-2'>
