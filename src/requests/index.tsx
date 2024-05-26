@@ -3,7 +3,7 @@ import { LoginDto, SignUp } from "./dto";
 import { toastError, toastSuccess } from "@/utils/toast";
 
 const axiosConfig = axios.create({
-    baseURL: "http://localhost:3030"
+    baseURL: "https://backend-bettisport.onrender.com"
 })
 
 export const login = async (data: LoginDto)=>{
