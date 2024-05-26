@@ -123,3 +123,7 @@ img{
 .table-items > div, .table-items > p{
   @apply flex items-center justify-center flex-col text-sm
 }
+
+.add > div{
+  @apply grid grid-cols-[1fr_2fr]
+}
