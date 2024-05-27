@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Raleway } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import AuthProvider from "@/Providers/AuthProvider";
 
 const raleway = Raleway({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], variable: "--raleway" });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-        <Toaster />
-        {children}
+        <AuthProvider>
+          <Toaster />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
