@@ -2,6 +2,7 @@
 import GrayLine from '@/components/UI/GrayLine'
 import { login } from '@/requests'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { RiEyeLine, RiFacebookCircleFill, RiGoogleFill } from 'react-icons/ri'
 
@@ -18,11 +19,16 @@ const Page: React.FC = () => {
         setPassword(e.target.value)
     }
 
+    const router = useRouter()
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         setLoading(true);
         let feedback = await login({email, password});
+        if(feedback){
+            router.push("/")
+        }
         setLoading(false);
         
     }

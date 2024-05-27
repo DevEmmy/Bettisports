@@ -2,6 +2,7 @@
 import GrayLine from '@/components/UI/GrayLine'
 import { signUp } from '@/requests';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { RiEyeLine, RiFacebookCircleFill, RiGoogleFill } from 'react-icons/ri'
 
@@ -28,12 +29,17 @@ const Page: React.FC = () => {
     }
 
     const [loading, setLoading] = useState<boolean>(false)
+    const router = useRouter()
+    
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         
         setLoading(true);
         let feedback = await signUp({email, password, firstName, lastName});
+        if(feedback){
+            router.push("/")
+        }
         setLoading(false);
     }
 
