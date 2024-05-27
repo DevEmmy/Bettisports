@@ -70,10 +70,10 @@ const MainNav = () => {
         {/* <div className='flex'> */}
             <RiSearch2Line />     
 
-            <button className='px-5 bg-primary1 py-1 text-white flex items-center gap-3'>
+            <Link href={"/sign-in"} className='px-5 bg-primary1 py-1 text-white flex items-center gap-3'>
                 Login
                 <RiUser2Fill />
-            </button>       
+            </Link>       
 
             <RiMenu2Fill onClick={()=> setOpen(true)} className='cursor-pointer'/>
         {/* </div> */}
