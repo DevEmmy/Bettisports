@@ -7,9 +7,10 @@ const AuthProvider = ({ children }: any) => {
   const [show, setShow] = useState(false);
   const router = useRouter();
 
-  let route: any = window.location.pathname;
+  
 
   let func = async () => {
+    let route: any = window.location.pathname;
     let token = localStorage.getItem('token');
     console.log(route);
 
@@ -25,7 +26,7 @@ const AuthProvider = ({ children }: any) => {
 
   useEffect(() => {
     func();
-  }, [route]); // Re-run func on route changes
+  }, []); // Re-run func on route changes
 
   return (
     <>
