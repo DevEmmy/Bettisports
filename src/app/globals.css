@@ -127,3 +127,7 @@ img{
 .add > div{
   @apply grid grid-cols-[1fr_2fr]
 }
+
+p, input, select{
+  @apply text-sm
+}
