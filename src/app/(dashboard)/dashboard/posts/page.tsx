@@ -7,7 +7,7 @@ const page = () => {
     return (
         <div className='flex flex-col gap-5'>
             <div className='flex gap-10 flex-center'>
-                <p className='text-[18px] font-[600] '>Posts</p>
+                <p className=' font-[600] '>Posts</p>
 
                 <button className='border border-secondaryBlue text-secondaryBlue p-2 text-sm'>
                     Add New Post

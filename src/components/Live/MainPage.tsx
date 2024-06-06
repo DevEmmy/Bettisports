@@ -26,7 +26,7 @@ const MainPage = () => {
                     <div className='flex items-center gap-2'>
                         <Clubs abb={"CHE"} full={true} size='20px' />
 
-                        <p className='text-[18px] font-[700] '><span className='bracket-score'>(2)</span> 3 -  3 <span className='bracket-score'>(0)</span></p>
+                        <p className=' font-[700] '><span className='bracket-score'>(2)</span> 3 -  3 <span className='bracket-score'>(0)</span></p>
 
                         <Clubs abb={"SHE"} full={true} size='20px'/>
                     </div>

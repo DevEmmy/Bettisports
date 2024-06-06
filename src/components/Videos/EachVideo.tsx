@@ -7,7 +7,7 @@ const EachVideo = () => {
             <div className="overlay" />
             <div className="details p-5">
                 <p className='text-sm'>March 28, 2024</p>
-                <p className='text-[18px] font-[600] line-clamp-1'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+                <p className=' font-[600] line-clamp-1'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
             </div>
         </div>
     )

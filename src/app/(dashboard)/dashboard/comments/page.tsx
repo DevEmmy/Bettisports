@@ -5,7 +5,7 @@ const page = () => {
     return (
         <div className='flex flex-col gap-5'>
             <div className='flex gap-10 flex-center'>
-                <p className='text-[18px] font-[600] '>Comments</p>
+                <p className=' font-[600] '>Comments</p>
             </div>
 
             <div className="flex-center justify-between">

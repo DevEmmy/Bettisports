@@ -41,7 +41,7 @@ const page = () => {
           <button className='bg-secondaryBlue text-white p-4 rounded-xl ' onClick={() => setSend(true)}>Send</button>
         </form>
 
-        <Link href={"/login"} className='text-secondaryBlue text-center text-[18px] font-[500]'>Return to Login</Link>
+        <Link href={"/login"} className='text-secondaryBlue text-center  font-[500]'>Return to Login</Link>
       </div>
     )
   }

@@ -97,7 +97,7 @@ img{
 }
 
 .pp{
-  @apply rounded-full size-[60px]
+  @apply rounded-full size-[50px]
 }
 
 .categories {
@@ -113,7 +113,7 @@ img{
 }
 
 .comment-action > p{
-  @apply px-4 cursor-pointer
+  @apply cursor-pointer
 }
 
 .ql-container.ql-snow {

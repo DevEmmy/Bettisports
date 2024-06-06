@@ -8,8 +8,8 @@ interface Props {
 
 const OverviewContainer = ({ title, children, buttonText }: Props) => {
   return (
-    <div className='bg-white border'>
-      <p className='p-4 border-b font-[600] text-[18px]'>{title}</p>
+    <div className='bg-white border text-sm'>
+      <p className='p-4 border-b font-[600] '>{title}</p>
 
       <div className='p-4'>
         {children}

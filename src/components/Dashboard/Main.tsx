@@ -30,7 +30,7 @@ const Main = () => {
             <div className="grid grid-cols-2 gap-10 mt-5">
                 <OverviewContainer title="Overview">
                     <div>
-                        <div className='flex-center justify-between'>
+                        <div className='flex-center justify-between text-sm'>
                             <div className='flex-center gap-5'>
                                 <p>Analytics</p>
                                 <p className='text-[12px] text-gray-500'>Last 30 days</p>
@@ -43,7 +43,7 @@ const Main = () => {
                             {
                                 data.map((item, i) => {
                                     return (
-                                        <div className='p-4 border'>
+                                        <div className='p-4 border text-sm'>
                                             <p>{item.title}</p>
                                             <p>{item.value}</p>
                                         </div>

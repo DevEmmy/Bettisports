@@ -34,13 +34,13 @@ const Page: React.FC = () => {
     }
 
     return (
-        <div className='flex mt-32 flex-col text-start w-2/3 m-auto gap-5'>
-            <div>
+        <div className='flex-all-center flex-col text-start w-2/3 m-auto mt-10 gap-5'>
+            <div className='w-full'>
                 <p className='text-[40px] font-[600]'>Log in</p>
                 <p className='font-[500]'>Welcome back!</p>
             </div>
 
-            <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-full'>
                 <input
                     type="text"
                     value={email}
@@ -61,10 +61,10 @@ const Page: React.FC = () => {
                 <button type='submit' className={`bg-secondaryBlue text-white p-4 rounded-xl ${loading && "opacity-40"}`}>{loading ? "Logging in" : "Login"}</button>
             </form>
 
-            <Link href="/reset-password" className='text-secondaryBlue text-center text-[18px] font-[500]'>
+            <Link href="/reset-password" className='text-secondaryBlue text-center  font-[500]'>
                 Forgot your Password?
             </Link>
-            <p className='text-center text-[18px] font-[500]'>
+            <p className='text-center  font-[500]'>
                 I don&apos;t have an account <Link href="/sign-up" className='text-secondaryBlue'>Sign Up</Link>
             </p>
 

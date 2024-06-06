@@ -35,7 +35,7 @@ const page = () => {
                 }
                 <div className='grid grid-cols-[0.5fr_5fr_1.5fr] border-b-2 border-b-gray-400 py-2'>
                     <div />
-                    <p className='text-[20px]'>
+                    <p className=''>
                         New post in Articles
                     </p>
                 </div>

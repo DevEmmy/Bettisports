@@ -73,7 +73,7 @@ const Footer = () => {
                         footerItems.map((item: FooterSubContent, i: number) => {
                             return (
                                 <div key={i} className='flex flex-col gap-3'>
-                                    <p className='text-[18px] font-[600]'>{item.title}</p>
+                                    <p className=' font-[600]'>{item.title}</p>
                                     <div className='flex flex-col gap-3'>
                                         {
                                             item.items.map((sublink: Sublinks, j: number) => {
@@ -91,7 +91,7 @@ const Footer = () => {
                     }
 
                     <div className='flex flex-col gap-3 col-span-2'>
-                        <p className='text-[18px] font-[600]'>General info and Technical Support:</p>
+                        <p className=' font-[600]'>General info and Technical Support:</p>
                         <p className='text-[14px]'>For general information about BETTITUDE and any issues regarding support. Write to us at: hello@bettitude.com</p>
                     </div>
                 </div>

@@ -76,7 +76,7 @@ const LeftNav = () => {
 
     const [active, setActive] = useState<number>(0)
     return (
-        <div className='w-1/5 fixed h-[100vh] top-0 left-0 bg-white border-r flex flex-col gap-20 py-5 px-10'>
+        <div className='w-1/5 fixed h-[100vh] top-0 left-0 bg-white border-r flex flex-col gap-20 py-5 px-5'>
             <div className='flex-center gap-5'>
                 <RiMenu2Line />
                 <Image src="/./logo.png" width={0} height={0} alt="" className='size-fit' unoptimized />
@@ -89,7 +89,7 @@ const LeftNav = () => {
                             <>
                                 {
                                     item.sub ?
-                                        <div className={`relative cursor-pointer p-4 flex justify-between ${active == i ? "bg-primary1 text-white" : "text-gray-500"}`} key={i}>
+                                        <div className={`relative cursor-pointer p-3 flex justify-between  text-sm ${active == i ? "bg-primary1 text-white" : "text-gray-500"}`} key={i}>
                                             <div className='flex-center gap-2' onClick={() => setShowPosts(!showPosts)}>
                                                 <p className=' '>{item.icon}</p>
                                                 <p>{item.title}</p>

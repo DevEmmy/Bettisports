@@ -17,7 +17,7 @@ const Profile = () => {
                         <p className='text-sm text-red-500 '>Remove Picture</p>
                     </div>
                     <div className='flex flex-col gap-5'>
-                        <p className='text-[18px] font-[600]'>Account Data</p>
+                        <p className=' font-[600]'>Account Data</p>
 
                         <div className='flex flex-col gap-2'>
                             <p className='text-sm'>Name</p>

@@ -44,13 +44,13 @@ const Page: React.FC = () => {
     }
 
     return (
-        <div className='flex mt-32 flex-col text-start w-2/3 m-auto gap-5'>
-            <div>
-                <p className='text-[40px] font-[600]'>Sign Up</p>
-                <p className='font-[500]'>Welcome to Bettisport.</p>
+        <div className='flex-all-center mt-10 w-2/3 flex-col text-start m-auto gap-5'>
+            <div className='w-full'>
+                <p className='text-[40px] font-[600] w-full'>Sign Up</p>
+                <p className='font-[500] w-full'>Welcome to Bettisport.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className='flex flex-col gap-3'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-full'>
                 <input
                     type="text"
                     value={email}
@@ -85,7 +85,7 @@ const Page: React.FC = () => {
                 <button type='submit' className={`bg-secondaryBlue text-white p-4 rounded-xl ${loading && "opacity-40"}`}>{loading ? "Signing Up" : "Sign Up"}</button>
             </form>
 
-            <p className='text-center text-[18px] font-[500]'>
+            <p className='text-center  font-[500]'>
                 I have an account <Link href="/sign-in" className='text-secondaryBlue'>Login</Link>
             </p>
 

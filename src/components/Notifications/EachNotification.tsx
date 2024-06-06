@@ -8,7 +8,7 @@ const EachNotification = () => {
         <div className='flex flex-col gap-2'>
             <p className='text-[16px] font-[500]'>John Doe Replied to your Comment</p>
 
-            <div className='text-gray-300 border border-gray-300 text-sm w-full p-3'>
+            <div className='text-gray-500 border border-gray-500 text-sm w-full p-3'>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint assumenda corporis labore ratione illo libero, cumque culpa ab optio magnam.
             </div>  
         </div>

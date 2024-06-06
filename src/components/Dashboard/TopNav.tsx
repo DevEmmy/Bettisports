@@ -6,7 +6,7 @@ import { RiBellLine } from 'react-icons/ri'
 
 const TopNav = () => {
   return (
-    <div className='flex-center justify-between py-5 px-xPadding bg-white border-b fixed top-0 w-4/5 right-0'>
+    <div className='flex-center justify-between py-4 px-xPadding bg-white border-b fixed top-0 w-4/5 right-0'>
         <p className='font-[600]'>Howdy, Williams</p>
 
         <div className='flex-center gap-20 '>
