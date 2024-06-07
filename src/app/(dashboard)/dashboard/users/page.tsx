@@ -7,7 +7,7 @@ const page = () => {
             <div className='flex gap-10 flex-center'>
                 <p className=' font-[600] '>Users</p>
 
-                <button className='border border-secondaryBlue text-secondaryBlue p-2 text-sm'>
+                <button className='border border-secondaryBlue text-secondaryBlue p-2 text-xs'>
                     Add New User
                 </button>
             </div>
@@ -20,7 +20,7 @@ const page = () => {
                 </div>
 
                 <div className='bg-white border flex'>
-                    <input type="text" className='bg-transparent focus:outline-none p-3 ' placeholder='Search for User'/>
+                    <input type="text" className='bg-transparent focus:outline-none p-3 text-xs' placeholder='Search for User'/>
                     <div className='bg-primary1 p-3 text-white'>
                         <HiSearch size={24}/>
                     </div>

@@ -6,7 +6,7 @@ import { HiChevronDown } from 'react-icons/hi'
 import { RiChat3Fill, RiHome2Fill, RiHome2Line, RiMenu2Line, RiPenNibFill, RiPenNibLine, RiPictureInPicture2Fill, RiUser3Fill } from 'react-icons/ri'
 
 const LeftNav = () => {
-
+    const [subToShow, setSubToShow] = useState<any>()
     const navItems = [
         {
             title: "Dashboard",
@@ -72,7 +72,16 @@ const LeftNav = () => {
 
     ]
 
-    const [showPosts, setShowPosts] = useState<boolean>(false)
+    const [showPosts, setShowPosts] = useState<number>(0)
+
+    const toggleDropDown = (sub: any)=>{
+        if(subToShow){
+            setSubToShow(null)
+        }
+        else{
+            setSubToShow(sub)
+        }
+    }
 
     const [active, setActive] = useState<number>(0)
     return (
@@ -90,20 +99,20 @@ const LeftNav = () => {
                                 {
                                     item.sub ?
                                         <div className={`relative cursor-pointer p-3 flex justify-between  text-sm ${active == i ? "bg-primary1 text-white" : "text-gray-500"}`} key={i}>
-                                            <div className='flex-center gap-2' onClick={() => setShowPosts(!showPosts)}>
+                                            <div className='flex-center gap-2' >
                                                 <p className=' '>{item.icon}</p>
                                                 <p>{item.title}</p>
                                             </div>
 
-                                            <HiChevronDown onClick={() => setShowPosts(!showPosts)} />
+                                            <HiChevronDown onClick={() =>{setShowPosts(i); toggleDropDown(navItems[i].sub)}} />
 
                                             {
-                                                showPosts &&
-                                                <div className="absolute top-14 flex flex-col bg-white  shadow-xl w-full text-sm -left-2">
+                                                subToShow && i === showPosts &&
+                                                <div className="absolute top-14 flex flex-col bg-white  shadow-xl w-full text-xs -left-2 z-50">
                                                     {
-                                                        item.sub.map((s, i) => {
+                                                        subToShow?.map((s: any, i: string) => {
                                                             return (
-                                                                <Link href={s.link} key={i} className='hover:bg-gray-200 p-4'>
+                                                                <Link href={s.link} onClick={()=> setSubToShow(null)} key={i} className='hover:bg-gray-200 p-4'>
                                                                     {s.title}
                                                                 </Link>
                                                             )
