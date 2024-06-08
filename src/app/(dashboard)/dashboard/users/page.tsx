@@ -1,3 +1,4 @@
+import Table from '@/components/Tables'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
 
@@ -40,8 +41,40 @@ const page = () => {
                     <HiTrash />
                     Delete
                 </button>
-
             </div>
+
+            <Table thead={["Username", "Name", "Email", "Role", "Posts"]} 
+            data={[
+                {
+                    "username": "Webmaster",
+                    name: "Williams Idowu",
+                    email: "willy@gmail.com",
+                    role: "Administrator",
+                    posts: "3"
+                },
+                {
+                    "username": "Webmaster",
+                    name: "Williams Idowu",
+                    email: "willy@gmail.com",
+                    role: "Administrator",
+                    posts: "3"
+                },
+                {
+                    "username": "Webmaster",
+                    name: "Williams Idowu",
+                    email: "willy@gmail.com",
+                    role: "Administrator",
+                    posts: "3"
+                },
+                {
+                    "username": "Webmaster",
+                    name: "Williams Idowu",
+                    email: "willy@gmail.com",
+                    role: "Administrator",
+                    posts: "3"
+                },
+               
+            ]} />
         </div>
     )
 }

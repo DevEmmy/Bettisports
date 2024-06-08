@@ -1,3 +1,4 @@
+import Table from '@/components/Comments/Table'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
 
@@ -34,6 +35,8 @@ const page = () => {
                     Apply
                 </button>
             </div>
+
+            <Table />
         </div>
     )
 }
