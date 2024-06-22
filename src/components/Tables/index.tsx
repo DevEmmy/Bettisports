@@ -5,7 +5,7 @@ import Loader from '../Loader';
 interface Props {
     thead: string[];
     data: any,
-    isLoading: boolean
+    isLoading?: boolean | null
 }
 
 const Table = ({ thead, data , isLoading}: Props) => {
