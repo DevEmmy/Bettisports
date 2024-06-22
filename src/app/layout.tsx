@@ -3,6 +3,7 @@ import { Montserrat, Raleway } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "@/Providers/AuthProvider";
+import ReactQueryProvider from "@/Providers/ReactQueryProvider";
 
 const raleway = Raleway({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], variable: "--raleway" });
 
@@ -19,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
+        <ReactQueryProvider>
         <AuthProvider>
           <Toaster />
           {children}
         </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

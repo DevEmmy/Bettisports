@@ -47,7 +47,7 @@ const page = () => {
                     <input type="text" placeholder='Add title' className='border p-3 w-full' />
                     <div className='flex-center gap-10'>
                         <p>Permalink: <span className='text-secondaryBlue'>https://et.gg.com//</span></p>
-                        <button className='border border-secondaryBlue text-secondaryBlue p-2  px-4 text-sm'>
+                        <button className='border border-secondaryBlue text-secondaryBlue p-2  px-4 text-xs'>
                             Edit
                         </button>
                     </div>

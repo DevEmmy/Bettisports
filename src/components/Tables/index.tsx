@@ -1,12 +1,14 @@
 import React from 'react'
 import { RiChat1Fill } from 'react-icons/ri';
+import Loader from '../Loader';
 
 interface Props {
     thead: string[];
-    data: any
+    data: any,
+    isLoading: boolean
 }
 
-const Table = ({ thead, data }: Props) => {
+const Table = ({ thead, data , isLoading}: Props) => {
     return (
         <div className='table bg-white border text-xs'>
             <div className='grid ' style={{ gridTemplateColumns: `repeat(${thead.length + 1}, 1fr)` }}>
@@ -21,6 +23,13 @@ const Table = ({ thead, data }: Props) => {
 
             <div className='grid' >
                 {
+                    isLoading 
+                    ?
+                        <Loader />
+                    :
+
+                    data.length > 0 ?
+                    
                     data.map((item: any, i: number) => {
                         return (
                             <div className='grid table-items items-center justify-center p-5 odd:bg-[#F6F8FB]' style={{ gridTemplateColumns: `repeat(${thead.length+1}, 1fr)` }}>
@@ -34,6 +43,8 @@ const Table = ({ thead, data }: Props) => {
                             </div>
                         )
                     })
+                    :
+                    <p className='text-center py-5 text-sm font-semibold'>No Posts Available</p>
                 }
             </div>
         </div>

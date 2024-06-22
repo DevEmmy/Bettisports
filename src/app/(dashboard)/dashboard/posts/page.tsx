@@ -1,17 +1,25 @@
+"use client"
+import { usePostQuery } from '@/app/hooks/PostRequests'
 import Table from '@/components/Tables'
+import Link from 'next/link'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
 import { RiChat1Fill } from 'react-icons/ri'
 
 const page = () => {
+    const { posts, isError, isLoading } = usePostQuery();
+    console.log(posts)
+
     return (
         <div className='flex flex-col gap-5'>
             <div className='flex gap-10 flex-center'>
                 <p className=' font-[600] '>Posts</p>
 
-                <button className='border border-secondaryBlue text-secondaryBlue p-2 text-sm'>
-                    Add New Post
-                </button>
+                <Link href={"/dashboard/posts/new"} >
+                    <button className='border border-secondaryBlue text-secondaryBlue p-2 text-xs'>
+                        Add New Post
+                    </button>
+                </Link>
             </div>
 
             <div className="flex-center justify-between">
@@ -22,9 +30,9 @@ const page = () => {
                 </div>
 
                 <div className='bg-white border flex'>
-                    <input type="text" className='bg-transparent focus:outline-none p-3 ' placeholder='Search'/>
+                    <input type="text" className='bg-transparent focus:outline-none p-3 ' placeholder='Search' />
                     <div className='bg-primary1 p-3 text-white'>
-                        <HiSearch size={24}/>
+                        <HiSearch size={24} />
                     </div>
                 </div>
             </div>
@@ -49,39 +57,8 @@ const page = () => {
 
             </div>
 
-            <Table thead={["Title", "Author", "Categories", "Tags", "Comment", "Date"]} 
-            data={[
-                {
-                    "title": "Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race",
-                    author: "Williams Idowu",
-                    categories: 'Men, Articles',
-                    tags: "-",
-                    comment: <RiChat1Fill />,
-                    date:  `Published
-                    2024/01/24 at 10:29px
-                    `
-                },
-                {
-                    "title": "Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race",
-                    author: "Williams Idowu",
-                    categories: 'Men, Articles',
-                    tags: "-",
-                    comment: <RiChat1Fill />,
-                    date:  `Published
-                    2024/01/24 at 10:29px
-                    `
-                },
-                {
-                    "title": "Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race",
-                    author: "Williams Idowu",
-                    categories: 'Polls',
-                    tags: "-",
-                    comment: <RiChat1Fill />,
-                    date:  `Published
-                    2024/01/24 at 10:29pm
-                    `
-                },
-            ]} />
+            <Table thead={["Title", "Author", "Categories", "Tags", "Comment", "Date"]}
+                data={posts} isLoading={isLoading} />
         </div>
     )
 }
