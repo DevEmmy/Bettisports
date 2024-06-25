@@ -1,6 +1,8 @@
 "use client"
+import { useFetchTrending } from '@/hooks/PostRequests'
 import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
+import Loader from '../Loader'
 
 const CategoricalNews = () => {
     const [active, setActive] = useState(0)
@@ -38,6 +40,9 @@ const CategoricalNews = () => {
             date: "March 15, 2024"
         }
     ]
+
+    const {trending, isError, isLoading} = useFetchTrending()
+
   return (
     <div>
         <div className='flex justify-between items-center border-b border-b-gray-400 '>
@@ -54,7 +59,13 @@ const CategoricalNews = () => {
 
         <div className="flex flex-col my-4 divide-y">
             {
-                news.map((item: any, i: number)=>{
+                isLoading
+                ?
+                    <Loader />
+                :
+                trending.length > 0
+                ?
+                trending.map((item: any, i: number)=>{
                     return(
                         <div className='flex justify-between gap-2 py-3'>
                             <div className='flex gap-2 flex-col text-grayColor'>
@@ -66,15 +77,17 @@ const CategoricalNews = () => {
                         </div>
                     )
                 })
+                :
+                <p>There are no trending posts available</p>
             }
         </div>
 
         <div>
-            <p className='text-[20px] font-[600]'>Follow us on Social Media</p>
+            <p className='text-[18px] font-[600]'>Follow us on Social Media</p>
             <div className="flex gap-3">
-                <RiFacebookCircleFill size={30} />
-                <RiTwitterXFill size={30}/>
-                <RiInstagramFill size={30}/>
+                <RiFacebookCircleFill size={25} />
+                <RiTwitterXFill size={25}/>
+                <RiInstagramFill size={25}/>
             </div>
         </div>
     </div>

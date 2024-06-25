@@ -16,7 +16,7 @@ const MajorHighlight = () => {
 
                                 <div className="details p-10 text-start">
                                     <p className='text-[10px]'>March 28, 2024</p>
-                                    <p className='font-[800] text-[36px] line-clamp-2'>
+                                    <p className='font-[800] text-[36px] line-clamp-2 leading-10'>
                                         Two Premier League Clubs Linked With Outgoing Barcelona&apos;s Manager
                                     </p>
                                 </div>

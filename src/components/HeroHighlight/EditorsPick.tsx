@@ -1,5 +1,8 @@
+"use client"
 import React from 'react'
 import VerticalHeader from '../Shared/VerticalHeader'
+import { useFetchEditorsPick } from '@/hooks/PostRequests'
+import Loader from '../Loader'
 
 const EditorsPick = () => {
 
@@ -20,18 +23,25 @@ const EditorsPick = () => {
       title: "Alexander Isak Speaks Out On His Newcastle Future Amid ",
     }
   ]
+
+  const { posts, isError, isLoading } = useFetchEditorsPick()
   return (
     <div className=''>
-      
+      <VerticalHeader title="Editor's Pick" />
 
-        <VerticalHeader title="Editor's Pick" />
-
-        <div className='flex gap-5 flex-col pt-4'>
-          {
-            news.map((item: any, i:number)=> {
-              return(
+      <div className='flex gap-5 flex-col pt-4'>
+        {
+          isLoading 
+          ?
+            <Loader />
+          :
+          
+          posts.length > 0
+            ?
+            posts.map((item: any, i: number) => {
+              return (
                 <div className='w-full h-[200px] relative'>
-                  <img src={"./img.jpg"} alt="" className='w-full h-full object-cover'/>
+                  <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
 
                   <div className="overlay" />
 
@@ -45,9 +55,13 @@ const EditorsPick = () => {
                 </div>
               )
             })
+            :
+
+            <p>There are no editor's picks available</p>
+
           }
-        </div>
-        
+      </div>
+
     </div>
   )
 }

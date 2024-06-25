@@ -1,5 +1,5 @@
 "use client"
-import { usePostQuery } from '@/app/hooks/PostRequests'
+import { usePostQuery } from '@/hooks/PostRequests'
 import Table from '@/components/Tables'
 import Link from 'next/link'
 import React from 'react'

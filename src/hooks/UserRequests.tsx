@@ -4,15 +4,13 @@ import { useQuery } from "react-query";
 
 const api = process.env.NEXT_PUBLIC_API as string;
 
-export const usePostQuery = ()=>{
+export const useAllUserQuery = ()=>{
     const fetchData = async ()=>{
-        const response = await axios.get(`${api}/posts`)
+        const response = await axios.get(`${api}/users`)
         return response.data.payload;
     }
 
-    const {data: posts, isError, isLoading} = useQuery("posts", fetchData)
+    const {data: users, isError, isLoading} = useQuery("users", fetchData)
 
-    return {posts, isError, isLoading}
+    return {users, isError, isLoading}
 }
-
-
