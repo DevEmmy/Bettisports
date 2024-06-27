@@ -38,10 +38,20 @@ export const useFetchTrending = ()=>{
 
 export const useFetchNewsBreaking = ()=>{
     const fetchData = async ()=>{
-        const response = await axios.get(`${api}/posts/class/trending`)
+        const response = await axios.get(`${api}/posts/class/news-breaking`)
         return response.data.payload;
     }
 
-    const {data: newsBreaking, isError, isLoading} = useQuery("trending", fetchData)
+    const {data: newsBreaking, isError, isLoading} = useQuery("news-breaking", fetchData)
     return {newsBreaking, isError, isLoading}
+}
+
+export const useFetchFeatured = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/featured`)
+        return response.data.payload;
+    }
+
+    const {data: featured, isError, isLoading} = useQuery("featured", fetchData)
+    return {featured, isError, isLoading}
 }
