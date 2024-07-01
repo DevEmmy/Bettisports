@@ -1,6 +1,10 @@
+"use client"
+import { getUser } from '@/hooks/UserRequests'
 import React from 'react'
 
 const Profile = () => {
+    const user = getUser();
+
     return (
         <div className='grid grid-cols-5 gap-10 mx-xPadding my-10'>
             <div className='grid grid-cols-5 col-span-5'>
@@ -13,7 +17,7 @@ const Profile = () => {
 
                 <div className='col-span-3 grid-cols-[1fr_3fr] grid'>
                     <div className='flex flex-col gap-5'>
-                        <img src="./img.jpg" alt="" className='size-[120px] rounded-full' />
+                        <img src={user.profilePicture} alt="" className='size-[120px] rounded-full' />
                         <p className='text-sm text-red-500 '>Remove Picture</p>
                     </div>
                     <div className='flex flex-col gap-5'>
@@ -21,12 +25,14 @@ const Profile = () => {
 
                         <div className='flex flex-col gap-2'>
                             <p className='text-sm'>Name</p>
-                            <input type="text" value={"Samuel"} className='border p-3 rounded-lg text-sm' />
+                            <div className='border p-3 rounded-lg text-sm'>
+                                {user.firstName + " " + user.lastName}
+                            </div>
                         </div>
 
                         <div className='flex flex-col gap-2'>
                             <p className='text-sm'>Email</p>
-                            <p className='bg-gray-100 text-black p-3 rounded-lg text-sm'>Alexdams@gmail.com</p>
+                            <p className='bg-gray-100 text-black p-3 rounded-lg text-sm'>{user.email}</p>
                         </div>
                     </div>
                 </div>

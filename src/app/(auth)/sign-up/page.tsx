@@ -44,8 +44,8 @@ const Page: React.FC = () => {
     }
 
     return (
-        <div className='flex-all-center mt-10 w-2/3 flex-col text-start m-auto gap-5'>
-            <div className='w-full'>
+        <div className='flex-all-center  w-2/3 flex-col text-start m-auto gap-5 h-[100vh]'>
+            <div className='w-full  flex flex-col gap-3 leading-10'>
                 <p className='text-[40px] font-[600] w-full'>Sign Up</p>
                 <p className='font-[500] w-full'>Welcome to Bettisport.</p>
             </div>

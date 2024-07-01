@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { RiArticleLine, RiMenu2Fill, RiSearch2Line, RiUser2Fill } from "react-icons/ri"
 import Button from '../Button'
 import LeftNav from './LeftNav'
+import { getUser } from '@/hooks/UserRequests'
 
 const MainNav = () => {
 
@@ -55,32 +56,43 @@ const MainNav = () => {
     ]
 
     const [open, setOpen] = useState(false)
-  return (
-    <div className='flex items-center justify-around px-xPadding border-b-gray-400 border-b py-5'>
-        {
-            nav.map((item: any, i: number)=>{
-                return(
-                    <Link href={item.link} key={i} className='text-[12px]'>
-                        <p>{item.title}</p>
+    const user = getUser()
+    return (
+        <div className='flex items-center justify-around px-xPadding border-b-gray-400 border-b py-5'>
+            {
+                nav.map((item: any, i: number) => {
+                    return (
+                        <Link href={item.link} key={i} className='text-[12px]'>
+                            <p>{item.title}</p>
+                        </Link>
+                    )
+                })
+            }
+
+            {/* <div className='flex'> */}
+            <RiSearch2Line />
+
+            {
+                user
+                    ?
+                    <Link href={"/profile"} className='px-5 bg-primary1 py-1 text-white flex items-center gap-3'>
+                        Profile
+                        <RiUser2Fill />
                     </Link>
-                )
-            })
-        }
+                    :
 
-        {/* <div className='flex'> */}
-            <RiSearch2Line />     
+                    <Link href={"/sign-in"} className='px-5 bg-primary1 py-1 text-white flex items-center gap-3'>
+                        Login
+                        <RiUser2Fill />
+                    </Link>
+            }
 
-            <Link href={"/sign-in"} className='px-5 bg-primary1 py-1 text-white flex items-center gap-3'>
-                Login
-                <RiUser2Fill />
-            </Link>       
+            <RiMenu2Fill onClick={() => setOpen(true)} className='cursor-pointer' />
+            {/* </div> */}
 
-            <RiMenu2Fill onClick={()=> setOpen(true)} className='cursor-pointer'/>
-        {/* </div> */}
-
-        {open && <LeftNav setOpen={setOpen}/>}
-    </div>
-  )
+            {open && <LeftNav setOpen={setOpen} />}
+        </div>
+    )
 }
 
 export default MainNav

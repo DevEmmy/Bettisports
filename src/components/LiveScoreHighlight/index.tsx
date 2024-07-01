@@ -22,9 +22,9 @@ const LiveScoreHighlight = () => {
                                         <p>-</p>
                                     </div>
 
-                                    <div className="flex justify-between items-center text-[12px] border-t border-t-gray-400 mt-2 pt-2">
-                                        <p>{item.leagueType.abb}</p>
-                                        <p>{item.date}</p>
+                                    <div className="flex justify-between items-center text-[8px] border-t border-t-gray-400 mt-2 pt-2">
+                                        <p className='text-[8px]'>{item.leagueType.abb}</p>
+                                        <p className='text-[8px]'>{item.date}</p>
                                     </div>
                                 </div>
                             )
