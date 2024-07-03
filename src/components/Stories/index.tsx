@@ -1,12 +1,11 @@
 'use client';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Line from '../UI/Line';
 import Each from './Each';
 import VerticalHeader from '../Shared/VerticalHeader';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import { useFetchStories } from '@/hooks/PostRequests';
 import Loader from '../Loader';
-
 
 const Stories = () => {
   const news = [
@@ -32,33 +31,34 @@ const Stories = () => {
     },
   ];
 
-  const {stories,isError,isLoading} = useFetchStories()
-  const [currentOffset,setCurrentOffset] = useState<number>(0)
+  const { stories, isError, isLoading } = useFetchStories();
+  const [currentOffset, setCurrentOffset] = useState<number>(0);
   return (
     <div className='grid grid-cols-[4fr_1.5fr] px-xPadding my-10 gap-10'>
       <div className='flex flex-col gap-5'>
         <VerticalHeader title='Stories' />
 
         <div className='flex gap-5 overflow-hidden relative'>
+          {isLoading ? (
+            <Loader />
+          ) : stories?.length > 0 ? (
+            stories?.map((newsItem: any, i: number) => {
+              return <Each item={newsItem} key={i} />;
+            })
+          ) : (
+            <p>There are no stories currently</p>
+          )}
 
-          { isLoading ? <Loader/> : stories?.length > 0 ? 
-          stories?.map((newsItem: any, i: number) => {
-            return <Each item={newsItem} key={i} />;
-          })
-          :
-          (
-            <p>
-                There are no stories currently
-            </p>
-          )
-        }
-
-          <div className='carousel_btn left-2'>
-            <RiArrowLeftSLine className='w-6 h-6' />
-          </div>
-          <div className='carousel_btn right-2'>
-            <RiArrowRightSLine className='w-6 h-6' />
-          </div>
+          {stories?.length > 0 && (
+            <>
+              <div className='carousel_btn left-2'>
+                <RiArrowLeftSLine className='w-6 h-6' />
+              </div>
+              <div className='carousel_btn right-2'>
+                <RiArrowRightSLine className='w-6 h-6' />
+              </div>
+            </>
+          )}
         </div>
       </div>
 
