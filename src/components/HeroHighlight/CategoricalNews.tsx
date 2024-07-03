@@ -5,6 +5,7 @@ import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-ico
 import Loader from '../Loader'
 import Trending from './Trending'
 import Popular from './Popular'
+import Recents from './Recents'
 
 const CategoricalNews = () => {
     const [active, setActive] = useState(0)
@@ -15,7 +16,7 @@ const CategoricalNews = () => {
         },
         {   id: 1,
             title: "Recents",
-            tag: ''
+            tag: <Recents/>
         },
         {   id: 2,
             title: "Popular",
