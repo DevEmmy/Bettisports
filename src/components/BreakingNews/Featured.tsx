@@ -67,7 +67,7 @@ const Featured = () => {
                   {featured[3]?.content}
                 </p>
                 <p className='text-[14px] text-grayColor'>
-                  {featured[2]?.date ? featured[2].date : 'March 23, 2024'}
+                  {featured[3]?.date ? featured[3].date : 'March 23, 2024'}
                 </p>
               </div>
             </div>

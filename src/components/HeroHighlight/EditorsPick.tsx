@@ -40,7 +40,7 @@ const EditorsPick = () => {
             ?
             posts.map((item: any, i: number) => {
               return (
-                <div className='w-full h-[200px] relative'>
+                <div className='w-full h-[200px] relative' key={i}>
                   <img src={item.media} alt="" className='w-full h-full object-cover' />
 
                   <div className="overlay" />
