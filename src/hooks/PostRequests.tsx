@@ -62,8 +62,8 @@ export const useFetchStories = ()=>{
         return response.data.payload;
     }
 
-    const {data: featured, isError, isLoading} = useQuery("stories", fetchData)
-    return {featured, isError, isLoading}
+    const {data: stories, isError, isLoading} = useQuery("stories", fetchData)
+    return {stories, isError, isLoading}
 }
 
 export const useFetchForYou = ()=>{

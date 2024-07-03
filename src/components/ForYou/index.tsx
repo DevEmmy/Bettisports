@@ -1,7 +1,10 @@
+'use client'
+
 import React from 'react';
 import Line from '../UI/Line';
 import Loader from '../Loader';
-import { useFetchForYou } from '@/hooks/PostRequests';
+import  {useFetchForYou}  from '@/hooks/PostRequests';
+
 
 const ForYou = () => {
   const dataForYou = [
@@ -34,7 +37,7 @@ const ForYou = () => {
 
   const dataId = ['01', '02', '03', '04', '05'];
 
-  const { forYou, isError, isLoading } = useFetchForYou();
+  const { forYou, isError, isLoading } = useFetchForYou()
   return (
     <div className='mx-xPadding'>
       <div className='flex items-center'>
@@ -47,7 +50,8 @@ const ForYou = () => {
       <div className='grid grid-cols-5 items-center divide-x my-10'>
         {isLoading ? (
           <Loader />
-        ) : forYou.length > 0 ? (
+        ) : forYou?.length > 0 
+        ? 
           forYou.map((item: any, i: number) => {
             return (
               <div
@@ -61,7 +65,7 @@ const ForYou = () => {
               </div>
             );
           })
-        ) : (
+         : (
           <p>There are no available posts for you.</p>
         )}
       </div>

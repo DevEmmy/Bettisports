@@ -159,3 +159,10 @@ p{
   animation: l3 1s infinite linear;
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
+
+
+/* Stories carousel btns */
+
+.carousel_btn {
+  @apply absolute top-[50%] -translate-y-2/4 cursor-pointer bg-white rounded-full p-1.5 backdrop-blur backdrop-opacity-15 backdrop-filter
+}
