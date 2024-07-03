@@ -55,3 +55,23 @@ export const useFetchFeatured = ()=>{
     const {data: featured, isError, isLoading} = useQuery("featured", fetchData)
     return {featured, isError, isLoading}
 }
+
+export const useFetchStories = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/stories`)
+        return response.data.payload;
+    }
+
+    const {data: featured, isError, isLoading} = useQuery("stories", fetchData)
+    return {featured, isError, isLoading}
+}
+
+export const useFetchForYou = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/for-you`)
+        return response.data.payload;
+    }
+
+    const {data: featured, isError, isLoading} = useQuery("for-you", fetchData)
+    return {featured, isError, isLoading}
+}
