@@ -75,3 +75,13 @@ export const useFetchForYou = ()=>{
     const {data: forYou, isError, isLoading} = useQuery("for-you", fetchData)
     return {forYou, isError, isLoading}
 }
+
+export const useFetchPopular = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/popular`)
+        return response.data.payload;
+    }
+
+    const {data: popular, isError, isLoading} = useQuery("popular", fetchData)
+    return {popular, isError, isLoading}
+}
