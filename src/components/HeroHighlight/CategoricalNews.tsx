@@ -49,7 +49,7 @@ const CategoricalNews = () => {
             {
                 filter.map((item: any, i: number)=> {
                     return(
-                        <div className={`text-[14px] text-grayColor ${active == i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)}>
+                        <div key={i} className={`text-[14px] text-grayColor ${active == i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)} >
                             {item.title}
                         </div>
                     )
@@ -67,13 +67,13 @@ const CategoricalNews = () => {
                 ?
                 trending.map((item: any, i: number)=>{
                     return(
-                        <div className='flex justify-between gap-2 py-3'>
+                        <div className='flex justify-between gap-2 py-3' key={i}>
                             <div className='flex gap-2 flex-col text-grayColor'>
                                 <p className='text-[14px] font-[500]'>{item.title}</p>
-                                <p className='text-[12px] font-[400]'>{item.date}</p>
+                                <p className='text-[12px] font-[400]'>{item?.date ? item?.date : 'March 23, 2024'}</p>
                             </div>
 
-                            <img src="./img.jpg" width={100} height={100} alt="" />
+                            <img src={item?.media ? item?.media :  "./img.jpg"} width={100} height={100} alt={`${item.title} on ${item.date}`} />
                         </div>
                     )
                 })

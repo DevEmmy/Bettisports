@@ -72,6 +72,6 @@ export const useFetchForYou = ()=>{
         return response.data.payload;
     }
 
-    const {data: featured, isError, isLoading} = useQuery("for-you", fetchData)
-    return {featured, isError, isLoading}
+    const {data: forYou, isError, isLoading} = useQuery("for-you", fetchData)
+    return {forYou, isError, isLoading}
 }
