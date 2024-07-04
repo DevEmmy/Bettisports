@@ -15,6 +15,7 @@ export const usePostQuery = ()=>{
     return {posts, isError, isLoading}
 }
 
+// editors
 export const useFetchEditorsPick = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/editors`)
@@ -26,6 +27,7 @@ export const useFetchEditorsPick = ()=>{
     return {posts, isError, isLoading}
 }
 
+// Trending
 export const useFetchTrending = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/trending`)
@@ -36,6 +38,7 @@ export const useFetchTrending = ()=>{
     return {trending, isError, isLoading}
 }
 
+// News Breaking
 export const useFetchNewsBreaking = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/news-breaking`)
@@ -46,6 +49,8 @@ export const useFetchNewsBreaking = ()=>{
     return {newsBreaking, isError, isLoading}
 }
 
+
+// Featured
 export const useFetchFeatured = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/featured`)
@@ -56,6 +61,8 @@ export const useFetchFeatured = ()=>{
     return {featured, isError, isLoading}
 }
 
+
+// stories
 export const useFetchStories = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/stories`)
@@ -66,6 +73,7 @@ export const useFetchStories = ()=>{
     return {stories, isError, isLoading}
 }
 
+// ForyOU
 export const useFetchForYou = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/for-you`)
@@ -76,6 +84,7 @@ export const useFetchForYou = ()=>{
     return {forYou, isError, isLoading}
 }
 
+// popular
 export const useFetchPopular = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/popular`)
@@ -86,6 +95,7 @@ export const useFetchPopular = ()=>{
     return {popular, isError, isLoading}
 }
 
+// photosplash
 export const useFetchPhotoSplash = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/photo-splash`)
@@ -96,7 +106,7 @@ export const useFetchPhotoSplash = ()=>{
     return {photoSplash, isError, isLoading}
 }
 
-
+// Infocus
 export const useFetchInFocus = ()=>{
     const fetchData = async ()=>{
         const response = await axios.get(`${api}/posts/class/in-focus`)
@@ -105,4 +115,16 @@ export const useFetchInFocus = ()=>{
 
     const {data: inFocus, isError, isLoading} = useQuery("in-focus", fetchData)
     return {inFocus, isError, isLoading}
+}
+
+// article
+export const useFetchArticle = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/article`)
+        return response.data.payload;
+    }
+
+    const {data: article, isError, isLoading} = useQuery("article", fetchData)
+
+    return {article, isError, isLoading}
 }

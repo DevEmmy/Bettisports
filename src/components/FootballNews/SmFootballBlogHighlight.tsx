@@ -18,7 +18,7 @@ const SmFootballBlogHighlight = ({item} : any) => {
                 </div>
             </div>
         </div>
-        <img src={item.media} alt="" className='h-full' />
+        <img src={item?.media} alt="" className='h-full' />
     </div>
   )
 }
