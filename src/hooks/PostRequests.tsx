@@ -128,3 +128,14 @@ export const useFetchArticle = ()=>{
 
     return {article, isError, isLoading}
 }
+
+// Fantasy
+export const useFetchFantasy = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/fantasy`)
+        return response.data.payload;
+    }
+
+    const {data: fantasy, isError, isLoading} = useQuery("fantasy", fetchData)
+    return {fantasy, isError, isLoading}
+}
