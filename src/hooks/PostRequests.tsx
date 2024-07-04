@@ -85,3 +85,13 @@ export const useFetchPopular = ()=>{
     const {data: popular, isError, isLoading} = useQuery("popular", fetchData)
     return {popular, isError, isLoading}
 }
+
+export const useFetchPhotoSplash = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/photo-splash`)
+        return response.data.payload;
+    }
+
+    const {data: photoSplash, isError, isLoading} = useQuery("photo-splash", fetchData)
+    return {photoSplash, isError, isLoading}
+}
