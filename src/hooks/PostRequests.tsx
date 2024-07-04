@@ -95,3 +95,14 @@ export const useFetchPhotoSplash = ()=>{
     const {data: photoSplash, isError, isLoading} = useQuery("photo-splash", fetchData)
     return {photoSplash, isError, isLoading}
 }
+
+
+export const useFetchInFocus = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/in-focus`)
+        return response.data.payload;
+    }
+
+    const {data: inFocus, isError, isLoading} = useQuery("in-focus", fetchData)
+    return {inFocus, isError, isLoading}
+}

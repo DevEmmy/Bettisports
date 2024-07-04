@@ -33,7 +33,7 @@ const PhotoSplash = () => {
   ];
 
   const { photoSplash, isError, isLoading } = useFetchPhotoSplash();
-  const competition = photoSplash?.slice(0, 7);
+
   return (
     <div className='flex flex-col gap-5 my-10 mx-xPadding'>
       <h1 className='font-[600] uppercase'>BSB PHOTOSPLASH</h1>
@@ -42,16 +42,16 @@ const PhotoSplash = () => {
       <div className='grid grid-cols-4 gap-5'>
         {isLoading ? (
           <Loader />
-        ) : competition?.length > 0 ? (
-          competition.map((comp: any, i: number) => {
+        ) : photoSplash.length > 0 ? (
+          photoSplash?.slice(0,6).map((item: any, i: number) => {
             return (
               <div className={`relative ${(i == 2 || i == 3) && 'col-span-2'} cursor-pointer`} key={i} onClick={setState}>
-                <img src={comp?.media} alt='' className='w-full h-[300px]' />
+                <img src={item?.media} alt='' className='w-full h-[300px]' />
                 <div className='overlay'/>
                 <div className='details p-5'>
-                  <p className='text-[20px] font-[600]'>{comp.title}</p>
+                  <p className='text-[20px] font-[600]'>{item.title}</p>
                   <p className='text-sm'>
-                    {comp?.excerpt ? comp.excerpt : 'Experience the best of international football with unforgettable moments captured on the global stage.'} 
+                    {item?.excerpt} 
                   </p>
                 </div>
               </div>
