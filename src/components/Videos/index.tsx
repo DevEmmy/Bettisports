@@ -1,6 +1,7 @@
 import React from 'react'
 import Line from '../UI/Line'
 import EachVideo from './EachVideo'
+import { FaPlay } from 'react-icons/fa'
 
 const VideoComponent = () => {
     return (
@@ -17,6 +18,9 @@ const VideoComponent = () => {
                     <div className="details p-10">
                         <p className='text-sm'>March 28, 2024</p>
                         <p className='text-[28px] font-[600]'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+                    </div>
+                    <div className='text-white absolute right-2/4 bottom-2/4 top-2/4 left-2/4 font-[700] bg-black/40 p-3 rounded-full'>
+                        <FaPlay className='w-6 h-6' />
                     </div>
                 </div>
 

@@ -46,7 +46,7 @@ const InFocus = () => {
                         isLoading ?
                         <Loader/>
                         :
-                        inFocus.length > 0
+                        inFocus?.length > 0
                         ?
                         (
                         <div className="flex flex-col gap-5 relative">
@@ -94,7 +94,7 @@ const InFocus = () => {
                     isLoading ?
                     <Loader/>
                     :
-                    inFocus.slice(1,4).map((item: any, i:number) => {
+                    inFocus?.slice(1,4).map((item: any, i:number) => {
                         return (
                             <SmFootballBlogHighlight key={i} item={item} />
                         )

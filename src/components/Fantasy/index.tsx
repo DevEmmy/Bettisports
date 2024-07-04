@@ -14,14 +14,29 @@ const Fantasy = () => {
 
       <div className='md:grid md:grid-cols-3 gap-3'>
         {/* first div */}
-        <div className='flex flex-col gap-5 relative'>
-          <img src='img.jpg' alt='' className='h-full w-full' />
-          <div className='overlay' />
-          <div className='details p-10'>
-            <p>{fantasy[0]?.date}</p>
-            <p className='text-[28px] font-[600]'>{fantasy[0]?.title}</p>
-          </div>
-        </div>
+        {
+            isLoading ?
+            <Loader/>
+            :
+            fantasy.length > 0 ?
+            fantasy.slice(0,1).map((item : any) => {
+                return (
+                <div className='flex flex-col gap-5 relative'>
+                    <img src={item?.media} alt='' className='h-full w-full' />
+                    <div className='overlay' />
+                    <div className='details p-10'>
+                        <p>{item?.date}</p>
+                        <p className='text-[28px] font-[600]'>{item?.title}</p>
+                    </div>
+                </div>
+                )
+            })
+            :
+            (
+                <p>There are no fantasy posts</p>
+            )
+        }
+        
 
         <div className='flex-col border-x-2 px-3'>
           {isLoading ? (
