@@ -9,7 +9,7 @@ const MajorHighlight = () => {
                 {
                     [1, 2, 3, 4].map((item: any, i: number) => {
                         return (
-                            <div className='w-full h-[600px] relative'>
+                            <div className='w-full h-[600px] relative' key={i}>
                                 <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
 
                                 <div className="overlay" />

@@ -216,6 +216,11 @@ const Page: React.FC = () => {
                             </div>
 
                             <div className='flex-center gap-3 border-b py-3'>
+                                <input type="checkbox" checked={article} onChange={() => setArticle(!article)} />
+                                <p>Article</p>
+                            </div>
+
+                            <div className='flex-center gap-3 border-b py-3'>
                                 <input type="checkbox" checked={editorsPick} onChange={() => setEditorsPick(!editorsPick)} />
                                 <p>Editor's Picks</p>
                             </div>
