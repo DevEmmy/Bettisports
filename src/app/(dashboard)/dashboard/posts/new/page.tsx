@@ -1,12 +1,14 @@
 "use client"
 import OverviewContainer from '@/components/Shared/OverviewContainer'
 import dynamic from 'next/dynamic'
-import React, { useMemo, useState, ChangeEvent, KeyboardEvent } from 'react'
+import React, { useMemo, useState, ChangeEvent, KeyboardEvent, useEffect } from 'react'
 import { HiCog } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
 import 'react-quill/dist/quill.snow.css';
 import FileBase64 from 'react-file-base64';
 import { useCreatePost } from '@/hooks/PostRequests'
+import Loader from '@/components/Loader'
+import { toastSuccess } from '@/utils/toast'
 
 interface FormatOption {
     text: string;
@@ -50,7 +52,7 @@ const Page: React.FC = () => {
 
     const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }), []);
 
-    const {createPostFn, error, isError, isLoading} = useCreatePost()
+    const {createPostFn, error, isError, isLoading, isSuccess} = useCreatePost()
 
     const handleSubmit = async () => {
         const postData = {
@@ -111,6 +113,12 @@ const Page: React.FC = () => {
         }
     };
 
+    useEffect(()=>{
+        if(isSuccess){
+            toastSuccess("Post Uploaded")
+        }
+    }, [isSuccess])
+
     return (
         <div className='flex flex-col gap-5'>
             <p className='text-[20px] font-[600]'>Add New Post</p>
@@ -166,10 +174,15 @@ const Page: React.FC = () => {
                     </OverviewContainer>
 
                     <button
-                        className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit'
+                        className={`border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit ${isLoading && "opacity-70"}`}
                         onClick={handleSubmit}
                     >
-                        Submit
+                        {
+                            isLoading ?
+                            "submitting..."
+                            :
+                            "submit"
+                        }
                     </button>
                 </div>
 

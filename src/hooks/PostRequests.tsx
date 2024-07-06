@@ -70,7 +70,7 @@ export const useCreatePost =  () => {
         return response;
     }
 
-    const {mutate : createPostFn , isLoading, isError, error }  = useMutation(createPost)
+    const {mutate : createPostFn , isLoading, isError, error , isSuccess}  = useMutation(createPost)
 
-    return {createPostFn, isLoading, isError, error}
+    return {createPostFn, isLoading, isError, error, isSuccess}
 }

@@ -74,7 +74,7 @@ const CategoricalNews = () => {
                                 <p className='text-[12px] font-[400] line-clamp-2'>{parse(item.content)}</p>
                             </div>
 
-                            <img src="./img.jpg" width={100} height={100} alt="" />
+                            <img src={item.media} width={100} height={100} alt="" />
                         </div>
                     )
                 })
