@@ -3,6 +3,7 @@ import { useFetchTrending } from '@/hooks/PostRequests'
 import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
 import Loader from '../Loader'
+import parse from 'html-react-parser';
 
 const CategoricalNews = () => {
     const [active, setActive] = useState(0)
@@ -70,7 +71,7 @@ const CategoricalNews = () => {
                         <div className='flex justify-between gap-2 py-3'>
                             <div className='flex gap-2 flex-col text-grayColor'>
                                 <p className='text-[14px] font-[500]'>{item.title}</p>
-                                <p className='text-[12px] font-[400]'>{item.date}</p>
+                                <p className='text-[12px] font-[400] line-clamp-2'>{parse(item.content)}</p>
                             </div>
 
                             <img src="./img.jpg" width={100} height={100} alt="" />

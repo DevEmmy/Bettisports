@@ -3,6 +3,7 @@ import React from 'react'
 import VerticalHeader from '../Shared/VerticalHeader'
 import { useFetchEditorsPick } from '@/hooks/PostRequests'
 import Loader from '../Loader'
+import parse from 'html-react-parser';
 
 const EditorsPick = () => {
 
@@ -46,10 +47,11 @@ const EditorsPick = () => {
                   <div className="overlay" />
 
                   <div className="details p-3">
-                    <p className='text-[10px]'>{item.date}</p>
+                    
                     <p className='font-[600] text-[12px]'>
                       {item.title}
                     </p>
+                    <p className='!text-[10px] line-clamp-2'>{parse(item.content)}</p>
                   </div>
 
                 </div>
