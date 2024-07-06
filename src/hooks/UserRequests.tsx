@@ -1,6 +1,6 @@
 "use client"
 import axios from "axios"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 const api = process.env.NEXT_PUBLIC_API as string;
@@ -17,16 +17,14 @@ export const useAllUserQuery = () => {
 }
 
 export const getUser = () => {
-    let user: any;
+    const [user, setUser] = useState<any>(null)
 
+    useEffect(() => {
+        let userObject = localStorage.getItem("user")
+        userObject = JSON.parse(userObject as string)
+        console.log(userObject)
+        setUser(userObject)
+    }, []) 
 
-    user = localStorage.getItem("user")
-    user = JSON.parse(user)
-
-    console.log(user)
-    if (user) {
-        return user;
-    }
-
-    return null;
+    return user;
 }
