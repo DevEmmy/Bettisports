@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ".././globals.css";
+import Image from "next/image";
+import image from "../../../public/auth.png"
 
 export default function RootLayout({
     children,
@@ -11,7 +13,7 @@ export default function RootLayout({
             <div>
                 {children}
             </div>
-            <img src="./auth.png" alt="" className="h-[100vh] w-full object-cover"/>
+            <Image width={0} height={0} unoptimized src={image} alt="" className="h-[100vh] w-full object-cover"/>
 
         </div>
     );
