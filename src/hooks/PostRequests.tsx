@@ -24,57 +24,39 @@ export const usePostQuery = () => {
     return { posts, isError, isLoading }
 }
 
-
-
-export const useCreatePost =  () => {
-    const createPost = async (data: any) => {
-        let response = await axiosConfig.post("/posts", data)
-        response = response.data.payload;
-        return response;
-    }
-
-    const {mutate : createPostFn , isLoading, isError, error , isSuccess}  = useMutation(createPost)
-
-    return {createPostFn, isLoading, isError, error, isSuccess}
-}
-// editors
-export const useFetchEditorsPick = ()=>{
-    const fetchData = async ()=>{
+export const useFetchEditorsPick = () => {
+    const fetchData = async () => {
         const response = await axios.get(`${api}/posts/class/editors`)
         return response.data.payload;
     }
 
-    const {data: posts, isError, isLoading} = useQuery("editors", fetchData)
+    const { data: posts, isError, isLoading } = useQuery("editors", fetchData)
 
-    return {posts, isError, isLoading}
+    return { posts, isError, isLoading }
 }
 
-// Trending
-export const useFetchTrending = ()=>{
-    const fetchData = async ()=>{
+export const useFetchTrending = () => {
+    const fetchData = async () => {
         const response = await axios.get(`${api}/posts/class/trending`)
         return response.data.payload;
     }
 
-    const {data: trending, isError, isLoading} = useQuery("trending", fetchData)
-    return {trending, isError, isLoading}
+    const { data: trending, isError, isLoading } = useQuery("trending", fetchData)
+    return { trending, isError, isLoading }
 }
 
-// News Breaking
-export const useFetchNewsBreaking = ()=>{
-    const fetchData = async ()=>{
+export const useFetchNewsBreaking = () => {
+    const fetchData = async () => {
         const response = await axios.get(`${api}/posts/class/news-breaking`)
         return response.data.payload;
     }
 
-    const {data: newsBreaking, isError, isLoading} = useQuery("news-breaking", fetchData)
-    return {newsBreaking, isError, isLoading}
+    const { data: newsBreaking, isError, isLoading } = useQuery("news-breaking", fetchData)
+    return { newsBreaking, isError, isLoading }
 }
 
-
-// Featured
-export const useFetchFeatured = ()=>{
-    const fetchData = async ()=>{
+export const useFetchFeatured = () => {
+    const fetchData = async () => {
         const response = await axios.get(`${api}/posts/class/featured`)
         return response.data.payload;
     }
@@ -160,4 +142,16 @@ export const useFetchFantasy = ()=>{
 
     const {data: fantasy, isError, isLoading} = useQuery("fantasy", fetchData)
     return {fantasy, isError, isLoading}
+}
+
+export const useCreatePost =  () => {
+    const createPost = async (data: any) => {
+        let response = await axiosConfig.post("/posts", data)
+        response = response.data.payload;
+        return response;
+    }
+
+    const {mutate : createPostFn , isLoading, isError, error , isSuccess}  = useMutation(createPost)
+
+    return {createPostFn, isLoading, isError, error, isSuccess}
 }

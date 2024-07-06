@@ -5,12 +5,10 @@ import React, { useMemo, useState, ChangeEvent, KeyboardEvent, useEffect } from 
 import { HiCog } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
 import 'react-quill/dist/quill.snow.css';
-// import FileBase64 from 'react-file-base64';
+import FileBase64 from 'react-file-base64';
 import { useCreatePost } from '@/hooks/PostRequests'
 import Loader from '@/components/Loader'
 import { toastSuccess } from '@/utils/toast'
-// import { FileBase64 } from 'react-file-base64'; 
-import FileBase64 from 'react-file-base64';
 
 interface FormatOption {
     text: string;
@@ -148,9 +146,9 @@ const Page: React.FC = () => {
                         Add Media
                     </button>
 
-                    {/* <FileBase64  
-                         multiple={false}
-    onDone={(base64: any)=> setMedia(base64.base64)} /> */}
+                    <FileBase64
+                        multiple={false}
+                        onDone={(base64: any)=> setMedia(base64.base64)} />
 
                     <OverviewContainer title={"Excerpt"}>
                         <div className='flex gap-2 flex-col'>
@@ -215,6 +213,11 @@ const Page: React.FC = () => {
                             <div className='flex gap-3 divide-x border-b py-3'>
                                 <p>All Categories</p>
                                 <p className='text-secondaryBlue pl-3'>Most Used</p>
+                            </div>
+
+                            <div className='flex-center gap-3 border-b py-3'>
+                                <input type="checkbox" checked={article} onChange={() => setArticle(!article)} />
+                                <p>Article</p>
                             </div>
 
                             <div className='flex-center gap-3 border-b py-3'>
