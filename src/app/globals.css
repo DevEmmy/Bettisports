@@ -161,5 +161,12 @@ p{
 @keyframes l3 {to{transform: rotate(1turn)}}
 
 p{
-  @apply text-[14px]
+  @apply text-[10px]
+}
+
+
+/* Stories carousel btns */
+
+.carousel_btn {
+  @apply absolute top-[50%] -translate-y-2/4 cursor-pointer bg-white rounded-full p-1.5 backdrop-blur backdrop-opacity-15 backdrop-filter
 }
