@@ -3,24 +3,19 @@ import { useFetchTrending } from '@/hooks/PostRequests'
 import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
 import Loader from '../Loader'
-import Trending from './Trending'
-import Popular from './Popular'
-import Recents from './Recents'
+import parse from 'html-react-parser';
 
 const CategoricalNews = () => {
     const [active, setActive] = useState(0)
     const filter = [
-        {   id: 0,
-            title: "Trending",
-            tag: <Trending />
+        {
+            title: "Trending"
         },
-        {   id: 1,
-            title: "Recents",
-            tag: <Recents/>
+        {
+            title: "Recents"
         },
-        {   id: 2,
-            title: "Popular",
-            tag: <Popular/>
+        {
+            title: "Popular"
         }
     ]
 
@@ -55,7 +50,7 @@ const CategoricalNews = () => {
             {
                 filter.map((item: any, i: number)=> {
                     return(
-                        <div key={i} className={`text-[14px] text-grayColor ${active == i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)} >
+                        <div className={`text-[14px] text-grayColor ${active == i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)}>
                             {item.title}
                         </div>
                     )
@@ -64,7 +59,28 @@ const CategoricalNews = () => {
         </div>
 
         <div className="flex flex-col my-4 divide-y">
-            {filter[active].tag}
+            {
+                isLoading
+                ?
+                    <Loader />
+                :
+                trending.length > 0
+                ?
+                trending.map((item: any, i: number)=>{
+                    return(
+                        <div className='flex justify-between gap-2 py-3'>
+                            <div className='flex gap-2 flex-col text-grayColor'>
+                                <p className='text-[14px] font-[500]'>{item.title}</p>
+                                <p className='text-[12px] font-[400] line-clamp-2'>{parse(item.content)}</p>
+                            </div>
+
+                            <img src={item.media} width={100} height={100} alt="" />
+                        </div>
+                    )
+                })
+                :
+                <p>There are no trending posts available</p>
+            }
         </div>
 
         <div>

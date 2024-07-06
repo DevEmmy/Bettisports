@@ -160,6 +160,10 @@ p{
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
 
+p{
+  @apply text-[10px]
+}
+
 
 /* Stories carousel btns */
 

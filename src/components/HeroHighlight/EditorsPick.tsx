@@ -3,6 +3,7 @@ import React from 'react'
 import VerticalHeader from '../Shared/VerticalHeader'
 import { useFetchEditorsPick } from '@/hooks/PostRequests'
 import Loader from '../Loader'
+import parse from 'html-react-parser';
 
 const EditorsPick = () => {
 
@@ -36,20 +37,21 @@ const EditorsPick = () => {
             <Loader />
           :
           
-          posts?.length > 0
+          posts.length > 0
             ?
-            posts?.map((item: any, i: number) => {
+            posts.map((item: any, i: number) => {
               return (
-                <div className='w-full h-[200px] relative' key={i}>
+                <div className='w-full h-[200px] relative'>
                   <img src={item.media} alt="" className='w-full h-full object-cover' />
 
                   <div className="overlay" />
 
                   <div className="details p-3">
-                    <p className='text-[10px]'>{item.date}</p>
+                    
                     <p className='font-[600] text-[12px]'>
                       {item.title}
                     </p>
+                    <p className='!text-[10px] line-clamp-2'>{parse(item.content)}</p>
                   </div>
 
                 </div>

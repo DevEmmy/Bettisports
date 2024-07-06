@@ -1,20 +1,42 @@
+
+
 "use client"
 import axios from "axios"
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
-export const api = process.env.NEXT_PUBLIC_API as string;
+const api = process.env.NEXT_PUBLIC_API as string;
 
-export const usePostQuery = ()=>{
-    const fetchData = async ()=>{
+const axiosConfig = axios.create({
+    baseURL: api,
+    headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+    }
+})
+
+export const usePostQuery = () => {
+    const fetchData = async () => {
         const response = await axios.get(`${api}/posts`)
         return response.data.payload;
     }
 
-    const {data: posts, isError, isLoading} = useQuery("posts", fetchData)
+    const { data: posts, isError, isLoading } = useQuery("posts", fetchData)
 
-    return {posts, isError, isLoading}
+    return { posts, isError, isLoading }
 }
 
+
+
+export const useCreatePost =  () => {
+    const createPost = async (data: any) => {
+        let response = await axiosConfig.post("/posts", data)
+        response = response.data.payload;
+        return response;
+    }
+
+    const {mutate : createPostFn , isLoading, isError, error , isSuccess}  = useMutation(createPost)
+
+    return {createPostFn, isLoading, isError, error, isSuccess}
+}
 // editors
 export const useFetchEditorsPick = ()=>{
     const fetchData = async ()=>{
@@ -138,18 +160,4 @@ export const useFetchFantasy = ()=>{
 
     const {data: fantasy, isError, isLoading} = useQuery("fantasy", fetchData)
     return {fantasy, isError, isLoading}
-}
-
-
-
-
-
-export const upLoadPostsQuery = async (data : any) => {
-    try {
-        const response = await axios.post(`${api}/posts`, data);
-        return response.data;
-    }
-    catch (error : any) {
-        throw new Error(error.response.data.message);
-    }
 }
