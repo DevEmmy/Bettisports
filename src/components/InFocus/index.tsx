@@ -1,7 +1,10 @@
+'use client';
 import React from 'react'
 import Line from '../UI/Line'
 import { RiArrowRightLine } from 'react-icons/ri'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
+import Loader from '../Loader'
+import { useFetchInFocus } from '@/hooks/PostRequests'
 
 const InFocus = () => {
     const competition = [
@@ -30,6 +33,7 @@ const InFocus = () => {
             title: "UEFA CONFERENCE LEAGUE"
         }
     ]
+    const {inFocus,isError,isLoading} = useFetchInFocus();
     return (
         <div className='px-xPadding my-10'>
             <div className='grid grid-cols-[4fr_1.5fr]  gap-10'>
@@ -37,16 +41,32 @@ const InFocus = () => {
                     <h1 className='font-[600]'>In Focus</h1>
                     <Line />
 
-                    <div className="flex flex-col gap-5 relative">
-                        <img src="./img.jpg" alt="" />
-                        <div className="overlay"></div>
-                        <div className="details p-10">
-                            <p>March 24, 2023</p>
-                            <p className='text-[28px] font-[600]'>
-                                Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links
-                            </p>
+
+                    {
+                        isLoading ?
+                        <Loader/>
+                        :
+                        inFocus?.length > 0
+                        ?
+                        (
+                        <div className="flex flex-col gap-5 relative">
+                            <img src={inFocus[0].media} alt="" />
+                            <div className="overlay" />
+                            <div className="details p-10">
+                                <p>
+                                    {inFocus[0]?.date}
+                                </p>
+                                <p className='text-[28px] font-[600]'>
+                                    {inFocus[0]?.title}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                        )
+                        :
+                        (
+                            <p>There are no in focus posts</p>
+                        )
+                    }
 
                 </div>
 
@@ -70,10 +90,17 @@ const InFocus = () => {
             </div>
 
             <div className="flex gap-5 my-5">
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
+                {
+                    isLoading ?
+                    <Loader/>
+                    :
+                    inFocus?.slice(1,4).map((item: any, i:number) => {
+                        return (
+                            <SmFootballBlogHighlight key={i} item={item} />
+                        )
+                    })
+                }
+            
             </div>
         </div>
 

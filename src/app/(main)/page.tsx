@@ -17,6 +17,7 @@ import MoreStories from "@/components/Stories/MoreStories";
 import Topics from "@/components/Topics";
 import VideoComponent from "@/components/Videos";
 import Image from "next/image";
+import Fantasy from "@/components/Fantasy";
 
 export default function Home() {
   return (
@@ -86,6 +87,8 @@ export default function Home() {
       <InternationalFootball />
 
       <Articles />
+
+      <Fantasy />
       <VideoComponent />
       <img src="./frame.png" className="w-fit h-auto object-contain mx-auto my-10" alt="" />
     </>

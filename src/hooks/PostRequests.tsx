@@ -1,3 +1,5 @@
+
+
 "use client"
 import axios from "axios"
 import { useMutation, useQuery } from "react-query";
@@ -59,8 +61,87 @@ export const useFetchFeatured = () => {
         return response.data.payload;
     }
 
-    const { data: featured, isError, isLoading } = useQuery("featured", fetchData)
-    return { featured, isError, isLoading }
+    const {data: featured, isError, isLoading} = useQuery("featured", fetchData)
+    return {featured, isError, isLoading}
+}
+
+
+// stories
+export const useFetchStories = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/stories`)
+        return response.data.payload;
+    }
+
+    const {data: stories, isError, isLoading} = useQuery("stories", fetchData)
+    return {stories, isError, isLoading}
+}
+
+// ForyOU
+export const useFetchForYou = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/for-you`)
+        return response.data.payload;
+    }
+
+    const {data: forYou, isError, isLoading} = useQuery("for-you", fetchData)
+    return {forYou, isError, isLoading}
+}
+
+// popular
+export const useFetchPopular = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/popular`)
+        return response.data.payload;
+    }
+
+    const {data: popular, isError, isLoading} = useQuery("popular", fetchData)
+    return {popular, isError, isLoading}
+}
+
+// photosplash
+export const useFetchPhotoSplash = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/photo-splash`)
+        return response.data.payload;
+    }
+
+    const {data: photoSplash, isError, isLoading} = useQuery("photo-splash", fetchData)
+    return {photoSplash, isError, isLoading}
+}
+
+// Infocus
+export const useFetchInFocus = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/in-focus`)
+        return response.data.payload;
+    }
+
+    const {data: inFocus, isError, isLoading} = useQuery("in-focus", fetchData)
+    return {inFocus, isError, isLoading}
+}
+
+// article
+export const useFetchArticle = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/article`)
+        return response.data.payload;
+    }
+
+    const {data: article, isError, isLoading} = useQuery("article", fetchData)
+
+    return {article, isError, isLoading}
+}
+
+// Fantasy
+export const useFetchFantasy = ()=>{
+    const fetchData = async ()=>{
+        const response = await axios.get(`${api}/posts/class/fantasy`)
+        return response.data.payload;
+    }
+
+    const {data: fantasy, isError, isLoading} = useQuery("fantasy", fetchData)
+    return {fantasy, isError, isLoading}
 }
 
 export const useCreatePost =  () => {

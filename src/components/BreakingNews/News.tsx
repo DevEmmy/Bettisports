@@ -50,7 +50,7 @@ const News = () => {
                         <Loader />
                         :
 
-                        newsBreaking.length > 0
+                        newsBreaking?.length > 0
                             ?
                             newsBreaking.map((item: any, i: number) => {
                                 return (
