@@ -19,7 +19,7 @@ const Featured = () => {
 
       {isLoading ? (
         <Loader />
-      ) : featured.length > 0 ? (
+      ) : featured?.length > 0 ? (
         <div className='grid grid-cols-[2fr_3fr_2fr] mt-10 gap-5'>
           <div className='grid gap-5'>
             <img src='./ads.png' alt='' />

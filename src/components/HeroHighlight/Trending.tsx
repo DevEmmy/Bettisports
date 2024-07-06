@@ -8,8 +8,8 @@ const Trending = () => {
     <>
       {isLoading ? (
         <Loader />
-      ) : trending.length > 0 ? (
-        trending.map((item: any, i: number) => {
+      ) : trending?.length > 0 ? (
+        trending?.map((item: any, i: number) => {
           return (
             <div className='flex justify-between gap-2 py-3' key={i}>
               <div className='flex gap-2 flex-col text-grayColor'>

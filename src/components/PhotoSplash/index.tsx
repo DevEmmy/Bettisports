@@ -42,7 +42,7 @@ const PhotoSplash = () => {
       <div className='grid grid-cols-4 gap-5'>
         {isLoading ? (
           <Loader />
-        ) : photoSplash.length > 0 ? (
+        ) : photoSplash?.length > 0 ? (
           photoSplash?.slice(0,6).map((item: any, i: number) => {
             return (
               <div className={`relative ${(i == 2 || i == 3) && 'col-span-2'} cursor-pointer`} key={i} onClick={setState}>

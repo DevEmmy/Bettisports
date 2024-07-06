@@ -36,9 +36,9 @@ const EditorsPick = () => {
             <Loader />
           :
           
-          posts.length > 0
+          posts?.length > 0
             ?
-            posts.map((item: any, i: number) => {
+            posts?.map((item: any, i: number) => {
               return (
                 <div className='w-full h-[200px] relative' key={i}>
                   <img src={item.media} alt="" className='w-full h-full object-cover' />

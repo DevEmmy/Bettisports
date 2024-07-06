@@ -2,7 +2,7 @@
 import axios from "axios"
 import { useQuery } from "react-query";
 
-const api = process.env.NEXT_PUBLIC_API as string;
+export const api = process.env.NEXT_PUBLIC_API as string;
 
 export const usePostQuery = ()=>{
     const fetchData = async ()=>{
@@ -138,4 +138,18 @@ export const useFetchFantasy = ()=>{
 
     const {data: fantasy, isError, isLoading} = useQuery("fantasy", fetchData)
     return {fantasy, isError, isLoading}
+}
+
+
+
+
+
+export const upLoadPostsQuery = async (data : any) => {
+    try {
+        const response = await axios.post(`${api}/posts`, data);
+        return response.data;
+    }
+    catch (error : any) {
+        throw new Error(error.response.data.message);
+    }
 }

@@ -18,7 +18,7 @@ const Fantasy = () => {
             isLoading ?
             <Loader/>
             :
-            fantasy.length > 0 ?
+            fantasy?.length > 0 ?
             fantasy.slice(0,1).map((item : any) => {
                 return (
                 <div className='flex flex-col gap-5 relative'>
@@ -41,7 +41,7 @@ const Fantasy = () => {
         <div className='flex-col border-x-2 px-3'>
           {isLoading ? (
             <Loader />
-          ) : fantasy.length > 0 ? (
+          ) : fantasy?.length > 0 ? (
             fantasy.slice(1, 4).map((item: any, i: number) => {
               return (
                 <MdFootballBlogHighlight
@@ -59,7 +59,7 @@ const Fantasy = () => {
         <div className='flex-col'>
           {isLoading ? (
             <Loader />
-          ) : fantasy.length > 0 ? (
+          ) : fantasy?.length > 0 ? (
             fantasy.slice(4, 7).map((item: any, i: number) => {
               return (
                 <MdFootballBlogHighlight
