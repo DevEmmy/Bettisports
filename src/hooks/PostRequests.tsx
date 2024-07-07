@@ -18,6 +18,19 @@ export const usePostQuery = () => {
     return { posts, isError, isLoading }
 }
 
+export const useEachPostQuery = (id: string) => {
+    const fetchData = async () => {
+        const response = await axios.get(`${api}/posts/${id}`)
+        console.log(response)
+        return response.data.payload;
+    }
+
+    const { data: post, isError, isLoading } = useQuery(id, fetchData)
+    
+
+    return { post, isError, isLoading }
+}
+
 export const useFetchEditorsPick = () => {
     const fetchData = async () => {
         const response = await axios.get(`${api}/posts/class/editors`)

@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import PostedBy from './PostedBy'
 import Articles from '../Articles'
@@ -6,16 +7,30 @@ import Comments from './Comments'
 import { RiBookmarkLine, RiFacebookLine, RiHeart2Line, RiLinkedinLine, RiShareLine, RiTwitterLine } from 'react-icons/ri'
 import TitleHeader from '../UI/TitleHeader'
 import Tag from './Tag'
+import { useEachPostQuery } from '@/hooks/PostRequests'
+import Loader from '../Loader';
+import parser from "html-react-parser"
 
-const BlogContent = () => {
+interface Props {
+    id: string
+}
+
+const BlogContent = ({ id }: Props) => {
+    console.log(id);
+    const { post, isError, isLoading } = useEachPostQuery(id)
+
+    if (isLoading) {
+        return <Loader />
+    }
+
     return (
         <div>
             <p className='text-[12px]'>Category</p>
-            <TitleHeader title="Where Will Kylian Mbappe Go Next? 7 Clubs That are in the Race" />
-            <PostedBy />
+            <TitleHeader title={post.title} />
+            <PostedBy author={post.author} createdAt={post.createdAt} />
 
-            <div className='my-5 flex flex-col gap-5 text-[#25282B]'>
-                <img src="./img.jpg" alt="" />
+            {/* <div className='my-5 flex flex-col gap-5 text-[#25282B]'>
+                <img src={post.media} alt="" />
                 <p>The next chapter in Kylian Mbappe&apos;s transfer drama triangle alongside PSG and Real Madrid entered was written on Thursday when the French forward told the Paris based club he will be leaving as a free agent.</p>
                 <p>
                     Transfer guru, Fabrizio Romano, revealed that Kylian Mbappé informed PSG that he will LEAVE the club in July, although all the terms of the departure are yet to be fully agreed and Kylian is still to fulfil his commitments to the club.
@@ -76,6 +91,13 @@ const BlogContent = () => {
                 </p>
 
                 <Tag />
+            </div> */}
+
+            <div className='my-5 flex flex-col gap-5 text-[#25282B]'>
+                <img src={post.media} alt={post.title} />
+                <div>
+                    {parser(post.content)}
+                </div>
             </div>
 
             <Comments />

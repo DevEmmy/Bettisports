@@ -8,7 +8,7 @@ interface Props{
 }
 
 const EachNews = ({size,item} : Props)  => {
-    console.log(item)
+    
     return (
         <div className='h-full flex flex-col gap-2'>
             <img src={item?.media} alt="" className='w-full h-auto'/>

@@ -6,7 +6,7 @@ interface Props{
 
 const TitleHeader = ({title}: Props) => {
   return (
-    <p className='text-[50px] font-[700] text-primary1'>{title}</p>
+    <p className='text-[50px] font-[700] text-primary1 leading-normal'>{title}</p>
   )
 }
 
