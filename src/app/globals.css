@@ -164,7 +164,6 @@ p{
   @apply text-[12px]
 }
 
-
 /* Stories carousel btns */
 
 .carousel_btn {
@@ -177,7 +176,7 @@ table {
 }
 
 tr {
-  @apply text-base
+  @apply text-base pl-3
 }
 
 tr:nth-child(even) {
@@ -185,7 +184,7 @@ tr:nth-child(even) {
 }
 
 td,th {
-  @apply py-5 px-1
+  @apply py-5 px-6
 }
 
 th {

@@ -60,7 +60,6 @@ const Table = ({ thead, data, isLoading }: Props) => {
                   {item.tags > 0 ? (
                     item.tags
                   ) : (
-                    // <hr className=' border-2 w-5'/>
                     <img src='/hr.svg' className='w-5 h-5 object-contain' />
                   )}
                 </td>
@@ -79,7 +78,7 @@ const Table = ({ thead, data, isLoading }: Props) => {
           No Posts Available
         </p>
       )}
-      {/* </div> */}
+      
     </table>
   );
 };
