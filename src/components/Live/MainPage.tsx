@@ -14,7 +14,7 @@ const MainPage = () => {
         <div>
             <p className='text-[12px]'>Live Football</p>
             <TitleHeader title="MAN UTD 3 -3 COVENTRY... COVENTRY PULLS ONE BACK TO COMPLETE A DRAMATIC COMEBACK" />
-            <PostedBy />
+            {/* <PostedBy /> */}
             <div className='my-5 flex flex-col gap-5 text-[#25282B]'>
                 <img src="./img.jpg" alt="" />
 

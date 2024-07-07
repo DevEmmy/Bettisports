@@ -109,7 +109,7 @@ const page = () => {
                         <p>28 Items</p>
                     </div>
 
-                    <Table 
+                    {/* <Table 
                         thead={["Name", "Description", "Slug", "Count"]}
                         data={[
                             {
@@ -137,7 +137,7 @@ const page = () => {
                                 count: 1
                             }
                         ]}
-                    />
+                    /> */}
                 </div>
             </div>
         </div>
