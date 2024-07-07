@@ -11,7 +11,7 @@ const page = () => {
     console.log(posts)
 
     return (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 max-w-full overflow-hidden'>
             <div className='flex gap-10 flex-center'>
                 <p className=' font-[600] '>Posts</p>
 

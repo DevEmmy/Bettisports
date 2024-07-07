@@ -170,3 +170,28 @@ p{
 .carousel_btn {
   @apply absolute top-[50%] -translate-y-2/4 cursor-pointer bg-white rounded-full p-1.5 backdrop-blur backdrop-opacity-15 backdrop-filter
 }
+
+/* dashboard table */
+table {
+  @apply bg-white
+}
+
+tr {
+  @apply text-base
+}
+
+tr:nth-child(even) {
+  @apply bg-[#F6F8FB]
+}
+
+td,th {
+  @apply py-5 px-1
+}
+
+th {
+  @apply text-left
+}
+
+td {
+  @apply items-start
+}
