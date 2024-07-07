@@ -5,6 +5,10 @@ import React from 'react'
 const Profile = () => {
     const user = getUser();
 
+    if(!user){
+        return null
+    }
+
     return (
         <div className='grid grid-cols-5 gap-10 mx-xPadding my-10'>
             <div className='grid grid-cols-5 col-span-5'>
