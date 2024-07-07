@@ -54,7 +54,7 @@ const Table = ({ thead, data, isLoading }: Props) => {
                     <span className='text-blue-600'>View</span>
                   </div>
                 </td>
-                <td>{item.author.firstName + " " + item.author.firstName}</td>
+                <td>{item.author.firstName + " " + item.author.lastName}</td>
                 <td>{item.category}</td>
                 <td>
                   {item.tags > 0 ? (

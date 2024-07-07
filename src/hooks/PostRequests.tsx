@@ -1,17 +1,11 @@
 
 
 "use client"
+import { axiosConfig } from "@/utils/axiosConfig";
 import axios from "axios"
 import { useMutation, useQuery } from "react-query";
 
 const api = process.env.NEXT_PUBLIC_API as string;
-
-const axiosConfig = axios.create({
-    baseURL: api,
-    headers: {
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
-    }
-})
 
 export const usePostQuery = () => {
     const fetchData = async () => {

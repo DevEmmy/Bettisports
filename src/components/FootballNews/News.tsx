@@ -1,20 +1,30 @@
 import React from 'react'
 import EachNews from './EachNews'
+import { useFetchNewsBreaking } from '@/hooks/PostRequests'
+import Loader from '../Loader'
 
 const News = () => {
+    const { newsBreaking, isLoading } = useFetchNewsBreaking()
     return (
-        <div className='grid grid-cols-4 gap-5'>
-            <div className='row-span-2'>
-                <EachNews />
-            </div>
+        <>
             {
-                [1, 2, 3, 4, 5, 6].map((news: any, i: number) => {
-                    return (
-                        <EachNews />
-                    )
-                })
+                isLoading ?
+                    <Loader />
+                    :
+                    <div className='grid grid-cols-4 gap-5'>
+                        <div className='row-span-2'>
+                            <EachNews item={newsBreaking[0]} />
+                        </div>
+                        {
+                            newsBreaking.map((news: any, i: number) => {
+                                return (
+                                    <EachNews item={news} />
+                                )
+                            })
+                        }
+                    </div>
             }
-        </div>
+        </>
     )
 }
 
