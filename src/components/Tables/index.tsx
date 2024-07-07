@@ -1,54 +1,86 @@
-import React from 'react'
+import React from 'react';
 import { RiChat1Fill } from 'react-icons/ri';
 import Loader from '../Loader';
+import { IoIosThermometer } from 'react-icons/io';
 
 interface Props {
-    thead: string[];
-    data: any,
-    isLoading?: boolean | null
+  thead: string[];
+  data: any;
+  isLoading?: boolean | null;
 }
 
-const Table = ({ thead, data , isLoading}: Props) => {
-    return (
-        <div className='table bg-white border text-xs'>
-            <div className='grid ' style={{ gridTemplateColumns: `repeat(${thead.length + 1}, 1fr)` }}>
-                {
-                    thead.map((head: string, i: number) => {
-                        return (
-                            <div className={`flex items-center justify-center p-5 ${i == 0 && "col-span-2"} text-xs`}>{head}</div>
-                        )
-                    })
-                }
-            </div>
+const Table = ({ thead, data, isLoading }: Props) => {
+  return (
+    <table>
+      <tr className='text-sm'>
+        {thead.map((head: string, i: number) => {
+          return (
+            <th className='text-sm'>
+              {head != 'Comment' ? (
+                head
+              ) : (
+                <img
+                  src='/commentIcon.svg'
+                  className='w-5 h-5 object-contain'
+                />
+              )}
+            </th>
+          );
+        })}
+      </tr>
 
-            <div className='grid' >
-                {
-                    isLoading 
-                    ?
-                        <Loader />
-                    :
+      {isLoading ? (
+        <Loader />
+      ) : data.length > 0 ? (
+        data.map((item: any, i: number) => {
+          while (i < 50) {
+            return (
+              <tr className='text-left gap-1 text-sm items-start' key={i}>
+                <td className='text-[#197DDA]'>
+                  <div >
+                    {item.title > 120
+                      ? `${item.title.slice(0, 119)}...`
+                      : item.title}
+                    {item.publish ? '' : <span className='text-black'>- Draft</span>}
+                  </div>
 
-                    data.length > 0 ?
-                    
-                    data.map((item: any, i: number) => {
-                        return (
-                            <div className='grid table-items items-center justify-center p-5 odd:bg-[#F6F8FB]' style={{ gridTemplateColumns: `repeat(${thead.length+1}, 1fr)` }}>
-                               {
-                                Object.values(item).map((dataItem: any, j: number)=>{
-                                    return(
-                                        <div className={`flex items-center justify-center !text-xs ${j == 0 && "col-span-2 text-secondaryBlue text-xs    "}`}>{dataItem}</div>
-                                    )
-                                })
-                               }
-                            </div>
-                        )
-                    })
-                    :
-                    <p className='text-center py-5 text-sm font-semibold'>No Posts Available</p>
-                }
-            </div>
-        </div>
-    )
-}
+                  <div className='mt-1.5 flex gap-2 text-xs'>
+                    <span className='text-blue-600'>Edit</span>
+                    <span className='text-blue-600 border-x-2 px-2'>
+                      Quick Edit
+                    </span>
+                    <span className='text-red-700 border-r-2 pr-2'>Trash</span>
+                    <span className='text-blue-600'>View</span>
+                  </div>
+                </td>
+                <td>{item.author}</td>
+                <td>{item.category}</td>
+                <td>
+                  {item.tags > 0 ? (
+                    item.tags
+                  ) : (
+                    // <hr className=' border-2 w-5'/>
+                    <img src='/hr.svg' className='w-5 h-5 object-contain' />
+                  )}
+                </td>
+                <td>{item.reads}</td>
+                <td>
+                  {' '}
+                  published at <br />
+                  {item?.date ? item.date : 'date not in model'}
+                </td>
+              </tr>
+            );
+          }
+        })
+      ) : (
+        <p className='text-center py-5 text-sm font-semibold'>
+          No Posts Available
+        </p>
+      )}
+      {/* </div> */}
+    </table>
+  );
+};
 
-export default Table
+export default Table;
