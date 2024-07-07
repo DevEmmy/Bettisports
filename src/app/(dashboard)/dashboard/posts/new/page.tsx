@@ -161,7 +161,7 @@ const Page: React.FC = () => {
                         </div>
                     </OverviewContainer>
 
-                    <OverviewContainer title={"Author"}>
+                    {/* <OverviewContainer title={"Author"}>
                         <div className='flex gap-2 flex-col'>
                             <select
                                 className='w-fit p-3 bg-white border focus:outline'
@@ -171,7 +171,7 @@ const Page: React.FC = () => {
                                 <option value="Idowu Williams">Idowu Williams</option>
                             </select>
                         </div>
-                    </OverviewContainer>
+                    </OverviewContainer> */}
 
                     <button
                         className={`border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit ${isLoading && "opacity-70"}`}
