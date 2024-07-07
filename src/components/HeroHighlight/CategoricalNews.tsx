@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
 import Loader from '../Loader'
 import parse from 'html-react-parser';
+import Link from 'next/link'
 
 const CategoricalNews = () => {
     const [active, setActive] = useState(0)
@@ -68,14 +69,14 @@ const CategoricalNews = () => {
                 ?
                 trending.slice(0,3).map((item: any, i: number)=>{
                     return(
-                        <div className='flex justify-between gap-2 py-3'>
+                        <Link href={`/blog/${item._id}`} className='flex justify-between gap-2 py-3'>
                             <div className='flex gap-2 flex-col text-grayColor'>
                                 <p className='text-[14px] font-[500]'>{item.title}</p>
                                 <p className='text-[12px] font-[400] line-clamp-2 parser'>{parse(item.content)}</p>
                             </div>
 
                             <img src={item.media} width={100} height={100} alt="" />
-                        </div>
+                        </Link>
                     )
                 })
                 :

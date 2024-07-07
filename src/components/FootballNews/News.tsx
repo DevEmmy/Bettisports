@@ -13,11 +13,11 @@ const News = () => {
                     <Loader />
                     :
                     <div className='grid grid-cols-4 gap-5'>
-                        <div className='row-span-2'>
+                        {/* <div className='row-span-2'>
                             <EachNews item={newsBreaking[0]} />
-                        </div>
+                        </div> */}
                         {
-                            newsBreaking.map((news: any, i: number) => {
+                            newsBreaking.slice(0,8).map((news: any, i: number) => {
                                 return (
                                     <EachNews item={news} />
                                 )

@@ -112,7 +112,7 @@ const Footer = () => {
             <p className='text-sm text-center my-8'>All inquiry and Information about BettitudeKeepUp blog and press-related issues or more. Write to us at: keepup@bettitude.com</p>
 
             <div className='flex items-center justify-between pt-10 border-t border-t-gray-300'>
-                <Image src="/./logo.png" unoptimized width={0} className='object-contain h-auto w-[200px]' height={0} alt='' />
+                <Image src="/./logo.svg" unoptimized width={0} className='object-contain h-auto w-[200px]' height={0} alt='' />
 
                 <div className="flex">
                     Copyrights &copy; 2017-{new Date().getFullYear()} <span className='font-[600]'>Bettitude</span> | Bettitude Inc. All rights reserved.

@@ -6,6 +6,7 @@ import { useFetchPopular } from '@/hooks/PostRequests'
 import Loader from '../Loader'
 import parser from "html-react-parser"
 import ReactTimeago from 'react-timeago'
+import Link from 'next/link'
 
 const MostRead = () => {
     const { isError, isLoading, popular } = useFetchPopular()
@@ -29,7 +30,7 @@ const MostRead = () => {
                             ?
                             popular.slice(0, 6).map((item: any, i: number) => {
                                 return (
-                                    <div className='p-3 flex gap-2' key={i}>
+                                    <Link href={`/blog/${item._id}`} className='p-3 flex gap-2' key={i}>
                                         <p className='text-defaultYellow text-[24px] font-[600]'>{i + 1}.</p>
                                         <div className='flex flex-col gap-3'>
                                             <p className='font-[500]'>{item.title}</p>
@@ -44,7 +45,7 @@ const MostRead = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 )
                             })
                             :

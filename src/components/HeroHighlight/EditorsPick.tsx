@@ -4,6 +4,7 @@ import VerticalHeader from '../Shared/VerticalHeader'
 import { useFetchEditorsPick } from '@/hooks/PostRequests'
 import Loader from '../Loader'
 import parse from 'html-react-parser';
+import Link from 'next/link'
 
 const EditorsPick = () => {
 
@@ -41,7 +42,7 @@ const EditorsPick = () => {
             ?
             posts.slice(0,3).map((item: any, i: number) => {
               return (
-                <div className='w-full h-[200px] relative'>
+                <Link href={`/blog/${item._id}`} className='w-full h-[200px] relative'>
                   <img src={item.media} alt="" className='w-full h-full object-cover' />
 
                   <div className="overlay" />
@@ -54,7 +55,7 @@ const EditorsPick = () => {
                     <p className='!text-[10px] line-clamp-2 parser'>{parse(item.content)}</p>
                   </div>
 
-                </div>
+                </Link>
               )
             })
             :

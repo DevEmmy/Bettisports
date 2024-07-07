@@ -1,6 +1,7 @@
 import React from 'react'
 import { RiChat2Line, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri'
 import parser from "html-react-parser"
+import Link from 'next/link';
 
 interface Props{
     size?: string | null;
@@ -10,8 +11,8 @@ interface Props{
 const EachNews = ({size,item} : Props)  => {
     
     return (
-        <div className='h-full flex flex-col gap-2'>
-            <img src={item?.media} alt="" className='w-full h-auto'/>
+        <Link href={`/blog/${item._id}`} className='h-full flex flex-col gap-2'>
+            <img src={item?.media} alt="" className='w-full h-[180px]'/>
             <p className={`${size == "lg" && "text-[20px] font-[600]"}`}>
                 {item?.title}
             </p>
@@ -26,7 +27,7 @@ const EachNews = ({size,item} : Props)  => {
                     <RiShareForward2Line size={18}/>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
