@@ -2,6 +2,7 @@ import React from 'react';
 import { RiChat1Fill } from 'react-icons/ri';
 import Loader from '../Loader';
 import { IoIosThermometer } from 'react-icons/io';
+import TimeAgo from 'react-timeago'
 
 interface Props {
   thead: string[];
@@ -53,7 +54,7 @@ const Table = ({ thead, data, isLoading }: Props) => {
                     <span className='text-blue-600'>View</span>
                   </div>
                 </td>
-                <td>{item.author}</td>
+                <td>{item.author.firstName + " " + item.author.firstName}</td>
                 <td>{item.category}</td>
                 <td>
                   {item.tags > 0 ? (
@@ -66,8 +67,8 @@ const Table = ({ thead, data, isLoading }: Props) => {
                 <td>{item.reads}</td>
                 <td>
                   {' '}
-                  published at <br />
-                  {item?.date ? item.date : 'date not in model'}
+                  published <br />
+                  <TimeAgo date={item.createdAt || "july 3, 2024"} />
                 </td>
               </tr>
             );
