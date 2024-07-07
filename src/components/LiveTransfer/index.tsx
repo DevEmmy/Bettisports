@@ -11,8 +11,8 @@ const LiveTransfer = () => {
         <VerticalHeader title='Live Transfer' />
 
         <div className="grid grid-cols-2 gap-10">
-          <EachNews size={"lg"}/>
-          <EachNews size={"lg"}/>
+          {/* <EachNews size={"lg"}/>
+          <EachNews size={"lg"}/> */}
 
           <div className='col-span-2 grid grid-cols-3 gap-10'>
             <SmFootballBlogHighlight />
