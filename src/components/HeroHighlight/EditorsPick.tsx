@@ -51,7 +51,7 @@ const EditorsPick = () => {
                     <p className='font-[600] text-[12px]'>
                       {item.title}
                     </p>
-                    <p className='!text-[10px] line-clamp-2'>{parse(item.content)}</p>
+                    <p className='!text-[10px] line-clamp-2 parser'>{parse(item.content)}</p>
                   </div>
 
                 </div>

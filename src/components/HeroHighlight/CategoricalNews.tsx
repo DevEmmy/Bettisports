@@ -71,7 +71,7 @@ const CategoricalNews = () => {
                         <div className='flex justify-between gap-2 py-3'>
                             <div className='flex gap-2 flex-col text-grayColor'>
                                 <p className='text-[14px] font-[500]'>{item.title}</p>
-                                <p className='text-[12px] font-[400] line-clamp-2'>{parse(item.content)}</p>
+                                <p className='text-[12px] font-[400] line-clamp-2 parser'>{parse(item.content)}</p>
                             </div>
 
                             <img src={item.media} width={100} height={100} alt="" />
