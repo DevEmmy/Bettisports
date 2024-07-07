@@ -43,7 +43,7 @@ const page = () => {
                 </button>
             </div>
 
-            <Table thead={["Username", "Name", "Email", "Role", "Posts"]} 
+            {/* <Table thead={["Username", "Name", "Email", "Role", "Posts"]} 
             data={[
                 {
                     "username": "Webmaster",
@@ -74,7 +74,7 @@ const page = () => {
                     posts: "3"
                 },
                
-            ]} />
+            ]} /> */}
         </div>
     )
 }

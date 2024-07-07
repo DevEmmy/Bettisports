@@ -66,7 +66,7 @@ const CategoricalNews = () => {
                 :
                 trending.length > 0
                 ?
-                trending.map((item: any, i: number)=>{
+                trending.slice(0,3).map((item: any, i: number)=>{
                     return(
                         <div className='flex justify-between gap-2 py-3'>
                             <div className='flex gap-2 flex-col text-grayColor'>

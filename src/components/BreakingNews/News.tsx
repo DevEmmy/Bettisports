@@ -3,6 +3,7 @@ import { useFetchNewsBreaking } from '@/hooks/PostRequests'
 import React from 'react'
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi"
 import Loader from '../Loader'
+import parser from "html-react-parser"
 
 const News = () => {
 
@@ -52,11 +53,11 @@ const News = () => {
 
                         newsBreaking?.length > 0
                             ?
-                            newsBreaking.map((item: any, i: number) => {
+                            newsBreaking.slice(0,4).map((item: any, i: number) => {
                                 return (
-                                    <div className={`pr-5 ${i == 0 ? "pl-0" : "pl-5"}`}>
+                                    <div className={`pr-5 ${i == 0 ? "pl-0" : "pl-5"} fle flex-col gap-2`}>
                                         <p className='text-[16px] line-clamp-2'>{item.title}</p>
-                                        <p className='text-[14px] text-grayColor'>{item.date}</p>
+                                        <p className='text-[14px] text-grayColor parser line-clamp-2'>{parser(item.content)}</p>
                                     </div>
                                 )
                             })
