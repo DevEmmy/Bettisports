@@ -57,8 +57,16 @@ const Table = ({ thead, data, isLoading }: Props) => {
                 <td>{item.author.firstName + " " + item.author.lastName}</td>
                 <td>{item.category}</td>
                 <td>
-                  {item.tags > 0 ? (
-                    item.tags
+                  {item.tags.length > 0 ? (
+                    item.tags?.map((tag : any, i : number) => (
+                      <span className={`text-green-500`} key={i}>
+                        {/* {tag}  */}
+                        {
+                          i != 0 ? ', ' : ''
+                        }
+                        {tag}
+                      </span>
+                    ))
                   ) : (
                     <img src='/hr.svg' className='w-5 h-5 object-contain' />
                   )}

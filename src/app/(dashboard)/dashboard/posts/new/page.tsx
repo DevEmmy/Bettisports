@@ -276,21 +276,12 @@ const Page: React.FC = () => {
                             <div className='flex gap-2'>
                                 <input
                                     type="text"
-                                    className='border border-gray-500 focus:outline-none px-3'
-                                    onKeyPress={handleTagKeyPress}
+                                    className='border border-gray-500 focus:outline-none px-3 p-2'
+                                    // onKeyPress={handleTagKeyPress}
+                                    value={tags}
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) => setTags(e.target.value.replace(/\s+/g,'').split(','))}
+
                                 />
-                                <button
-                                    className='border border-secondaryBlue text-secondaryBlue p-2 text-sm'
-                                    onClick={() => {
-                                        const input = document.querySelector<HTMLInputElement>('#tagInput');
-                                        if (input && input.value) {
-                                            setTags([...tags, input.value]);
-                                            input.value = '';
-                                        }
-                                    }}
-                                >
-                                    Add
-                                </button>
                             </div>
 
                             <p>separate tags with commas</p>
