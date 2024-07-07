@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-timeago": "^4.1.7",
     "axios": "^1.7.2",
     "html-react-parser": "^5.1.10",
     "i": "^0.3.7",
@@ -22,6 +23,7 @@
     "react-query": "^3.39.3",
     "react-quill": "^2.0.0",
     "react-responsive-carousel": "^3.2.23",
+    "react-timeago": "^7.2.0",
     "swr": "^2.2.5"
   },
   "devDependencies": {
