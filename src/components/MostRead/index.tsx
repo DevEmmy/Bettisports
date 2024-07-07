@@ -38,9 +38,9 @@ const MostRead = () => {
                                                 <ReactTimeago date={item.createdAt || "July 4, 2024"} />
 
                                                 <div className='flex gap-3'>
-                                                    <RiHeart2Line />
-                                                    <RiChat2Line />
-                                                    <RiShareForward2Line />
+                                                    <RiHeart2Line size={18}/>
+                                                    <RiChat2Line size={18}/>
+                                                    <RiShareForward2Line size={18}/>
                                                 </div>
                                             </div>
                                         </div>

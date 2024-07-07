@@ -67,7 +67,7 @@ export default function Home() {
       <Articles />
       <MostRead />
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
-      <LiveTransfer />
+      {/* <LiveTransfer /> */}
       <Podcast />
       <img src="./hero2.png" alt="" className="mx-auto w-2/3 my-5" />
       <FootballNews title="WOMEN'S" />

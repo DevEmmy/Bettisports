@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import EachNews from './EachNews'
 import { useFetchNewsBreaking } from '@/hooks/PostRequests'
@@ -8,7 +9,7 @@ const News = () => {
     return (
         <>
             {
-                isLoading ?
+                isLoading && !newsBreaking ?
                     <Loader />
                     :
                     <div className='grid grid-cols-4 gap-5'>
