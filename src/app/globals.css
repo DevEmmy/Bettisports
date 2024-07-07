@@ -160,8 +160,8 @@ p{
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
 
-p{
-  @apply text-[10px]
+.parser p{
+  @apply text-[12px]
 }
 
 
