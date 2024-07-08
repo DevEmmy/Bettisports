@@ -261,11 +261,16 @@ const Page: React.FC = () => {
                             {formats.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className='flex-center gap-3 border-b py-3'
+                                    className='flex justify-between gap-3 border-b py-3'
                                     onClick={() => setFormat(item.value)}
                                 >
-                                    {item.icon}
-                                    <p>{item.text}</p>
+                                    <div className='items-center flex'>
+                                    {item.icon} {' '}
+                                    <p className='ml-2'>{item.text}</p>
+                                    </div>
+                                    
+
+                                    <input type="radio" name="format" value={item.value} onChange={(e: ChangeEvent<HTMLInputElement>) => setFormat(e.target.value)} />
                                 </div>
                             ))}
                         </div>
