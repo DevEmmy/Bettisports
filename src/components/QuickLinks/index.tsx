@@ -1,9 +1,32 @@
 "use client"
-import React from 'react'
+import React, {useState, ChangeEvent, useEffect} from 'react'
 import Line from '../UI/Line'
 import { icons } from '../Shared/Clubs'
+import { useSuscribeNewsletter } from '@/hooks/PostRequests';
+import { toastSuccess } from '@/utils/toast'
 
 const QuickLinks = () => {
+    const [email,setEmail] = useState<string>('')
+
+        // suscribe newsletter
+        const {suscribeNewsletterFn, isLoading, isError, error, isSuccess} = useSuscribeNewsletter();
+
+        const handleSuscribe = () => {
+            // alert(email);
+            try {
+                suscribeNewsletterFn({email});
+                console.log('Success:', email);
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        useEffect(()=>{
+            if(isSuccess){
+                toastSuccess("Suscription successful")
+            }
+        }, [isSuccess])
     return (
         <div className='grid grid-cols-[4fr_1.5fr] gap-10 mx-xPadding'>
             <div className='flex gap-5 flex-col'>
@@ -18,7 +41,7 @@ const QuickLinks = () => {
                     {
                         icons.map((icon: string, i: number) => {
                             return (
-                                <div>
+                                <div key={i}>
                                     <img src={icon} alt="" className='w-[60px] h-[60px] rounded-full border-4 border-secondaryBlue' />
                                 </div>
                             )
@@ -32,8 +55,15 @@ const QuickLinks = () => {
             <div className='bg-[#E8E8E8] p-5 text-center flex flex-col gap-3'>
                 <h1 className='font-[600]'>JOIN THE NEWSLETTER</h1>
                 <p className='text-[14px]'>Receive the latest news and updates on your favourites </p>
-                <input type="text" placeholder='Email Address' className='p-3 text-[14px]' />
-                <button className='bg-defaultYellow p-3 text-[14px]'>Submit</button>
+                <input type="text" placeholder='Email Address' className='p-3 text-[14px]' value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
+                <button className='bg-defaultYellow p-3 text-[14px]' onClick={handleSuscribe} disabled={email == '' ? true : false}>
+                {
+                            isLoading ?
+                            "submitting..."
+                            :
+                            "submit"
+                        }
+                </button>
             </div>
         </div>
     )
