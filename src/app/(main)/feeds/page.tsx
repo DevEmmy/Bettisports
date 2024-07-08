@@ -4,8 +4,18 @@ import EachFeed from '@/components/Feeds/EachFeed';
 import GrayLine from '@/components/UI/GrayLine'
 import React, { useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
+import { getUser } from '@/hooks/UserRequests'
+
 
 const page = () => {
+    const [active,setActive] = useState(0);
+
+    const user = getUser()
+
+    if (!user) {
+      return null
+    } 
+
     const filter = [
         "Trending",
         "Popular",
@@ -14,12 +24,11 @@ const page = () => {
         "Mentions"
     ]
 
-    const [active, setActive] = useState(0)
 
     return (
         <div>
             <div className='w-1/2 m-auto flex flex-col gap-2 my-10'>
-                <p className='text-[24px] font-[700] text-primary1'>Hi, Williams.</p>
+                <p className='text-[24px] font-[700] text-primary1'>Hi, {user.firstName}.</p>
                 <div className='flex-center justify-between'>
                     <p className='text-gray-500'>Find topics you'd like to read.</p>
 

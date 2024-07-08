@@ -162,3 +162,16 @@ export const useCreatePost =  () => {
 
     return {createPostFn, isLoading, isError, error, isSuccess}
 }
+
+export const useSuscribeNewsletter =  () => {
+    const suscribe = async (data: any) => {
+        let response = await axiosConfig.post("/newsletter/subscribe", data)
+        response = response.data.payload;
+        return response;
+    }
+
+    const {mutate : suscribeNewsletterFn , isLoading, isError, error , isSuccess}  = useMutation(suscribe)
+
+    return {suscribeNewsletterFn, isLoading, isError, error, isSuccess}
+}
+

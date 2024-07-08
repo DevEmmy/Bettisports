@@ -26,11 +26,6 @@ const LeftNav = ({setOpen}: any) => {
             icon: <RiNewspaperLine />
         },
         {
-            title: "Forums",
-            link: "/forums",
-            icon: <RiGroupLine />
-        },
-        {
             title: "Polls",
             link: "/polls",
             icon: <RiBarChart2Line  />
@@ -44,11 +39,6 @@ const LeftNav = ({setOpen}: any) => {
             title: "Saved Posts",
             link: "/saved-posts",
             icon: <RiSave2Line />
-        },
-        {
-            title: "Comments",
-            link: "/comments",
-            icon: <RiChat3Line />
         },
         {
             title: "Notifications",

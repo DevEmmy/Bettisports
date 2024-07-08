@@ -161,7 +161,7 @@ const Page: React.FC = () => {
                         </div>
                     </OverviewContainer>
 
-                    <OverviewContainer title={"Author"}>
+                    {/* <OverviewContainer title={"Author"}>
                         <div className='flex gap-2 flex-col'>
                             <select
                                 className='w-fit p-3 bg-white border focus:outline'
@@ -171,7 +171,7 @@ const Page: React.FC = () => {
                                 <option value="Idowu Williams">Idowu Williams</option>
                             </select>
                         </div>
-                    </OverviewContainer>
+                    </OverviewContainer> */}
 
                     <button
                         className={`border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit ${isLoading && "opacity-70"}`}
@@ -261,11 +261,16 @@ const Page: React.FC = () => {
                             {formats.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className='flex-center gap-3 border-b py-3'
+                                    className='flex justify-between gap-3 border-b py-3'
                                     onClick={() => setFormat(item.value)}
                                 >
-                                    {item.icon}
-                                    <p>{item.text}</p>
+                                    <div className='items-center flex'>
+                                    {item.icon} {' '}
+                                    <p className='ml-2'>{item.text}</p>
+                                    </div>
+                                    
+
+                                    <input type="radio" name="format" value={item.value} onChange={(e: ChangeEvent<HTMLInputElement>) => setFormat(e.target.value)} />
                                 </div>
                             ))}
                         </div>
@@ -276,21 +281,12 @@ const Page: React.FC = () => {
                             <div className='flex gap-2'>
                                 <input
                                     type="text"
-                                    className='border border-gray-500 focus:outline-none px-3'
-                                    onKeyPress={handleTagKeyPress}
+                                    className='border border-gray-500 focus:outline-none px-3 p-2'
+                                    // onKeyPress={handleTagKeyPress}
+                                    value={tags}
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) => setTags(e.target.value.replace(/\s+/g,'').split(','))}
+
                                 />
-                                <button
-                                    className='border border-secondaryBlue text-secondaryBlue p-2 text-sm'
-                                    onClick={() => {
-                                        const input = document.querySelector<HTMLInputElement>('#tagInput');
-                                        if (input && input.value) {
-                                            setTags([...tags, input.value]);
-                                            input.value = '';
-                                        }
-                                    }}
-                                >
-                                    Add
-                                </button>
                             </div>
 
                             <p>separate tags with commas</p>
