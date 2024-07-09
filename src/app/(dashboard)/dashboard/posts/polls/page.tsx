@@ -9,7 +9,7 @@ import {
   RiPinDistanceLine,
   RiVideoLine,
 } from 'react-icons/ri';
-import { toastSuccess } from '@/utils/toast';
+import { toastSuccess, toastError } from '@/utils/toast';
 import { useCreatePoll } from '@/hooks/PostRequests';
 
 interface duration {
@@ -19,10 +19,11 @@ interface duration {
 }
 
 const page = () => {
-  const { createPollFn, isLoading, isError, error, isSuccess } = useCreatePoll();
+  const { createPollFn, isLoading, isError, error, isSuccess } =
+    useCreatePoll();
 
   const [question, setQuestion] = useState<string>('');
-  const [choices, setChoices] = useState<string[]>(['','']);
+  const [choices, setChoices] = useState(['', '']);
   const [pollDuration, setPollDuration] = useState<duration>({
     days: 0,
     hours: 0,
@@ -169,10 +170,15 @@ const page = () => {
                 ))}
               </div>
               <div className='flex-row'>
-                <button className=' rounded-full border-blue-700 border'>
+                <button
+                  className='w-6 h-6 border border-blue-700 rounded-full'
+                  onClick={(e) => setChoices([...choices,''])}>
                   +
                 </button>
-                <button className='p-3 rounded-full border-blue-700 text-xs border'>
+                <button
+                  className='w-6 h-6 mt-2 rounded-full border-blue-700 border'
+                  onClick={(e) => { choices?.length > 2 ? setChoices(choices.slice(0, -1)) : toastError('Cannot have less than two choices!!') }}
+                  >
                   -
                 </button>
               </div>
