@@ -49,7 +49,7 @@ const PhotoSplash = () => {
                 <img src={item?.media} alt='' className='w-full h-[300px]' />
                 <div className='overlay'/>
                 <div className='details p-5'>
-                  <p className='text-[20px] font-[600]'>{item.title}</p>
+                  <p className='text-[20px] font-[600]'>{item?.title}</p>
                   <p className='text-sm'>
                     {item?.excerpt} 
                   </p>

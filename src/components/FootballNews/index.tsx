@@ -47,7 +47,7 @@ const FootballNews = ({title}: any) => {
                     {
                         filter.map((item: any, i: number) => {
                             return (
-                                <p className='text-[14px]'>{item.title}</p>
+                                <p className='text-[14px]'>{item?.title}</p>
                             )
                         })
                     }

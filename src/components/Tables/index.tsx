@@ -39,10 +39,10 @@ const Table = ({ thead, data, isLoading }: Props) => {
               <tr className='text-left gap-1 text-sm items-start' key={i}>
                 <td className='text-[#197DDA]'>
                   <div >
-                    {item.title > 120
-                      ? `${item.title.slice(0, 119)}...`
-                      : item.title}
-                    {item.publish ? '' : <span className='text-black'>- Draft</span>}
+                    {item?.title > 120
+                      ? `${item?.title.slice(0, 119)}...`
+                      : item?.title}
+                    {item?.publish ? '' : <span className='text-black'>- Draft</span>}
                   </div>
 
                   <div className='mt-1.5 flex gap-2 text-xs'>
@@ -54,11 +54,11 @@ const Table = ({ thead, data, isLoading }: Props) => {
                     <span className='text-blue-600'>View</span>
                   </div>
                 </td>
-                <td>{item.author.firstName + " " + item.author.lastName}</td>
-                <td>{item.category}</td>
+                <td>{item?.author.firstName + " " + item?.author.lastName}</td>
+                <td>{item?.category}</td>
                 <td>
-                  {item.tags.length > 0 ? (
-                    item.tags?.map((tag : any, i : number) => (
+                  {item?.tags.length > 0 ? (
+                    item?.tags?.map((tag : any, i : number) => (
                       <span className={`text-green-500`} key={i}>
                         {/* {tag}  */}
                         {
@@ -71,11 +71,11 @@ const Table = ({ thead, data, isLoading }: Props) => {
                     <img src='/hr.svg' className='w-5 h-5 object-contain' />
                   )}
                 </td>
-                <td>{item.reads}</td>
+                <td>{item?.reads}</td>
                 <td>
                   {' '}
                   published <br />
-                  <TimeAgo date={item.createdAt || "july 3, 2024"} />
+                  <TimeAgo date={item?.createdAt || "july 3, 2024"} />
                 </td>
               </tr>
             );

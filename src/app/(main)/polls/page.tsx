@@ -12,10 +12,10 @@ const page = () => {
         </div>
         <img src="./ads2.png"  alt="" />
 
-        <div className='grid col-span-4 grid-cols-4 gap-5'>
+        <div className='grid col-span-4 grid-cols-3 gap-5'>
             
             {
-                [1,2,3,4,5,6,7].map((item, i)=>{
+                [1,2,3,4,5].map((item, i)=>{
                     return(
                         <PollContainer key={i}/>
                     )

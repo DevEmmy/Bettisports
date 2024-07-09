@@ -30,13 +30,13 @@ const MostRead = () => {
                             ?
                             popular.slice(0, 6).map((item: any, i: number) => {
                                 return (
-                                    <Link href={`/blog/${item._id}`} className='p-3 flex gap-2' key={i}>
+                                    <Link href={`/blog/${item?._id}`} className='p-3 flex gap-2' key={i}>
                                         <p className='text-defaultYellow text-[24px] font-[600]'>{i + 1}.</p>
                                         <div className='flex flex-col gap-3'>
-                                            <p className='font-[500]'>{item.title}</p>
-                                            <p className='text-[14px] text-grayColor parser line-clamp-2'>{parser(item.content)}</p>
+                                            <p className='font-[500]'>{item?.title}</p>
+                                            <p className='text-[14px] text-grayColor parser line-clamp-2'>{parser(item?.content)}</p>
                                             <div className="flex items-center text-[12px] justify-between">
-                                                <ReactTimeago date={item.createdAt || "July 4, 2024"} />
+                                                <ReactTimeago date={item?.createdAt || "July 4, 2024"} />
 
                                                 <div className='flex gap-3'>
                                                     <RiHeart2Line size={18}/>

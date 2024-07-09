@@ -61,7 +61,7 @@ const ForYou = () => {
                 } flex flex-col gap-2`}>
                 <h1 className='text-[40px]'>{dataId[item?.id - 1]}</h1>
                 <p className='text-[10px]'>{item?.date}</p>
-                <p>{item.text}</p>
+                <p>{item?.text}</p>
               </div>
             );
           })
