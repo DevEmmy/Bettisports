@@ -18,6 +18,7 @@ interface duration {
   minutes: number;
 }
 
+
 const page = () => {
   const { createPollFn, isLoading, isError, error, isSuccess } =
     useCreatePoll();

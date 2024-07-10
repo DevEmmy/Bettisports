@@ -18,6 +18,17 @@ export const usePostQuery = () => {
     return { posts, isError, isLoading }
 }
 
+export const useFetchPolls = () => {
+    const fetchData = async () => {
+        const response = await axios.get(`${api}/polls`)
+        return response.data.payload;
+    }
+
+    const { data: polls, isError, isLoading } = useQuery("polls", fetchData)
+
+    return { polls , isError, isLoading }
+}
+
 export const useEachPostQuery = (id: string) => {
     const fetchData = async () => {
         const response = await axios.get(`${api}/posts/${id}`)
@@ -189,4 +200,16 @@ export const useCreatePoll =  () => {
     const {mutate : createPollFn , isLoading, isError, error , isSuccess}  = useMutation(createPoll)
 
     return {createPollFn, isLoading, isError, error, isSuccess}
+}
+
+export const useVotePoll =  () => {
+    const votePoll = async (data: any) => {
+        let response = await axiosConfig.post("/polls/vote", data)
+        response = response.data.payload;
+        return response;
+    }
+
+    const {mutate : votePollFn , isLoading, isError, error , isSuccess}  = useMutation(votePoll)
+
+    return {votePollFn, isLoading, isError, error, isSuccess}
 }

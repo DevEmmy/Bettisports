@@ -11,7 +11,7 @@ const Collection = ({polls}: Props) => {
   return (
     <div className='flex flex-col gap-3'>
         {
-            polls.map((item: string, i: number)=>{
+            polls?.map((item: string, i: number)=>{
                 return(
                     <div onClick={()=> setSelected(i)}>
                         <Bar title={item} value={0} key={i} mySelect={i == selected ? true : false} />
