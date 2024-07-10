@@ -11,7 +11,7 @@ interface Props{
 const EachNews = ({size,item} : Props)  => {
     
     return (
-        <Link href={`/blog/${item._id}`} className='h-full flex flex-col gap-2'>
+        <Link href={`/blog/${item?._id}`} className='h-full flex flex-col gap-2'>
             <img src={item?.media} alt="" className='w-full h-[180px]'/>
             <p className={`${size == "lg" && "text-[20px] font-[600]"}`}>
                 {item?.title}

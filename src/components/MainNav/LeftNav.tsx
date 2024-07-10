@@ -74,9 +74,9 @@ const LeftNav = ({setOpen}: any) => {
         {
             leftNav.map((item, i)=>{
                 return(
-                    <Link href={item.link} key={i} className='text-gray-80000 flex gap-3 items-center'  onClick={()=> setOpen(false)}>
-                        {item.icon}
-                        <p>{item.title}</p>
+                    <Link href={item?.link} key={i} className='text-gray-80000 flex gap-3 items-center'  onClick={()=> setOpen(false)}>
+                        {item?.icon}
+                        <p>{item?.title}</p>
                     </Link>
                 )
             })

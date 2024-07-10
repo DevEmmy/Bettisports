@@ -13,7 +13,7 @@ const Popular = () => {
           return (
             <div className='flex justify-between gap-2 py-3' key={i}>
               <div className='flex gap-2 flex-col text-grayColor'>
-                <p className='text-[14px] font-[500]'>{item.title}</p>
+                <p className='text-[14px] font-[500]'>{item?.title}</p>
                 <p className='text-[12px] font-[400]'>
                   {item?.date ? item?.date : 'March 23, 2024'}
                 </p>
@@ -23,7 +23,7 @@ const Popular = () => {
                 src={item?.media ? item?.media : './img.jpg'}
                 width={100}
                 height={100}
-                alt={`${item.title} on ${item.date}`}
+                alt={`${item?.title} on ${item?.date}`}
               />
             </div>
           );

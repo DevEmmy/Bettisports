@@ -80,14 +80,6 @@ const Page: React.FC = () => {
         };
 
         try {
-            // const response = await fetch('/api/posts', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(postData),
-            // });
-            // const data = await response.json();
             createPostFn(postData)
             console.log('Success:', postData);
         } catch (error) {
@@ -234,7 +226,7 @@ const Page: React.FC = () => {
                                 {gender.map((g, i) => (
                                     <div key={i} className='flex flex-col gap-2'>
                                         <p className='text-[16px] font-[600] text-secondaryBlue'>{g}</p>
-                                        {categoriesList.map((c, j) => (
+                                        {categoriesList?.map((c, j) => (
                                             <div key={j} className='flex-center gap-3 text-sm'>
                                                 <input
                                                     type="checkbox"
@@ -262,15 +254,15 @@ const Page: React.FC = () => {
                                 <div
                                     key={idx}
                                     className='flex justify-between gap-3 border-b py-3'
-                                    onClick={() => setFormat(item.value)}
+                                    onClick={() => setFormat(item?.value)}
                                 >
                                     <div className='items-center flex'>
-                                    {item.icon} {' '}
-                                    <p className='ml-2'>{item.text}</p>
+                                    {item?.icon} {' '}
+                                    <p className='ml-2'>{item?.text}</p>
                                     </div>
                                     
 
-                                    <input type="radio" name="format" value={item.value} onChange={(e: ChangeEvent<HTMLInputElement>) => setFormat(e.target.value)} />
+                                    <input type="radio" name="format" value={item?.value} onChange={(e: ChangeEvent<HTMLInputElement>) => setFormat(e.target.value)} />
                                 </div>
                             ))}
                         </div>

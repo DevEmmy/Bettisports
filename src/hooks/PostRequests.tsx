@@ -151,6 +151,10 @@ export const useFetchFantasy = ()=>{
     return {fantasy, isError, isLoading}
 }
 
+
+
+// Post section
+
 export const useCreatePost =  () => {
     const createPost = async (data: any) => {
         let response = await axiosConfig.post("/posts", data)
@@ -175,3 +179,14 @@ export const useSuscribeNewsletter =  () => {
     return {suscribeNewsletterFn, isLoading, isError, error, isSuccess}
 }
 
+export const useCreatePoll =  () => {
+    const createPoll = async (data: any) => {
+        let response = await axiosConfig.post("/polls", data)
+        response = response.data.payload;
+        return response;
+    }
+
+    const {mutate : createPollFn , isLoading, isError, error , isSuccess}  = useMutation(createPoll)
+
+    return {createPollFn, isLoading, isError, error, isSuccess}
+}
