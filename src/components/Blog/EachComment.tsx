@@ -1,7 +1,7 @@
 import React from 'react'
 import { RiShareForwardLine, RiThumbUpLine } from 'react-icons/ri'
 
-const EachComment = () => {
+const EachComment = (item: any) => {
   return (
     <div className='flex gap-3 border p-4 '>
         <img src="./img.jpg" alt="" className='size-[50px] rounded-full'/>

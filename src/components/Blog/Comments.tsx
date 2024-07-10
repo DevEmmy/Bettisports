@@ -1,18 +1,26 @@
+'use client'
 import React from 'react'
 import EachComment from './EachComment'
+import { useCommentsByPostIdQuery } from '@/hooks/PostRequests';
+import Loader from '../Loader';
 
-const Comments = () => {
+
+
+const Comments = (postId : any) => {
+  const { comments, commentError, commentLoading } = useCommentsByPostIdQuery(postId);
+  // alert(postId);
   return (
     <div className='my-10 '>
-        <p>3 comments</p>
+        <p>{comments?.length} comments</p>
         
         <div className='my-5 flex flex-col gap-5'>
         {
-            [1,2,3].map((item, i: number)=>{
+            comments?.map((item : any, i: number)=>{
                 return(
-                    <EachComment key={i}/>
+                    <EachComment key={i} item={item} />
                 )
             })
+
         }
         </div>
     </div>

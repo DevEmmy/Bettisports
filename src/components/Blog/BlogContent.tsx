@@ -11,6 +11,7 @@ import { useEachPostQuery } from '@/hooks/PostRequests'
 import Loader from '../Loader';
 import parser from "html-react-parser"
 
+
 interface Props {
     id: string
 }
@@ -18,6 +19,7 @@ interface Props {
 const BlogContent = ({ id }: Props) => {
     console.log(id);
     const { post, isError, isLoading } = useEachPostQuery(id)
+    
 
     if (isLoading) {
         return <Loader />
@@ -100,9 +102,9 @@ const BlogContent = ({ id }: Props) => {
                 </div>
             </div>
 
-            <Comments />
+            <Comments postId={id}/>
 
-            <CommentForm />
+            <CommentForm postId={id}/>
         </div>
 
     )

@@ -18,6 +18,33 @@ export const usePostQuery = () => {
     return { posts, isError, isLoading }
 }
 
+
+// allcomments
+export const useFetchComments = () => {
+    const fetchData = async () => {
+        const response = await axios.get(`${api}/comments`)
+        return response.data.payload;
+    }
+
+    const { data: comments, isError, isLoading } = useQuery("comments", fetchData)
+
+    return { comments, isError, isLoading }
+}
+
+// Comments by postID
+export const useCommentsByPostIdQuery = (postId: string) => {
+    const fetchData = async () => {
+        const response = await axios.get(`${api}/comments/post/{postId}`)
+        console.log(response)
+        return response.data.payload;
+    }
+
+    const { data: comments, isError: commentError, isLoading : commentLoading } = useQuery(postId, fetchData)
+    
+
+    return { comments, commentError, commentLoading }
+}
+
 export const useFetchPolls = () => {
     const fetchData = async () => {
         const response = await axios.get(`${api}/polls`)
@@ -174,7 +201,6 @@ export const useCreatePost =  () => {
     }
 
     const {mutate : createPostFn , isLoading, isError, error , isSuccess}  = useMutation(createPost)
-
     return {createPostFn, isLoading, isError, error, isSuccess}
 }
 
@@ -212,4 +238,16 @@ export const useVotePoll =  () => {
     const {mutate : votePollFn , isLoading, isError, error , isSuccess}  = useMutation(votePoll)
 
     return {votePollFn, isLoading, isError, error, isSuccess}
+}
+
+export const useCreateComment =  () => {
+    const createComment = async (data: any) => {
+        let response = await axiosConfig.post("/comments", data)
+        response = response.data.payload;
+        return response;
+    }
+
+    const {mutate : createCommentFn , isLoading, isError, error , isSuccess}  = useMutation(createComment)
+
+    return {createCommentFn, isLoading, isError, error, isSuccess}
 }

@@ -7,10 +7,15 @@ import { useFetchPolls } from '@/hooks/PostRequests';
 import Loader from '@/components/Loader';
 import Collection from '@/components/Polls/Collection';
 import { useVotePoll } from '@/hooks/PostRequests';
+import { getUser } from '@/hooks/UserRequests';
 
 const page = () => {
   const { polls, isLoading, isError } = useFetchPolls();
   const {votePollFn, error, isSuccess} = useVotePoll(); 
+  const user = getUser()
+
+  
+  
   return (
     <div className='grid grid-cols-6 gap-5 mx-xPadding my-10'>
       <div className='grid grid-cols-6 col-span-6'>
@@ -36,6 +41,8 @@ const page = () => {
 
                   <Collection
                     polls={item.choices.map((choice: any) => choice.choiceText)}
+                    
+
                   />
 
                   <div className='text-[12px] flex items-center justify-between mt-2 end-2'>
