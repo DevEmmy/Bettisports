@@ -17,10 +17,12 @@ const CommentForm = ({postId} : Props) => {
   const [comment, setComment] = useState('');
 
   const {createCommentFn, error, isError, isLoading, isSuccess} = useCreateComment()
+  const { comments, isErr, isLoad, refetch} = useFetchPostComment(postId)
 
   const user = getUser();
 
   const handleSubmit = async () => {
+    refetch();
     const commentData = {
         author : user?._id,
         comment,
@@ -30,6 +32,8 @@ const CommentForm = ({postId} : Props) => {
     try {
         createCommentFn(commentData)
         console.log('Success:', commentData);
+        // updateComments();
+
     } catch (error) {
         console.error('Error:', error);
     }
@@ -40,6 +44,7 @@ const CommentForm = ({postId} : Props) => {
         toastSuccess("Post Uploaded");
         setComment('');
         // useFetchPostComment(postId);
+        refetch();
 
     }
 }, [isSuccess])

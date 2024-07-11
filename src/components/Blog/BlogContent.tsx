@@ -20,6 +20,7 @@ const BlogContent = ({ id }: Props) => {
     console.log(id);
     const { post, isError, isLoading } = useEachPostQuery(id)
     const { comments , isErr, isLoad} = useFetchPostComment(id)
+    
     // console.log(comments)
 
     if (isLoading) {
