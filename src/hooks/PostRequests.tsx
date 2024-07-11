@@ -32,29 +32,19 @@ export const useFetchComments = () => {
 }
 
 // Comments by postID
-export const useCommentsByPostIdQuery = (postId: string) => {
+export const useFetchPostComment = (id: string) => {
     const fetchData = async () => {
-        const response = await axios.get(`${api}/comments/post/{postId}`)
+        const response = await axios.get(`${api}/comments/post/${id}`)
         console.log(response)
         return response.data.payload;
     }
 
-    const { data: comments, isError: commentError, isLoading : commentLoading } = useQuery(postId, fetchData)
+    const { data: comments, isError : isErr, isLoading: isLoad } = useQuery("comments-post", fetchData)
     
 
-    return { comments, commentError, commentLoading }
+    return { comments, isErr, isLoad }
 }
 
-export const useFetchPolls = () => {
-    const fetchData = async () => {
-        const response = await axios.get(`${api}/polls`)
-        return response.data.payload;
-    }
-
-    const { data: polls, isError, isLoading } = useQuery("polls", fetchData)
-
-    return { polls , isError, isLoading }
-}
 
 export const useEachPostQuery = (id: string) => {
     const fetchData = async () => {
@@ -67,6 +57,17 @@ export const useEachPostQuery = (id: string) => {
     
 
     return { post, isError, isLoading }
+}
+
+export const useFetchPolls = () => {
+    const fetchData = async () => {
+        const response = await axios.get(`${api}/polls`)
+        return response.data.payload;
+    }
+
+    const { data: polls, isError, isLoading } = useQuery("polls", fetchData)
+
+    return { polls , isError, isLoading }
 }
 
 export const useFetchEditorsPick = () => {

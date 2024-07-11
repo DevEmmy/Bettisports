@@ -35,7 +35,8 @@ const CommentForm = ({postId} : Props) => {
 
   useEffect(()=>{
     if(isSuccess){
-        toastSuccess("Post Uploaded")
+        toastSuccess("Post Uploaded");
+        setComment('');
     }
 }, [isSuccess])
   return (

@@ -1,25 +1,34 @@
 'use client'
 import React from 'react'
 import EachComment from './EachComment'
-import { useCommentsByPostIdQuery } from '@/hooks/PostRequests';
+import { useFetchPostComment } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 
+interface Props {
+  id: string;
+}
 
-
-const Comments = (postId : any) => {
-  const { comments, commentError, commentLoading } = useCommentsByPostIdQuery(postId);
-  // alert(postId);
+const Comments = ({comments} : any) => {
+  // const { comments, isErr, isLoad } = useFetchPostComment(id);
+  // console.log(comments);
+  // alert(comments)
   return (
     <div className='my-10 '>
-        <p>{comments?.length} comments</p>
+        {/* // <p>{comments comments</p> */}
         
         <div className='my-5 flex flex-col gap-5'>
-        {
-            comments?.map((item : any, i: number)=>{
+          
+        { 
+        comments.length > 0 ?
+        comments.map((item : any, i: number) =>{
                 return(
-                    <EachComment key={i} item={item} />
+                  <EachComment key={i} item={item} />
                 )
             })
+            :
+            (
+              <p>no comments</p>
+            )
 
         }
         </div>
