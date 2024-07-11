@@ -3,6 +3,8 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import { getUser } from '@/hooks/UserRequests';
 import { useCreateComment } from '@/hooks/PostRequests';
 import { toastSuccess } from '@/utils/toast';
+import { useFetchPostComment } from '@/hooks/PostRequests';
+import { Router, useRouter } from 'next/router';
 
 interface Props {
     postId: string;
@@ -37,6 +39,8 @@ const CommentForm = ({postId} : Props) => {
     if(isSuccess){
         toastSuccess("Post Uploaded");
         setComment('');
+        // useFetchPostComment(postId);
+
     }
 }, [isSuccess])
   return (

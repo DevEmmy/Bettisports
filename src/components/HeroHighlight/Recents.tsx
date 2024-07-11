@@ -2,9 +2,9 @@
 import { usePostQuery } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 
-const Recents = () => {
+const Recents = ({howMany} : any) => {
   const { posts, isError, isLoading } = usePostQuery();
-  const slicedPosts = posts?.slice(0,4);
+  const slicedPosts = posts?.slice(0,howMany);
   return (
     <>
       {isLoading ? (

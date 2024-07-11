@@ -2,14 +2,14 @@
 import { useFetchPopular } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 
-const Popular = () => {
+const Popular = ({howMany} : any) => {
   const { popular, isError, isLoading } = useFetchPopular();
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : popular.length > 0 ? (
-        popular.map((item: any, i: number) => {
+        popular.slice(0,howMany).map((item: any, i: number) => {
           return (
             <div className='flex justify-between gap-2 py-3' key={i}>
               <div className='flex gap-2 flex-col text-grayColor'>

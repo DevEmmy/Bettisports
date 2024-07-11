@@ -9,12 +9,9 @@ interface Props {
 }
 
 const Comments = ({comments} : any) => {
-  // const { comments, isErr, isLoad } = useFetchPostComment(id);
-  // console.log(comments);
-  // alert(comments)
   return (
     <div className='my-10 '>
-        {/* // <p>{comments comments</p> */}
+        <p>{comments.length} comments</p>
         
         <div className='my-5 flex flex-col gap-5'>
           
