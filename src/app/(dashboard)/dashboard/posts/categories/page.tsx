@@ -1,10 +1,41 @@
+'use client';
 import OverviewContainer from '@/components/Shared/OverviewContainer'
 import Table from '@/components/Tables'
-import React from 'react'
+import React, { useState, ChangeEvent, useEffect } from 'react'
 import { HiCog, HiSearch, HiTrash } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
+import { useCreateCategory } from '@/hooks/PostRequests';
+import { toastSuccess } from '@/utils/toast';
 
 const page = () => {
+
+    const [title,setTitle] = useState<string>('');
+    const [slug,setSlug] = useState<string>('');
+    const [description,setDescription] = useState<string>('');
+
+    const {createCategoryFn, error, isError, isLoading, isSuccess} = useCreateCategory()
+
+    const handleSubmit = async () => {
+        const catData = {
+            title,slug,description, parentCategory : "Root"
+        
+        };
+
+        try {
+            createCategoryFn(catData)
+            console.log('Success:', catData);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    useEffect(() => {
+        if(isSuccess) {
+            toastSuccess(`${title} category added`);
+        }
+    },[isSuccess])
+
+
     const gender = [
         'Men', "Women"
     ]
@@ -52,12 +83,16 @@ const page = () => {
 
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name">Name</label>
-                        <input type="text" className='p-3 border bg-white focus:outline-none' />
+                        <input type="text" className='p-3 border bg-white focus:outline-none'
+                            value={title}  onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+                         />
                     </div>
 
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name">Slug</label>
-                        <input type="text" className='p-3 border bg-white focus:outline-none' />
+                        <input type="text" className='p-3 border bg-white focus:outline-none' 
+                            value={slug}  onChange={(e: ChangeEvent<HTMLInputElement>) => setSlug(e.target.value)}
+                        />
                     </div>
 
                     <p className='text-[#52575C] text-sm'>
@@ -75,12 +110,13 @@ const page = () => {
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="name">Description</label>
 
-                        <textarea name="" id="" className='p-3 border bg-white focus:outline-none h-[100px] resize-none'></textarea>
+                        <textarea name="" id="" className='p-3 border bg-white focus:outline-none h-[100px] resize-none'
+                            value={description}  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}
+                        ></textarea>
                     </div>
 
-                    <button className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit '>
-
-                        Add New Category
+                    <button className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit' onClick={handleSubmit}>
+                        {isLoading ? `Adding ${title} category...` : 'Add New Category'}
                     </button>
                 </div>
 

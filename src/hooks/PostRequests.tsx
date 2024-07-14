@@ -296,3 +296,14 @@ export const useCreateComment = () => {
 
   return { createCommentFn, isLoading, isError, error, isSuccess };
 };
+
+export const useCreateCategory = () => {
+  const createCategory = async (data: any) => {
+    let response = await axiosConfig.post('/categories', data);
+    response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: createCategoryFn, isLoading, isError, error, isSuccess} = useMutation(createCategory);
+  return { createCategoryFn, isLoading, isError, error, isSuccess };
+};
