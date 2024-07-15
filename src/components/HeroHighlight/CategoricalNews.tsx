@@ -5,18 +5,24 @@ import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-ico
 import Loader from '../Loader'
 import parse from 'html-react-parser';
 import Link from 'next/link'
+import Trending from './Trending'
+import Recents from './Recents'
+import Popular from './Popular'
 
 const CategoricalNews = () => {
     const [active, setActive] = useState(0)
     const filter = [
         {
-            title: "Trending"
+            title: "Trending",
+            tag: <Trending howMany={5} />
         },
         {
-            title: "Recents"
+            title: "Recents",
+            tag: <Recents howMany={5}/>
         },
         {
-            title: "Popular"
+            title: "Popular",
+            tag: <Popular howMany={5}/>
         }
     ]
 
@@ -43,7 +49,7 @@ const CategoricalNews = () => {
         }
     ]
 
-    const {trending, isError, isLoading} = useFetchTrending()
+    const {trending, isError, isLoading} = useFetchTrending();
 
   return (
     <div>
@@ -61,27 +67,9 @@ const CategoricalNews = () => {
 
         <div className="flex flex-col my-4 divide-y">
             {
-                isLoading
-                ?
-                    <Loader />
-                :
-                trending.length > 0
-                ?
-                trending.slice(0,3).map((item: any, i: number)=>{
-                    return(
-                        <Link href={`/blog/${item?._id}`} key={i} className='flex justify-between gap-2 py-3'>
-                            <div className='flex gap-2 flex-col text-grayColor'>
-                                <p className='text-[14px] font-[500]'>{item?.title}</p>
-                                <p className='text-[12px] font-[400] line-clamp-2 parser'>{parse(item?.content)}</p>
-                            </div>
-
-                            <img src={item?.media} width={100} height={100} alt="" />
-                        </Link>
-                    )
-                })
-                :
-                <p>There are no trending posts available</p>
-            }
+                filter[active].tag
+            }               
+            
         </div>
 
         <div>

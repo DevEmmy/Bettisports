@@ -22,7 +22,7 @@ export const getUser = () => {
     useEffect(() => {
         let userObject = localStorage.getItem("user")
         userObject = JSON.parse(userObject as string)
-        console.log(userObject)
+        // console.log(userObject)
         setUser(userObject)
     }, []) 
 

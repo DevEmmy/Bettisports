@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiSearch2Line, RiTwitterXFill } from 'react-icons/ri'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
 import CategoricalNews from '../HeroHighlight/CategoricalNews'
+import Loader from '../Loader'
+import { useFetchPopular,usePostQuery } from '@/hooks/PostRequests'
+
 
 const OtherSections = () => {
     const [active, setActive] = useState(0)
@@ -18,6 +21,8 @@ const OtherSections = () => {
         }
     ]
 
+    const { popular, isError, isLoading } = useFetchPopular();
+    const { posts, isLoading: isLoad } = usePostQuery();
   return (
     <div className='flex flex-col gap-10 p-3'>
         <div className='flex gap-2 items-center border rounded-3xl p-3'>
@@ -27,20 +32,41 @@ const OtherSections = () => {
 
         <div className='bg-[#F6F8FB] p-5'>
             <p className='text-center border-b-2 border-gray-600 p-3 font-[500]'>Must Read</p>
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
+            
+            {
+                isLoading ? 
+                <Loader/>
+                :
+                popular.length > 0 ?
+                popular.slice(0,4).map((item: any, i: number) => {
+                    return (
+                        <SmFootballBlogHighlight item={item} />
+                    )
+                }) :
+                (
+                    <p>There are no must-read posts</p>
+                )
+            }
         </div>
 
         <img src="./ads.png" alt="" />
 
         <div className='bg-[#F6F8FB] p-5'>
             <p className='text-center border-b-2 border-gray-600 p-3 font-[500]'>Recently Published Post</p>
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
-            <SmFootballBlogHighlight />
+            {
+                isLoad ?
+                <Loader />
+                :
+                 posts.length > 0 ?
+                 posts.slice(0,4).map((item: any, i: number) => {
+                     return (
+                         <SmFootballBlogHighlight item={item} />
+                     )
+                 }) :
+                 (
+                    <p>There are no new posts</p>
+                 )
+            }
         </div>
 
         <div>
