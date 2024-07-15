@@ -16,6 +16,17 @@ export const usePostQuery = () => {
   return { posts, isError, isLoading };
 };
 
+export const useFetchCategory = () => {
+  const fetchData = async () => {
+    const response = await axios.get(`${api}/categories`);
+    return response.data.payload;
+  };
+
+  const { data: categories, isError, isLoading } = useQuery('categories', fetchData);
+
+  return { categories, isError, isLoading };
+};
+
 // allcomments
 export const useFetchComments = () => {
   const fetchData = async () => {
@@ -304,6 +315,20 @@ export const useCreateCategory = () => {
     return response;
   };
 
-  const { mutate: createCategoryFn, isLoading, isError, error, isSuccess} = useMutation(createCategory);
-  return { createCategoryFn, isLoading, isError, error, isSuccess };
+  const { mutate: createCategoryFn, isLoading : isLoad , isError : isErr, error, isSuccess} = useMutation(createCategory);
+  return { createCategoryFn, isLoad , isErr, error, isSuccess };
+};
+
+
+// DELETE
+
+export const useDeleteCategory = (id: string) => {
+  const deleteCategory = async () => {
+    const response = await axios.delete(`${api}/categories/${id}`);
+    return response.data.payload;
+  };
+
+  const { mutate: deleteCategoryFn, isLoading : deleteLoad , isError : deleteErr, error, isSuccess} = useMutation(deleteCategory);
+
+  return { deleteCategoryFn, deleteLoad , deleteErr, error, isSuccess };
 };

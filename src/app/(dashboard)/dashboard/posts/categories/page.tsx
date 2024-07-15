@@ -4,8 +4,9 @@ import Table from '@/components/Tables'
 import React, { useState, ChangeEvent, useEffect } from 'react'
 import { HiCog, HiSearch, HiTrash } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'
-import { useCreateCategory } from '@/hooks/PostRequests';
+import { useCreateCategory, useFetchCategory } from '@/hooks/PostRequests';
 import { toastSuccess } from '@/utils/toast';
+import CategoryTable from '@/components/Tables/CategoryTable';
 
 const page = () => {
 
@@ -13,7 +14,8 @@ const page = () => {
     const [slug,setSlug] = useState<string>('');
     const [description,setDescription] = useState<string>('');
 
-    const {createCategoryFn, error, isError, isLoading, isSuccess} = useCreateCategory()
+    const {createCategoryFn, error, isErr, isLoad, isSuccess} = useCreateCategory()
+    const { categories, isError, isLoading } = useFetchCategory();
 
     const handleSubmit = async () => {
         const catData = {
@@ -40,7 +42,7 @@ const page = () => {
         'Men', "Women"
     ]
 
-    const categories = [
+    const category = [
         "Featured", "News", "Transfers", "Articles", "Matchdays", "Interviews", "Fantasy", "Betting"
     ]
 
@@ -116,7 +118,7 @@ const page = () => {
                     </div>
 
                     <button className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit' onClick={handleSubmit}>
-                        {isLoading ? `Adding ${title} category...` : 'Add New Category'}
+                        {isLoad ? `Adding ${title} category...` : 'Add New Category'}
                     </button>
                 </div>
 
@@ -144,6 +146,8 @@ const page = () => {
 
                         <p>28 Items</p>
                     </div>
+
+                    <CategoryTable thead={["Name", "Description", "Slug", "Count"]} data={categories} />
 
                     {/* <Table 
                         thead={["Name", "Description", "Slug", "Count"]}
