@@ -48,7 +48,7 @@ const MainPage = () => {
                 </div>
                 <Tag />
 
-                <Comments />
+                {/* <Comments /> */}
 
                 {/* <CommentForm /> */}
             </div>
