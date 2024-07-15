@@ -50,7 +50,7 @@ const MainPage = () => {
 
                 <Comments />
 
-                <CommentForm />
+                {/* <CommentForm /> */}
             </div>
         </div>
     )
