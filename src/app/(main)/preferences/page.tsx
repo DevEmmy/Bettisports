@@ -70,7 +70,7 @@ const page = () => {
             {
                 preferences.map((item, i)=>{
                     return(
-                        <Container items={item.items} title={item.title} key={i}/>
+                        <Container items={item?.items} title={item?.title} key={i}/>
                     )
                 })
             }

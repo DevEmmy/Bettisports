@@ -8,9 +8,9 @@ const Each = ({item}: any) => {
             <div className="overlay" />
 
             <div className="details p-3">
-                <p className='text-[10px]'>{item.date}</p>
+                <p className='text-[10px]'>{item?.date}</p>
                 <p className='font-[600]'>
-                    {item.title}
+                    {item?.title}
                 </p>
             </div>
 

@@ -44,8 +44,8 @@ const Main = () => {
                                 data.map((item, i) => {
                                     return (
                                         <div className='p-4 border text-sm'>
-                                            <p>{item.title}</p>
-                                            <p>{item.value}</p>
+                                            <p>{item?.title}</p>
+                                            <p>{item?.value}</p>
                                         </div>
                                     )
                                 })

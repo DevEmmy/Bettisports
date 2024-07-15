@@ -97,11 +97,11 @@ const LeftNav = () => {
                         return (
                             <>
                                 {
-                                    item.sub ?
+                                    item?.sub ?
                                         <div className={`relative cursor-pointer p-3 flex justify-between  text-sm ${active == i ? "bg-primary1 text-white" : "text-gray-500"}`} key={i} onClick={()=> setActive(i)}>
                                             <div className='flex-center gap-2' >
-                                                <p className=' '>{item.icon}</p>
-                                                <p>{item.title}</p>
+                                                <p className=' '>{item?.icon}</p>
+                                                <p>{item?.title}</p>
                                             </div>
 
                                             <HiChevronDown onClick={() =>{setShowPosts(i); toggleDropDown(navItems[i].sub)}} />
@@ -123,9 +123,9 @@ const LeftNav = () => {
                                         </div>
                                         :
 
-                                        <Link onClick={()=> setActive(i)} href={item.link} className={`flex-center gap-2 cursor-pointer py-4 px-4 ${active == i ? "bg-primary1 text-white" : "text-gray-500"}`} key={i}>
-                                            <p className=' '>{item.icon}</p>
-                                            <p>{item.title}</p>
+                                        <Link onClick={()=> setActive(i)} href={item?.link} className={`flex-center gap-2 cursor-pointer py-4 px-4 ${active == i ? "bg-primary1 text-white" : "text-gray-500"}`} key={i}>
+                                            <p className=' '>{item?.icon}</p>
+                                            <p>{item?.title}</p>
                                         </Link>
                                 }
                             </>
