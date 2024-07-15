@@ -13,18 +13,18 @@ const LiveScoreHighlight = () => {
                             return (
                                 <div key={i} className='px-5'>
                                     <div className="flex justify-between items-center">
-                                        <Clubs abb={item.clubs[0].abb} full={false} />
+                                        <Clubs abb={item?.clubs[0].abb} full={false} />
                                         <p>-</p>
                                     </div>
 
                                     <div className="flex justify-between items-center">
-                                    <Clubs abb={item.clubs[1].abb} />
+                                    <Clubs abb={item?.clubs[1].abb} />
                                         <p>-</p>
                                     </div>
 
                                     <div className="flex justify-between items-center text-[8px] border-t border-t-gray-400 mt-2 pt-2">
-                                        <p className='text-[8px]'>{item.leagueType.abb}</p>
-                                        <p className='text-[8px]'>{item.date}</p>
+                                        <p className='text-[8px]'>{item?.leagueType.abb}</p>
+                                        <p className='text-[8px]'>{item?.date}</p>
                                     </div>
                                 </div>
                             )

@@ -73,10 +73,10 @@ const Footer = () => {
                         footerItems.map((item: FooterSubContent, i: number) => {
                             return (
                                 <div key={i} className='flex flex-col gap-3'>
-                                    <p className=' font-[600]'>{item.title}</p>
+                                    <p className=' font-[600]'>{item?.title}</p>
                                     <div className='flex flex-col gap-3'>
                                         {
-                                            item.items.map((sublink: Sublinks, j: number) => {
+                                            item?.items.map((sublink: Sublinks, j: number) => {
                                                 return (
                                                     <Link href={sublink.link} key={j} className='text-[14px]'>
                                                         {sublink.title}

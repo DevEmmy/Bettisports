@@ -25,7 +25,7 @@ const Standing = () => {
                 {
                     standings?.map((item: any, i: number)=>{
                         return(
-                            <EachClub name={item.team.name} logo={item.team.logo} key={i} keyIndex={i} p={item.all.played} w={item.all.win} pts={item.points} />
+                            <EachClub name={item?.team.name} logo={item?.team.logo} key={i} keyIndex={i} p={item?.all.played} w={item?.all.win} pts={item?.points} />
                         )
                     })
                 }

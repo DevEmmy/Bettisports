@@ -9,7 +9,7 @@ const SmFootballBlogHighlight = ({item} : any) => {
               {item?.title}
             </p>
             <div className="flex items-center text-[12px] justify-between">
-                <p>{item?.date}</p>
+                <p>{item?.createdAt}</p>
 
                 <div className='flex gap-3'>
                     <RiHeart2Line />
