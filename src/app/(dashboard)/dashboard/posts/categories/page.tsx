@@ -7,6 +7,7 @@ import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine
 import { useCreateCategory, useFetchCategory } from '@/hooks/PostRequests';
 import { toastSuccess } from '@/utils/toast';
 import CategoryTable from '@/components/Tables/CategoryTable';
+import Loader from '@/components/Loader';
 
 const page = () => {
 
@@ -16,6 +17,7 @@ const page = () => {
 
     const {createCategoryFn, error, isErr, isLoad, isSuccess} = useCreateCategory()
     const { categories, isError, isLoading } = useFetchCategory();
+    console.log(categories)
 
     const handleSubmit = async () => {
         const catData = {
@@ -147,8 +149,19 @@ const page = () => {
                         <p>28 Items</p>
                     </div>
 
+                    {/* <CategoryTable thead={["Name", "Description", "Slug", "Count"]} data={categories} isLoading={isLoading} /> */}
+                    {isLoading ? 
+                    <Loader />
+                    : 
+                    categories?.length > 0 ?
+                    (
                     <CategoryTable thead={["Name", "Description", "Slug", "Count"]} data={categories} />
 
+                    ) : 
+                    <p>
+                        There are no categories
+                    </p>
+                    }
                     {/* <Table 
                         thead={["Name", "Description", "Slug", "Count"]}
                         data={[

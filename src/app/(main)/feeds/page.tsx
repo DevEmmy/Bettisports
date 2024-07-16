@@ -46,7 +46,7 @@ const page = () => {
 
                 <div className='flex-center gap-2 '>
                     {
-                        filter.map((f, i)=>{
+                        filter?.map((f, i)=>{
                             return(
                                 <div className={`${active == i ? "bg-secondaryBlue text-white" : "bg-transparent border text-gray-600"} py-2 px-5 cursor-pointer`} onClick={()=> setActive(i)}>
                                     {f}

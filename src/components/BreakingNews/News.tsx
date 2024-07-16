@@ -54,7 +54,7 @@ const News = () => {
 
                         newsBreaking?.length > 0
                             ?
-                            newsBreaking.slice(0,4).map((item: any, i: number) => {
+                            newsBreaking.slice(0,4)?.map((item: any, i: number) => {
                                 return (
                                     <Link href={`/blog/${item?._id}`} className={`pr-5 ${i == 0 ? "pl-0" : "pl-5"} fle flex-col gap-2`}>
                                         <p className='text-[16px] line-clamp-2'>{item?.title}</p>

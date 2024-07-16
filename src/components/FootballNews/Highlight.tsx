@@ -12,7 +12,7 @@ const Highlight = () => {
 
       <div className='flex gap-2 items-center'>
         {
-          icons.map((icon: string, i: number)=>{
+          icons?.map((icon: string, i: number)=>{
             return(
               <div>
                 <img src={icon} alt="" className='w-[60px] h-[60px] rounded-full border-4 border-secondaryBlue'/>

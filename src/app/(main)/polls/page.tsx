@@ -27,8 +27,8 @@ const page = () => {
       <div className='grid col-span-4 grid-cols-3 gap-5'>
         {isLoading ? (
           <Loader />
-        ) : polls.length > 0 ? (
-          polls.map((item: any, i: number) => {
+        ) : polls?.length > 0 ? (
+          polls?.map((item: any, i: number) => {
             const days = Math.floor(item.duration / 1440);
             const hours = Math.floor((item.duration % 1440) / 60);
             const remainingMinutes = item.duration % 60;
@@ -40,7 +40,7 @@ const page = () => {
                   <p className='text-[14px] font-[500]'>{item.question} ghjk</p>
 
                   <Collection
-                    polls={item.choices.map((choice: any) => choice.choiceText)}
+                    polls={item?.choices?.map((choice: any) => choice?.choiceText)}
                     
 
                   />
