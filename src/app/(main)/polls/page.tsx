@@ -14,6 +14,9 @@ const page = () => {
   const {votePollFn, error, isSuccess} = useVotePoll(); 
   const user = getUser()
 
+  const calculateVotes = (choices : any) => {
+    return choices.reduce((total : any, choice : any) => total + choice.votes, 0);
+  };
   
   
   return (
@@ -41,13 +44,13 @@ const page = () => {
 
                   <Collection
                     polls={item?.choices?.map((choice: any) => choice?.choiceText)}
-                    
-
+                    id = {item?._id}
+                    votes = {calculateVotes(item?.choices)}
                   />
 
                   <div className='text-[12px] flex items-center justify-between mt-2 end-2'>
                     <div className='font-[500] text-secondaryBlue'>
-                      Total Votes 26
+                      Total Votes 26 
                     </div>
 
                     <div>

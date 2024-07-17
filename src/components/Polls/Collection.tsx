@@ -8,21 +8,23 @@ import { toastSuccess } from '@/utils/toast'
 
 interface Props{
     polls: string[],
+    id: string,
+    votes: any
 }
 
-const Collection = ({polls}: Props) => {
+const Collection = ({polls, id, votes}: Props) => {
     const [selected, setSelected] = useState<number | null >()
 
     const {votePollFn, error, isSuccess} = useVotePoll(); 
     const user = getUser()
     
-    const handleVote = async ( pollId : any ,choiceId : any ) => {
+    const handleVote = async (choiceId: number) => {
         const votePoll = {
-            pollId: pollId,
-            choiceId: choiceId,
+            pollId : id,
+            choiceIndex : choiceId,
             userId: user?._id
         }
-
+        setSelected(choiceId);
         try {
           votePollFn(votePoll);
           console.log('Success:', votePoll);
@@ -35,14 +37,20 @@ const Collection = ({polls}: Props) => {
         if(isSuccess) {
             toastSuccess('Voted')
         }
-      },[isSuccess])
+      },[isSuccess]);
+
+
+      // const [votes,setVotes] = useState<number>(0);
   return (
     <div className='flex flex-col gap-3'>
         {
             polls?.map((item: string, i: number)=>{
+              
                 return(
-                    <div onClick={() => setSelected(i)}>
-                        <Bar title={item} value={0} key={i} mySelect={i == selected ? true : false} />
+                    <div onClick={() => {
+                      handleVote(i);
+                      }}>
+                        <Bar title={item} value={votes} key={i} mySelect={i == selected ? true : false} />
                     </div>
                 )
             })
