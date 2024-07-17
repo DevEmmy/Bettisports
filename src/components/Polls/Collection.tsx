@@ -67,7 +67,7 @@ const Collection = ({choices, id, totalVotes}: Props) => {
                       }}
                       className={`${disabled ? 'pointer-events-none' : ''}`}
                       >
-                        <Bar title={item?.choiceText} value={(item?.votes/totalVotes) * 100} key={i} mySelect={ item?.voters?.includes(user?._id) ? true : i == selected ? true : false} />
+                        <Bar title={item?.choiceText} value={totalVotes > 0 ? (item?.votes/totalVotes) * 100 : 0} key={i} mySelect={ item?.voters?.includes(user?._id) ? true : i == selected ? true : false} />
                     </div>
                 )
             })
