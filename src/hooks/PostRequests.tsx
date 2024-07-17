@@ -108,9 +108,11 @@ export const useFetchPolls = () => {
     return response.data.payload;
   };
 
-  const { data: polls, isError, isLoading } = useQuery('polls', fetchData);
+  const { data: polls, isError, isLoading, refetch } = useQuery('polls', fetchData , {
+    enabled: true,
+  });
 
-  return { polls, isError, isLoading };
+  return { polls, isError, isLoading , refetch};
 };
 
 // Editor Pick

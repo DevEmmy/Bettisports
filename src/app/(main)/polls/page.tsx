@@ -40,7 +40,7 @@ const page = () => {
               <div className='border border-gray-300 shadow-md'>
                 <img src='./img.jpg' alt='' className='h-[150px] w-full' />
                 <div className='p-3 flex flex-col gap-2'>
-                  <p className='text-[14px] font-[500]'>{item.question} ghjk</p>
+                  <p className='text-[14px] font-[500]'>{item.question}</p>
 
                   <Collection
                     choices={item?.choices?.map((choice: any) => choice)}
@@ -51,7 +51,7 @@ const page = () => {
 
                   <div className='text-[12px] flex items-center justify-between mt-2 end-2'>
                     <div className='font-[500] text-secondaryBlue'>
-                      Total Votes 26 
+                      Total Votes {calculateVotes(item?.choices)}
                     </div>
 
                     <div>

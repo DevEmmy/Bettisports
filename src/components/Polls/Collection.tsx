@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar'
-import { useVotePoll } from '@/hooks/PostRequests'
+import { useVotePoll , useFetchPolls  } from '@/hooks/PostRequests'
 import { getUser } from '@/hooks/UserRequests'
 import { toastSuccess } from '@/utils/toast'
 
@@ -15,10 +15,12 @@ interface Props{
 const Collection = ({choices, id, totalVotes}: Props) => {
     const [selected, setSelected] = useState<number | null >()
 
-    const {votePollFn, error, isSuccess} = useVotePoll(); 
+    const {votePollFn, error, isSuccess} = useVotePoll();
+    const { polls, isLoading, isError, refetch } = useFetchPolls();
     const user = getUser()
     
     const handleVote = async (choiceId: number) => {
+      refetch();
         const votePoll = {
             pollId : id,
             choiceIndex : choiceId,
@@ -35,7 +37,8 @@ const Collection = ({choices, id, totalVotes}: Props) => {
 
       useEffect(() => {
         if(isSuccess) {
-            toastSuccess('Voted')
+            toastSuccess('Voted');
+            refetch();
         }
       },[isSuccess]);
 
