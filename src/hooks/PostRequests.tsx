@@ -115,6 +115,7 @@ export const useFetchPolls = () => {
   return { polls, isError, isLoading , refetch};
 };
 
+
 // Editor Pick
 export const useFetchEditorsPick = () => {
   const fetchData = async () => {
@@ -361,4 +362,16 @@ export const useCreateFeed = () => {
 
   const { mutate: createFeedFn, isLoading, isError, error, isSuccess} = useMutation(createFeed);
   return { createFeedFn, isLoading , isError , error, isSuccess };
+};
+
+
+
+export const useUpdatePoll = (id : string) => {
+  const updateData = async (data: any) => {
+    const response = await axios.put(`${api}/polls/${id}`);
+    return response.data.payload;
+  }
+
+const { mutate: updatePollFn, isLoading : isLoad , isError : isErr, error, isSuccess} = useMutation(updateData);
+return { updatePollFn, isLoad , isErr, error, isSuccess };
 };

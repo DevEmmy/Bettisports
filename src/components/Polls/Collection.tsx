@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Bar from './Bar'
 import { useVotePoll , useFetchPolls  } from '@/hooks/PostRequests'
 import { getUser } from '@/hooks/UserRequests'
-import { toastSuccess } from '@/utils/toast'
+import { toastSuccess, toastError } from '@/utils/toast'
 
 
 interface Props{
@@ -15,20 +15,34 @@ interface Props{
 const Collection = ({choices, id, totalVotes}: Props) => {
     const [selected, setSelected] = useState<number | null >()
 
+    const [disabled,setDisabled] = useState(false)
+
+    const voterExists = (choices : any , voterId : string) => {
+        for (let choice of choices) {
+          if (choice.voters.includes(voterId)) {
+            return true;
+          }
+        }
+      return false;
+    };
+
     const {votePollFn, error, isSuccess} = useVotePoll();
     const { polls, isLoading, isError, refetch } = useFetchPolls();
     const user = getUser()
     
     const handleVote = async (choiceId: number) => {
+      setDisabled(true);
+
       refetch();
         const votePoll = {
             pollId : id,
             choiceIndex : choiceId,
             userId: user?._id
         }
-        setSelected(choiceId);
+        voterExists(choices,user?._id) ? toastError('already voted') : setSelected(choiceId);
+        
         try {
-          votePollFn(votePoll);
+          voterExists(choices,user?._id) ? '' : votePollFn(votePoll);
           console.log('Success:', votePoll);
         } catch (error) {
           console.error('Error:', error);
@@ -42,22 +56,17 @@ const Collection = ({choices, id, totalVotes}: Props) => {
         }
       },[isSuccess]);
 
-
-      useEffect(() => {
-
-      }, [])
-
-
-      // const [votes,setVotes] = useState<number>(0);
   return (
     <div className='flex flex-col gap-3'>
         {
             choices?.map((item: any, i: number)=>{
-              // item?.voters?.includes(user?._id) ? setSelected(i) : '';
                 return(
                     <div onClick={() => {
-                      handleVote(i);
-                      }}>
+                      // setDisabled(true);
+                      handleVote(i)
+                      }}
+                      className={`${disabled ? 'pointer-events-none' : ''}`}
+                      >
                         <Bar title={item?.choiceText} value={(item?.votes/totalVotes) * 100} key={i} mySelect={ item?.voters?.includes(user?._id) ? true : i == selected ? true : false} />
                     </div>
                 )
