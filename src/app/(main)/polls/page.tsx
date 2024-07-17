@@ -43,9 +43,10 @@ const page = () => {
                   <p className='text-[14px] font-[500]'>{item.question} ghjk</p>
 
                   <Collection
-                    polls={item?.choices?.map((choice: any) => choice?.choiceText)}
+                    choices={item?.choices?.map((choice: any) => choice)}
                     id = {item?._id}
-                    votes = {calculateVotes(item?.choices)}
+                    totalVotes = {calculateVotes(item?.choices)}
+
                   />
 
                   <div className='text-[12px] flex items-center justify-between mt-2 end-2'>

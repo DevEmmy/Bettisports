@@ -7,12 +7,12 @@ import { toastSuccess } from '@/utils/toast'
 
 
 interface Props{
-    polls: string[],
+    choices: any,
     id: string,
-    votes: any
+    totalVotes: any
 }
 
-const Collection = ({polls, id, votes}: Props) => {
+const Collection = ({choices, id, totalVotes}: Props) => {
     const [selected, setSelected] = useState<number | null >()
 
     const {votePollFn, error, isSuccess} = useVotePoll(); 
@@ -40,17 +40,22 @@ const Collection = ({polls, id, votes}: Props) => {
       },[isSuccess]);
 
 
+      useEffect(() => {
+
+      }, [])
+
+
       // const [votes,setVotes] = useState<number>(0);
   return (
     <div className='flex flex-col gap-3'>
         {
-            polls?.map((item: string, i: number)=>{
-              
+            choices?.map((item: any, i: number)=>{
+              // item?.voters?.includes(user?._id) ? setSelected(i) : '';
                 return(
                     <div onClick={() => {
                       handleVote(i);
                       }}>
-                        <Bar title={item} value={votes} key={i} mySelect={i == selected ? true : false} />
+                        <Bar title={item?.choiceText} value={(item?.votes/totalVotes) * 100} key={i} mySelect={ item?.voters?.includes(user?._id) ? true : i == selected ? true : false} />
                     </div>
                 )
             })
