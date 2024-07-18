@@ -2,6 +2,7 @@
 import { useFetchFeatured } from '@/hooks/PostRequests';
 import React from 'react';
 import Loader from '../Loader';
+import Link from 'next/link';
 
 const Featured = () => {
   const { featured, isError, isLoading } = useFetchFeatured();
@@ -24,7 +25,7 @@ const Featured = () => {
           <div className='grid gap-5'>
             <img src='./ads.png' alt='' />
 
-            <div className='flex gap-3 flex-col'>
+            <Link href={`/blog/${featured[0]?._id}`} className='flex gap-3 flex-col'>
               <img src={featured[0]?.media} alt='' />
               <div>
                 <p className='text-[16px] line-clamp-2'>
@@ -34,10 +35,10 @@ const Featured = () => {
                   {featured[0]?.date ? featured[0].date : 'March 23, 2024'}
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
-          <div className='flex gap-3 flex-col'>
+          <Link href={`/blog/${featured[1]?._id}`} className='flex gap-3 flex-col'>
             <img src={featured[1].media} alt='' />
             <div>
               <p className='text-[16px] line-clamp-2'>{featured[1]?.content}</p>
@@ -45,10 +46,10 @@ const Featured = () => {
                 {featured[1]?.date ? featured[1].date : 'March 23, 2024'}
               </p>
             </div>
-          </div>
+          </Link>
 
           <div className='grid gap-5'>
-            <div className='flex gap-3 flex-col'>
+            <Link href={`/blog/${featured[2]?._id}`} className='flex gap-3 flex-col'>
               <img src={featured[2]?.media} alt='' />
               <div>
                 <p className='text-[16px] line-clamp-2'>
@@ -58,9 +59,9 @@ const Featured = () => {
                   {featured[2]?.date ? featured[2].date : 'March 23, 2024'}
                 </p>
               </div>
-            </div>
+            </Link>
 
-            <div className='flex gap-3 flex-col'>
+            <Link href={`/blog/${featured[3]?._id}`} className='flex gap-3 flex-col'>
               <img src={featured[3]?.media} alt='' />
               <div>
                 <p className='text-[16px] line-clamp-2'>
@@ -70,7 +71,7 @@ const Featured = () => {
                   {featured[3]?.date ? featured[3].date : 'March 23, 2024'}
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       ) : (
