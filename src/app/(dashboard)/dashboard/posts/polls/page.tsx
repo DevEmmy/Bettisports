@@ -10,7 +10,8 @@ import {
   RiVideoLine,
 } from 'react-icons/ri';
 import { toastSuccess, toastError } from '@/utils/toast';
-import { useCreatePoll } from '@/hooks/PostRequests';
+import { useCreatePoll, useFetchPolls } from '@/hooks/PostRequests';
+import PollTable from '@/components/Tables/PollTable';
 
 interface duration {
   days: number;
@@ -22,6 +23,8 @@ interface duration {
 const page = () => {
   const { createPollFn, isLoading, isError, error, isSuccess } =
     useCreatePoll();
+
+  
 
   const [question, setQuestion] = useState<string>('');
   const [choices, setChoices] = useState(['', '']);
@@ -263,6 +266,10 @@ const page = () => {
             </div>
 
             <p>28 Items</p>
+          </div>
+
+          <div className="my-3">
+            <PollTable/>
           </div>
         </div>
       </div>
