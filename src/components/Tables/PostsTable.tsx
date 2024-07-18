@@ -1,6 +1,7 @@
 import React from 'react';
 import { RiChat1Fill } from 'react-icons/ri';
 import Loader from '../Loader';
+import { usePostQuery } from '@/hooks/PostRequests'
 import { IoIosThermometer } from 'react-icons/io';
 import TimeAgo from 'react-timeago'
 
@@ -10,11 +11,12 @@ interface Props {
   isLoading?: boolean | null;
 }
 
-const Table = ({ thead, data, isLoading }: Props) => {
+const PostsTable = () => {
+  const { posts, isError, isLoading } = usePostQuery();
   return (
     <table>
       <tr className='text-sm'>
-        {thead.map((head: string, i: number) => {
+        {["Title", "Author", "Categories", "Tags", "Comment", "Date"].map((head: string, i: number) => {
           return (
             <th className='text-sm'>
               {head != 'Comment' ? (
@@ -32,8 +34,8 @@ const Table = ({ thead, data, isLoading }: Props) => {
 
       {isLoading ? (
         <Loader />
-      ) : data.length > 0 ? (
-        data.map((item: any, i: number) => {
+      ) : posts?.length > 0 ? (
+        posts?.map((item: any, i: number) => {
           while (i < 50) {
             return (
               <tr className='text-left gap-1 text-sm items-start' key={i}>
@@ -91,4 +93,4 @@ const Table = ({ thead, data, isLoading }: Props) => {
   );
 };
 
-export default Table;
+export default PostsTable;

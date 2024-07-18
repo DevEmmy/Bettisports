@@ -1,10 +1,12 @@
+'use client'
 import React from 'react'
 import { RiChat2Line, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri'
+import TimeAgo from 'react-timeago'
 
 const MdFootballBlogHighlight = (item : any) => {
     return (
         <div className='grid grid-cols-[2fr_3fr] gap-3 py-2'>
-            <img src="./img.jpg" alt="" />
+            <img src={item?.media} alt={item?.execrpt} />
 
             <div className='grid'>
                 <p>
@@ -12,7 +14,7 @@ const MdFootballBlogHighlight = (item : any) => {
                 </p>
                 <div className="flex items-center text-[12px] justify-between">
                     <p>
-                        {item?.date}
+                        <TimeAgo date={item?.createdAt} />
                     </p>
 
                     <div className='flex gap-3'>

@@ -17,7 +17,17 @@ export const useFetchFeeds = () => {
   return { Feed, isError, isLoading };
 };
 
+// Fetch Polls
+export const useFetchUsers = () => {
+  const fetchData = async () => {
+    const response = await axios.get(`${api}/auth`);
+    return response.data.payload;
+  };
 
+  const { data: users, isError, isLoading  } = useQuery('auth', fetchData);
+
+  return { users, isError, isLoading };
+};
 
 // Posts
 export const usePostQuery = () => {

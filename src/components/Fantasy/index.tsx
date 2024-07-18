@@ -4,6 +4,7 @@ import Line from '../UI/Line';
 import { useFetchFantasy } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 import MdFootballBlogHighlight from '../FootballNews/MdFootallBlogHighlight';
+import Timeago from 'react-timeago'
 
 const Fantasy = () => {
   const { fantasy, isError, isLoading } = useFetchFantasy();
@@ -25,7 +26,7 @@ const Fantasy = () => {
                     <img src={item?.media} alt='' className='h-full w-full' />
                     <div className='overlay' />
                     <div className='details p-10'>
-                        <p>{item?.date}</p>
+                        <p><Timeago date={item?.createdAt} /></p>
                         <p className='text-[28px] font-[600]'>{item?.title}</p>
                     </div>
                 </div>

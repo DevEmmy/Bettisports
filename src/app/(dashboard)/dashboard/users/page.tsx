@@ -1,4 +1,6 @@
-import Table from '@/components/Tables'
+'use client';
+import Table from '@/components/Tables/PostsTable'
+import UsersTable from '@/components/Tables/UsersTable'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
 
@@ -75,6 +77,8 @@ const page = () => {
                 },
                
             ]} /> */}
+
+            <UsersTable />
         </div>
     )
 }
