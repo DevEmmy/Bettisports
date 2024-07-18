@@ -12,10 +12,12 @@ export const useFetchFeeds = () => {
     return response.data.payload;
   };
 
-  const { data: feeds, isError: feedIsError , isLoading : feedIsLoading } = useQuery('feeds', fetchData);
+  const { data: Feed, isError, isLoading  } = useQuery('feed', fetchData);
 
-  return { feeds, feedIsError, feedIsLoading };
+  return { Feed, isError, isLoading };
 };
+
+
 
 // Posts
 export const usePostQuery = () => {
@@ -45,18 +47,15 @@ export const useFetchCategory = () => {
 export const useFetchComments = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/comments`);
+    console.log(response);
     return response.data.payload;
   };
 
   const {
-    data: comments,
-    isError,
-    isLoading,
-  } = useQuery('comments', fetchData);
+    data: comments, isError: isErr, isLoading } = useQuery('comments', fetchData);
 
-  return { comments, isError, isLoading };
+  return { comments, isErr, isLoading};
 };
-
 
 // Read Query
 export const useReadQuery = (id: string) => {
@@ -360,8 +359,8 @@ export const useCreateFeed = () => {
     return response;
   };
 
-  const { mutate: createFeedFn, isLoading, isError, error, isSuccess} = useMutation(createFeed);
-  return { createFeedFn, isLoading , isError , error, isSuccess };
+  const { mutate: createFeedFn, isLoading : createFeedLoading, isError, error, isSuccess} = useMutation(createFeed);
+  return { createFeedFn, createFeedLoading  , isError , error, isSuccess };
 };
 
 

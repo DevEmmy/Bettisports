@@ -1,13 +1,24 @@
+'use client';
 import React from 'react'
 import { RiChat1Fill } from 'react-icons/ri';
-import TableData from './TableData';
+import TableData from './TableData'
+import { useFetchComments } from '@/hooks/PostRequests';
+import Loader from '../Loader';
 
 interface Props {
     thead: string[];
     data: any
 }
 
+interface Data {
+    comment: any;
+    i : number;
+}
+
+
 const Table = () => {
+    const { comments, isErr, isLoading } = useFetchComments();
+    // console.log(comments?.data);
     let thead = [
         "Author", "Comment", "In Response to", "Submitted on"
     ]
@@ -24,12 +35,15 @@ const Table = () => {
             </div>
 
             <div className='grid gap-5 bg-[#FAFAF1] p-5' >
-                {
-                    [1,2,3]?.map((item: any, i: number) => {
+                {isLoading ? <Loader /> : comments?.length > 0 ?
+                    comments?.map((item : any,i : number) => {
                         return (
-                            <TableData key={i}/>
+                            <TableData key={i} item={item} />
                         )
-                    })
+                    }) : 
+                    (
+                        <p>There are no comments yet.</p>
+                    )
                 }
             </div>
         </div>

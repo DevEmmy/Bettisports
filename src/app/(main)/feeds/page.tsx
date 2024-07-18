@@ -9,8 +9,8 @@ import { toastSuccess } from '@/utils/toast';
 import Loader from '@/components/Loader';
 
 const page = () => {
-  const {feeds,feedIsError, feedIsLoading } = useFetchFeeds();
-  const  {createFeedFn, isLoading , isError , error, isSuccess }   = useCreateFeed();
+  const {Feed,isError, isLoading } = useFetchFeeds();
+  const  {createFeedFn, createFeedLoading , error, isSuccess }   = useCreateFeed();
   const [active, setActive] = useState(0);
   const [feedContent,setFeedContent] = useState<string>('');
   useEffect(() => {
@@ -75,7 +75,7 @@ const page = () => {
             }
           />
           <button className='p-3 rounded-full border' onClick={handleSubmit}>
-            {isLoading ? 'Adding...' : 'Add'}
+            {createFeedLoading ? 'Adding...' : 'Add'}
           </button>
         </div>
         <GrayLine />
@@ -97,21 +97,19 @@ const page = () => {
         </div>
 
         <div className='flex gap-5 flex-col my-5'>
-
-        {feedIsLoading ? (
-          <Loader />
-        ) : feeds?.length > 0 ? (
-          feeds?.map((item: any, i: number) => {
-
-
-            return (
-              <EachFeed key={i}/>
-            );
-          })
-        ) : (
-          <p>There are no feeds yet.</p>
-        )}
+          {isLoading ? <Loader /> : Feed?.length > 0 ? Feed?.map((item: any, i : number) => {return(
+            <div key={i}>
+              do well tjay
+            </div>
+          )})
+          : 
+          (
+            <p>ya not doing well {Feed}</p>
+          )
+        }
         </div>
+
+
       </div>
     </div>
   );
