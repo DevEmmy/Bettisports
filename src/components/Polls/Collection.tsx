@@ -1,30 +1,48 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar'
-import { useVotePoll } from '@/hooks/PostRequests'
+import { useVotePoll , useFetchPolls  } from '@/hooks/PostRequests'
 import { getUser } from '@/hooks/UserRequests'
-import { toastSuccess } from '@/utils/toast'
+import { toastSuccess, toastError } from '@/utils/toast'
 
 
 interface Props{
-    polls: string[],
+    choices: any,
+    id: string,
+    totalVotes: any
 }
 
-const Collection = ({polls}: Props) => {
+const Collection = ({choices, id, totalVotes}: Props) => {
     const [selected, setSelected] = useState<number | null >()
 
-    const {votePollFn, error, isSuccess} = useVotePoll(); 
+    const [disabled,setDisabled] = useState(false)
+
+    const voterExists = (choices : any , voterId : string) => {
+        for (let choice of choices) {
+          if (choice.voters.includes(voterId)) {
+            return true;
+          }
+        }
+      return false;
+    };
+
+    const {votePollFn, error, isSuccess} = useVotePoll();
+    const { polls, isLoading, isError, refetch } = useFetchPolls();
     const user = getUser()
     
-    const handleVote = async ( pollId : any ,choiceId : any ) => {
+    const handleVote = async (choiceId: number) => {
+      setDisabled(true);
+
+      refetch();
         const votePoll = {
-            pollId: pollId,
-            choiceId: choiceId,
+            pollId : id,
+            choiceIndex : choiceId,
             userId: user?._id
         }
-
+        voterExists(choices,user?._id) ? toastError('already voted') : setSelected(choiceId);
+        
         try {
-          votePollFn(votePoll);
+          voterExists(choices,user?._id) ? '' : votePollFn(votePoll);
           console.log('Success:', votePoll);
         } catch (error) {
           console.error('Error:', error);
@@ -33,16 +51,23 @@ const Collection = ({polls}: Props) => {
 
       useEffect(() => {
         if(isSuccess) {
-            toastSuccess('Voted')
+            toastSuccess('Voted');
+            refetch();
         }
-      },[isSuccess])
+      },[isSuccess]);
+
   return (
     <div className='flex flex-col gap-3'>
         {
-            polls?.map((item: string, i: number)=>{
+            choices?.map((item: any, i: number)=>{
                 return(
-                    <div onClick={() => setSelected(i)}>
-                        <Bar title={item} value={0} key={i} mySelect={i == selected ? true : false} />
+                    <div onClick={() => {
+                      // setDisabled(true);
+                      handleVote(i)
+                      }}
+                      className={`${disabled ? 'pointer-events-none' : ''}`}
+                      >
+                        <Bar title={item?.choiceText} value={totalVotes > 0 ? (item?.votes/totalVotes) * 100 : 0} key={i} mySelect={ item?.voters?.includes(user?._id) ? true : i == selected ? true : false} />
                     </div>
                 )
             })

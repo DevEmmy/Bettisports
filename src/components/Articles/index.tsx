@@ -18,7 +18,7 @@ const Articles = () => {
                     <Loader/>
                     :
                     article > 0 ?
-                    article.slice(0,10).map((item: any, i: number)=>{
+                    article.slice(0,10)?.map((item: any, i: number)=>{
                         return(
                             <EachNews item={item} />
                         )

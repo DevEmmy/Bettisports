@@ -27,7 +27,7 @@ const page = () => {
 
             <div className='col-span-4 flex flex-col divide-y'>
                 {
-                    [0, 1].map((item, i) => {
+                    [0, 1]?.map((item, i) => {
                         return (
                             <EachNotification />
                         )

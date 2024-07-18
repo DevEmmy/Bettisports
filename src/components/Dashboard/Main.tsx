@@ -41,7 +41,7 @@ const Main = () => {
 
                         <div className="grid grid-cols-2 mt-5">
                             {
-                                data.map((item, i) => {
+                                data?.map((item, i) => {
                                     return (
                                         <div className='p-4 border text-sm'>
                                             <p>{item?.title}</p>
@@ -76,7 +76,7 @@ const Main = () => {
 
                         <div className='flex flex-col gap-3'>
                             {
-                                [1, 2, 3, 4, 5, 6].map((item, i) => {
+                                [1, 2, 3, 4, 5, 6]?.map((item, i) => {
                                     return (
                                         <div className='odd:bg-blue-50'>
                                             <Published dateTime='Feb 17th, 11:56am' key={i} title='Where will Kylan Mbappe Go Next? 7 clubs that are in the race' />
