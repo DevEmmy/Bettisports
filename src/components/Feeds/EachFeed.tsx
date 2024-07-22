@@ -1,22 +1,27 @@
 import React from 'react'
 import GrayLine from '../UI/GrayLine'
+import TimeAgo from 'react-timeago'
 import { RiBookmark2Line, RiChat2Line, RiHeart2Line, RiShareForwardLine } from 'react-icons/ri'
 
-const EachFeed = () => {
+const EachFeed = ({item} : any) => {
   return (
     <div className='flex gap-4 flex-col border-2 border-gray-600 py-5'>
         <div className='flex-center gap-2 mx-xPadding'>
             <img src="./img.jpg" alt="" className='size-[50px] rounded-full'/>
             <div>
-                <p className='font-[600]'>Adam Smith</p>
-                <p className='text-sm text-gray-500'>2h ago</p>
+                <p className='font-[600]'>{item?.postedBy}</p>
+                <p className='text-sm text-gray-500'>
+                    <TimeAgo date={item?.createdAt} />
+                </p>
             </div>
         </div>
 
-        <img src="./img.jpg" alt="" className='h-[400px] ' />
+        <img src={item?.image ? item.image : './img.jpg'} alt="" className='h-[400px] ' />
 
         <div className='flex gap-5 flex-col mx-xPadding'>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt amet perspiciatis doloribus et earum. Libero soluta cum earum eveniet temporibus. Omnis necessitatibus itaque provident, dolorum harum accusamus praesentium nesciunt obcaecati?</p>
+            <p>
+                {item?.content}
+            </p>
 
             <GrayLine />
 

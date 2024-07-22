@@ -5,25 +5,44 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 import { RiSearch2Line } from 'react-icons/ri';
 import { getUser } from '@/hooks/UserRequests';
 import { useCreateFeed, useFetchFeeds } from '@/hooks/PostRequests';
-import { toastSuccess } from '@/utils/toast';
+import { toastError, toastSuccess } from '@/utils/toast';
 import Loader from '@/components/Loader';
+import axios from 'axios';
+import { GrSend } from 'react-icons/gr';
 
 const page = () => {
-  const {Feed,isError, isLoading } = useFetchFeeds();
-  const  {createFeedFn, createFeedLoading , error, isSuccess }   = useCreateFeed();
+  // const { feeds, isError, isLoading } = useFetchFeeds();
+  const [refresh,setRefresh] = useState<boolean>(false);
+  const [feed, setFeed] = useState<any>();
+  const { createFeedFn, createFeedLoading, error, isSuccess } = useCreateFeed();
   const [active, setActive] = useState(0);
-  const [feedContent,setFeedContent] = useState<string>('');
+  const [feedContent, setFeedContent] = useState<string>('');
   useEffect(() => {
-    if(isSuccess) toastSuccess('Feed uploaded');
+    if (isSuccess) toastSuccess('Feed uploaded');
+    setRefresh(!refresh);
+    setFeedContent('');
   }, [isSuccess]);
 
+  const api = process.env.NEXT_PUBLIC_API as string;
+
+  // const feedFetch =  () => {
+  useEffect(() => {
+    axios
+      .get(`${api}/feeds`)
+      .then((res: any) => {
+        console.log(res);
+        setFeed(res.data.reverse());
+      })
+      .catch((error) => console.log(error));
+  }, [ , refresh]);
+
+  // feedFetch();
 
   const user = getUser();
 
   if (!user) {
     return null;
   }
-
 
   const filter = [
     'Trending',
@@ -32,23 +51,28 @@ const page = () => {
     'New Topic',
     'Mentions',
   ];
-  
 
   const handleSubmit = async () => {
-    const postFeed = {
-        content : feedContent,
-        postedBy: user?._id,
-        likes: [],
-        image: ''
+    if (!feedContent) {
+      toastError('Cannot upload empty content!');
+      return 0;
     }
+    // setRefresh(!refresh);
+    const postFeed = {
+      content: feedContent,
+      postedBy: user?._id,
+      likes: [],
+      image: '',
+    };
 
     try {
-        createFeedFn(postFeed);
-        console.log('Success:', postFeed);
+      createFeedFn(postFeed);
+      console.log('Success:', postFeed);
+      // setRefresh(!refresh);
     } catch (error) {
-        console.error('Error:', error);
+      console.error('Error:', error);
     }
-  }
+  };
 
   return (
     <div>
@@ -75,7 +99,7 @@ const page = () => {
             }
           />
           <button className='p-3 rounded-full border' onClick={handleSubmit}>
-            {createFeedLoading ? 'Adding...' : 'Add'}
+            {createFeedLoading ? 'Adding...' : (<GrSend className='w-5 h-5'/>) }
           </button>
         </div>
         <GrayLine />
@@ -97,19 +121,16 @@ const page = () => {
         </div>
 
         <div className='flex gap-5 flex-col my-5'>
-          {isLoading ? <Loader /> : Feed?.length > 0 ? Feed?.map((item: any, i : number) => {return(
-            <div key={i}>
-              do well tjay
-            </div>
-          )})
-          : 
-          (
-            <p>ya not doing well {Feed}</p>
-          )
-        }
+          {feed ? (
+            feed.map((item: any, i: number) => {
+              return <EachFeed item={item} />;
+            })
+          ) : (
+            <Loader />
+          )}
+
+          {/* {feeds} */}
         </div>
-
-
       </div>
     </div>
   );

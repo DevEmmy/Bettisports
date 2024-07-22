@@ -12,9 +12,9 @@ export const useFetchFeeds = () => {
     return response.data.payload;
   };
 
-  const { data: Feed, isError, isLoading  } = useQuery('feed', fetchData);
+  const { data: feeds, isError, isLoading  } = useQuery('feeds', fetchData);
 
-  return { Feed, isError, isLoading };
+  return { feeds, isError, isLoading };
 };
 
 // Posts
