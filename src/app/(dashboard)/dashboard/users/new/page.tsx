@@ -1,31 +1,89 @@
-import React from 'react'
+'use client';
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useCreateUser } from '@/hooks/UserRequests';
+import { toastError, toastSuccess } from '@/utils/toast';
 
 const page = () => {
+
+    const [username,setUsername] = useState<string>('');
+    const [email,setEmail] = useState<string>('');
+    const [firstName,setFirstName] = useState<string>('');
+    const [lastName,setLastName] = useState<string>('');
+    const [password,setPassword] = useState<string>('');
+
+    const { createUserFn, isLoading, isError, error, isSuccess} = useCreateUser();
+
+    const handleSubmit = async () => {
+        if (!email || !username || !password) {
+            toastError('Email, Username or Password is empty!');
+            return 0;
+        }
+        const userData = {
+            firstName,
+            lastName,
+            email,
+            password
+        };
+
+        try {
+            createUserFn(userData)
+            console.log('Success:', userData);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    useEffect(() => {
+        if(isSuccess) {
+            toastSuccess('User Added successfully');
+            setEmail(''); setUsername(''); setPassword(''); setFirstName(''); setLastName('');
+        }
+    },[isSuccess]);
 
     const fields = [
         {
             name: "username",
             required: true,
-            title: "Username"
+            title: "Username",
+            value: username,
+            onchange: (e: ChangeEvent<HTMLInputElement>) => {
+                setUsername(e.target.value)
+            }
         },
         {
             name: "email",
             required: true,
-            title: "Email"
+            title: "Email",
+            value: email,
+            onchange: (e: ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value)
+            }
         },
         {
             name: "firstName",
-            title: "First Name"
+            title: "First Name",
+            value: firstName,
+            onchange: (e: ChangeEvent<HTMLInputElement>) => {
+                setFirstName(e.target.value)
+            }
         },
         {
             name: "lastName",
-            title: "Last Name"
+            title: "Last Name",
+            value: lastName,
+            onchange: (e: ChangeEvent<HTMLInputElement>) => {
+                setLastName(e.target.value)
+            }
         },
         {
             name: "password",
             title: "Password",
             type: "password",
-            required: true
+            required: true,
+            value: password,
+            onchange: (e: ChangeEvent<HTMLInputElement>) => {
+                setPassword(e.target.value)
+            }
         },
     ]
     return (
@@ -39,7 +97,7 @@ const page = () => {
                         return (
                             <div className=''>
                                 <p>{field.title}</p>
-                                <input type={field.type || "text"} className='p-3 border' />
+                                <input type={field.type || "text"} className='p-3 border' value={field.value} onChange={field.onchange} required={field.required ? field.required : false}/>
                             </div>
                         )
                     })
@@ -70,8 +128,8 @@ const page = () => {
                     <input type="text" className='p-3 border' />
                 </div>
 
-                <button className=' bg-secondaryBlue text-white w-fit px-10 p-2 text-sm'>
-                    Add
+                <button className=' bg-secondaryBlue text-white w-fit px-10 p-2 text-sm' onClick={handleSubmit}>
+                    {isLoading? 'Adding new user...' : 'Add'}
                 </button>
 
             </div>

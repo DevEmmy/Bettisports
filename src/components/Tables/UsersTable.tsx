@@ -3,13 +3,16 @@ import { RiChat1Fill } from 'react-icons/ri';
 import Loader from '../Loader';
 import { IoIosThermometer } from 'react-icons/io';
 import TimeAgo from 'react-timeago'
-import { usePostQuery, useFetchUsers } from '@/hooks/PostRequests';
+import { usePostQuery} from '@/hooks/PostRequests';
+import { useFetchUsers } from '@/hooks/UserRequests';
+
 
 interface Props {
   thead: string[];
   data: any;
   isLoading?: boolean | null;
 }
+
 
 const UsersTable = () => {
   const { users , isError, isLoading} = useFetchUsers();

@@ -17,18 +17,6 @@ export const useFetchFeeds = () => {
   return { Feed, isError, isLoading };
 };
 
-// Fetch Polls
-export const useFetchUsers = () => {
-  const fetchData = async () => {
-    const response = await axios.get(`${api}/auth`);
-    return response.data.payload;
-  };
-
-  const { data: users, isError, isLoading  } = useQuery('auth', fetchData);
-
-  return { users, isError, isLoading };
-};
-
 // Posts
 export const usePostQuery = () => {
   const fetchData = async () => {
@@ -372,8 +360,6 @@ export const useCreateFeed = () => {
   const { mutate: createFeedFn, isLoading : createFeedLoading, isError, error, isSuccess} = useMutation(createFeed);
   return { createFeedFn, createFeedLoading  , isError , error, isSuccess };
 };
-
-
 
 export const useUpdatePoll = (id : string) => {
   const updateData = async (data: any) => {
