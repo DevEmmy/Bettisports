@@ -9,12 +9,14 @@ const api = process.env.NEXT_PUBLIC_API as string;
 export const useFetchFeeds = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/feeds`);
-    return response.data.payload;
+    return response.data.reverse();
   };
 
-  const { data: feeds, isError, isLoading  } = useQuery('feeds', fetchData);
+  const { data: feeds, isError, isLoading, refetch  } = useQuery('feeds', fetchData, {
+    enabled: true
+  });
 
-  return { feeds, isError, isLoading };
+  return { feeds, isError, isLoading, refetch };
 };
 
 // Posts
