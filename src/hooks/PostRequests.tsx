@@ -372,3 +372,15 @@ export const useUpdatePoll = (id : string) => {
 const { mutate: updatePollFn, isLoading : isLoad , isError : isErr, error, isSuccess} = useMutation(updateData);
 return { updatePollFn, isLoad , isErr, error, isSuccess };
 };
+
+// Like posts
+export const useLikePost = () => {
+  const likePost = async (id: any) => {
+    let response = await axiosConfig.patch(`/posts/like/${id}`);
+    response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: likePostFn, isLoading : isLikeLoading , isError : isLikeError, error, isSuccess} = useMutation(likePost);
+  return { likePostFn, isLikeLoading, isLikeError, error, isSuccess };
+};
