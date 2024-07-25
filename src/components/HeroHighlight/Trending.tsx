@@ -3,6 +3,7 @@ import { useFetchTrending } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 import parse from 'html-react-parser';
 import Link from 'next/link'
+import LikeCommentShare from '../UI/LikeCommentShare';
 
 const Trending = ({howMany} : any) => {
   const { trending, isError, isLoading } = useFetchTrending();
@@ -22,7 +23,9 @@ const Trending = ({howMany} : any) => {
                 <p className='text-[12px] font-[400] line-clamp-2 parser'>
                   {parse(item?.content)}
                 </p>
+                <LikeCommentShare post={item} size={13} />
               </div>
+
 
               <img src={item?.media} width={100} height={100} alt='' />
             </Link>

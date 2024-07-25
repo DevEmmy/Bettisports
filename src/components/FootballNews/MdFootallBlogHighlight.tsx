@@ -1,13 +1,10 @@
 'use client'
-import React, { useEffect } from 'react'
-import { RiChat2Line, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri'
+import React from 'react'
 import TimeAgo from 'react-timeago'
-import { useLikePost } from '@/hooks/PostRequests'
+import LikeCommentShare from '../UI/LikeCommentShare'
 
 const MdFootballBlogHighlight = (item : any) => {
-    const handleLike = () => {
-        useLikePost(item?._id)
-    }
+
 
     return (
         <div className='grid grid-cols-[2fr_3fr] gap-3 py-2'>
@@ -22,11 +19,7 @@ const MdFootballBlogHighlight = (item : any) => {
                         <TimeAgo date={item?.createdAt} />
                     </p>
 
-                    <div className='flex gap-3'>
-                        <RiHeart2Line onClick={handleLike}/>
-                        <RiChat2Line />
-                        <RiShareForward2Line />
-                    </div>
+                    <LikeCommentShare post={item} size={12}/>
                 </div>
             </div>
         </div>

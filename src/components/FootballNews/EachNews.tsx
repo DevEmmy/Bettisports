@@ -2,6 +2,7 @@ import React from 'react'
 import { RiChat2Line, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri'
 import parser from "html-react-parser"
 import Link from 'next/link';
+import LikeCommentShare from '../UI/LikeCommentShare';
 
 interface Props{
     size?: string | null;
@@ -11,23 +12,21 @@ interface Props{
 const EachNews = ({size,item} : Props)  => {
     
     return (
-        <Link href={`/blog/${item?._id}`} className='h-full flex flex-col gap-2'>
-            <img src={item?.media} alt="" className='w-full h-[180px]'/>
+        <div className='h-full flex flex-col gap-2'>
+            <Link href={`/blog/${item?._id}`}>
+            <img src={item?.media} alt="" className='w-full h-[180px] mb-1'/>
             <p className={`${size == "lg" && "text-[20px] font-[600]"}`}>
-                {item?.title}
+            {item?.title}
             </p>
+            </Link>
             <div className={`flex items-center ${size == "lg" ? "text-[16px]" : "text-[12px]"} gap-10 text-gray-400`}>
                 <p className='parser line-clamp-2'>
                     {parser(item?.content || "")}
                 </p>
 
-                <div className='flex gap-3'>
-                    <RiHeart2Line size={18}/>
-                    <RiChat2Line size={18}/>
-                    <RiShareForward2Line size={18}/>
-                </div>
+                <LikeCommentShare post={item} size={18} />
             </div>
-        </Link>
+        </div>
     )
 }
 

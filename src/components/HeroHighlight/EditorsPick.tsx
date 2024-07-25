@@ -5,6 +5,7 @@ import { useFetchEditorsPick } from '@/hooks/PostRequests'
 import Loader from '../Loader'
 import parse from 'html-react-parser';
 import Link from 'next/link'
+import LikeCommentShare from '../UI/LikeCommentShare'
 
 const EditorsPick = () => {
 
@@ -52,8 +53,11 @@ const EditorsPick = () => {
                     <p className='font-[600] text-[12px]'>
                       {item?.title}
                     </p>
-                    <p className='!text-[10px] line-clamp-2 parser'>{parse(item?.content)}</p>
+                    <p className='!text-[10px] line-clamp-2 parser mb-2'>{parse(item?.content)}</p>
+                    <LikeCommentShare post={item} size={12}/>
                   </div>
+
+                  
 
                 </Link>
               )

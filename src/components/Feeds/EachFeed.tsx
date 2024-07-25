@@ -1,6 +1,7 @@
 import React from 'react'
 import GrayLine from '../UI/GrayLine'
 import TimeAgo from 'react-timeago'
+import LikeCommentShare from '../UI/LikeCommentShare'
 import { RiBookmark2Line, RiChat2Line, RiHeart2Line, RiShareForwardLine } from 'react-icons/ri'
 
 const EachFeed = ({item} : any) => {
@@ -31,6 +32,7 @@ const EachFeed = ({item} : any) => {
                 <RiBookmark2Line />
                 <RiShareForwardLine />
             </div>
+            {/* <LikeCommentShare post={item} size={12} /> */}
         </div>
     </div>
   )
