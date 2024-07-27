@@ -223,7 +223,7 @@ const Page: React.FC = () => {
                             </div>
 
                             <div className="grid grid-cols-2 justify-between my-5">
-                                {gender.map((g, i) => (
+                                {gender?.map((g, i) => (
                                     <div key={i} className='flex flex-col gap-2'>
                                         <p className='text-[16px] font-[600] text-secondaryBlue'>{g}</p>
                                         {categoriesList?.map((c, j) => (
@@ -250,7 +250,7 @@ const Page: React.FC = () => {
 
                     <OverviewContainer title={"Format"} >
                         <div className='flex flex-col gap-2'>
-                            {formats.map((item, idx) => (
+                            {formats?.map((item, idx) => (
                                 <div
                                     key={idx}
                                     className='flex justify-between gap-3 border-b py-3'

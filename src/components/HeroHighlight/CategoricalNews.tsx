@@ -55,7 +55,7 @@ const CategoricalNews = () => {
     <div>
         <div className='flex justify-between items-center border-b border-b-gray-400 '>
             {
-                filter.map((item: any, i: number)=> {
+                filter?.map((item: any, i: number)=> {
                     return(
                         <div key={i} className={`text-[14px] text-grayColor ${active == i && "text-black font-[800] border-b-2 border-b-secondaryBlue"} cursor-pointer transition-all pb-3`} onClick={()=> setActive(i)}>
                             {item?.title}

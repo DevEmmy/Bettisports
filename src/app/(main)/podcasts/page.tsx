@@ -37,7 +37,7 @@ const page = () => {
 
       <div className="grid grid-cols-5 gap-5">
         {
-          [1, 2, 3, 4, 5, 1, 2, 3, 4, 5].map((item, i) => {
+          [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]?.map((item, i) => {
             return (
               <Preview />
             )
@@ -49,7 +49,7 @@ const page = () => {
 
       <div className="grid grid-cols-5 gap-5">
         {
-          [1, 2, 3, 4, 5, 1, 2, 3, 4, 5].map((item, i) => {
+          [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]?.map((item, i) => {
             return (
               <Preview />
             )
@@ -61,7 +61,7 @@ const page = () => {
 
       <div className="grid grid-cols-5 gap-5">
         {
-          [1, 2, 3, 4, 5].map((item, i) => {
+          [1, 2, 3, 4, 5]?.map((item, i) => {
             return (
               <Preview />
             )
