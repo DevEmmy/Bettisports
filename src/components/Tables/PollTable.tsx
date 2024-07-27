@@ -21,7 +21,7 @@ const PollTable = () => {
         </th>
         {['Questions','Format','Duration','Date'].map((head: string, i: number) => {
           return (
-            <th className='text-sm'>
+            <th className='text-sm' key={i}>
               {head != 'Comment' ? (
                 head
               ) : (

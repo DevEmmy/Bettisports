@@ -15,7 +15,7 @@ const SmFootballBlogHighlight = ({item} : any) => {
                   <TimeAgo date={item?.createdAt} />
                 </p>
 
-                <LikeCommentShare post={item} size={12} />
+                <LikeCommentShare id={item?._id} size={12} />
             </div>
         </div>
         <img src={item?.media} alt="" className='h-full' />

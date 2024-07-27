@@ -95,9 +95,11 @@ export const useEachPostQuery = (id: string) => {
     return response.data.payload;
   };
 
-  const { data: post, isError, isLoading } = useQuery(id, fetchData);
+  const { data: post, isError, isLoading, refetch } = useQuery(id, fetchData , {
+    enabled: true
+  });
 
-  return { post, isError, isLoading };
+  return { post, isError, isLoading, refetch };
 };
 
 // Fetch Polls

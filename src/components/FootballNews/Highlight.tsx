@@ -14,7 +14,7 @@ const Highlight = () => {
         {
           icons?.map((icon: string, i: number)=>{
             return(
-              <div>
+              <div key={i}>
                 <img src={icon} alt="" className='w-[60px] h-[60px] rounded-full border-4 border-secondaryBlue'/>
               </div>
             )

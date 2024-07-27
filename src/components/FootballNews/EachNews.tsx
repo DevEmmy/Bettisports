@@ -24,7 +24,7 @@ const EachNews = ({size,item} : Props)  => {
                     {parser(item?.content || "")}
                 </p>
 
-                <LikeCommentShare post={item} size={18} />
+                <LikeCommentShare id={item?._id} size={18} />
             </div>
         </div>
     )

@@ -19,7 +19,7 @@ const PostsTable = () => {
         {['Title', 'Author', 'Categories', 'Tags', 'Comment', 'Date'].map(
           (head: string, i: number) => {
             return (
-              <th className='text-sm'>
+              <th className='text-sm' key={i}>
                 {head != 'Comment' ? (
                   head
                 ) : (

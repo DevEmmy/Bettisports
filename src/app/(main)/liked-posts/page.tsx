@@ -13,7 +13,7 @@ const page = () => {
         <div className='grid col-span-4 grid-cols-4 gap-5'>
             
             {
-                [1,2,3,4,5,6,7]?.map((item, i)=>{
+                [1,2,3,4,5,6,7]?((item, i)=>{
                     return(
                         <EachBlog key={i}/>
                     )

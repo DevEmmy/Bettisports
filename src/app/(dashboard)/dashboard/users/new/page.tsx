@@ -95,7 +95,7 @@ const page = () => {
                 {
                     fields?.map((field, i) => {
                         return (
-                            <div className=''>
+                            <div className='' key={i}>
                                 <p>{field.title}</p>
                                 <input type={field.type || "text"} className='p-3 border' value={field.value} onChange={field.onchange} required={field.required ? field.required : false}/>
                             </div>

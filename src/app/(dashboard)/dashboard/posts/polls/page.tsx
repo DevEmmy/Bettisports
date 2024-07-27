@@ -197,8 +197,8 @@ const page = () => {
                 name='days'
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
-                {Days?.map((item) => (
-                  <option className=''>
+                {Days?.map((item : any, i: number) => (
+                  <option className='' key={i}>
                     {item == 0
                       ? 'Days'
                       : item == 1
@@ -213,7 +213,7 @@ const page = () => {
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
                 {Hours?.map((item) => (
-                  <option className='' value={item}>
+                  <option className='' value={item} key={item}>
                     {item == 0
                       ? 'Hours'
                       : item == 1
@@ -227,8 +227,8 @@ const page = () => {
                 name='minutes'
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
-                {Minutes?.map((item) => (
-                  <option className=''>
+                {Minutes?.map((item: any) => (
+                  <option className='' key={item}>
                     {item == 0
                       ? 'Minutes'
                       : item == 1

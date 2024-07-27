@@ -17,7 +17,7 @@ const MdFootballBlogHighlight = (item : any) => {
                         <TimeAgo date={item?.createdAt} />
                     </p>
 
-                    <LikeCommentShare post={item} size={12}/>
+                    <LikeCommentShare id={item?.id} size={12}/>
                 </div>
             </div>
         </div>

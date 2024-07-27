@@ -78,7 +78,7 @@ const InFocus = () => {
                         {
                             competition.map((comp: any, i: number) => {
                                 return (
-                                    <div className='flex items-center justify-between py-5'>
+                                    <div className='flex items-center justify-between py-5' key={i}>
                                         <p>{comp.title}</p>
                                         <RiArrowRightLine />
                                     </div>

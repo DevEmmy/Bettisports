@@ -31,7 +31,7 @@ const BlogContent = ({ id }: Props) => {
       <div className='my-5 flex flex-col gap-5 text-[#25282B]'>
         <img src={post.media} alt={post.title} />
         <div>{parser(post.content)}</div>
-        <LikeCommentShare post={post} size={19} />
+        <LikeCommentShare id={id} size={19} />
 
       </div>
 

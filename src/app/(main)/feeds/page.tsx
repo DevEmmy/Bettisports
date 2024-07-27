@@ -109,7 +109,7 @@ const page = () => {
             <Loader />
           ) : feeds.length > 0 ? (
             feeds.map((item: any, i: number) => {
-              return <EachFeed item={item} />;
+              return <EachFeed item={item} key={i} />;
             })
           ) : (
             <p>There is no feeds..</p>

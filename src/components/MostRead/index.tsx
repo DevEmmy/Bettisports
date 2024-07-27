@@ -38,7 +38,7 @@ const MostRead = () => {
                   <div className='flex items-center text-[12px] justify-between'>
                     <ReactTimeago date={item?.createdAt || 'July 4, 2024'} />
 
-                    <LikeCommentShare post={item} size={18} />
+                    <LikeCommentShare id={item._id} size={18} />
                   </div>
                 </div>
               </div>

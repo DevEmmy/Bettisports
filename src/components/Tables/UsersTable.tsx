@@ -25,7 +25,7 @@ const UsersTable = () => {
         </th>
         {['Username','Name','Email','Role','Posts'].map((head: string, i: number) => {
           return (
-            <th className='text-xs'>
+            <th className='text-xs' key={i}>
               {head}
             </th>
           );

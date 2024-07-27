@@ -6,6 +6,7 @@ import Loader from '../Loader';
 import parser from 'html-react-parser';
 import Link from 'next/link';
 import { toastError, toastSuccess } from '@/utils/toast';
+import LikeCommentShare from '../UI/LikeCommentShare';
 
 const News = () => {
   const { newsBreaking, isError, isLoading } = useFetchNewsBreaking();
@@ -55,7 +56,9 @@ const News = () => {
         ) : newsBreaking?.length > 0 ? 
         (  newsBreaking.slice(start, end)?.map((item: any, i: number) => {
             return (
-              <Link href={`/blog/${item?._id}`} className={`my-2 pr-5 ${i == 0 ? 'pl-0' : 'pl-5'} flex-col gap-2`}>
+              <div key={i} className={`my-2 pr-5 ${i == 0 ? 'pl-0' : 'pl-5'} flex-col gap-2`}>
+              
+              <Link href={`/blog/${item?._id}`} >
                 <p className='text-[16px] line-clamp-2'>
                     {item?.title}
                 </p>
@@ -63,6 +66,8 @@ const News = () => {
                   {parser(item?.content)}
                 </p>
               </Link>
+              <LikeCommentShare id={item?._id} size={15} />
+              </div>
             );
           })
         ) : (
