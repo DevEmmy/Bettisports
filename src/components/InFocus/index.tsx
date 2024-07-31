@@ -93,12 +93,17 @@ const InFocus = () => {
                 {
                     isLoading ?
                     <Loader/>
-                    :
+                    : inFocus?.slice(1,4).length > 0 ?
                     inFocus?.slice(1,4).map((item: any, i:number) => {
                         return (
                             <SmFootballBlogHighlight key={i} item={item} />
                         )
-                    })
+                    }) :
+                    (
+                        <p>
+                            There is no inFocus post
+                        </p>
+                    )
                 }
             
             </div>

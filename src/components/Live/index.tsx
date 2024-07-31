@@ -48,7 +48,7 @@ const Live = () => {
                     {
                         [1, 2, 3, 4, 5].map((item: any, i: number) => {
                             return (
-                                <SmFootballBlogHighlight key={i} />
+                                <SmFootballBlogHighlight key={i} item={item} />
                             )
                         })
                     }

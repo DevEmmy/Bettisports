@@ -1,7 +1,7 @@
 import React from 'react'
 import EachVideo from '../Videos/EachVideo'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
-import MdFootallBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
+// import MdFootallBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
 import MdFootballBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
 
 const InternationalFootball = () => {
