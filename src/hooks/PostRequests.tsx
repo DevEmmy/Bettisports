@@ -386,3 +386,15 @@ export const useLikePost = () => {
   const { mutate: likePostFn, isLoading : isLikeLoading , isError : isLikeError, error, isSuccess} = useMutation(likePost);
   return { likePostFn, isLikeLoading, isLikeError, error, isSuccess };
 };
+
+// save posts
+export const useSavePost = () => {
+  const savePost = async (id: any) => {
+    let response = await axiosConfig.patch(`/posts/save/${id}`);
+    response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: savePostFn, isLoading : isSaveLoading , isError : isSaveError, error, isSuccess : isSaveSuccess } = useMutation(savePost);
+  return { savePostFn, isSaveLoading, isSaveError, error, isSaveSuccess };
+};
