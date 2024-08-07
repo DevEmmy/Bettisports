@@ -13,7 +13,7 @@ const Bar = ({title, value, mySelect=false}: Props) => {
             <p className='text-[12px] font-[500]'>{title}</p>
         </div>
 
-        <p className='text-[12px]'>{value}%</p>
+        <p className='text-[12px]'>{Math.round(value)}%</p>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { RiChat2Fill } from 'react-icons/ri'
 import DateFormatter from '../UI/DateFormatter'
+import TimeAgo from 'react-timeago'
 
 interface Props {
     item: any
@@ -49,7 +50,7 @@ const TableData = ({ item} : any) => {
 
             <div>
                 <p className='text-xs'>
-                    <DateFormatter dateAdded={item?.updatedAt} />
+                    <TimeAgo date={item?.createdAt} />
                 </p>
             </div>
         </div>

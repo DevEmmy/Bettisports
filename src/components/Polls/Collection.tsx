@@ -61,7 +61,7 @@ const Collection = ({choices, id, totalVotes}: Props) => {
         {
             choices?.map((item: any, i: number)=>{
                 return(
-                    <div onClick={() => {
+                    <div key={i} onClick={() => {
                       // setDisabled(true);
                       handleVote(i)
                       }}

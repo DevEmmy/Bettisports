@@ -17,9 +17,9 @@ const News = () => {
                             <EachNews item={newsBreaking[0]} />
                         </div> */}
                         {
-                            newsBreaking.slice(0,8).map((news: any, i: number) => {
+                            newsBreaking.slice(0,12).map((news: any, i: number) => {
                                 return (
-                                    <EachNews item={news} />
+                                    <EachNews item={news} key={i} />
                                 )
                             })
                         }

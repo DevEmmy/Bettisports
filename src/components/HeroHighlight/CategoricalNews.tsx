@@ -1,10 +1,6 @@
 "use client"
-import { useFetchTrending } from '@/hooks/PostRequests'
 import React, { useState } from 'react'
 import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
-import Loader from '../Loader'
-import parse from 'html-react-parser';
-import Link from 'next/link'
 import Trending from './Trending'
 import Recents from './Recents'
 import Popular from './Popular'
@@ -25,31 +21,6 @@ const CategoricalNews = () => {
             tag: <Popular howMany={5}/>
         }
     ]
-
-    const news = [
-        {
-            url : "",
-            title: "Five Reasons Why You Should Ride Elephants In France",
-            date: "March 15, 2024"
-        },
-        {
-            url : "",
-            title: "Five Reasons Why You Should Ride Elephants In France",
-            date: "March 15, 2024"
-        },
-        {
-            url : "",
-            title: "Five Reasons Why You Should Ride Elephants In France",
-            date: "March 15, 2024"
-        },
-        {
-            url : "",
-            title: "Five Reasons Why You Should Ride Elephants In France",
-            date: "March 15, 2024"
-        }
-    ]
-
-    const {trending, isError, isLoading} = useFetchTrending();
 
   return (
     <div>

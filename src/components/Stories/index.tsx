@@ -8,7 +8,28 @@ import { useFetchStories } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 
 const Stories = () => {
+  const [active,setActive] = useState(2);
   const news = [
+    {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg',
+      date: 'March 28, 2024',
+      title: 'Alexander Isak Speaks Out On His Newcastle Future Amid ',
+    },
+    {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg',
+      date: 'March 28, 2024',
+      title: '1 Alexander Isak Speaks Out On His Newcastle Future Amid ',
+    },
+    {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg',
+      date: 'March 28, 2024',
+      title: '2 Alexander Isak Speaks Out On His Newcastle Future Amid ',
+    },
+    {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg',
+      date: 'March 28, 2024',
+      title: 'Alexander Isak Speaks Out On His Newcastle Future Amid ',
+    },
     {
       url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg',
       date: 'March 28, 2024',
@@ -38,7 +59,7 @@ const Stories = () => {
       <div className='flex flex-col gap-5'>
         <VerticalHeader title='Stories' />
 
-        <div className='flex gap-5 overflow-hidden relative'>
+          <div className='flex gap-5 overflow-x-auto relative'>
           {isLoading ? (
             <Loader />
           ) : stories?.length > 0 ? (
@@ -59,7 +80,42 @@ const Stories = () => {
               </div>
             </>
           )}
+
+
+           {/* Testing */}
+{/*         
+        {
+          news?.map((item: any, i: number) => {
+            return (
+            <div className={`min-w-[25%] h-[400px] relative`}>
+              <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
+
+              <div className="overlay" />
+
+
+              <div className="details p-3">
+                <p className='text-[10px]'>{item?.date}</p>
+                <p className='font-[600]'>
+                {i == active ? 'Active' : 'normal'}  {item?.title} 
+                </p>
+              </div>
+            </div>
+            )
+          })
+        }
+
+        
+              <div className='carousel_btn left-2'>
+                <RiArrowLeftSLine className='w-6 h-6' />
+              </div>
+              <div className='carousel_btn right-2'>
+                <RiArrowRightSLine className='w-6 h-6' />
+              </div> */}
+  
+
         </div>
+
+
       </div>
 
       <div className='flex flex-col gap-5'>

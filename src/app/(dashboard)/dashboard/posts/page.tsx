@@ -1,14 +1,13 @@
 "use client"
 import { usePostQuery } from '@/hooks/PostRequests'
-import Table from '@/components/Tables'
+import PostsTable from '@/components/Tables/PostsTable'
 import Link from 'next/link'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
 import { RiChat1Fill } from 'react-icons/ri'
 
 const page = () => {
-    const { posts, isError, isLoading } = usePostQuery();
-    console.log(posts)
+    // console.log(posts)
 
     return (
         <div className='flex flex-col gap-5 max-w-full overflow-hidden'>
@@ -57,8 +56,7 @@ const page = () => {
 
             </div>
 
-            <Table thead={["Title", "Author", "Categories", "Tags", "Comment", "Date"]}
-                data={posts} isLoading={isLoading} />
+            <PostsTable  />
         </div>
     )
 }

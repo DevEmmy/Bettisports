@@ -37,7 +37,7 @@ const page = () => {
             const remainingMinutes = item.duration % 60;
 
             return (
-              <div className='border border-gray-300 shadow-md'>
+              <div className='border border-gray-300 shadow-md' key={i}>
                 <img src='./img.jpg' alt='' className='h-[150px] w-full' />
                 <div className='p-3 flex flex-col gap-2'>
                   <p className='text-[14px] font-[500]'>{item.question}</p>

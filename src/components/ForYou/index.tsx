@@ -4,6 +4,7 @@ import React from 'react';
 import Line from '../UI/Line';
 import Loader from '../Loader';
 import  {useFetchForYou}  from '@/hooks/PostRequests';
+import Link from 'next/link';
 
 
 const ForYou = () => {
@@ -54,6 +55,7 @@ const ForYou = () => {
         ? 
           forYou.map((item: any, i: number) => {
             return (
+              <Link href={`/blog/${item?._id}`} >
               <div
                 key={i}
                 className={`pr-5 ${
@@ -63,6 +65,7 @@ const ForYou = () => {
                 <p className='text-[10px]'>{item?.date}</p>
                 <p>{item?.text}</p>
               </div>
+              </Link>
             );
           })
          : (

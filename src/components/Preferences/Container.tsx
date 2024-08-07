@@ -26,7 +26,7 @@ const Container = ({ title, items }: Props) => {
                 {
                     items.map((item: string, i: number) => {
                         return (
-                            <div onClick={() => handle(item)} className='cursor-pointer'>
+                            <div onClick={() => handle(item)} className='cursor-pointer' key={i}>
                                 <Element title={item} key={i} selected={selected.includes(item)} />
                             </div>
                         )

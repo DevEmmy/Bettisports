@@ -17,7 +17,7 @@ const Preview = ({images, setImages}: Prop ) => {
             {
                 images.map((img: any, i: number)=>{
                     return(
-                        <img src={img} alt="" className='w-full h-[80vh] object-contain'/>
+                        <img src={img} key={i} alt="" className='w-full h-[80vh] object-contain'/>
                     )
                 })
             }

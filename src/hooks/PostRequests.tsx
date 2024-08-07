@@ -9,15 +9,15 @@ const api = process.env.NEXT_PUBLIC_API as string;
 export const useFetchFeeds = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/feeds`);
-    return response.data.payload;
+    return response.data.reverse();
   };
 
-  const { data: Feed, isError, isLoading  } = useQuery('feed', fetchData);
+  const { data: feeds, isError, isLoading, refetch  } = useQuery('feeds', fetchData, {
+    enabled: true
+  });
 
-  return { Feed, isError, isLoading };
+  return { feeds, isError, isLoading, refetch };
 };
-
-
 
 // Posts
 export const usePostQuery = () => {
@@ -95,9 +95,11 @@ export const useEachPostQuery = (id: string) => {
     return response.data.payload;
   };
 
-  const { data: post, isError, isLoading } = useQuery(id, fetchData);
+  const { data: post, isError, isLoading, refetch } = useQuery(id, fetchData , {
+    enabled: true
+  });
 
-  return { post, isError, isLoading };
+  return { post, isError, isLoading, refetch };
 };
 
 // Fetch Polls
@@ -363,8 +365,6 @@ export const useCreateFeed = () => {
   return { createFeedFn, createFeedLoading  , isError , error, isSuccess };
 };
 
-
-
 export const useUpdatePoll = (id : string) => {
   const updateData = async (data: any) => {
     const response = await axios.put(`${api}/polls/${id}`);
@@ -373,4 +373,28 @@ export const useUpdatePoll = (id : string) => {
 
 const { mutate: updatePollFn, isLoading : isLoad , isError : isErr, error, isSuccess} = useMutation(updateData);
 return { updatePollFn, isLoad , isErr, error, isSuccess };
+};
+
+// Like posts
+export const useLikePost = () => {
+  const likePost = async (id: any) => {
+    let response = await axiosConfig.patch(`/posts/like/${id}`);
+    response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: likePostFn, isLoading : isLikeLoading , isError : isLikeError, error, isSuccess} = useMutation(likePost);
+  return { likePostFn, isLikeLoading, isLikeError, error, isSuccess };
+};
+
+// save posts
+export const useSavePost = () => {
+  const savePost = async (id: any) => {
+    let response = await axiosConfig.patch(`/posts/save/${id}`);
+    response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: savePostFn, isLoading : isSaveLoading , isError : isSaveError, error, isSuccess : isSaveSuccess } = useMutation(savePost);
+  return { savePostFn, isSaveLoading, isSaveError, error, isSaveSuccess };
 };

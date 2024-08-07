@@ -22,7 +22,7 @@ const Live = () => {
                             {
                                 [1,2,3,4].map((item: any, i: number)=>{
                                     return(
-                                        <div className='text-white'>
+                                        <div className='text-white' key={i}>
                                             <p className='text-[12px] text-defaultYellow uppercase'>Follow Live</p>
                                             <p className='text-[24px] font-[600] border-b border-white'>ARS 0 - 0 MCI</p>
                                             <div className="flex text-[10px] justify-between items-center my-2">
@@ -48,7 +48,7 @@ const Live = () => {
                     {
                         [1, 2, 3, 4, 5].map((item: any, i: number) => {
                             return (
-                                <SmFootballBlogHighlight key={i} />
+                                <SmFootballBlogHighlight key={i} item={item} />
                             )
                         })
                     }

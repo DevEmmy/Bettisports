@@ -39,7 +39,7 @@ const page = () => {
         {
           [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]?.map((item, i) => {
             return (
-              <Preview />
+              <Preview key={i} />
             )
           })
         }
@@ -51,7 +51,7 @@ const page = () => {
         {
           [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]?.map((item, i) => {
             return (
-              <Preview />
+              <Preview key={i} />
             )
           })
         }
@@ -63,7 +63,7 @@ const page = () => {
         {
           [1, 2, 3, 4, 5]?.map((item, i) => {
             return (
-              <Preview />
+              <Preview key={i} />
             )
           })
         }

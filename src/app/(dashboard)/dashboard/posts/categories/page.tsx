@@ -1,6 +1,6 @@
 'use client';
 import OverviewContainer from '@/components/Shared/OverviewContainer'
-import Table from '@/components/Tables'
+import Table from '@/components/Tables/PostsTable'
 import React, { useState, ChangeEvent, useEffect } from 'react'
 import { HiCog, HiSearch, HiTrash } from 'react-icons/hi'
 import { RiCalendar2Fill, RiGalleryLine, RiKeyLine, RiMicLine, RiPinDistanceLine, RiVideoLine } from 'react-icons/ri'

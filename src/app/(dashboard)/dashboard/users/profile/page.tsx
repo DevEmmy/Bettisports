@@ -51,9 +51,9 @@ const page = () => {
 
             <div className='flex flex-col gap-3 add'>
                 {
-                    fields?.map((field, i) => {
+                    fields?.map((field, i ) => {
                         return (
-                            <div className=''>
+                            <div className='' key={i}>
                                 <p>{field.title}</p>
                                 <input type={"text"} className='p-3 border' />
                             </div>
