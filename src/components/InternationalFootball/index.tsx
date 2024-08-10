@@ -1,7 +1,7 @@
 import React from 'react'
 import EachVideo from '../Videos/EachVideo'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
-import MdFootallBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
+// import MdFootallBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
 import MdFootballBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
 
 const InternationalFootball = () => {
@@ -61,7 +61,7 @@ const InternationalFootball = () => {
                     {
                         filter.map((item: any, i: number) => {
                             return (
-                                <p className='text-[14px]'>{item?.title}</p>
+                                <p className='text-[14px]' key={i}>{item?.title}</p>
                             )
                         })
                     }
@@ -72,7 +72,7 @@ const InternationalFootball = () => {
                 {
                     filterII.map((item: any, i: number) => {
                         return (
-                            <p className='text-[14px]'>{item?.title}</p>
+                            <p className='text-[14px]' key={i}>{item?.title}</p>
                         )
                     })
                 }

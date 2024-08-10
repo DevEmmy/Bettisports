@@ -29,7 +29,7 @@ const page = () => {
                 {
                     [0, 1]?.map((item, i) => {
                         return (
-                            <EachNotification />
+                            <EachNotification key={i}/>
                         )
                     })
                 }
