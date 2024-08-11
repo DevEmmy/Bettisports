@@ -3,7 +3,7 @@ import { RiShareForwardLine, RiThumbUpLine } from 'react-icons/ri'
 
 const EachComment = ({item} : any) => {
 
-    const date = new Date(item.updatedAt);
+const date = new Date(item.updatedAt);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const month = months[date.getMonth()];
   const day = date.getDate();

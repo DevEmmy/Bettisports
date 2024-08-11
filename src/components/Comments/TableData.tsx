@@ -1,15 +1,23 @@
+import Link from 'next/link'
 import React from 'react'
 import { RiChat2Fill } from 'react-icons/ri'
+import DateFormatter from '../UI/DateFormatter'
 
-const TableData = () => {
+interface Props {
+    item: any
+}
+
+const TableData = ({ item} : any) => {
     return (
         <div className='grid grid-cols-5 gap-5'>
             <div className='flex flex-col gap-2'>
                 <div className='flex gap-2'>
-                    <img src="./img.png" alt="" className='size-[40px]' />
+                    <img src={item?.author?.profilePicture ? item?.author?.profilePicture : './img'} alt="" className='size-[40px]' />
                     <div className='!text-xs'>
-                        <p className='!text-xs'>Adetola Williams</p>
-                        <p className='text-secondaryBlue text-xs'>willy@gmail.com</p>
+                        <p className='!text-xs'>{item?.author.firstName} {' '} {item?.author.lastName}</p>
+                        <p className='text-secondaryBlue text-xs'>
+                            {item?.author.email}
+                        </p>
                     </div>
                 </div>
                 <div className='flex gap-2 !text-[8px] comment-action'>
@@ -21,7 +29,9 @@ const TableData = () => {
             </div>
 
             <div className='col-span-2'>
-                <p className='text-xs text-gray-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, magni. Esse saepe amet facilis soluta vero.</p>
+                <p className='text-xs text-gray-600'>
+                    {item?.comment}
+                </p>
                 <div className='flex gap-4 !text-[10px] comment-action'>
                     <p className='text-green-600'>Approve</p>
                     <p className='text-secondaryBlue'>Reply</p>
@@ -32,13 +42,15 @@ const TableData = () => {
             </div>
 
             <div className=''>
-                <p className='text-xs text-secondaryBlue'>Where will Kylan Mbappe Go Next? 7 clubs that are in the Race.</p>
-                <p className='text-xs text-secondaryBlue'>view post</p>
+                <p className='text-xs text-secondaryBlue'>{item?.inResponse?.title}</p>
+                <Link href={`/blog/${item?._id}`} className='text-xs text-secondaryBlue'>view post</Link>
                 <RiChat2Fill />
             </div>
 
             <div>
-                <p className='text-xs'>2024/01/29 at 10:24 pm</p>
+                <p className='text-xs'>
+                    <DateFormatter dateAdded={item?.updatedAt} />
+                </p>
             </div>
         </div>
     )

@@ -68,7 +68,7 @@ const page = () => {
 
         <div className='flex flex-col col-span-4 gap-5'>
             {
-                preferences.map((item, i)=>{
+                preferences?.map((item, i)=>{
                     return(
                         <Container items={item?.items} title={item?.title} key={i}/>
                     )

@@ -1,6 +1,7 @@
 'use client';
 import { usePostQuery } from '@/hooks/PostRequests';
 import Loader from '../Loader';
+import Link from 'next/link';
 
 const Recents = ({howMany} : any) => {
   const { posts, isError, isLoading } = usePostQuery();
@@ -12,7 +13,7 @@ const Recents = ({howMany} : any) => {
       ) : posts.length > 0 ? (
         slicedPosts.map((item: any, i: number) => {
           return (
-            <div className='flex justify-between gap-2 py-3' key={i}>
+            <Link href={`/blog/${item?._id}`} className='flex justify-between gap-2 py-3' key={i}>
               <div className='flex gap-2 flex-col text-grayColor'>
                 <p className='text-[14px] font-[500]'>{item?.title}</p>
                 <p className='text-[12px] font-[400]'>
@@ -26,7 +27,7 @@ const Recents = ({howMany} : any) => {
                 height={100}
                 alt={`${item?.title} on ${item?.date}`}
               />
-            </div>
+            </Link>
           );
         })
       ) : (

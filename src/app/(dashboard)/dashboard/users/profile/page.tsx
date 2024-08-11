@@ -51,7 +51,7 @@ const page = () => {
 
             <div className='flex flex-col gap-3 add'>
                 {
-                    fields.map((field, i) => {
+                    fields?.map((field, i) => {
                         return (
                             <div className=''>
                                 <p>{field.title}</p>

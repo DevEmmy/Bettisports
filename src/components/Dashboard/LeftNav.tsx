@@ -93,7 +93,7 @@ const LeftNav = () => {
 
             <div className="flex flex-col gap-2">
                 {
-                    navItems.map((item, i) => {
+                    navItems?.map((item, i) => {
                         return (
                             <>
                                 {

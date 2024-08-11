@@ -91,7 +91,7 @@ const page = () => {
     const newPoll = {
       question,
       format: 'string',
-      choices: choices.map((choice) => ({
+      choices: choices?.map((choice) => ({
         choiceText: choice,
         votes: 0,
         voters: [],
@@ -194,7 +194,7 @@ const page = () => {
                 name='days'
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
-                {Days.map((item) => (
+                {Days?.map((item) => (
                   <option className=''>
                     {item == 0
                       ? 'Days'
@@ -209,7 +209,7 @@ const page = () => {
                 name='hours'
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
-                {Hours.map((item) => (
+                {Hours?.map((item) => (
                   <option className='' value={item}>
                     {item == 0
                       ? 'Hours'
@@ -224,7 +224,7 @@ const page = () => {
                 name='minutes'
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
-                {Minutes.map((item) => (
+                {Minutes?.map((item) => (
                   <option className=''>
                     {item == 0
                       ? 'Minutes'

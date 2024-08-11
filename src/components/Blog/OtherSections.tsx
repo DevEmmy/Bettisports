@@ -38,7 +38,7 @@ const OtherSections = () => {
                 <Loader/>
                 :
                 popular.length > 0 ?
-                popular.slice(0,4).map((item: any, i: number) => {
+                popular.slice(0,4)?.map((item: any, i: number) => {
                     return (
                         <SmFootballBlogHighlight item={item} />
                     )
@@ -58,7 +58,7 @@ const OtherSections = () => {
                 <Loader />
                 :
                  posts.length > 0 ?
-                 posts.slice(0,4).map((item: any, i: number) => {
+                 posts.slice(0,4)?.map((item: any, i: number) => {
                      return (
                          <SmFootballBlogHighlight item={item} />
                      )

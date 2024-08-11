@@ -5,6 +5,21 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 const api = process.env.NEXT_PUBLIC_API as string;
 
+// Fetch Polls
+export const useFetchFeeds = () => {
+  const fetchData = async () => {
+    const response = await axios.get(`${api}/feeds`);
+    return response.data.payload;
+  };
+
+  const { data: Feed, isError, isLoading  } = useQuery('feed', fetchData);
+
+  return { Feed, isError, isLoading };
+};
+
+
+
+// Posts
 export const usePostQuery = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/posts`);
@@ -16,23 +31,43 @@ export const usePostQuery = () => {
   return { posts, isError, isLoading };
 };
 
+// Category
+export const useFetchCategory = () => {
+  const fetchData = async () => {
+    const response = await axios.get(`${api}/categories`);
+    return response.data.payload;
+  };
+
+  const { data: categories, isError, isLoading } = useQuery('categories', fetchData);
+
+  return { categories, isError, isLoading };
+};
+
 // allcomments
 export const useFetchComments = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/comments`);
+    console.log(response);
     return response.data.payload;
   };
 
   const {
-    data: comments,
-    isError,
-    isLoading,
-  } = useQuery('comments', fetchData);
+    data: comments, isError: isErr, isLoading } = useQuery('comments', fetchData);
 
-  return { comments, isError, isLoading };
+  return { comments, isErr, isLoading};
 };
 
-// Comments by postID
+// Read Query
+export const useReadQuery = (id: string) => {
+  const fetchData = async () => {
+    const response = await axios.get(`${api}/posts/read/${id}`);
+    console.log(response);
+    return response.data.payload;
+  };
+  fetchData();
+};
+
+// Fetch Comments by postID
 export const useFetchPostComment = (id: string) => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/comments/post/${id}`);
@@ -52,6 +87,7 @@ export const useFetchPostComment = (id: string) => {
   return { comments, isErr, isLoad, refetch };
 };
 
+// Each Post
 export const useEachPostQuery = (id: string) => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/posts/${id}`);
@@ -64,17 +100,22 @@ export const useEachPostQuery = (id: string) => {
   return { post, isError, isLoading };
 };
 
+// Fetch Polls
 export const useFetchPolls = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/polls`);
     return response.data.payload;
   };
 
-  const { data: polls, isError, isLoading } = useQuery('polls', fetchData);
+  const { data: polls, isError, isLoading, refetch } = useQuery('polls', fetchData , {
+    enabled: true,
+  });
 
-  return { polls, isError, isLoading };
+  return { polls, isError, isLoading , refetch};
 };
 
+
+// Editor Pick
 export const useFetchEditorsPick = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/posts/class/editors`);
@@ -86,6 +127,7 @@ export const useFetchEditorsPick = () => {
   return { posts, isError, isLoading };
 };
 
+// Trending
 export const useFetchTrending = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/posts/class/trending`);
@@ -100,6 +142,7 @@ export const useFetchTrending = () => {
   return { trending, isError, isLoading };
 };
 
+// News-Breaking
 export const useFetchNewsBreaking = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/posts/class/news-breaking`);
@@ -114,6 +157,7 @@ export const useFetchNewsBreaking = () => {
   return { newsBreaking, isError, isLoading };
 };
 
+// Featured
 export const useFetchFeatured = () => {
   const fetchData = async () => {
     const response = await axios.get(`${api}/posts/class/featured`);
@@ -304,6 +348,29 @@ export const useCreateCategory = () => {
     return response;
   };
 
-  const { mutate: createCategoryFn, isLoading, isError, error, isSuccess} = useMutation(createCategory);
-  return { createCategoryFn, isLoading, isError, error, isSuccess };
+  const { mutate: createCategoryFn, isLoading : isLoad , isError : isErr, error, isSuccess} = useMutation(createCategory);
+  return { createCategoryFn, isLoad , isErr, error, isSuccess };
+};
+
+export const useCreateFeed = () => {
+  const createFeed = async (data: any) => {
+    let response = await axiosConfig.post('/feeds', data);
+    response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: createFeedFn, isLoading : createFeedLoading, isError, error, isSuccess} = useMutation(createFeed);
+  return { createFeedFn, createFeedLoading  , isError , error, isSuccess };
+};
+
+
+
+export const useUpdatePoll = (id : string) => {
+  const updateData = async (data: any) => {
+    const response = await axios.put(`${api}/polls/${id}`);
+    return response.data.payload;
+  }
+
+const { mutate: updatePollFn, isLoading : isLoad , isError : isErr, error, isSuccess} = useMutation(updateData);
+return { updatePollFn, isLoad , isErr, error, isSuccess };
 };

@@ -10,7 +10,7 @@ const page = () => {
             <div className='grid grid-cols-[2fr_1fr] mx-xPadding gap-10'>
                 <div className='grid grid-cols-3 gap-5'>
                     {
-                        [1, 2, 3, 4, 5, 6, 7].map((item, i) => {
+                        [1, 2, 3, 4, 5, 6, 7]?.map((item, i) => {
                             return (
                                 <EachBlog key={i} />
                             )

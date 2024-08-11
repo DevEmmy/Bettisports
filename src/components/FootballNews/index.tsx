@@ -45,7 +45,7 @@ const FootballNews = ({title}: any) => {
 
                 <div className='flex gap-5'>
                     {
-                        filter.map((item: any, i: number) => {
+                        filter?.map((item: any, i: number) => {
                             return (
                                 <p className='text-[14px]'>{item?.title}</p>
                             )
