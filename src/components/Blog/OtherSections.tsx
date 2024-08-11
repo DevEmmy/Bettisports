@@ -40,7 +40,7 @@ const OtherSections = () => {
                 popular.length > 0 ?
                 popular.slice(0,4)?.map((item: any, i: number) => {
                     return (
-                        <SmFootballBlogHighlight item={item} />
+                        <SmFootballBlogHighlight item={item} key={i} />
                     )
                 }) :
                 (
@@ -60,7 +60,7 @@ const OtherSections = () => {
                  posts.length > 0 ?
                  posts.slice(0,4)?.map((item: any, i: number) => {
                      return (
-                         <SmFootballBlogHighlight item={item} />
+                         <SmFootballBlogHighlight item={item} key={i} />
                      )
                  }) :
                  (

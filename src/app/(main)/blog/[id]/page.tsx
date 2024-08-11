@@ -19,6 +19,8 @@ const Blog = ({params}: any) => {
     <div className='grid grid-cols-[4fr_1.5fr] gap-10 mx-xPadding my-10'>
         <BlogContent id={id}/>
 
+        
+
         <OtherSections />
     </div>
   )
