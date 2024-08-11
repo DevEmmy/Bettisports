@@ -21,11 +21,15 @@ export const getUser = () => {
     const [user, setUser] = useState<any>(null)
 
     useEffect(() => {
-        let userObject = localStorage.getItem("user")
-        userObject = JSON.parse(userObject as string)
-        // console.log(userObject)
-        setUser(userObject)
-    }, []) 
+      const fetchUser = async () => {
+          let userObject = localStorage.getItem("user") as string;
+          userObject = JSON.parse(userObject);
+          setUser(userObject);
+      };
+  
+      fetchUser();
+  }, []);
+  
 
     return user;
 }
@@ -60,14 +64,32 @@ export const useCreateUser = () => {
   };
   
 
-
-  export const useFetchLikeAndSaved = (id : any) => {
+  export const useFetchLikeAndSaved = () => {
+    const [user, setUser] = useState<any>(null);
+  
+    // Fetch the user when the component mounts
+    useEffect(() => {
+      const userObject = JSON.parse(localStorage.getItem("user") as string);
+      setUser(userObject);
+    }, []);
+  
+    // Define the function to fetch data
     const fetchData = async () => {
-      const response = await axiosConfig.get(`/auth/likes-and-saved/${id}`);
-      return response.data.payload;
+      if (user) {
+        const response = await axiosConfig.get(`/auth/likes-and-saved/${user._id}`);
+        return response.data.payload;
+      }
+      return null;
     };
   
-    const { data: likesAndSaved, isError, isLoading  } = useQuery('likes-and-saved', fetchData);
+    // Use React Query to manage the fetch state
+    const { data: likesAndSaved, isError, isLoading } = useQuery(
+      ['likes-and-saved', user?._id], // Depend on user ID
+      fetchData,
+      {
+        enabled: !!user, // Only run the query if user is not null
+      }
+    );
   
     return { likesAndSaved, isError, isLoading };
   };

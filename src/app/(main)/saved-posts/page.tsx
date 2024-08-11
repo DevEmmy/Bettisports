@@ -1,7 +1,12 @@
+"use client"
 import EachBlog from '@/components/Blog/EachBlog'
+import EachNews from '@/components/FootballNews/EachNews';
+import Loader from '@/components/Loader';
+import { useFetchLikeAndSaved } from '@/hooks/UserRequests';
 import React from 'react'
 
 const page = () => {
+    const {likesAndSaved,isError,isLoading} = useFetchLikeAndSaved();
   return (
     <div className='grid grid-cols-6 gap-5 mx-xPadding my-10'>
         <div className='grid grid-cols-6 col-span-6'>
@@ -10,16 +15,20 @@ const page = () => {
         </div>
         <img src="./ads2.png"  alt="" />
 
-        <div className='grid col-span-4 grid-cols-4 gap-5'>
+        <div className='grid col-span-4 grid-cols-3 gap-5'>
             
-            {
-                [1,2,3,4,5,6,7]?.map((item, i)=>{
+            {isLoading ? <Loader /> :
+            likesAndSaved?.saved.length > 0 ?
+                likesAndSaved?.saved.map((item : any, i : number)=>{
                     return(
-                        // <EachBlog key={i}/>
-                        <div key={i}>testing..</div>
+                        <EachNews key={i} item={item}/>
                     )
                 })
+                : (
+                    <p>There an no liked posts</p>
+                )
             }
+            {/* {likesAndSaved?.likes.length} */}
         </div>
 
         <img src="./ads2.png" alt="" />

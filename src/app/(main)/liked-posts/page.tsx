@@ -4,13 +4,11 @@ import React from 'react'
 import Loader from '@/components/Loader';
 import { useFetchLikeAndSaved, getUser } from '@/hooks/UserRequests';
 import parser from 'html-react-parser'
+import EachNews from '@/components/FootballNews/EachNews';
 
 const page = () => {
     
-
-    const user = getUser();
-    console.log(user?._id)
-    const {likesAndSaved,isError,isLoading} = useFetchLikeAndSaved(user?._id);
+    const {likesAndSaved,isError,isLoading} = useFetchLikeAndSaved();
 
     // const {likesAndSaved,isError,isLoading} = useFetchLikeAndSaved(user?._id);
 
@@ -22,20 +20,20 @@ const page = () => {
         </div>
         <img src="./ads2.png"  alt="" />
 
-        <div className='grid col-span-4 grid-cols-4 gap-5'>
+        <div className='grid col-span-4 grid-cols-3 gap-5'>
             
             {isLoading ? <Loader /> :
-            likesAndSaved?.length > 0 ?
-                likesAndSaved?.map((item : any, i : number)=>{
+            likesAndSaved?.likes.length > 0 ?
+                likesAndSaved?.likes.map((item : any, i : number)=>{
                     return(
-                        <EachBlog key={i} item={item}/>
+                        <EachNews key={i} item={item}/>
                     )
                 })
                 : (
                     <p>There an no liked posts</p>
                 )
             }
-            {likesAndSaved?.length}
+            {/* {likesAndSaved?.likes.length} */}
         </div>
 
         <img src="./ads2.png" alt="" />
