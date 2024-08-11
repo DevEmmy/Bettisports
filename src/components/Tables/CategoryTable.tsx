@@ -17,6 +17,9 @@ const CategoryTable = ({ thead, data}: Props) => {
     <>
     <table>
       <tr className='text-sm'>
+        <th>
+          <input type="checkbox" name="" id="" />
+        </th>
         {thead?.map((head: string, i: number) => {
           return (
             <th className='text-sm' key={i}>
@@ -30,6 +33,9 @@ const CategoryTable = ({ thead, data}: Props) => {
 
             return (
               <tr className='text-left gap-1 text-sm items-start' key={i}>
+                <td>
+                  <input type="checkbox" name="" id="" />
+                </td>
                 <td className='text-[#197DDA]'>
                   <div>
                     {item?.title}
@@ -37,10 +43,10 @@ const CategoryTable = ({ thead, data}: Props) => {
 
                   <div className='mt-1.5 flex gap-2 text-xs'>
                     <span className='text-blue-600'>Edit</span>
-                    <span className='text-blue-600 border-x-2 px-2'>
+                    {/* <span className='text-blue-600 border-x-2 px-2'>
                       Quick Edit
-                    </span>
-                    <span className='text-red-700 border-r-2 pr-2'>Trash</span>
+                    </span> */}
+                    <span className='text-red-700 border-x-2 px-1'>Trash</span>
                     <span className='text-blue-600'>View</span>
                   </div>
                 </td>

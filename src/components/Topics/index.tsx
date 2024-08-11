@@ -13,7 +13,7 @@ const Topics = () => {
                 {
                 [1,2,3,4,5,6,7, 1,2,3,4,5,6,7].map((n: any, i: number)=>{
                     return(
-                        <div className='text-white'>
+                        <div className='text-white' key={i}>
                             <p className='text-[20px] font-[600]'>Articles</p>
                             <div className='text-sm my-1'>
                                 <p>Science</p>

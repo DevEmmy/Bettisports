@@ -28,7 +28,7 @@ const Table = () => {
                 {
                     thead?.map((head: string, i: number) => {
                         return (
-                            <div className={`flex items-center  p-5 ${i == 1 && "col-span-2"} text-xs`}>{head}</div>
+                            <div className={`flex items-center  p-5 ${i == 1 && "col-span-2"} text-xs`} key={i}>{head}</div>
                         )
                     })
                 }
