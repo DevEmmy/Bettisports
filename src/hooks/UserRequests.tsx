@@ -21,7 +21,7 @@ export const getUser = () => {
     const [user, setUser] = useState<any>(null)
 
     useEffect(() => {
-      const fetchUser = async () => {
+      const fetchUser = () => {
           let userObject = localStorage.getItem("user") as string;
           userObject = JSON.parse(userObject);
           setUser(userObject);
