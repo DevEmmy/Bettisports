@@ -10,14 +10,14 @@ const EachFeed = ({item} : any) => {
         <div className='flex-center gap-2 mx-xPadding'>
             <img src="./img.jpg" alt="" className='size-[50px] rounded-full'/>
             <div>
-                <p className='font-[600]'>{item?.postedBy}</p>
+                <p className='font-[600]'>{item?.postedBy} </p>
                 <p className='text-sm text-gray-500'>
                     <TimeAgo date={item?.createdAt} />
                 </p>
             </div>
         </div>
 
-        <img src={item?.image ? item.image : './img.jpg'} alt="" className='h-[400px] ' />
+        <img src={item?.image} alt="" className='h-[400px] ' />
 
         <div className='flex gap-5 flex-col mx-xPadding'>
             <p>

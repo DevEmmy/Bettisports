@@ -14,9 +14,9 @@ const Live = () => {
                     <img src="./img.jpg" alt="" />
                     <div className="overlay" />
                     <div className="details ">
-                        <p className='text-[28px] p-5 font-[600]'>
+                        <div className='text-[28px] p-5 font-[600]'>
                             AFCON&apos; 24: FRANK KESSIE&apos;S LAST MINUTE PENALTY SEND IVORY COAST TO EXTRA TIME
-                        </p>
+                        </div>
 
                         <div className='bg-primary1 w-full p-5 flex items-center justify-between'>
                             {
@@ -45,13 +45,14 @@ const Live = () => {
                 <Line />
 
                 <div>
-                    {
+                    {/* {
                         [1, 2, 3, 4, 5].map((item: any, i: number) => {
                             return (
                                 <SmFootballBlogHighlight key={i} item={item} />
                             )
                         })
-                    }
+                    } */}
+                    There are no Live currently
                 </div>
 
                 <div>

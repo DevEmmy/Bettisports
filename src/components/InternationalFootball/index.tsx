@@ -82,18 +82,18 @@ const InternationalFootball = () => {
                 <div className='grid grid-cols-2 gap-5'>
                     <div className='flex flex-col gap-2 divide-y'>
                         <EachVideo />
+                        {/* <SmFootballBlogHighlight />
                         <SmFootballBlogHighlight />
                         <SmFootballBlogHighlight />
-                        <SmFootballBlogHighlight />
-                        <SmFootballBlogHighlight />
+                        <SmFootballBlogHighlight /> */}
                     </div>
 
                     <div className='flex flex-col gap-2 divide-y'>
+                        {/* <MdFootballBlogHighlight />
                         <MdFootballBlogHighlight />
                         <MdFootballBlogHighlight />
                         <MdFootballBlogHighlight />
-                        <MdFootballBlogHighlight />
-                        <MdFootballBlogHighlight />
+                        <MdFootballBlogHighlight /> */}
                     </div>
                 </div>
 
