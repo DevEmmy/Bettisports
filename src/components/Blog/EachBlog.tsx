@@ -9,14 +9,15 @@ import {
 import LikeCommentShare from '../UI/LikeCommentShare';
 import TimeAgo from 'react-timeago';
 
-const EachBlog = (item: any) => {
+const EachBlog = ({item}: any) => {
+  
   return (
     <div className='border border-gray-300 shadow-md'>
       <img src={item?.media} className='h-[150px] w-full' alt='' />
       <div className='p-3 flex flex-col gap-3'>
         <p className='text-[12px] text-gray-500'>
           <TimeAgo date={item?.createdAt} /> | {' '}
-          {item?.categories.map((category: string, i: number) => {
+          {item?.categories?.map((category: string, i: number) => {
             category;
           })}
         </p>
