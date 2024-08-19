@@ -81,7 +81,7 @@ img{
 }
 
 .settings > div{
-  @apply flex items-center justify-between gap-3
+  @apply flex items-center justify-between gap-3 my-2
 }
 
 .settings > div > p{
@@ -97,7 +97,7 @@ img{
 }
 
 .pp{
-  @apply rounded-full size-[50px]
+  @apply rounded-full size-[35px] md:size-[50px]
 }
 
 .categories {

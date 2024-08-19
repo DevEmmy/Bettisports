@@ -8,11 +8,11 @@ import { useFetchArticle } from '@/hooks/PostRequests'
 const Articles = () => {
     const { article,isError,isLoading} = useFetchArticle();
     return (
-        <div className='flex flex-col gap-5 mx-xPadding'>
+        <div className='flex flex-col my-5 md:my-smXPadding gap-5 px-4 md:px-xPadding'>
             <h1 className='font-[600]'>MORE STORIES</h1>
             <Line />
 
-            <div className="grid grid-cols-5 gap-5">
+            <div className="md:grid md:grid-cols-5 gap-5">
                 {
                     isLoading ?
                     <Loader/>
@@ -20,7 +20,9 @@ const Articles = () => {
                     article > 0 ?
                     article.slice(0,10)?.map((item: any, i: number)=>{
                         return(
-                            <EachNews item={item} key={i} />
+                            <div className="my-3 md:my-0">
+                                <EachNews item={item} key={i} />
+                            </div>
                         )
                     })
                     :

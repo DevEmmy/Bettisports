@@ -5,12 +5,12 @@ import { icons } from '../Shared/Clubs'
 
 const Highlight = () => {
   return (
-    <div className='flex my-2 justify-between mb-10'>
-      <div className="flex gap-2">
+    <div className='md:flex my-2 justify-between mb-10'>
+      <div className="flex gap-2 my-2">
         <p className='text-secondaryBlue flex gap-1 items-center'>Highlights <RiArrowRightDoubleLine /></p>
       </div>
 
-      <div className='flex gap-2 items-center'>
+      <div className='flex gap-2 items-center overflow-clip'>
         {
           icons?.map((icon: string, i: number)=>{
             return(

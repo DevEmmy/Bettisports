@@ -5,14 +5,14 @@ import Standing from '../Standing'
 
 const BreakingNews = () => {
   return (
-    <div className='grid grid-cols-[4fr_1.5fr] px-xPadding my-10 gap-10'>
-      <div>
+    <div className='md:grid grid-cols-[4fr_1.5fr] md:px-xPadding px-5 my-10 gap-10'>
+      <div className='my-2 md:my-0'>
         <News />
         <Featured />
         <img src="./hero2.png" alt="" className='my-10' />
       </div>
 
-      <div>
+      <div className='my-2 md:my-0'>
         <img src="./ads.png" alt="" className='w-full object-cover' />
         <Standing />
       </div>

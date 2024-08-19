@@ -1,4 +1,5 @@
 "use client"
+import Line from '@/components/UI/Line';
 import { getUser } from '@/hooks/UserRequests'
 import React from 'react'
 
@@ -10,18 +11,22 @@ const Profile = () => {
     }
 
     return (
-        <div className='grid grid-cols-5 gap-10 mx-xPadding my-10'>
-            <div className='grid grid-cols-5 col-span-5'>
-                <div />
-                <p className='col-span-4 font-[600]'>Profile</p>
+        <div className='md:grid grid-cols-5 gap-10 px-5 md:px-xPadding my-10'>
+            <div className='flex items-center gap-2 md:grid grid-cols-5 col-span-5'>
+                <div className='hidden md:flex' />
+                <p className='col-span-4 font-[600] text-base'>Profile</p>
+                <div className='grow'>
+                    <Line/>
+                </div>
             </div>
-            <img src="./ads2.png" alt="" />
+            
+            {/* Ads will be here */}
 
-            <div className='grid col-span-3 grid-cols-[1fr_3fr]'>
+            <div className='grid col-span-3 grid-cols-[1fr_3fr] my-2 md:my-0'>
 
-                <div className='col-span-3 grid-cols-[1fr_3fr] grid'>
+                <div className='col-span-3 grid-cols-[1fr_3fr] grid my-2 md:my-0'>
                     <div className='flex flex-col gap-5'>
-                        <img src={user.profilePicture} alt="" className='size-[120px] rounded-full' />
+                        <img src={user.profilePicture} alt="" className='size-[60px] md:size-[120px] rounded-full' />
                         <p className='text-sm text-red-500 '>Remove Picture</p>
                     </div>
                     <div className='flex flex-col gap-5'>
@@ -48,7 +53,9 @@ const Profile = () => {
 
             </div>
 
-            <img src="./ads2.png" alt="" />
+
+
+            <img src="./ads2.png" alt="" className='h-[90px] md:h-min w-full my-6 md:my-0 md:w-min' />
         </div>
     )
 }

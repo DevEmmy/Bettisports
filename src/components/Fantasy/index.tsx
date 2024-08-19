@@ -10,7 +10,7 @@ import parse from 'html-react-parser';
 const Fantasy = () => {
   const { fantasy, isError, isLoading } = useFetchFantasy();
   return (
-    <div className='flex flex-col gap-5 mx-xPadding'>
+    <div className='my-3 md:my-0 flex flex-col gap-5 px-5 md:px-xPadding'>
       <h1 className='font-[600]'>FANTASY</h1>
       <Line />
 

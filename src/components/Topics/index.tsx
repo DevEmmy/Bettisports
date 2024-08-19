@@ -3,13 +3,13 @@ import Line from '../UI/Line'
 
 const Topics = () => {
     return (
-        <div className='mx-xPadding my-20'>
+        <div className='px-5 md:px-xPadding my-8 md:my-20'>
             <div className='flex flex-col gap-5'>
                 <h1 className='font-[600]'>Browse Over 200 Topics</h1>
                 <Line />
             </div>
 
-            <div className='bg-primary1 grid grid-cols-7 my-5 px-[5%] py-20 gap-5'>
+            <div className='bg-primary1 grid grid-cols-3  md:grid-cols-7 mt-2 mb-5 px-[5%] py-10 md:py-20 gap-5'>
                 {
                 [1,2,3,4,5,6,7, 1,2,3,4,5,6,7].map((n: any, i: number)=>{
                     return(

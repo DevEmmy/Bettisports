@@ -3,7 +3,7 @@ import { RiPlayCircleFill } from 'react-icons/ri'
 
 const Preview = () => {
   return (
-    <div className='flex gap-1 flex-col'>
+    <div className='flex md:gap-1 flex-col md:my-0 my-3'>
         <img src="./img.jpg" alt="" className=' h-[300px]'/>
         
         <p className='font-[600] text-sm'>PODCAST TITLE</p>
