@@ -53,7 +53,7 @@ const MainNav = () => {
   ];
   return (
     <>
-    <div className="md:hidden w-[100%]">
+    <div className="md:hidden w-[100%] ">
       <select className='px-2 py-2'>
       {nav.map((item: any, i: number) => {
         return (
@@ -64,7 +64,7 @@ const MainNav = () => {
       })}
       </select>
     </div>
-    <div className='hidden md:flex items-center justify-around px-xPadding border-b-gray-400 border-b py-3 md:py-5 gap-5 overflow-x-auto'>
+    <div className='hidden w-full md:flex items-center justify-between px-xPadding border-b-gray-400 border-b py-3 md:py-5 gap-5 overflow-x-auto'>
       {nav.map((item: any, i: number) => {
         return (
           <Link href={item?.link} key={i} className='text-[12px]'>
@@ -74,9 +74,7 @@ const MainNav = () => {
       })}
 
       {/* <div className='flex'> */}
-      <div className='hidden md:flex'>
         <Menu />
-      </div>
     </div>
     </>
   );

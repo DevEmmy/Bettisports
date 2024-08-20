@@ -12,9 +12,9 @@ const page = () => {
             <div className='md:grid grid-cols-6 col-span-6 my-2.5 md:my-0'>
                 <div />
                 <div className='flex justify-between col-span-4 w-full items-center'>
-                    <p className=' font-[600]'>Notifications</p>
+                    <p className='text-[24px] font-[600]'>Notifications</p>
 
-                    <div  className="flex gap-1.5 md:gap-5 items-center">
+                    <div  className="flex gap-1.5 md:gap-3 items-center">
                         <RiSettings2Line onClick={()=> setShow(true)} className='cursor-pointer' />
                         
                         <div className='text-secondaryBlue font-[600]'>
@@ -23,7 +23,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <img src="./ads.png" className='h-[90px] object-cover bg-left-top w-full' alt="" />
+            <img src="./ads.png" className='h-[90px] md:h-min object-cover bg-left-top w-full' alt="" />
 
             <div className='col-span-4 flex flex-col divide-y'>
                 {
@@ -41,7 +41,7 @@ const page = () => {
                 </div>
             </div>
 
-            <img src="./ads2.png" className='my-3 h-[90px] object-cover w-full' alt="" />
+            <img src="./ads2.png" className='my-3 h-[90px] md:h-min object-cover w-full' alt="" />
 
             {
                 showSettings && <Settings close={()=> setShow(false)} />

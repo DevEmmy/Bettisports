@@ -4,7 +4,7 @@ import Clubs from '../Shared/Clubs';
 
 const LiveScoreHighlight = () => {
   return (
-    <div className='bg-primary1 px-5 md:px-smXPadding text-white py-5 overflow-x-scroll'>
+    <div className='bg-primary1 px-5 md:px-smXPadding text-white py-5 overflow-x-scroll md:overflow-hidden'>
       <div className='flex md:grid grid-cols-9 items-center gap-5'>
         <div className='flex md:grid grid-cols-8 md:col-span-8 items-center divide-x'>
           {data.map((item: MatchDetails, i: number) => {
@@ -28,12 +28,12 @@ const LiveScoreHighlight = () => {
             );
           })}
 
-          <div className='flex md:hidden border-2 cursor-pointer border-gray-400 mx-2 text-white px-3 py-3 rounded-full text-[12px] text-center'>
+          <div className='flex md:hidden border-2 cursor-pointer justify-center border-gray-400 mx-2 text-white px-3 py-3 rounded-full text-[12px] text-center'>
             Go to Livescores
           </div>
         </div>
 
-        <div className='hidden md:flex border-2 cursor-pointer border-gray-400 text-white px- py-3 rounded-full text-[12px] text-center'>
+        <div className='hidden md:flex border-2 cursor-pointer justify-center border-gray-400 text-white px- py-3 rounded-full text-[12px] text-center'>
           Go to Livescores
         </div>
       </div>

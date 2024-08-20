@@ -11,16 +11,17 @@ const Profile = () => {
     }
 
     return (
-        <div className='md:grid grid-cols-5 gap-10 px-5 md:px-xPadding my-10'>
-            <div className='flex items-center gap-2 md:grid grid-cols-5 col-span-5'>
+        <div className='md:grid grid-cols-5 gap-10 px-5 md:px-xPadding my-10 justify-center'>
+            <div className='flex items-center gap-2 md:grid grid-cols-5 col-span-5 justify-center'>
                 <div className='hidden md:flex' />
                 <p className='col-span-4 font-[600] text-base'>Profile</p>
-                <div className='grow'>
+                <div className='grow md:hidden'>
                     <Line/>
                 </div>
             </div>
             
             {/* Ads will be here */}
+            <img src="./ads2.png" alt="" className='h-[90px] md:h-min w-full my-6 md:my-0 md:w-min' />
 
             <div className='grid col-span-3 grid-cols-[1fr_3fr] my-2 md:my-0'>
 

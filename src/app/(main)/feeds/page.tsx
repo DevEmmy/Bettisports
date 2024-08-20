@@ -155,7 +155,7 @@ const page = () => {
             variants={variants}
             initial='closed'
             animate='open'
-            className='bg-white h-full max-w-[99%] md:mx-5 p-8 w-full  lg:w-1/2 md:w-2/3 min-h-1/2 shadow-lg border relative'>
+            className='bg-white h-full md:h-min max-w-[99%] md:mx-5 p-8 w-full  lg:w-1/2 md:w-2/3 min-h-1/2 shadow-lg border relative'>
             <div className='flex gap-3 items-center mb-2'>
               <img
                 src={user.profilePicture}

@@ -76,7 +76,7 @@ const LeftNav = ({ setOpen }: any) => {
   return (
     <>
       <div className='black__overlay' onClick={() => setOpen(false)} />
-      <div className='w-4/5 md:w-1/5 fixed top-0 right-0 bg-white z-[999] text-sm h-[100vh] flex flex-col gap-5 p-5'>
+      <div className='w-fit md:w-1/5 fixed top-0 right-0 bg-white z-[999] text-sm h-[100vh] flex flex-col gap-5 p-5'>
         <div className='border-b flex items-center justify-between border-gray-300 text-gray-500 py-2'>
           <p>Welcome</p>
 

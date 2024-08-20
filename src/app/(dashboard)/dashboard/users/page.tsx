@@ -7,7 +7,7 @@ import { HiSearch, HiTrash } from 'react-icons/hi'
 const page = () => {
     return (
         <div className='flex flex-col gap-5'>
-            <div className='flex gap-10 flex-center'>
+            <div className='flex gap-10 flex-center max-md:justify-between'>
                 <p className=' font-[600] '>Users</p>
 
                 <button className='border border-secondaryBlue text-secondaryBlue p-2 text-xs'>
@@ -15,16 +15,16 @@ const page = () => {
                 </button>
             </div>
 
-            <div className="flex-center justify-between">
+            <div className="md:flex-center justify-between">
                 <div className='categories'>
                     <p>All <span>(108)</span></p>
                     <p>Administrator <span>(14)</span></p>
                     <p>Author <span>(109)</span></p>
                 </div>
 
-                <div className='bg-white border flex'>
-                    <input type="text" className='bg-transparent focus:outline-none p-3 text-xs' placeholder='Search for User'/>
-                    <div className='bg-primary1 p-3 text-white'>
+                <div className='bg-white border flex max-md:my-3'>
+                    <input type="text" className='bg-transparent focus:outline-none p-3 text-xs grow' placeholder='Search for User'/>
+                    <div className='bg-primary1 p-3 text-white '>
                         <HiSearch size={24}/>
                     </div>
                 </div>
@@ -78,7 +78,9 @@ const page = () => {
                
             ]} /> */}
 
+            <div className='overflow-x-auto'>
             <UsersTable />
+            </div>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 const EachNotification = () => {
   return (
-    <div className='grid grid-cols-[1fr_5fr_1fr] md:grid-cols-[0.5fr_5fr_1.5fr] py-5 gap-1.5 md:gap-5'>
+    <div className='grid grid-cols-[1fr_5fr_1fr] md:grid-cols-[0.5fr_5fr_1.5fr] items-center py-5 gap-1.5 md:gap-5'>
         <img src="./img.jpg" alt="" className='size-[2rem] md:size-[50px] rounded-full' />
 
         <div className='flex flex-col gap-2'>

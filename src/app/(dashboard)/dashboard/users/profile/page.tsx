@@ -46,7 +46,7 @@ const page = () => {
     ]
 
     return (
-        <div className='flex flex-col gap-5 w-1/2'>
+        <div className='flex flex-col gap-5 md:w-1/2'>
             <p className='text-[30px] font-[600]'>Profile</p>
 
             <div className='flex flex-col gap-3 add'>
@@ -61,7 +61,7 @@ const page = () => {
                     })
                 }
 
-                <p className='text-[24px] font-[500]'>About Yourself</p>
+                <p className='text-[24px] font-[500] max-md:mt-7 max-md:mb-3.5'>About Yourself</p>
 
                 <div>
                     <p>
@@ -74,9 +74,9 @@ const page = () => {
                     </div>
                 </div>
 
-                <p className='text-[24px] font-[500]'>Account Management</p>
+                <p className='text-[24px] font-[500] max-md:mt-8 max-mb:my-3.5'>Account Management</p>
 
-                <div>
+                <div >
                     <p>Biographical Info</p>
 
                     <button className='border text-secondaryBlue border-secondaryBlue py-2 px-5 w-fit'>

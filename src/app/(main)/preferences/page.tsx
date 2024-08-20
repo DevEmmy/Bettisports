@@ -61,17 +61,19 @@ const page = () => {
     ]
   return (
     <div className='md:grid md:grid-cols-6 gap-5 px-5 md:px-xPadding my-10'>
-        <div className='flex items-center gap-2 col-span-6 my-2.5'>
+        <div className='flex items-center gap-2 col-span-6 my-2.5 md:hidden'>
         {/* <div /> */}
-        <p className='col-span-5 font-[600] text-[16px]'>Preference</p>
-        <div className='md:hidden grow'>
+        <p className='col-span-5 font-[600] text-[24px] ml-7 '>Preference</p>
+        <div className='grow'>
           <Line />
         </div>
       </div>
 
-        {/* <img src="./ads2.png"  alt="" /> */}
+        <img src="./ads2.png"  alt="" className='h-[90px] md:h-min' />
 
         <div className='flex flex-col col-span-4 gap-5'>
+            {/* <div /> */}
+        <p className='col-span-5 font-[600] text-[24px] ml-7 hidden md:flex '>Preference</p>
             {
                 preferences?.map((item, i)=>{
                     return(
