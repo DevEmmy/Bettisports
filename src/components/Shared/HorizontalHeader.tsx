@@ -13,7 +13,7 @@ const HorizontalHeader = ({text, endText}: Props) => {
         <Line />
         {
             endText && 
-            <p className='font-[600]'>
+            <p className='font-[600] hidden md:flex'>
                 {endText}
             </p>
         }

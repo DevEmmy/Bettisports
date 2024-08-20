@@ -6,7 +6,7 @@ const PostedBy = ({author, createdAt}: any) => {
   return (
     <div className='flex justify-between items-center'>
         <div className='flex gap-2 items-center'>
-            <img src={author.profilePicture} alt="" className='rounded-full w-[60px] h-[60px]'/>
+            <img src={author.profilePicture} alt="" className='rounded-full size-[45px] border md:size-[60px][60px]'/>
             <div>
                 <p>{author.firstName + " " + author.lastName}</p>
                 <p><ReactTimeago date={createdAt || "July 7, 2024"}/></p>

@@ -55,8 +55,8 @@ const Stories = () => {
   const { stories, isError, isLoading } = useFetchStories();
   const [currentOffset, setCurrentOffset] = useState<number>(0);
   return (
-    <div className='grid grid-cols-[4fr_1.5fr] px-xPadding my-10 gap-10'>
-      <div className='flex flex-col gap-5'>
+    <div className='md:grid grid-cols-[4fr_1.5fr] md:px-xPadding px-5 my-10 gap-10'>
+      <div className='flex flex-col gap-5 my-2'>
         <VerticalHeader title='Stories' />
 
           <div className='flex gap-5 overflow-x-auto relative'>

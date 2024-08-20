@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import Line from '../UI/Line';
-import { RiChat2Line, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri';
 import { useFetchPopular } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 import parser from 'html-react-parser';
@@ -12,13 +11,13 @@ import LikeCommentShare from '../UI/LikeCommentShare';
 const MostRead = () => {
   const { isError, isLoading, popular } = useFetchPopular();
   return (
-    <div className=' px-xPadding my-20 py-10'>
-      <div className='flex items-center gap-3'>
-        <p className='text-black w-1/6'>Most Read</p>
+    <div className='px-4 md:px-xPadding my-20 py-10'>
+      <div className='md:flex items-center gap-3'>
+        <h1 className='text-black md:w-1/6 font-[600] text-base '>Most Read</h1>
         <Line />
       </div>
 
-      <div className='grid grid-cols-3 mx-20 divide-x gap-5'>
+      <div className='md:grid grid-cols-3 md:mx-20 divide-x gap-5'>
         {isLoading ? (
           <Loader />
         ) : popular.length > 0 ? (

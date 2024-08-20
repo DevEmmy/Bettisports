@@ -7,7 +7,7 @@ const Settings = ({close}: any) => {
     <div>
         <div className="black__overlay" onClick={close}></div>
 
-        <div className='fixed z-[1000] w-1/3 left-1/3 top-[30vh] bg-white p-10 settings flex flex-col gap-5'>
+        <div className='fixed z-[1000] md:w-1/3 md:left-1/3  left-0 right-0 top-[20vh] md:top-[30vh] mx-6 bg-white p-10 settings flex flex-col md:gap-5'>
             <div className='flex items-center justify-between'>
                 <p className='font-[600]'>Notification Setting</p>
 

@@ -40,22 +40,22 @@ const ForYou = () => {
 
   const { forYou, isError, isLoading } = useFetchForYou()
   return (
-    <div className='mx-xPadding'>
+    <div className='md:px-xPadding px-4'>
       <div className='flex items-center'>
-        <p className='uppercase text-[24px] leading-[24px] gap-5 font-[700] w-1/6 '>
+        <p className='uppercase md:text-[24px] text-[19px] leading-[24px] gap-5 font-[700] w-1/6 '>
           For You
         </p>
         <Line />
       </div>
 
-      <div className='grid grid-cols-5 items-center divide-x my-10'>
+      <div className='md:grid md:grid-cols-3 grid-cols-5 items-center divide-x my-10'>
         {isLoading ? (
           <Loader />
         ) : forYou?.length > 0 
         ? 
           forYou.map((item: any, i: number) => {
             return (
-              <Link href={`/blog/${item?._id}`} >
+              <Link href={`/blog/${item?._id}`} className='my-2'>
               <div
                 key={i}
                 className={`pr-5 ${

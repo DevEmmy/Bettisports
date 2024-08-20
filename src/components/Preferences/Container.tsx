@@ -20,7 +20,7 @@ const Container = ({ title, items }: Props) => {
         }
     }
     return (
-        <div className='bg-[#F6F8FB] p-5 h-fit rounded-md flex flex-col gap-3'>
+        <div className='bg-[#F6F8FB] p-5 h-fit rounded-md my-2 flex flex-col gap-3'>
             <p className='font-[600]'>{title}</p>
             <div className="flex flex-wrap gap-3">
                 {
