@@ -11,7 +11,7 @@ const page = () => {
 
     return (
         <div className='flex flex-col gap-5 max-w-full overflow-hidden'>
-            <div className='flex gap-10 flex-center'>
+            <div className='flex gap-10 flex-center max-md:justify-between'>
                 <p className=' font-[600] '>Posts</p>
 
                 <Link href={"/dashboard/posts/new"} >
@@ -21,22 +21,22 @@ const page = () => {
                 </Link>
             </div>
 
-            <div className="flex-center justify-between">
+            <div className="md:flex-center justify-between">
                 <div className='categories'>
                     <p>All <span>(108)</span></p>
                     <p>Mine <span>(14)</span></p>
                     <p>Published <span>(109)</span></p>
                 </div>
 
-                <div className='bg-white border flex'>
-                    <input type="text" className='bg-transparent focus:outline-none p-3 ' placeholder='Search' />
-                    <div className='bg-primary1 p-3 text-white'>
+                <div className='bg-white border flex max-md:my-2.5'>
+                    <input type="text" className='bg-transparent focus:outline-none max-sm:grow p-3 ' placeholder='Search' />
+                    <div className='bg-primary1 p-3 text-white right-0'>
                         <HiSearch size={24} />
                     </div>
                 </div>
             </div>
 
-            <div className='post-select gap-4 flex text-sm'>
+            <div className='post-select gap-2 grid grid-cols-3 md:gap-4 md:flex text-sm'>
                 <select name="" id="">
                     <option value="">All Dates</option>
                 </select>
@@ -56,7 +56,9 @@ const page = () => {
 
             </div>
 
-            <PostsTable  />
+            <div className="overflow-x-scroll">
+                <PostsTable  />
+            </div>
         </div>
     )
 }

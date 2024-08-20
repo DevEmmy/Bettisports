@@ -34,10 +34,10 @@ const page = () => {
         <div className='flex flex-col gap-5'>
             <p className='text-[20px] font-[600]'>Add New Post</p>
 
-            <div className="grid grid-cols-[3fr_1fr] gap-5">
+            <div className="md:grid grid-cols-[3fr_1fr] gap-5">
                 <div className='flex flex-col gap-2'>
                     <input type="text" placeholder='Add title' className='border p-3 w-full' />
-                    <div className='flex-center gap-10'>
+                    <div className='flex-center gap-10 justify-between'>
                         <p>Permalink: <span className='text-secondaryBlue'>https://et.gg.com//</span></p>
                         <button className='border border-secondaryBlue text-secondaryBlue p-2  px-4 text-sm'>
                             Edit

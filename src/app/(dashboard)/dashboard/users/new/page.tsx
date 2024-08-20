@@ -87,7 +87,7 @@ const page = () => {
         },
     ]
     return (
-        <div className='flex flex-col gap-5 w-1/2'>
+        <div className='flex flex-col gap-5 md:w-1/2'>
             <p className='text-[30px] font-[600]'>Add New User</p>
             <p className='text-sm text-gray-500'>Create a brand new user and add them to this site.</p>
 

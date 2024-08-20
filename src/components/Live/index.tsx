@@ -10,8 +10,8 @@ const Live = () => {
                 <h1 className='font-[600]'>Live</h1>
                 <Line />
 
-                <div className='relative h-96 md:max-h-fit'>
-                    <img src="./img.jpg" alt="" className='h-fit' />
+                <div className='relative h-96 md:h-fit'>
+                    <img src="./img.jpg" alt="" className='h-fit md:h-min' />
                     <div className="overlay" />
                     <div className="details ">
                         <div className='text-[18px] md:text-[28px] p-5 font-[600]'>

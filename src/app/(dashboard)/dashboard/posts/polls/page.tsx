@@ -19,12 +19,9 @@ interface duration {
   minutes: number;
 }
 
-
 const page = () => {
   const { createPollFn, isLoading, isError, error, isSuccess } =
     useCreatePoll();
-
-  
 
   const [question, setQuestion] = useState<string>('');
   const [choices, setChoices] = useState(['', '']);
@@ -121,16 +118,16 @@ const page = () => {
   }, [isSuccess]);
 
   return (
-    <div className='flex flex-col gap-5'>
+    <div className='md:flex flex-col gap-5'>
       <p className='text-[20px] font-[600]'>Polls</p>
 
       <div className='flex-center justify-between'>
-        <div />
+        <div className='max-md:hidden' />
 
-        <div className='bg-white border flex'>
+        <div className='bg-white border flex w-full my-3'>
           <input
             type='text'
-            className='bg-transparent focus:outline-none p-3 '
+            className='bg-transparent focus:outline-none p-3 max-md:grow'
             placeholder='Search Polls...'
           />
           <div className='bg-primary1 p-3 text-white'>
@@ -139,7 +136,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className='grid grid-cols-[1fr_2fr] gap-10'>
+      <div className=' md:grid grid-cols-[1fr_2fr] gap-10 my-3'>
         <div className='flex flex-col gap-5'>
           <p className='text-[20px]'>Add New Poll</p>
 
@@ -160,7 +157,7 @@ const page = () => {
             <label htmlFor='name'>Choice</label>
             {/* <input type="text" className='p-3 border bg-white focus:outline-none' />
                         <input type="text" className='p-3 border bg-white focus:outline-none' /> */}
-            <div className='flex justify-between items-end'>
+            <div className='flex justify-between max-md:items-center items-end'>
               <div className='grow'>
                 {choices.map((item, i: number) => (
                   <input
@@ -176,13 +173,16 @@ const page = () => {
               <div className='flex-row'>
                 <button
                   className='w-6 h-6 border border-blue-700 rounded-full'
-                  onClick={(e) => setChoices([...choices,''])}>
+                  onClick={(e) => setChoices([...choices, ''])}>
                   +
                 </button>
                 <button
                   className='w-6 h-6 mt-2 rounded-full border-blue-700 border'
-                  onClick={(e) => { choices?.length > 2 ? setChoices(choices.slice(0, -1)) : toastError('Cannot have less than two choices!!') }}
-                  >
+                  onClick={(e) => {
+                    choices?.length > 2
+                      ? setChoices(choices.slice(0, -1))
+                      : toastError('Cannot have less than two choices!!');
+                  }}>
                   -
                 </button>
               </div>
@@ -192,12 +192,12 @@ const page = () => {
           <div className='flex flex-col gap-2'>
             <label htmlFor='name'>Poll Length</label>
 
-            <div className='grid grid-cols-3 gap-5'>
+            <div className='grid grid-cols-3 max-md:gap-2.5 gap-5'>
               <select
                 name='days'
                 className='p-3 border bg-white focus:outline-none'
                 onChange={handleSelectChange}>
-                {Days?.map((item : any, i: number) => (
+                {Days?.map((item: any, i: number) => (
                   <option className='' key={i}>
                     {item == 0
                       ? 'Days'
@@ -240,19 +240,21 @@ const page = () => {
             </div>
           </div>
 
-          <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
-            <HiCog />
-            Add Media
-          </button>
+          <div className='max-md:flex max-md:justify-between'>
+            <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
+              <HiCog />
+              Add Media
+            </button>
 
-          <button
-            className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit '
-            onClick={handleSubmit}>
-            {isLoading ? 'Adding a Poll...' : 'Add New Poll'}
-          </button>
+            <button
+              className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit '
+              onClick={handleSubmit}>
+              {isLoading ? 'Adding a Poll...' : 'Add New Poll'}
+            </button>
+          </div>
         </div>
 
-        <div>
+        <div className='max-sm:mt-20 max-md:mt-14'>
           <div className='flex-center justify-between'>
             <div className='post-select gap-4 flex'>
               <select name='' id=''>
@@ -268,8 +270,8 @@ const page = () => {
             <p>28 Items</p>
           </div>
 
-          <div className="my-3">
-            <PollTable/>
+          <div className='my-3 overflow-x-auto'>
+            <PollTable />
           </div>
         </div>
       </div>

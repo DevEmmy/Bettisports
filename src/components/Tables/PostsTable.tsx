@@ -42,20 +42,21 @@ const PostsTable = () => {
             return (
               <tr className='text-left gap-1 text-sm items-start' key={i}>
                 <td className='text-[#197DDA]'>
-                  <div>
+                  <div className='text-[16px]'>
                     {item?.title > 120
-                      ? `${item?.title.slice(0, 119)}...`
+                      ? `
+                      ${item?.title.slice(0, 119)}...`
                       : item?.title}
                     {item?.publish ? (
                       ''
                     ) : (
-                      <span className='text-black'>- Draft</span>
+                      <span className='text-black text-xs'>- Draft</span>
                     )}
                   </div>
 
                   <div className='mt-1.5 flex gap-2 text-xs'>
                     <span className='text-blue-600'>Edit</span>
-                    <span className='text-blue-600 border-x-2 px-2'>
+                    <span className='text-blue-600 border-x-2 px-2 flex'>
                       Quick Edit
                     </span>
                     <span className='text-red-700 border-r-2 pr-2'>Trash</span>

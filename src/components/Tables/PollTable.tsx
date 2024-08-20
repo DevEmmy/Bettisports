@@ -46,7 +46,7 @@ const PollTable = () => {
                   <input type="checkbox" name="" id="" />
                 </td>
                 <td className='text-[#197DDA]'>
-                  <div >
+                  <div className='' >
                     {item?.question > 120
                       ? `${item?.question.slice(0, 119)}...`
                       : item?.question}
@@ -54,7 +54,7 @@ const PollTable = () => {
 
                   <div className='mt-1.5 flex gap-2 text-xs'>
                     <span className='text-blue-600'>Edit</span>
-                    <span className='text-red-700 border-r-2 pr-2'>Trash</span>
+                    <span className='text-red-700 border-x-2 px-2'>Trash</span>
                     <span className='text-blue-600'>View</span>
                   </div>
                 </td>

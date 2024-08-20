@@ -21,10 +21,10 @@ const page = () => {
 
   return (
     <div className='md:grid md:grid-cols-6 md:gap-5 px-5 md:px-xPadding my-10'>
-      <div className='flex gap-2 col-span-6 my-3 items-center'>
+      <div className='flex gap-2 col-span-6 my-3 items-center md:hidden'>
         {/* <div /> */}
-        <p className='font-[600] text-[16px]'>Polls</p>
-        <div className='md:hidden grow'>
+        <p className='font-[600] text-[24px]'>Polls</p>
+        <div className='grow'>
           <Line />
         </div>
       </div>
@@ -35,6 +35,7 @@ const page = () => {
       />
 
       <div className='md:grid col-span-4 grid-cols-3 gap-3 md:gap-5'>
+        <p className='font-[600] text-[24px]'>Polls</p>
         {isLoading ? (
           <Loader />
         ) : polls?.length > 0 ? (
