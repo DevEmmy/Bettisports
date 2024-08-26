@@ -85,8 +85,7 @@ export const useFetchPostComment = (id: string) => {
   });
 
   return { comments, isErr, isLoad, refetch };
-};
-
+};axios
 // Each Post
 export const useEachPostQuery = (id: string) => {
   const fetchData = async () => {
@@ -398,3 +397,21 @@ export const useSavePost = () => {
   const { mutate: savePostFn, isLoading : isSaveLoading , isError : isSaveError, error, isSuccess : isSaveSuccess } = useMutation(savePost);
   return { savePostFn, isSaveLoading, isSaveError, error, isSaveSuccess };
 };
+
+
+
+// Notification
+
+export const useFetchNotification = () => {
+    const fetchData = async () => {
+      const response = await axiosConfig.get('/notifications');
+      return response.data.payload;
+    };
+  
+    const { data: notification, isError, isLoading, refetch } = useQuery('notifications', fetchData , {
+      enabled: true,
+    });
+  
+    return { notification, isError, isLoading , refetch};
+  };
+  

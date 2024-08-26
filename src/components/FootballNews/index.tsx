@@ -53,7 +53,7 @@ const FootballNews = ({title}: any) => {
                     }
                 </div>
 
-                <select className='px-2 py-3 md:hidden'>
+                <select name='' className='px-2 py-3 md:hidden'>
                 {
                         filter?.map((item: any, i: number) => {
                             return (
