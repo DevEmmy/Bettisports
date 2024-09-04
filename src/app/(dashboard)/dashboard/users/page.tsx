@@ -15,7 +15,7 @@ const page = () => {
                 </button>
             </div>
 
-            <div className="md:flex-center justify-between">
+            <div className="md:flex md:items-center justify-between">
                 <div className='categories'>
                     <p>All <span>(108)</span></p>
                     <p>Administrator <span>(14)</span></p>

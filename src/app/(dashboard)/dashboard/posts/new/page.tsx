@@ -12,6 +12,7 @@ import { HiCog } from 'react-icons/hi';
 import {
   RiCalendar2Fill,
   RiGalleryLine,
+  RiGalleryUploadLine,
   RiKeyLine,
   RiMicLine,
   RiPinDistanceLine,
@@ -22,6 +23,7 @@ import FileBase64 from 'react-file-base64';
 import { useCreatePost } from '@/hooks/PostRequests';
 import Loader from '@/components/Loader';
 import { toastSuccess } from '@/utils/toast';
+import { LuGalleryHorizontal } from 'react-icons/lu';
 
 interface FormatOption {
   text: string;
@@ -67,9 +69,10 @@ const Page: React.FC = () => {
 
   const formats: FormatOption[] = [
     { text: 'Standard', icon: <RiPinDistanceLine />, value: 'standard' },
-    { text: 'Gallery', icon: <RiGalleryLine />, value: 'gallery' },
-    { text: 'Video', icon: <RiVideoLine />, value: 'video' },
+    { text: 'Photosplash', icon: <RiGalleryLine />, value: 'gallery' },
+    { text: 'Stories', icon: <LuGalleryHorizontal />, value: 'video' },
     { text: 'Podcast', icon: <RiMicLine />, value: 'podcast' },
+    { text: 'Video', icon: <RiVideoLine />, value: 'video' },
   ];
 
   const ReactQuill = useMemo(
@@ -212,18 +215,6 @@ const Page: React.FC = () => {
             </div>
           </OverviewContainer>
 
-          {/* <OverviewContainer title={"Author"}>
-                        <div className='flex gap-2 flex-col'>
-                            <select
-                                className='w-fit p-3 bg-white border focus:outline'
-                                value={author}
-                                onChange={(e: ChangeEvent<HTMLSelectElement>) => setAuthor(e.target.value)}
-                            >
-                                <option value="Idowu Williams">Idowu Williams</option>
-                            </select>
-                        </div>
-                    </OverviewContainer> */}
-
           <button
             className={`border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit ${
               isLoading && 'opacity-70'
@@ -253,6 +244,30 @@ const Page: React.FC = () => {
                 Publish: <span className='font-[600]'>Immediately</span>{' '}
                 <span className='text-secondaryBlue underline'>Edit</span>
               </p>
+            </div>
+          </OverviewContainer>
+
+          <OverviewContainer title={'Format'}>
+            <div className='flex flex-col gap-2'>
+              {formats?.map((item, idx) => (
+                <div
+                  key={idx}
+                  className='flex justify-between gap-3 border-b py-3'
+                  onClick={() => setFormat(item?.value)}>
+                  <div className='items-center flex'>
+                    {item?.icon} <p className='ml-2'>{item?.text}</p>
+                  </div>
+
+                  <input
+                    type='radio'
+                    name='format'
+                    value={item?.value}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFormat(e.target.value)
+                    }
+                  />
+                </div>
+              ))}
             </div>
           </OverviewContainer>
 
@@ -289,6 +304,7 @@ const Page: React.FC = () => {
                 />
                 <p>News Breaking</p>
               </div>
+              
 
               <div className='grid grid-cols-2 justify-between my-5'>
                 {gender?.map((g, i) => (
@@ -323,30 +339,6 @@ const Page: React.FC = () => {
               <p className='text-secondaryBlue underline p-4 text-sm'>
                 + Add New Category
               </p>
-            </div>
-          </OverviewContainer>
-
-          <OverviewContainer title={'Format'}>
-            <div className='flex flex-col gap-2'>
-              {formats?.map((item, idx) => (
-                <div
-                  key={idx}
-                  className='flex justify-between gap-3 border-b py-3'
-                  onClick={() => setFormat(item?.value)}>
-                  <div className='items-center flex'>
-                    {item?.icon} <p className='ml-2'>{item?.text}</p>
-                  </div>
-
-                  <input
-                    type='radio'
-                    name='format'
-                    value={item?.value}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setFormat(e.target.value)
-                    }
-                  />
-                </div>
-              ))}
             </div>
           </OverviewContainer>
 

@@ -21,7 +21,7 @@ const page = () => {
                 </Link>
             </div>
 
-            <div className="md:flex-center justify-between">
+            <div className="justify-between sm:flex sm:items-center">
                 <div className='categories'>
                     <p>All <span>(108)</span></p>
                     <p>Mine <span>(14)</span></p>
@@ -29,7 +29,7 @@ const page = () => {
                 </div>
 
                 <div className='bg-white border flex max-md:my-2.5'>
-                    <input type="text" className='bg-transparent focus:outline-none max-sm:grow p-3 ' placeholder='Search' />
+                    <input type="text" className='bg-transparent focus:outline-none grow p-3 ' placeholder='Search' />
                     <div className='bg-primary1 p-3 text-white right-0'>
                         <HiSearch size={24} />
                     </div>

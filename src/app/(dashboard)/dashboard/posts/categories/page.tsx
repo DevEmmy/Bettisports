@@ -81,12 +81,14 @@ const page = () => {
   ];
   return (
     <div className='flex flex-col gap-5'>
-      <p className='text-[20px] font-[600]'>Categories</p>
+      {/* <p className='text-[20px] font-[600]'>Categories</p> */}
 
-      <div className='flex-center justify-between'>
-        <div className='max-md:hidden'/>
+      <div className='md:flex md:items-center justify-between gap-2'>
+        <div className='my-2'>
+          <p className='text-[23px] font-[600]'>Categories</p>
+        </div>
 
-        <div className='bg-white border flex w-full'>
+        <div className='bg-white border flex max-md:w-full'>
           <input
             type='text'
             className='bg-transparent focus:outline-none p-3 grow'

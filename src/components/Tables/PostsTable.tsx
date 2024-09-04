@@ -14,8 +14,11 @@ interface Props {
 const PostsTable = () => {
   const { posts, isError, isLoading } = usePostQuery();
   return (
-    <table>
+    <table className='w-full'>
       <tr className='text-sm'>
+      <th>
+          <input type="checkbox" name="" id="" />
+        </th>
         {['Title', 'Author', 'Categories', 'Tags', 'Comment', 'Date'].map(
           (head: string, i: number) => {
             return (
@@ -41,6 +44,9 @@ const PostsTable = () => {
           while (i < 50) {
             return (
               <tr className='text-left gap-1 text-sm items-start' key={i}>
+                <td>
+                  <input type="checkbox" name="" id="" />
+                </td>
                 <td className='text-[#197DDA]'>
                   <div className='text-[16px]'>
                     {item?.title > 120

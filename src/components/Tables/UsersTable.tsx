@@ -18,7 +18,7 @@ const UsersTable = () => {
   const { users , isError, isLoading} = useFetchUsers();
 
   return (
-    <table className='text-[0.6rem]'>
+    <table className='text-[0.6rem] w-full'>
       <tr className='text-sm'>
         <th>
           <input type="checkbox" name="" id="" />

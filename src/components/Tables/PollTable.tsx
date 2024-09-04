@@ -14,7 +14,7 @@ interface Props {
 const PollTable = () => {
   const { polls, isError, isLoading , refetch} = useFetchPolls();
   return (
-    <table>
+    <table className='w-full'>
       <tr className='text-sm'>
         <th>
           <input type="checkbox" name="" id="" />

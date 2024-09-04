@@ -15,7 +15,7 @@ const CategoryTable = ({ thead, data}: Props) => {
 
 
     <>
-    <table>
+    <table className='w-full'>
       <tr className='text-sm'>
         <th>
           <input type="checkbox" name="" id="" />

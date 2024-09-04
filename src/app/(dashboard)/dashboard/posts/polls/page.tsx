@@ -119,12 +119,13 @@ const page = () => {
 
   return (
     <div className='md:flex flex-col gap-5'>
-      <p className='text-[20px] font-[600]'>Polls</p>
 
       <div className='flex-center justify-between'>
-        <div className='max-md:hidden' />
+        <div className=''>
+          <p className='text-[20px] font-[600]'>Polls</p>
+        </div>
 
-        <div className='bg-white border flex w-full my-3'>
+        <div className='bg-white border flex max-md:w-full my-3'>
           <input
             type='text'
             className='bg-transparent focus:outline-none p-3 max-md:grow'

@@ -11,7 +11,7 @@ const EachFeed = ({item} : any ) => {
   return (
     <div className='flex gap-4 flex-col border-2 border-gray-400 py-5'>
         <div className='flex-center gap-2 mx-5 md:mx-xPadding'>
-            <img src={item?.postedBy?.profilePicture} alt="" className='size-[50px] rounded-full'/>
+            <img src={item?.postedBy?.profilePicture} alt="" className='size-[50px] rounded-full border'/>
             <div>
                 <p className='font-[600]'>
                     {item?.postedBy?.firstName} {item?.postedBy?.lastName}
