@@ -23,7 +23,7 @@ const EachFeed = ({item} : any ) => {
         </div>
 
         {item?.image  && (
-            <img src={item?.image} alt="" className={`w-full ${isImgFull ? 'max-h-[50vh]' : 'h-fit'}`} onClick={() => setIsImgFull(!isImgFull)} />
+            <img src={item?.image} alt="" className={`w-full ${!isImgFull ? 'max-h-[50vh]' : 'h-fit'}`} onClick={() => setIsImgFull(!isImgFull)} />
         )}
 
         <div className='flex gap-5 flex-col mx-5 md:mx-xPadding'>
