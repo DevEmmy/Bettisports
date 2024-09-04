@@ -8,7 +8,7 @@ const api = process.env.NEXT_PUBLIC_API as string;
 // Fetch Polls
 export const useFetchFeeds = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/feeds`);
+    const response = await axiosConfig.get('/feeds');
     return response.data.reverse();
   };
 
@@ -22,7 +22,7 @@ export const useFetchFeeds = () => {
 // Posts
 export const usePostQuery = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts`);
+    const response = await axiosConfig.get('/posts');
     return response.data.payload;
   };
 
@@ -34,7 +34,7 @@ export const usePostQuery = () => {
 // Category
 export const useFetchCategory = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/categories`);
+    const response = await axiosConfig.get('/categories');
     return response.data.payload;
   };
 
@@ -46,7 +46,7 @@ export const useFetchCategory = () => {
 // allcomments
 export const useFetchComments = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/comments`);
+    const response = await axiosConfig.get('/comments');
     console.log(response);
     return response.data.payload;
   };
@@ -60,7 +60,7 @@ export const useFetchComments = () => {
 // Read Query
 export const useReadQuery = (id: string) => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/read/${id}`);
+    const response = await axiosConfig.get(`/posts/read/${id}`);
     console.log(response);
     return response.data.payload;
   };
@@ -70,7 +70,7 @@ export const useReadQuery = (id: string) => {
 // Fetch Comments by postID
 export const useFetchPostComment = (id: string) => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/comments/post/${id}`);
+    const response = await axiosConfig.get(`/comments/post/${id}`);
     console.log(response);
     return response.data.payload;
   };
@@ -89,7 +89,7 @@ export const useFetchPostComment = (id: string) => {
 // Each Post
 export const useEachPostQuery = (id: string) => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/${id}`);
+    const response = await axiosConfig.get(`/posts/${id}`);
     console.log(response);
     return response.data.payload;
   };
@@ -104,7 +104,7 @@ export const useEachPostQuery = (id: string) => {
 // Fetch Polls
 export const useFetchPolls = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/polls`);
+    const response = await axiosConfig.get('/polls');
     return response.data.payload;
   };
 
@@ -119,7 +119,7 @@ export const useFetchPolls = () => {
 // Editor Pick
 export const useFetchEditorsPick = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/editors`);
+    const response = await axiosConfig.get('/posts/class/editors');
     return response.data.payload;
   };
 
@@ -131,7 +131,7 @@ export const useFetchEditorsPick = () => {
 // Trending
 export const useFetchTrending = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/trending`);
+    const response = await axiosConfig.get('/posts/class/trending');
     return response.data.payload;
   };
 
@@ -146,7 +146,7 @@ export const useFetchTrending = () => {
 // News-Breaking
 export const useFetchNewsBreaking = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/news-breaking`);
+    const response = await axiosConfig.get('/posts/class/news-breaking');
     return response.data.payload;
   };
 
@@ -161,7 +161,7 @@ export const useFetchNewsBreaking = () => {
 // Featured
 export const useFetchFeatured = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/featured`);
+    const response = await axiosConfig.get('/posts/class/featured');
     return response.data.payload;
   };
 
@@ -175,7 +175,7 @@ export const useFetchFeatured = () => {
 // stories
 export const useFetchStories = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/stories`);
+    const response = await axiosConfig.get('/posts/class/stories');
     return response.data.payload;
   };
 
@@ -185,7 +185,7 @@ export const useFetchStories = () => {
 // ForyOU
 export const useFetchForYou = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/for-you`);
+    const response = await axiosConfig.get('/posts/class/for-you');
     return response.data.payload;
   };
 
@@ -195,7 +195,7 @@ export const useFetchForYou = () => {
 // popular
 export const useFetchPopular = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/popular`);
+    const response = await axiosConfig.get('/posts/class/popular');
     return response.data.payload;
   };
 
@@ -205,7 +205,7 @@ export const useFetchPopular = () => {
 // photosplash
 export const useFetchPhotoSplash = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/photo-splash`);
+    const response = await axiosConfig.get('/posts/class/photo-splash');
     return response.data.payload;
   };
 
@@ -219,7 +219,7 @@ export const useFetchPhotoSplash = () => {
 // Infocus
 export const useFetchInFocus = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/in-focus`);
+    const response = await axiosConfig.get('/posts/class/in-focus');
     return response.data.payload;
   };
 
@@ -230,7 +230,7 @@ export const useFetchInFocus = () => {
 // article
 export const useFetchArticle = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/article`);
+    const response = await axiosConfig.get('/posts/class/article');
     return response.data.payload;
   };
 
@@ -242,7 +242,7 @@ export const useFetchArticle = () => {
 // Fantasy
 export const useFetchFantasy = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/fantasy`);
+    const response = await axiosConfig.get('/posts/class/fantasy');
     return response.data.payload;
   };
 
@@ -366,7 +366,7 @@ export const useCreateFeed = () => {
 
 export const useUpdatePoll = (id : string) => {
   const updateData = async (data: any) => {
-    const response = await axios.put(`${api}/polls/${id}`);
+    const response = await axiosConfig.put(`/polls/${id}`);
     return response.data.payload;
   }
 

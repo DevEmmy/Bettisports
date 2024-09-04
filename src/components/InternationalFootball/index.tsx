@@ -82,7 +82,7 @@ const InternationalFootball = () => {
           {filterII.map((item: any, i: number) => {
             return (
               <option className='text-[14px] w-fit' key={i}>
-                {item?.title} g
+                <span>{item?.title} </span>
               </option>
             );
           })}
