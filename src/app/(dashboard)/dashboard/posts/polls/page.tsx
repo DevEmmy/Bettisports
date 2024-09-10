@@ -20,8 +20,8 @@ interface duration {
 }
 
 const page = () => {
-  const { createPollFn, isLoading, isError, error, isSuccess } =
-    useCreatePoll();
+  const { createPollFn, isLoading, isError, error, isSuccess } = useCreatePoll();
+  const { polls, refetch} = useFetchPolls();
 
   const [question, setQuestion] = useState<string>('');
   const [choices, setChoices] = useState(['', '']);
@@ -268,7 +268,7 @@ const page = () => {
               </button>
             </div>
 
-            <p>28 Items</p>
+            <p>{polls?.length} Items</p>
           </div>
 
           <div className='my-3 overflow-x-auto'>

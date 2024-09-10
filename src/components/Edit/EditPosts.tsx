@@ -21,9 +21,9 @@ import {
 import 'react-quill/dist/quill.snow.css';
 import FileBase64 from 'react-file-base64';
 import {useUpdatePostQuery, usePostQuery, useDeletePostQuery } from '@/hooks/PostRequests';
-import Loader from '@/components/Loader';
 import { toastSuccess } from '@/utils/toast';
 import { LuGalleryHorizontal } from 'react-icons/lu';
+import Link from 'next/link';
 
 interface FormatOption {
   text: string;
@@ -237,7 +237,7 @@ const EditPosts = ({ post }: PostProps) => {
         </span>
         <span className='text-blue-600 border-x-2 px-2 flex cursor-pointer'>Quick Edit</span>
         <span className='text-red-700 border-r-2 pr-2 cursor-pointer' onClick={handleDelete}>Trash</span>
-        <span className='text-blue-600 cursor-pointer' >View</span>
+        <Link href={`/blog/${post?._id}`} className='text-blue-600 cursor-pointer' >View</Link>
       </div>
       {showEdit && (
         <div className='h-[100vh] w-[100vw] overflow-x-hidden overflow-y-auto grid place-items-center top-0 black__overlay fixed'>

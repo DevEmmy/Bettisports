@@ -1,8 +1,8 @@
 'use client';
-import Table from '@/components/Tables/PostsTable'
 import UsersTable from '@/components/Tables/UsersTable'
 import React from 'react'
 import { HiSearch, HiTrash } from 'react-icons/hi'
+import Link from 'next/link';
 
 const page = () => {
     return (
@@ -10,9 +10,9 @@ const page = () => {
             <div className='flex gap-10 flex-center max-md:justify-between'>
                 <p className=' font-[600] '>Users</p>
 
-                <button className='border border-secondaryBlue text-secondaryBlue p-2 text-xs'>
+                <Link href={'/dashboard/users/new'} className='border border-secondaryBlue text-secondaryBlue p-2 text-xs'>
                     Add New User
-                </button>
+                </Link>
             </div>
 
             <div className="md:flex md:items-center justify-between">

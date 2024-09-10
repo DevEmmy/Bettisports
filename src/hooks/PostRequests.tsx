@@ -40,9 +40,11 @@ export const useFetchCategory = () => {
     return response.data.payload;
   };
 
-  const { data: categories, isError, isLoading } = useQuery('categories', fetchData);
+  const { data: categories, isError, isLoading, refetch } = useQuery('categories', fetchData, {
+    enabled: true,
+  });
 
-  return { categories, isError, isLoading };
+  return { categories, isError, isLoading, refetch };
 };
 
 // allcomments
@@ -419,9 +421,9 @@ export const useFetchNotification = () => {
   
 
 
-  // Update posts
+// Update posts
 
-  export const useUpdatePostQuery = (id: string) => {
+export const useUpdatePostQuery = (id: string) => {
     const updateData = async (data: any) => {
       let response = await axiosConfig.put(`/posts/${id}`, data);
       console.log(response);
@@ -434,6 +436,7 @@ export const useFetchNotification = () => {
   return { updatePostFn, isLoading, isError, error, isSuccess };
 };
 
+// Delete Post
 export const useDeletePostQuery = (id: string) => {
   const deleteData = async () => {
     const response = await axiosConfig.delete(`/posts/${id}`);
@@ -444,4 +447,60 @@ export const useDeletePostQuery = (id: string) => {
   const {mutate: deletePostFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
 
   return { deletePostFn, isError, isLoading, deleteSuccess};
+};
+
+// Update polls
+
+export const useUpdatePollQuery = (id: string) => {
+  const updateData = async (data: any) => {
+    let response = await axiosConfig.put(`/polls/${id}`, data);
+    console.log(response);
+    response = response.data.payload;
+  return response;
+};
+
+const { mutate: updatePollFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+return { updatePollFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete Poll
+export const useDeletePollQuery = (id: string) => {
+const deleteData = async () => {
+  const response = await axiosConfig.delete(`/polls/${id}`);
+  console.log(response);
+  return response.data.payload;
+};
+
+const {mutate: deletePollFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+return { deletePollFn, isError, isLoading, deleteSuccess};
+};
+
+// Update categories
+
+export const useUpdateCategoryQuery = (id: string) => {
+  const updateData = async (data: any) => {
+    let response = await axiosConfig.put(`/categories/${id}`, data);
+    console.log(response);
+    response = response.data.payload;
+  return response;
+};
+
+const { mutate: updateCategoryFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+return { updateCategoryFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete categories
+export const useDeleteCategoryQuery = (id: string) => {
+const deleteData = async () => {
+  const response = await axiosConfig.delete(`/categories/${id}`);
+  console.log(response);
+  return response.data.payload;
+};
+
+const {mutate: deleteCategoryFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+return { deleteCategoryFn, isError, isLoading, deleteSuccess};
 };

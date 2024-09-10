@@ -15,6 +15,7 @@ import { useCreateCategory, useFetchCategory } from '@/hooks/PostRequests';
 import { toastSuccess } from '@/utils/toast';
 import CategoryTable from '@/components/Tables/CategoryTable';
 import Loader from '@/components/Loader';
+import EditCategories from '@/components/Edit/EditCategories';
 
 const page = () => {
   const [title, setTitle] = useState<string>('');
@@ -185,7 +186,7 @@ const page = () => {
               </button>
             </div>
 
-            <p className='max-md:my-3'>28 Items</p>
+            <p className='max-md:my-3'>{isLoading? <Loader /> : categories?.length} Items</p>
           </div>
 
           <div className='overflow-x-auto'>

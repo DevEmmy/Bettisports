@@ -4,6 +4,7 @@ import Loader from '../Loader';
 import { IoIosThermometer } from 'react-icons/io';
 import TimeAgo from 'react-timeago'
 import { useFetchPolls } from '@/hooks/PostRequests';
+import EditPolls from '../Edit/EditPolls';
 
 interface Props {
   thead: string[];
@@ -52,11 +53,12 @@ const PollTable = () => {
                       : item?.question}
                   </div>
 
-                  <div className='mt-1.5 flex gap-2 text-xs'>
+                  {/* <div className='mt-1.5 flex gap-2 text-xs'>
                     <span className='text-blue-600'>Edit</span>
                     <span className='text-red-700 border-x-2 px-2'>Trash</span>
                     <span className='text-blue-600'>View</span>
-                  </div>
+                  </div> */}
+                  <EditPolls poll={item} />
                 </td>
                 <td>{item?.format}</td>
                 <td>{item?.duration}</td>

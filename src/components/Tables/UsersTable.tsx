@@ -5,6 +5,7 @@ import { IoIosThermometer } from 'react-icons/io';
 import TimeAgo from 'react-timeago'
 import { usePostQuery} from '@/hooks/PostRequests';
 import { useFetchUsers } from '@/hooks/UserRequests';
+import EditUsers from '../Edit/EditUsers';
 
 
 interface Props {
@@ -47,12 +48,7 @@ const UsersTable = () => {
                   <div >
                     {item?.firstName}
 
-                        <div className='mt-1.5 flex gap-2 '>
-                        <span className='text-blue-600 border-r-2 pr-1'>Edit</span>
-                        <span className='text-red-700 border-r-2 pr-1'>Delete</span>
-                        <span className='text-blue-600 border-r-2 pr-1'>View</span>
-                        <span className='text-blue-600'>View</span>
-                    </div>
+                    <EditUsers user={item} />
                   </div>
 
                   
