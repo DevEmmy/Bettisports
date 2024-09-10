@@ -56,9 +56,11 @@ export const useFetchComments = () => {
   };
 
   const {
-    data: comments, isError: isErr, isLoading } = useQuery('comments', fetchData);
+    data: comments, isError: isErr, isLoading, refetch } = useQuery('comments', fetchData, {
+      enabled: true
+    });
 
-  return { comments, isErr, isLoading};
+  return { comments, isErr, isLoading, refetch};
 };
 
 // Read Query
@@ -503,4 +505,35 @@ const deleteData = async () => {
 const {mutate: deleteCategoryFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
 
 return { deleteCategoryFn, isError, isLoading, deleteSuccess};
+};
+
+
+
+
+// Update Comment
+
+export const useUpdateCommentQuery = (id: string) => {
+  const updateData = async (data: any) => {
+    let response = await axiosConfig.put(`/comments/${id}`, data);
+    console.log(response);
+    response = response.data.payload;
+  return response;
+};
+
+const { mutate: updateCommentFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+return { updateCommentFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete comment
+export const useDeleteCommentQuery = (id: string) => {
+const deleteData = async () => {
+  const response = await axiosConfig.delete(`/comments/${id}`);
+  console.log(response);
+  return response.data.payload;
+};
+
+const {mutate: deleteCommentFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+return { deleteCommentFn, isError, isLoading, deleteSuccess};
 };

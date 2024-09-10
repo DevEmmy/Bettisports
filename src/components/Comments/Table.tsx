@@ -16,15 +16,18 @@ interface Data {
 }
 
 
-const Table = () => {
+const CommentTable = () => {
     const { comments, isErr, isLoading } = useFetchComments();
     // console.log(comments?.data);
     let thead = [
         "Author", "Comment", "In Response to", "Submitted on"
     ]
     return (
-        <table className='table bg-white border text-xs overflow-x-auto'>
+        <table className='table bg-white border text-sm overflow-x-auto'>
             <tr>
+                <th>
+                    <input type='checkbox' />
+                </th>
                 {
                     thead?.map((head: string, i: number) => {
                         return (
@@ -61,4 +64,4 @@ const Table = () => {
     )
 }
 
-export default Table
+export default CommentTable

@@ -74,7 +74,7 @@ const EditUsers = ({ user }: Props) => {
                     onDone={(base64: any) => setProfilePicture(base64.base64)}/>
                 </div>
               </button>
-              <button
+            <button
               onClick={() => setShow(false)}
               className='top-0 absolute right-0 text-gray-500 p-3'>
               <HiX className='cursor-pointer' size={20} />

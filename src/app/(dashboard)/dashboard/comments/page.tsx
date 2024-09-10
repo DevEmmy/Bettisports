@@ -1,4 +1,4 @@
-import Table from '@/components/Comments/Table';
+import CommentTable from '@/components/Comments/Table';
 import React from 'react';
 import { HiSearch, HiTrash } from 'react-icons/hi';
 import Edit from '@/components/UI/Edit';
@@ -52,7 +52,7 @@ const page = () => {
       </div>
 
       <div className='overflow-x-auto'>
-        <Table />
+        <CommentTable />
       </div>
     </div>
   );

@@ -94,3 +94,17 @@ export const useCreateUser = () => {
     return { likesAndSaved, isError, isLoading };
   };
   
+
+
+  export const useFetchUserById = (id : string) => {
+    const fetchData = async () => {
+      const response = await axios.get(`${api}/auth/${id}`);
+      return response.data.payload;
+    };
+
+    // const user = fetchData.find((user) => user._id === id);
+  
+    const { data: user, isError, isLoading  } = useQuery(id, fetchData);
+  
+    return { user, isError, isLoading };
+  };
