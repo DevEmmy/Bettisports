@@ -41,7 +41,7 @@ const Page: React.FC = () => {
   const [menCategories, setMenCategories] = useState<string[]>([]);
   const [womenCategories, setWomenCategories] = useState<string[]>([]);
   const [excerpt, setExcerpt] = useState<string>('');
-  const [format, setFormat] = useState<string>('');
+  const [format, setFormat] = useState<string>('standard');
   const [tags, setTags] = useState<string[]>([]);
   const [featuredImage, setFeaturedImage] = useState<string>('');
   const [nationality, setNationality] = useState<string>('');
@@ -262,6 +262,7 @@ const Page: React.FC = () => {
                     type='radio'
                     name='format'
                     value={item?.value}
+                    checked={format == item?.value ? true : false}
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormat(e.target.value)
                     }
@@ -271,7 +272,8 @@ const Page: React.FC = () => {
             </div>
           </OverviewContainer>
 
-          <OverviewContainer title={'Categories'}>
+          {format == 'standard' && (
+            <OverviewContainer title={'Categories'}>
             <div>
               <div className='flex gap-3 divide-x border-b py-3'>
                 <p>All Categories</p>
@@ -340,7 +342,8 @@ const Page: React.FC = () => {
                 + Add New Category
               </p>
             </div>
-          </OverviewContainer>
+            </OverviewContainer>
+          )}
 
           <OverviewContainer title={'Tags'}>
             <div className='flex flex-col gap-2'>

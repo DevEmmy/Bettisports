@@ -47,7 +47,7 @@ const Table = () => {
                 }
             </div> */}
 
-   {isLoading ? <Loader /> : comments?.length > 0 ?
+                {isLoading ? <Loader /> : comments?.length > 0 ?
                     comments?.map((item : any,i : number) => {
                         return (
                             <TableData key={i} item={item} />

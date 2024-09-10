@@ -1,6 +1,7 @@
 import Table from '@/components/Comments/Table';
 import React from 'react';
 import { HiSearch, HiTrash } from 'react-icons/hi';
+import Edit from '@/components/UI/Edit';
 
 const page = () => {
   return (

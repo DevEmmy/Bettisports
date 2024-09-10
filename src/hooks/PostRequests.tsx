@@ -26,9 +26,11 @@ export const usePostQuery = () => {
     return response.data.payload;
   };
 
-  const { data: posts, isError, isLoading } = useQuery('posts', fetchData);
+  const { data: posts, isError, isLoading, refetch } = useQuery('posts', fetchData,  {
+    enabled: true
+  } );
 
-  return { posts, isError, isLoading };
+  return { posts, isError, isLoading, refetch };
 };
 
 // Category
@@ -415,3 +417,31 @@ export const useFetchNotification = () => {
     return { notification, isError, isLoading , refetch};
   };
   
+
+
+  // Update posts
+
+  export const useUpdatePostQuery = (id: string) => {
+    const updateData = async (data: any) => {
+      let response = await axiosConfig.put(`/posts/${id}`, data);
+      console.log(response);
+      response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: updatePostFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+  return { updatePostFn, isLoading, isError, error, isSuccess };
+};
+
+export const useDeletePostQuery = (id: string) => {
+  const deleteData = async () => {
+    const response = await axiosConfig.delete(`/posts/${id}`);
+    console.log(response);
+    return response.data.payload;
+  };
+
+  const {mutate: deletePostFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+  return { deletePostFn, isError, isLoading, deleteSuccess};
+};

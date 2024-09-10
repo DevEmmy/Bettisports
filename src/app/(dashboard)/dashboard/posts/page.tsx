@@ -12,7 +12,7 @@ const page = () => {
     return (
         <div className='flex flex-col gap-5 max-w-full overflow-hidden'>
             <div className='flex gap-10 flex-center max-md:justify-between'>
-                <p className=' font-[600] '>Posts</p>
+                <p className='font-[600]'>Posts</p>
 
                 <Link href={"/dashboard/posts/new"} >
                     <button className='border border-secondaryBlue text-secondaryBlue p-2 text-xs'>
