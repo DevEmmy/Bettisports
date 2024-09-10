@@ -76,18 +76,21 @@ const EditComments = ({commentData} : Props) => {
     <div>
         <div className='mt-1.5 flex gap-2 text-xs'>
         <span
-          className='text-blue-600 cursor-pointer'
+          className='text-blue-600 px-1 cursor-pointer'
           onClick={() => setShow(true)}>
           Edit
         </span>
         <span
-          className='text-red-700 border-x-2 px-2 cursor-pointer'
+          className='text-red-700 borde-x-2 px-1 cursor-pointer'
           onClick={handleDelete}>
           Trash
         </span>
-        <Link href={`/blog`} className='text-blue-600 cursor-pointer'>
-          View
+        <Link href={`/blog`} className='text-green-600 px-1 cursor-pointer'>
+          Approve
         </Link>
+        <span className='text-orange-600 px-1 cursor-pointer'>
+          Spam
+        </span>
         </div>
 
         {showEdit && (
