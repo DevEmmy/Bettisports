@@ -57,7 +57,8 @@ export default function Home() {
       <QuickLinks />
       <FootballNews title="MEN'S" />
       <img src='./hero2.png' alt='' className='mx-auto w-2/3 my-5' />
-      <Articles />
+      {/* <Articles /> */}
+      <MoreStories />
       <MostRead />
       <img src='./hero2.png' alt='' className='mx-auto w-2/3 my-5' />
       {/* <LiveTransfer /> */}

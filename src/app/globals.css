@@ -170,6 +170,10 @@ p{
   @apply absolute top-[50%] -translate-y-2/4 cursor-pointer bg-white rounded-full p-1.5 backdrop-blur backdrop-opacity-15 backdrop-filter
 }
 
+.stories_btn {
+  @apply absolute top-[50%] -translate-y-2/4 cursor-pointer border bg-white/90 backdrop-filter backdrop-blur-md shadow-lg rounded-full p-1.5  backdrop-opacity-15
+}
+
 /* dashboard table */
 table {
   @apply bg-white
@@ -201,4 +205,13 @@ td {
 
 .text-shadow {
   text-shadow: 0 0 10px rgba(0,0,0,0.5)
+}
+
+.format-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: '#FAC032';
+  scrollbar-track-color: '#197DDA';
+  scroll-behavior: smooth;
+  /* border-radius: ; */
+  /* scroll-behavior: smooth; */
 }

@@ -29,6 +29,7 @@ interface FormatOption {
   text: string;
   icon: React.ReactNode;
   value: string;
+  click: any;
 }
 
 const Page: React.FC = () => {
@@ -41,7 +42,6 @@ const Page: React.FC = () => {
   const [menCategories, setMenCategories] = useState<string[]>([]);
   const [womenCategories, setWomenCategories] = useState<string[]>([]);
   const [excerpt, setExcerpt] = useState<string>('');
-  const [format, setFormat] = useState<string>('standard');
   const [tags, setTags] = useState<string[]>([]);
   const [featuredImage, setFeaturedImage] = useState<string>('');
   const [nationality, setNationality] = useState<string>('');
@@ -53,7 +53,17 @@ const Page: React.FC = () => {
   const [newsBreaking, setNewsBreaking] = useState<boolean>(false);
   const [article, setArticle] = useState<boolean>(false);
   const [inFocus, setInFocus] = useState<boolean>(false);
+  const [mediaType,setMediaType] = useState<string>('');
 
+  enum PostFormat  {
+    STORY = 'STORY',
+    PODCAST = 'PODCAST',
+    PHOTOSPLASH = 'PHOTOSPLASH',
+    VIDEO = 'VIDEO',
+    STANDARD = 'STANDARD'
+  }
+  const [format, setFormat] = useState<string>(PostFormat.STANDARD);
+  
   const gender = ['Men', 'Women'];
 
   const categoriesList = [
@@ -67,13 +77,15 @@ const Page: React.FC = () => {
     'Betting',
   ];
 
+
   const formats: FormatOption[] = [
-    { text: 'Standard', icon: <RiPinDistanceLine />, value: 'standard' },
-    { text: 'Photosplash', icon: <RiGalleryLine />, value: 'gallery' },
-    { text: 'Stories', icon: <LuGalleryHorizontal />, value: 'video' },
-    { text: 'Podcast', icon: <RiMicLine />, value: 'podcast' },
-    { text: 'Video', icon: <RiVideoLine />, value: 'video' },
+    { text: 'Standard', icon: <RiPinDistanceLine />, value: 'standard', click: PostFormat.STANDARD },
+    { text: 'Photosplash', icon: <RiGalleryLine />, value: 'photosplash', click: PostFormat.PHOTOSPLASH },
+    { text: 'Stories', icon: <LuGalleryHorizontal />, value: 'story', click: PostFormat.STORY },
+    { text: 'Podcast', icon: <RiMicLine />, value: 'podcast', click: PostFormat.PODCAST },
+    { text: 'Video', icon: <RiVideoLine />, value: 'video', click: PostFormat.VIDEO },
   ];
+
 
   const ReactQuill = useMemo(
     () => dynamic(() => import('react-quill'), { ssr: false }),
@@ -106,6 +118,7 @@ const Page: React.FC = () => {
       newsBreaking,
       article,
       inFocus,
+      mediaType
     };
 
     try {
@@ -196,7 +209,7 @@ const Page: React.FC = () => {
 
           <FileBase64
             multiple={false}
-            onDone={(base64: any) => setMedia(base64.base64)}
+            onDone={(base64: any) => { setMedia(base64.base64); setMediaType(base64.type.split('/')[0])}}
           />
 
           <OverviewContainer title={'Excerpt'}>
@@ -253,7 +266,7 @@ const Page: React.FC = () => {
                 <div
                   key={idx}
                   className='flex justify-between gap-3 border-b py-3'
-                  onClick={() => setFormat(item?.value)}>
+                  onClick={() => setFormat(item?.click)}>
                   <div className='items-center flex'>
                     {item?.icon} <p className='ml-2'>{item?.text}</p>
                   </div>
@@ -262,7 +275,7 @@ const Page: React.FC = () => {
                     type='radio'
                     name='format'
                     value={item?.value}
-                    checked={format == item?.value ? true : false}
+                    checked={format == item?.click ? true : false}
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setFormat(e.target.value)
                     }

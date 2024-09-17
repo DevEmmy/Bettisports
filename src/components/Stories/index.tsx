@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Line from '../UI/Line';
 import Each from './Each';
 import VerticalHeader from '../Shared/VerticalHeader';
@@ -52,68 +52,66 @@ const Stories = () => {
     },
   ];
 
-  const { stories, isError, isLoading } = useFetchStories();
+  const { stories, isError, isLoading, refetch } = useFetchStories();
   const [currentOffset, setCurrentOffset] = useState<number>(0);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const [slidesPerPage, setSlidesPerPage] = useState(4); // adjust this value to set the number of slides per page
+  const [totalSlides, setTotalSlides] = useState(stories?.length ?? 0);
+
+  useEffect(() => {
+    setTotalSlides(stories?.length  ?? 0);
+  }, [stories]);
+
+  const handleNextSlide = () => {
+    if (currentIndex + slidesPerPage < totalSlides) {
+      setCurrentIndex(currentIndex + 1);
+      setTranslateX(translateX - 100 / slidesPerPage); // adjust this value based on your slide width
+    }
+  };
+
+  const handlePrevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setTranslateX(translateX + 100 / slidesPerPage); // adjust this value based on your slide width
+    }
+  };
   return (
     <div className='md:grid grid-cols-[4fr_1.5fr] md:px-xPadding px-5 my-10 gap-10'>
       <div className='flex flex-col gap-5 my-2'>
         <VerticalHeader title='Stories' />
 
-          <div className='flex gap-5 overflow-x-auto relative'>
-          {isLoading ? (
-            <Loader />
-          ) : stories?.length > 0 ? (
-            stories?.map((newsItem: any, i: number) => {
-              return <Each item={newsItem} key={i} />;
-            })
-          ) : (
-            <p>There are no stories currently</p>
-          )}
-
-          {stories?.length > 0 && (
-            <>
-              <div className='carousel_btn left-2'>
-                <RiArrowLeftSLine className='w-6 h-6' />
-              </div>
-              <div className='carousel_btn right-2'>
-                <RiArrowRightSLine className='w-6 h-6' />
-              </div>
-            </>
-          )}
-
-
-           {/* Testing */}
-{/*         
-        {
-          news?.map((item: any, i: number) => {
-            return (
-            <div className={`min-w-[25%] h-[400px] relative`}>
-              <img src={"./img.jpg"} alt="" className='w-full h-full object-cover' />
-
-              <div className="overlay" />
-
-
-              <div className="details p-3">
-                <p className='text-[10px]'>{item?.date}</p>
-                <p className='font-[600]'>
-                {i == active ? 'Active' : 'normal'}  {item?.title} 
-                </p>
-              </div>
-            </div>
-            )
-          })
-        }
-
-        
-              <div className='carousel_btn left-2'>
-                <RiArrowLeftSLine className='w-6 h-6' />
-              </div>
-              <div className='carousel_btn right-2'>
-                <RiArrowRightSLine className='w-6 h-6' />
-              </div> */}
-  
-
+        <div className="overflow-x-hidden relative">
+      {isLoading ? (
+        <Loader />
+      ) : totalSlides > 0 ? (
+        <div
+          className="flex transition duration-500 ease-in-out gap-2 w-full"
+          style={{
+            transform: `translateX(${translateX}%)`,
+            width: `${totalSlides / slidesPerPage * 100}%`,
+          }}
+        >
+          {stories.map((item : any, index : number) => (
+            <Each key={index} item={item} />
+          ))}
         </div>
+      ) : (
+        <p>There are no stories currently</p>
+      )}
+
+      {totalSlides > 0 && (
+        <>
+          <div className="stories_btn left-2" onClick={handlePrevSlide}>
+            <RiArrowLeftSLine className="w-6 h-6" />
+          </div>
+          <div className="stories_btn right-2" onClick={handleNextSlide}>
+            <RiArrowRightSLine className="w-6 h-6" />
+          </div>
+        </>
+      )}
+    </div>
 
 
       </div>

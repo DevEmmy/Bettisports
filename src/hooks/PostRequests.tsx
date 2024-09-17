@@ -5,6 +5,8 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 const api = process.env.NEXT_PUBLIC_API as string;
 
+
+
 // Fetch Polls
 export const useFetchFeeds = () => {
   const fetchData = async () => {
@@ -18,6 +20,7 @@ export const useFetchFeeds = () => {
 
   return { feeds, isError, isLoading, refetch };
 };
+
 
 // Posts
 export const usePostQuery = () => {
@@ -178,16 +181,9 @@ export const useFetchFeatured = () => {
   } = useQuery('featured', fetchData);
   return { featured, isError, isLoading };
 };
-// stories
-export const useFetchStories = () => {
-  const fetchData = async () => {
-    const response = await axiosConfig.get('/posts/class/stories');
-    return response.data.payload;
-  };
 
-  const { data: stories, isError, isLoading } = useQuery('stories', fetchData);
-  return { stories, isError, isLoading };
-};
+
+
 // ForyOU
 export const useFetchForYou = () => {
   const fetchData = async () => {
@@ -208,20 +204,7 @@ export const useFetchPopular = () => {
   const { data: popular, isError, isLoading } = useQuery('popular', fetchData);
   return { popular, isError, isLoading };
 };
-// photosplash
-export const useFetchPhotoSplash = () => {
-  const fetchData = async () => {
-    const response = await axiosConfig.get('/posts/class/photo-splash');
-    return response.data.payload;
-  };
 
-  const {
-    data: photoSplash,
-    isError,
-    isLoading,
-  } = useQuery('photo-splash', fetchData);
-  return { photoSplash, isError, isLoading };
-};
 // Infocus
 export const useFetchInFocus = () => {
   const fetchData = async () => {
@@ -536,4 +519,52 @@ const deleteData = async () => {
 const {mutate: deleteCommentFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
 
 return { deleteCommentFn, isError, isLoading, deleteSuccess};
+};
+
+
+
+// FORMAT FETCHING
+
+
+
+//  STORIES
+export const useFetchStories = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/STORY');
+    return response.data.payload;
+  };
+
+  const { data: stories, isError, isLoading, refetch  } = useQuery('STORY', fetchData, {
+    enabled: true
+  });
+
+  return { stories, isError, isLoading, refetch };
+};
+
+// Video
+export const useFetchVideos = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/VIDEO');
+    return response.data.payload;
+  };
+
+  const { data: videos, isError, isLoading, refetch  } = useQuery('VIDEO', fetchData, {
+    enabled: true
+  });
+
+  return { videos, isError, isLoading, refetch };
+};
+
+//  PHOTOSPLASH
+export const useFetchPhotoSplash = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/');
+    return response.data.payload;
+  };
+
+  const { data: stories, isError, isLoading, refetch  } = useQuery('story', fetchData, {
+    enabled: true
+  });
+
+  return { stories, isError, isLoading, refetch };
 };

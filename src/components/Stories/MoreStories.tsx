@@ -30,7 +30,7 @@ const MoreStories = () => {
 
     return (
         <div className='flex flex-col gap-5 my-10 px-5 md:px-xPadding'>
-            <h1 className='font-[600] uppercase'>More Stories ghg</h1>
+            <h1 className='font-[600] uppercase'>More Stories</h1>
             <Line />
 
             <div className="flex gap-2 md:gap-5 overflow-auto">
