@@ -156,6 +156,13 @@ const Page: React.FC = () => {
   useEffect(() => {
     if (isSuccess) {
       toastSuccess('Post Uploaded');
+      setTitle('');
+      setContent('');
+      setMedia('')
+      setTags([])
+      setNewsBreaking(false)
+      setFantasy(false)
+      setEditorsPick(false)
     }
   }, [isSuccess]);
 
@@ -188,7 +195,7 @@ const Page: React.FC = () => {
             theme='snow'
             value={content}
             onChange={setContent}
-            className='h-[300px] bg-white'
+            className='min-h-[300px] h-fit bg-white mb-3'
           />
 
           <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
@@ -285,7 +292,7 @@ const Page: React.FC = () => {
             </div>
           </OverviewContainer>
 
-          {format == 'standard' && (
+          {format == 'STANDARD' && (
             <OverviewContainer title={'Categories'}>
             <div>
               <div className='flex gap-3 divide-x border-b py-3'>

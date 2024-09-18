@@ -19,7 +19,7 @@ const VideoComponent = () => {
         <Loader />
       ) : videos?.length > 0 ? (
         <div className='md:grid grid-cols-[3fr_1fr] mt-10 gap-5 md:h-[80vh]'>
-          <div className='relative my-3 md:h-[80vh] overflow-hidden'>
+          <div className='relative my-3 min-h-[40vh] md:h-[80vh] overflow-hidden'>
             <Play
               size={23}
               otherStyles='absolute -translate-x-[50%] -translate-y-[50%] top-2/4 left-2/4 p-4'
