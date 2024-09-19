@@ -9,7 +9,7 @@ const Articles = () => {
     const { article,isError,isLoading} = useFetchArticle();
     return (
         <div className='flex flex-col my-5 md:my-smXPadding gap-5 px-4 md:px-xPadding'>
-            <h1 className='font-[600]'>MORE STORIES</h1>
+            <h1 className='font-[600]'>MORE ARTICLES</h1>
             <Line />
 
             <div className="md:grid md:grid-cols-5 gap-5">
@@ -28,7 +28,7 @@ const Articles = () => {
                     :
                     (
                         <p>
-                            There are no stories left.
+                            There are no articles left.
                         </p>
                     )
                 }

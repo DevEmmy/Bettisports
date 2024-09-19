@@ -1,10 +1,15 @@
 'use client'
 import React from 'react'
 import TimeAgo from 'react-timeago';
-import parse from 'html-react-parser'
+import parser from 'html-react-parser'
 import { RiTimeFill } from 'react-icons/ri';
+import { Post } from '@/requests/dto';
 
-const Each = ({item}: any) => {
+interface Props {
+    item: Post
+}
+
+const Each = ({item}: Props) => {
     return (
         <div className='h-[400px] md:w-1/3 sm:w-1/2 w-full relative'>
             <img src={item?.media} alt="" className='w-full h-full object-cover' />
@@ -17,12 +22,10 @@ const Each = ({item}: any) => {
                     <TimeAgo date={item?.createdAt} />
                 </p>
                 <p className='font-[600] text-2xl'>
-                    {item?.title.split(0,200)} {
-                        item?.title?.length > 200 ? '...' : ''
-                    }
+                    {item?.title}
                 </p>
                 <p className=' text-[11px] text-gray-300 parser'>
-                    {parse(`${item?.content}`)}
+                    {parser(item?.content)}
                 </p>
             </div>
 
