@@ -82,7 +82,7 @@ const InternationalFootball = () => {
           {filterII.map((item: any, i: number) => {
             return (
               <option className='text-[14px] w-fit' key={i}>
-                {item?.title} g
+                <span>{item?.title} </span>
               </option>
             );
           })}
@@ -92,7 +92,7 @@ const InternationalFootball = () => {
       <div className='grid grid-cols-[3fr_1fr] gap-5'>
         <div className='md:grid grid-cols-2 gap-5'>
           <div className='flex flex-col gap-2 divide-y'>
-            <EachVideo />
+            {/* <EachVideo video={}/> */}
             {/* <SmFootballBlogHighlight />
                         <SmFootballBlogHighlight />
                         <SmFootballBlogHighlight />

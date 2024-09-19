@@ -95,7 +95,7 @@ const LeftNav = ({ setOpen }: any) => {
   return (
     <>
       <div className='black__overlay md:hidden' onClick={() => setOpen(false)} />
-      <div className=' w-fit md:w-1/5 fixed h-[100vh] top-0 left-0  z-[999] bg-white border-r flex flex-col gap-20 py-5 px-5'>
+      <div className=' w-fit md:w-1/5 fixed h-[100vh] top-0 left-0  max-md:z-[1000] bg-white border-r flex flex-col gap-20 py-5 px-5'>
         <div className='flex-center gap-5'>
           {/* <RiMenu2Line /> */}
           <RiCloseLine size={20} className='md:hidden' onClick={() => setOpen(false)}/>

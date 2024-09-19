@@ -12,6 +12,7 @@ import { HiCog } from 'react-icons/hi';
 import {
   RiCalendar2Fill,
   RiGalleryLine,
+  RiGalleryUploadLine,
   RiKeyLine,
   RiMicLine,
   RiPinDistanceLine,
@@ -22,11 +23,13 @@ import FileBase64 from 'react-file-base64';
 import { useCreatePost } from '@/hooks/PostRequests';
 import Loader from '@/components/Loader';
 import { toastSuccess } from '@/utils/toast';
+import { LuGalleryHorizontal } from 'react-icons/lu';
 
 interface FormatOption {
   text: string;
   icon: React.ReactNode;
   value: string;
+  click: any;
 }
 
 const Page: React.FC = () => {
@@ -39,7 +42,6 @@ const Page: React.FC = () => {
   const [menCategories, setMenCategories] = useState<string[]>([]);
   const [womenCategories, setWomenCategories] = useState<string[]>([]);
   const [excerpt, setExcerpt] = useState<string>('');
-  const [format, setFormat] = useState<string>('');
   const [tags, setTags] = useState<string[]>([]);
   const [featuredImage, setFeaturedImage] = useState<string>('');
   const [nationality, setNationality] = useState<string>('');
@@ -51,7 +53,17 @@ const Page: React.FC = () => {
   const [newsBreaking, setNewsBreaking] = useState<boolean>(false);
   const [article, setArticle] = useState<boolean>(false);
   const [inFocus, setInFocus] = useState<boolean>(false);
+  const [mediaType,setMediaType] = useState<string>('');
 
+  enum PostFormat  {
+    STORY = 'STORY',
+    PODCAST = 'PODCAST',
+    PHOTOSPLASH = 'PHOTOSPLASH',
+    VIDEO = 'VIDEO',
+    STANDARD = 'STANDARD'
+  }
+  const [format, setFormat] = useState<string>(PostFormat.STANDARD);
+  
   const gender = ['Men', 'Women'];
 
   const categoriesList = [
@@ -65,12 +77,15 @@ const Page: React.FC = () => {
     'Betting',
   ];
 
+
   const formats: FormatOption[] = [
-    { text: 'Standard', icon: <RiPinDistanceLine />, value: 'standard' },
-    { text: 'Gallery', icon: <RiGalleryLine />, value: 'gallery' },
-    { text: 'Video', icon: <RiVideoLine />, value: 'video' },
-    { text: 'Podcast', icon: <RiMicLine />, value: 'podcast' },
+    { text: 'Standard', icon: <RiPinDistanceLine />, value: 'standard', click: PostFormat.STANDARD },
+    { text: 'Photosplash', icon: <RiGalleryLine />, value: 'photosplash', click: PostFormat.PHOTOSPLASH },
+    { text: 'Stories', icon: <LuGalleryHorizontal />, value: 'story', click: PostFormat.STORY },
+    { text: 'Podcast', icon: <RiMicLine />, value: 'podcast', click: PostFormat.PODCAST },
+    { text: 'Video', icon: <RiVideoLine />, value: 'video', click: PostFormat.VIDEO },
   ];
+
 
   const ReactQuill = useMemo(
     () => dynamic(() => import('react-quill'), { ssr: false }),
@@ -103,6 +118,7 @@ const Page: React.FC = () => {
       newsBreaking,
       article,
       inFocus,
+      mediaType
     };
 
     try {
@@ -140,6 +156,13 @@ const Page: React.FC = () => {
   useEffect(() => {
     if (isSuccess) {
       toastSuccess('Post Uploaded');
+      setTitle('');
+      setContent('');
+      setMedia('')
+      setTags([])
+      setNewsBreaking(false)
+      setFantasy(false)
+      setEditorsPick(false)
     }
   }, [isSuccess]);
 
@@ -172,7 +195,7 @@ const Page: React.FC = () => {
             theme='snow'
             value={content}
             onChange={setContent}
-            className='h-[300px] bg-white'
+            className='min-h-[300px] h-fit bg-white mb-3'
           />
 
           <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
@@ -193,7 +216,7 @@ const Page: React.FC = () => {
 
           <FileBase64
             multiple={false}
-            onDone={(base64: any) => setMedia(base64.base64)}
+            onDone={(base64: any) => { setMedia(base64.base64); setMediaType(base64.type.split('/')[0])}}
           />
 
           <OverviewContainer title={'Excerpt'}>
@@ -211,18 +234,6 @@ const Page: React.FC = () => {
               </p>
             </div>
           </OverviewContainer>
-
-          {/* <OverviewContainer title={"Author"}>
-                        <div className='flex gap-2 flex-col'>
-                            <select
-                                className='w-fit p-3 bg-white border focus:outline'
-                                value={author}
-                                onChange={(e: ChangeEvent<HTMLSelectElement>) => setAuthor(e.target.value)}
-                            >
-                                <option value="Idowu Williams">Idowu Williams</option>
-                            </select>
-                        </div>
-                    </OverviewContainer> */}
 
           <button
             className={`border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit ${
@@ -256,7 +267,33 @@ const Page: React.FC = () => {
             </div>
           </OverviewContainer>
 
-          <OverviewContainer title={'Categories'}>
+          <OverviewContainer title={'Format'}>
+            <div className='flex flex-col gap-2'>
+              {formats?.map((item, idx) => (
+                <div
+                  key={idx}
+                  className='flex justify-between gap-3 border-b py-3'
+                  onClick={() => setFormat(item?.click)}>
+                  <div className='items-center flex'>
+                    {item?.icon} <p className='ml-2'>{item?.text}</p>
+                  </div>
+
+                  <input
+                    type='radio'
+                    name='format'
+                    value={item?.value}
+                    checked={format == item?.click ? true : false}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFormat(e.target.value)
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          </OverviewContainer>
+
+          {format == 'STANDARD' && (
+            <OverviewContainer title={'Categories'}>
             <div>
               <div className='flex gap-3 divide-x border-b py-3'>
                 <p>All Categories</p>
@@ -289,6 +326,7 @@ const Page: React.FC = () => {
                 />
                 <p>News Breaking</p>
               </div>
+              
 
               <div className='grid grid-cols-2 justify-between my-5'>
                 {gender?.map((g, i) => (
@@ -324,31 +362,8 @@ const Page: React.FC = () => {
                 + Add New Category
               </p>
             </div>
-          </OverviewContainer>
-
-          <OverviewContainer title={'Format'}>
-            <div className='flex flex-col gap-2'>
-              {formats?.map((item, idx) => (
-                <div
-                  key={idx}
-                  className='flex justify-between gap-3 border-b py-3'
-                  onClick={() => setFormat(item?.value)}>
-                  <div className='items-center flex'>
-                    {item?.icon} <p className='ml-2'>{item?.text}</p>
-                  </div>
-
-                  <input
-                    type='radio'
-                    name='format'
-                    value={item?.value}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setFormat(e.target.value)
-                    }
-                  />
-                </div>
-              ))}
-            </div>
-          </OverviewContainer>
+            </OverviewContainer>
+          )}
 
           <OverviewContainer title={'Tags'}>
             <div className='flex flex-col gap-2'>

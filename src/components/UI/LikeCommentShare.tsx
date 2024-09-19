@@ -41,8 +41,9 @@ const LikeCommentShare = ({ id, size }: Props) => {
         }
     }, [isLikeSuccess, isSaveSuccess, liked, saved]);
 
+    
     const handleLike = async () => {
-        setLiked((prev) => !prev);
+        setLiked(!liked);
         try {
             likePostFn(parser(id));
         } catch (error) {

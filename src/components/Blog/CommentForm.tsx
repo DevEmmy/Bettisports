@@ -50,7 +50,7 @@ const CommentForm = ({postId} : Props) => {
 }, [isSuccess])
   return (
     <div className='flex flex-col gap-5 my-5'>
-      <p className='text-[36px] font-[700]'>Leave a Reply</p>
+      <p className='text-2xl md:text-[30px] font-[700]'>Leave a Reply</p>
       {!user && (
         <p className='text-[#52575C]'>
             Your email address will not be published. Required fields are marked *

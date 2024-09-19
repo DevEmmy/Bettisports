@@ -58,7 +58,7 @@ const MainNav = () => {
       {nav.map((item: any, i: number) => {
         return (
           <option key={i} className='text-[12px]'>
-            <a href={item?.link}>{item?.title}</a>
+            <Link href={item?.link}>{item?.title}</Link>
           </option>
         );
       })}

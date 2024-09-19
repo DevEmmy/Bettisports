@@ -4,6 +4,7 @@ import Loader from '../Loader';
 import { usePostQuery } from '@/hooks/PostRequests';
 import { IoIosThermometer } from 'react-icons/io';
 import TimeAgo from 'react-timeago';
+import EditPosts from '../Edit/EditPosts';
 
 interface Props {
   thead: string[];
@@ -11,11 +12,58 @@ interface Props {
   isLoading?: boolean | null;
 }
 
+interface PostProps {
+  _id: string;
+  title: string;
+  author: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    profilePicture: string;
+    likes: string[];
+    saved: string[];
+    role: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+  content: string;
+  media: string;
+  publish: boolean;
+  categories: string[];
+  likes: string[];
+  menCategories: string[];
+  womenCategories: string[];
+  excerpt: string;
+  format: string;
+  tags: string[];
+  featuredImage: string;
+  nationality: string;
+  highlight: string;
+  photoSplash: boolean;
+  slug: string;
+  fantasy: boolean;
+  editorsPick: boolean;
+  newsBreaking: boolean;
+  reads: number;
+  featured: boolean;
+  article: boolean;
+  inFocus: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
 const PostsTable = () => {
   const { posts, isError, isLoading } = usePostQuery();
   return (
-    <table>
+    <table className='w-full'>
       <tr className='text-sm'>
+        <th>
+          <input type='checkbox' name='' id='' />
+        </th>
         {['Title', 'Author', 'Categories', 'Tags', 'Comment', 'Date'].map(
           (head: string, i: number) => {
             return (
@@ -37,13 +85,17 @@ const PostsTable = () => {
       {isLoading ? (
         <Loader />
       ) : posts?.length > 0 ? (
-        posts?.map((item: any, i: number) => {
+        posts?.map((item: PostProps, i: number) => {
+          console.log(posts);
           while (i < 50) {
             return (
               <tr className='text-left gap-1 text-sm items-start' key={i}>
+                <td>
+                  <input type='checkbox' name='' id='' />
+                </td>
                 <td className='text-[#197DDA]'>
                   <div className='text-[16px]'>
-                    {item?.title > 120
+                    {item?.title.length > 120
                       ? `
                       ${item?.title.slice(0, 119)}...`
                       : item?.title}
@@ -53,18 +105,10 @@ const PostsTable = () => {
                       <span className='text-black text-xs'>- Draft</span>
                     )}
                   </div>
-
-                  <div className='mt-1.5 flex gap-2 text-xs'>
-                    <span className='text-blue-600'>Edit</span>
-                    <span className='text-blue-600 border-x-2 px-2 flex'>
-                      Quick Edit
-                    </span>
-                    <span className='text-red-700 border-r-2 pr-2'>Trash</span>
-                    <span className='text-blue-600'>View</span>
-                  </div>
+                  <EditPosts post={item} />
                 </td>
                 <td>{item?.author.firstName + ' ' + item?.author.lastName}</td>
-                <td>{item?.category}</td>
+                <td>{item?.categories}</td>
                 <td>
                   {item?.tags.length > 0 ? (
                     item?.tags?.map((tag: any, i: number) => (
