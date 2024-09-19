@@ -562,9 +562,9 @@ export const useFetchPhotoSplash = () => {
     return response.data.payload;
   };
 
-  const { data: stories, isError, isLoading, refetch  } = useQuery('story', fetchData, {
+  const { data: photoSplash, isError, isLoading, refetch  } = useQuery('photoSplash', fetchData, {
     enabled: true
   });
 
-  return { stories, isError, isLoading, refetch };
+  return { photoSplash, isError, isLoading, refetch };
 };
