@@ -17,16 +17,15 @@ const Comments = ({comments} : any) => {
           
         { 
         comments?.length > 0 ?
-        comments?.map((item : any, i: number) =>{
-                return(
-                  <EachComment key={i} item={item} />
-                )
-            })
-            :
-            (
-              <p>no comments</p>
+          comments?.map((item : any, i: number) =>{
+            return(
+              <EachComment key={i} item={item} />
             )
-
+          })
+            :
+          (
+            <p>no comments</p>
+          )
         }
         </div>
     </div>

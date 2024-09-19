@@ -2,6 +2,7 @@ import React from 'react';
 // import { RiChat1Fill } from 'react-icons/ri';
 import Loader from '../Loader';
 import { Span } from 'next/dist/trace';
+import EditCategories from '../Edit/EditCategories';
 // import { IoIosThermometer } from 'react-icons/io';
 // import TimeAgo from 'react-timeago'
 
@@ -15,7 +16,7 @@ const CategoryTable = ({ thead, data}: Props) => {
 
 
     <>
-    <table>
+    <table className='w-full'>
       <tr className='text-sm'>
         <th>
           <input type="checkbox" name="" id="" />
@@ -41,14 +42,12 @@ const CategoryTable = ({ thead, data}: Props) => {
                     {item?.title}
                   </div>
 
-                  <div className='mt-1.5 flex gap-2 text-xs'>
+                  {/* <div className='mt-1.5 flex gap-2 text-xs'>
                     <span className='text-blue-600'>Edit</span>
-                    {/* <span className='text-blue-600 border-x-2 px-2'>
-                      Quick Edit
-                    </span> */}
                     <span className='text-red-700 border-x-2 px-1'>Trash</span>
                     <span className='text-blue-600'>View</span>
-                  </div>
+                  </div> */}
+                  <EditCategories  category={item}/>
                 </td>
                 <td>{item?.description}</td>
                 <td>{item?.slug}</td>

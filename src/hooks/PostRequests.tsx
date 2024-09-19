@@ -5,10 +5,12 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 const api = process.env.NEXT_PUBLIC_API as string;
 
+
+
 // Fetch Polls
 export const useFetchFeeds = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/feeds`);
+    const response = await axiosConfig.get('/feeds');
     return response.data.reverse();
   };
 
@@ -19,48 +21,55 @@ export const useFetchFeeds = () => {
   return { feeds, isError, isLoading, refetch };
 };
 
+
 // Posts
 export const usePostQuery = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts`);
+    const response = await axiosConfig.get('/posts');
     return response.data.payload;
   };
 
-  const { data: posts, isError, isLoading } = useQuery('posts', fetchData);
+  const { data: posts, isError, isLoading, refetch } = useQuery('posts', fetchData,  {
+    enabled: true
+  } );
 
-  return { posts, isError, isLoading };
+  return { posts, isError, isLoading, refetch };
 };
 
 // Category
 export const useFetchCategory = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/categories`);
+    const response = await axiosConfig.get('/categories');
     return response.data.payload;
   };
 
-  const { data: categories, isError, isLoading } = useQuery('categories', fetchData);
+  const { data: categories, isError, isLoading, refetch } = useQuery('categories', fetchData, {
+    enabled: true,
+  });
 
-  return { categories, isError, isLoading };
+  return { categories, isError, isLoading, refetch };
 };
 
 // allcomments
 export const useFetchComments = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/comments`);
+    const response = await axiosConfig.get('/comments');
     console.log(response);
     return response.data.payload;
   };
 
   const {
-    data: comments, isError: isErr, isLoading } = useQuery('comments', fetchData);
+    data: comments, isError: isErr, isLoading, refetch } = useQuery('comments', fetchData, {
+      enabled: true
+    });
 
-  return { comments, isErr, isLoading};
+  return { comments, isErr, isLoading, refetch};
 };
 
 // Read Query
 export const useReadQuery = (id: string) => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/read/${id}`);
+    const response = await axiosConfig.get(`/posts/read/${id}`);
     console.log(response);
     return response.data.payload;
   };
@@ -70,7 +79,7 @@ export const useReadQuery = (id: string) => {
 // Fetch Comments by postID
 export const useFetchPostComment = (id: string) => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/comments/post/${id}`);
+    const response = await axiosConfig.get(`/comments/post/${id}`);
     console.log(response);
     return response.data.payload;
   };
@@ -85,12 +94,11 @@ export const useFetchPostComment = (id: string) => {
   });
 
   return { comments, isErr, isLoad, refetch };
-};
-
+};axios
 // Each Post
 export const useEachPostQuery = (id: string) => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/${id}`);
+    const response = await axiosConfig.get(`/posts/${id}`);
     console.log(response);
     return response.data.payload;
   };
@@ -105,7 +113,7 @@ export const useEachPostQuery = (id: string) => {
 // Fetch Polls
 export const useFetchPolls = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/polls`);
+    const response = await axiosConfig.get('/polls');
     return response.data.payload;
   };
 
@@ -120,7 +128,7 @@ export const useFetchPolls = () => {
 // Editor Pick
 export const useFetchEditorsPick = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/editors`);
+    const response = await axiosConfig.get('/posts/class/editors');
     return response.data.payload;
   };
 
@@ -132,7 +140,7 @@ export const useFetchEditorsPick = () => {
 // Trending
 export const useFetchTrending = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/trending`);
+    const response = await axiosConfig.get('/posts/class/trending');
     return response.data.payload;
   };
 
@@ -147,7 +155,7 @@ export const useFetchTrending = () => {
 // News-Breaking
 export const useFetchNewsBreaking = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/news-breaking`);
+    const response = await axiosConfig.get('/posts/class/news-breaking');
     return response.data.payload;
   };
 
@@ -162,7 +170,7 @@ export const useFetchNewsBreaking = () => {
 // Featured
 export const useFetchFeatured = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/featured`);
+    const response = await axiosConfig.get('/posts/class/featured');
     return response.data.payload;
   };
 
@@ -173,20 +181,13 @@ export const useFetchFeatured = () => {
   } = useQuery('featured', fetchData);
   return { featured, isError, isLoading };
 };
-// stories
-export const useFetchStories = () => {
-  const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/stories`);
-    return response.data.payload;
-  };
 
-  const { data: stories, isError, isLoading } = useQuery('stories', fetchData);
-  return { stories, isError, isLoading };
-};
+
+
 // ForyOU
 export const useFetchForYou = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/for-you`);
+    const response = await axiosConfig.get('/posts/class/for-you');
     return response.data.payload;
   };
 
@@ -196,31 +197,18 @@ export const useFetchForYou = () => {
 // popular
 export const useFetchPopular = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/popular`);
+    const response = await axiosConfig.get('/posts/class/popular');
     return response.data.payload;
   };
 
   const { data: popular, isError, isLoading } = useQuery('popular', fetchData);
   return { popular, isError, isLoading };
 };
-// photosplash
-export const useFetchPhotoSplash = () => {
-  const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/photo-splash`);
-    return response.data.payload;
-  };
 
-  const {
-    data: photoSplash,
-    isError,
-    isLoading,
-  } = useQuery('photo-splash', fetchData);
-  return { photoSplash, isError, isLoading };
-};
 // Infocus
 export const useFetchInFocus = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/in-focus`);
+    const response = await axiosConfig.get('/posts/class/in-focus');
     return response.data.payload;
   };
 
@@ -231,7 +219,7 @@ export const useFetchInFocus = () => {
 // article
 export const useFetchArticle = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/article`);
+    const response = await axiosConfig.get('/posts/class/article');
     return response.data.payload;
   };
 
@@ -243,7 +231,7 @@ export const useFetchArticle = () => {
 // Fantasy
 export const useFetchFantasy = () => {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/posts/class/fantasy`);
+    const response = await axiosConfig.get('/posts/class/fantasy');
     return response.data.payload;
   };
 
@@ -367,7 +355,7 @@ export const useCreateFeed = () => {
 
 export const useUpdatePoll = (id : string) => {
   const updateData = async (data: any) => {
-    const response = await axios.put(`${api}/polls/${id}`);
+    const response = await axiosConfig.put(`/polls/${id}`);
     return response.data.payload;
   }
 
@@ -397,4 +385,186 @@ export const useSavePost = () => {
 
   const { mutate: savePostFn, isLoading : isSaveLoading , isError : isSaveError, error, isSuccess : isSaveSuccess } = useMutation(savePost);
   return { savePostFn, isSaveLoading, isSaveError, error, isSaveSuccess };
+};
+
+
+
+// Notification
+
+export const useFetchNotification = () => {
+    const fetchData = async () => {
+      const response = await axiosConfig.get('/notifications');
+      return response.data.payload;
+    };
+  
+    const { data: notification, isError, isLoading, refetch } = useQuery('notifications', fetchData , {
+      enabled: true,
+    });
+  
+    return { notification, isError, isLoading , refetch};
+  };
+  
+
+
+// Update posts
+
+export const useUpdatePostQuery = (id: string) => {
+    const updateData = async (data: any) => {
+      let response = await axiosConfig.put(`/posts/${id}`, data);
+      console.log(response);
+      response = response.data.payload;
+    return response;
+  };
+
+  const { mutate: updatePostFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+  return { updatePostFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete Post
+export const useDeletePostQuery = (id: string) => {
+  const deleteData = async () => {
+    const response = await axiosConfig.delete(`/posts/${id}`);
+    console.log(response);
+    return response.data.payload;
+  };
+
+  const {mutate: deletePostFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+  return { deletePostFn, isError, isLoading, deleteSuccess};
+};
+
+// Update polls
+
+export const useUpdatePollQuery = (id: string) => {
+  const updateData = async (data: any) => {
+    let response = await axiosConfig.put(`/polls/${id}`, data);
+    console.log(response);
+    response = response.data.payload;
+  return response;
+};
+
+const { mutate: updatePollFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+return { updatePollFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete Poll
+export const useDeletePollQuery = (id: string) => {
+const deleteData = async () => {
+  const response = await axiosConfig.delete(`/polls/${id}`);
+  console.log(response);
+  return response.data.payload;
+};
+
+const {mutate: deletePollFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+return { deletePollFn, isError, isLoading, deleteSuccess};
+};
+
+// Update categories
+
+export const useUpdateCategoryQuery = (id: string) => {
+  const updateData = async (data: any) => {
+    let response = await axiosConfig.put(`/categories/${id}`, data);
+    console.log(response);
+    response = response.data.payload;
+  return response;
+};
+
+const { mutate: updateCategoryFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+return { updateCategoryFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete categories
+export const useDeleteCategoryQuery = (id: string) => {
+const deleteData = async () => {
+  const response = await axiosConfig.delete(`/categories/${id}`);
+  console.log(response);
+  return response.data.payload;
+};
+
+const {mutate: deleteCategoryFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+return { deleteCategoryFn, isError, isLoading, deleteSuccess};
+};
+
+
+
+
+// Update Comment
+
+export const useUpdateCommentQuery = (id: string) => {
+  const updateData = async (data: any) => {
+    let response = await axiosConfig.put(`/comments/${id}`, data);
+    console.log(response);
+    response = response.data.payload;
+  return response;
+};
+
+const { mutate: updateCommentFn,isLoading,isError,error,isSuccess,} = useMutation(updateData);
+
+return { updateCommentFn, isLoading, isError, error, isSuccess };
+};
+
+// Delete comment
+export const useDeleteCommentQuery = (id: string) => {
+const deleteData = async () => {
+  const response = await axiosConfig.delete(`/comments/${id}`);
+  console.log(response);
+  return response.data.payload;
+};
+
+const {mutate: deleteCommentFn, isError, isLoading, isSuccess : deleteSuccess } = useMutation(deleteData);
+
+return { deleteCommentFn, isError, isLoading, deleteSuccess};
+};
+
+
+
+// FORMAT FETCHING
+
+
+
+//  STORIES
+export const useFetchStories = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/STORY');
+    return response.data.payload;
+  };
+
+  const { data: stories, isError, isLoading, refetch  } = useQuery('STORY', fetchData, {
+    enabled: true
+  });
+
+  return { stories, isError, isLoading, refetch };
+};
+
+// Video
+export const useFetchVideos = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/VIDEO');
+    return response.data.payload;
+  };
+
+  const { data: videos, isError, isLoading, refetch  } = useQuery('VIDEO', fetchData, {
+    enabled: true
+  });
+
+  return { videos, isError, isLoading, refetch };
+};
+
+//  PHOTOSPLASH
+export const useFetchPhotoSplash = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/');
+    return response.data.payload;
+  };
+
+  const { data: stories, isError, isLoading, refetch  } = useQuery('story', fetchData, {
+    enabled: true
+  });
+
+  return { stories, isError, isLoading, refetch };
 };

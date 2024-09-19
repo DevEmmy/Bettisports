@@ -12,6 +12,7 @@ import {
 import { toastSuccess, toastError } from '@/utils/toast';
 import { useCreatePoll, useFetchPolls } from '@/hooks/PostRequests';
 import PollTable from '@/components/Tables/PollTable';
+import FileBase64 from 'react-file-base64';
 
 interface duration {
   days: number;
@@ -20,10 +21,11 @@ interface duration {
 }
 
 const page = () => {
-  const { createPollFn, isLoading, isError, error, isSuccess } =
-    useCreatePoll();
+  const { createPollFn, isLoading, isError, error, isSuccess } = useCreatePoll();
+  const { polls, refetch} = useFetchPolls();
 
   const [question, setQuestion] = useState<string>('');
+  const [media,setMedia] = useState<string>('')
   const [choices, setChoices] = useState(['', '']);
   const [pollDuration, setPollDuration] = useState<duration>({
     days: 0,
@@ -119,12 +121,13 @@ const page = () => {
 
   return (
     <div className='md:flex flex-col gap-5'>
-      <p className='text-[20px] font-[600]'>Polls</p>
 
-      <div className='flex-center justify-between'>
-        <div className='max-md:hidden' />
+      <div className='flex-center justify-between gap-3'>
+        <div className=''>
+          <p className='text-[20px] font-[600]'>Polls</p>
+        </div>
 
-        <div className='bg-white border flex w-full my-3'>
+        <div className='bg-white border flex max-md:w-full my-3'>
           <input
             type='text'
             className='bg-transparent focus:outline-none p-3 max-md:grow'
@@ -240,18 +243,34 @@ const page = () => {
             </div>
           </div>
 
-          <div className='max-md:flex max-md:justify-between'>
+          <div className={` ${media == '' ? 'max-md:flex items-center max-md:justify-between' : 'p-2'}`}>
             <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
-              <HiCog />
-              Add Media
+            {media ? (
+              <img
+                src={media}
+                alt=''
+                className='w-full object-cover h-[40vh]'
+              />
+            ) : (
+              <>
+                {' '}
+                <HiCog />
+                Add Media
+              </>
+            )}
             </button>
+
+            <FileBase64
+            multiple={false}
+            onDone={(base64: any) => setMedia(base64.base64)}
+          />
+        </div>
 
             <button
               className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit '
               onClick={handleSubmit}>
               {isLoading ? 'Adding a Poll...' : 'Add New Poll'}
             </button>
-          </div>
         </div>
 
         <div className='max-sm:mt-20 max-md:mt-14'>
@@ -267,7 +286,7 @@ const page = () => {
               </button>
             </div>
 
-            <p>28 Items</p>
+            <p>{polls?.length} Items</p>
           </div>
 
           <div className='my-3 overflow-x-auto'>

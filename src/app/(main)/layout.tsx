@@ -4,6 +4,7 @@ import TopNav from '@/components/TopNav.tsx';
 import LiveScoreHighlight from '@/components/LiveScoreHighlight';
 import MainNav from '@/components/MainNav';
 import Footer from '@/components/Footer';
+import ViewStories from '@/components/Stories/ViewStories';
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
+      
       <TopNav />
       <LiveScoreHighlight />
 
@@ -21,6 +23,7 @@ export default function RootLayout({
 
       {children}
       <Footer />
+     {/* <ViewStories /> */}
     </>
   );
 }

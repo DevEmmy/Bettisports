@@ -4,9 +4,12 @@ import EachNotification from '@/components/Notifications/EachNotification'
 import Settings from '@/components/Notifications/Settings'
 import React, { useState } from 'react'
 import { RiSettings2Line } from 'react-icons/ri'
+import { useFetchNotification } from '@/hooks/PostRequests'
+import Loader from '@/components/Loader'
 
 const page = () => {
-    const [showSettings, setShow] = useState(false)
+    const [showSettings, setShow] = useState(false);
+    const {notification, isError, isLoading } = useFetchNotification();
     return (
         <div className='md:grid grid-cols-6 gap-5 px-5 md:px-xPadding my-10'>
             <div className='md:grid grid-cols-6 col-span-6 my-2.5 md:my-0'>
@@ -26,12 +29,17 @@ const page = () => {
             <img src="./ads.png" className='h-[90px] md:h-min object-cover bg-left-top w-full' alt="" />
 
             <div className='col-span-4 flex flex-col divide-y'>
-                {
-                    [0, 1]?.map((item, i) => {
+                {  
+                    isLoading ?
+                    <Loader /> : 
+                    notification?.length > 0 ?
+                    notification?.map((item : any, i : number) => {
                         return (
-                            <EachNotification key={i}/>
+                            <EachNotification key={i} item={item}/>
                         )
-                    })
+                    }) : (
+                        <p>No notifications for now</p>
+                    )
                 }
                 <div className='grid grid-cols-[0.5fr_5fr_1.5fr] border-b-2 border-b-gray-400 py-2'>
                     <div />

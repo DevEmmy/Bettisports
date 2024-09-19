@@ -22,6 +22,8 @@ const config: Config = {
         secondaryBlue: "#197DDA",
         grayColor: "#52575C",
         defaultYellow: "#FAC032",
+        secondaryGray: "#A0A4A8"
+
       }
     },
   },

@@ -119,6 +119,8 @@ const page = () => {
 
                     <select name="" id="" className='p-3 border'>
                         <option value="role">Role</option>
+                        <option value="ADMINISTRATOR">Administrator</option>
+                        <option value="AUTHOR">Author</option>
                     </select>
                 </div>
 

@@ -16,7 +16,7 @@ const TopNav = () => {
   }
 
   return (
-    <div className='flex-center justify-between py-4 px-5 md:px-xPadding bg-white border-b fixed top-0 w-full md:w-4/5 right-0'>
+    <div className='flex-center justify-between py-4 px-5 md:px-smXPadding bg-white border-b fixed top-0 w-full md:w-4/5 right-0'>
        <div className='flex gap-2 items-center'>
             <RiMenu2Fill
               onClick={() => setOpen(true)}
