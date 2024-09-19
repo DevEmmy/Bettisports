@@ -12,7 +12,7 @@ const News = () => {
                 isLoading && !newsBreaking ?
                     <Loader />
                     :
-                    <div className='grid grid-cols-4 gap-5'>
+                    <div className='sm:grid sm:grid-cols-3 md:grid-cols-4 gap-5'>
                         {/* <div className='row-span-2'>
                             <EachNews item={newsBreaking[0]} />
                         </div> */}

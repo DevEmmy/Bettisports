@@ -28,8 +28,8 @@ const QuickLinks = () => {
             }
         }, [isSuccess])
     return (
-        <div className='grid grid-cols-[4fr_1.5fr] gap-10 mx-xPadding'>
-            <div className='flex gap-5 flex-col'>
+        <div className='md:grid md:grid-cols-[4fr_1.5fr] gap-10 px-4 md:px-xPadding '>
+            <div className='flex gap-5 flex-col my-3 md:my-1'>
                 <img src="./frame.png" alt="" />
 
                 <div className="flex items-center">
@@ -37,7 +37,7 @@ const QuickLinks = () => {
                     <Line />
                 </div>
 
-                <div className='flex gap-2 items-center'>
+                <div className='flex gap-2 items-center overflow-hidden'>
                     {
                         icons.map((icon: string, i: number) => {
                             return (
@@ -52,7 +52,7 @@ const QuickLinks = () => {
 
             </div>
 
-            <div className='bg-[#E8E8E8] p-5 text-center flex flex-col gap-3'>
+            <div className='bg-[#E8E8E8] p-5 text-center flex flex-col gap-3 my-3 md:my-1'>
                 <h1 className='font-[600]'>JOIN THE NEWSLETTER</h1>
                 <p className='text-[14px]'>Receive the latest news and updates on your favourites </p>
                 <input type="text" placeholder='Email Address' className='p-3 text-[14px]' value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />

@@ -27,7 +27,7 @@ const Main = () => {
         <div>
             <p>Dashboard</p>
 
-            <div className="grid grid-cols-2 gap-10 mt-5">
+            <div className="sm:grid grid-cols-2 sm:gap-4 md:gap-10 mt-5">
                 <OverviewContainer title="Overview">
                     <div>
                         <div className='flex-center justify-between text-sm'>

@@ -23,7 +23,7 @@ const CategoricalNews = () => {
     ]
 
   return (
-    <div>
+    <div className='p-3'>
         <div className='flex justify-between items-center border-b border-b-gray-400 '>
             {
                 filter?.map((item: any, i: number)=> {

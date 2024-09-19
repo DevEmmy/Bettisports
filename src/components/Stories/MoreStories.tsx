@@ -29,15 +29,17 @@ const MoreStories = () => {
 
 
     return (
-        <div className='flex flex-col gap-5 my-10 mx-xPadding'>
-            <h1 className='font-[600] uppercase'>More Stories</h1>
+        <div className='flex flex-col gap-5 my-10 px-5 md:px-xPadding'>
+            <h1 className='font-[600] uppercase'>More Stories ghg</h1>
             <Line />
 
-            <div className="flex gap-5 overflow-auto">
+            <div className="flex gap-2 md:gap-5 overflow-auto">
                 {
                     stories.map((newsItem: any, i: number) => {
                         return (
-                            <Each item={newsItem} key={i} />
+                            <div className=" bg-secondaryBlue min-w-[75%] md:min-w-min ">
+                                <Each item={newsItem} key={i} />
+                            </div>
                         )
                     })
                 }

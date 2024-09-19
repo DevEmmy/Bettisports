@@ -9,12 +9,12 @@ const page = () => {
 
   if (send) {
     return (
-      <div className='flex mt-32 flex-col text-start w-2/3 m-auto gap-5'>
+      <div className='flex mt-32 flex-col text-start w-4/5 md:w-2/3 m-auto gap-5'>
         <div className='bg-secondaryBlue size-[70px] rounded-full flex-all-center text-white'>
         <HiCheck size={36}/>
         </div>
         <div>
-          <p className='text-[40px] font-[600]'>Check your email</p>
+          <p className='text-[40px] font-[600] leading-none mb-2'>Check your email</p>
           <p className='font-[500]'>To confirm your account, click the link in the email that sent to Alexadams@gmail.com</p>
         </div>
         <p className='text-gray-500'>
@@ -28,9 +28,9 @@ const page = () => {
 
   else {
     return (
-      <div className='flex mt-32 flex-col text-start w-2/3 m-auto gap-5'>
+      <div className='flex mt-32 flex-col text-start w-4/5 md:w-2/3 m-auto gap-5'>
         <div>
-          <p className='text-[40px] font-[600]'>Reset Password</p>
+          <p className='text-[40px] font-[600] leading-none mb-2'>Reset Password</p>
           <p className='font-[500]'>We will send you an email with instructions
             on how to reset your password.</p>
         </div>
@@ -41,7 +41,7 @@ const page = () => {
           <button className='bg-secondaryBlue text-white p-4 rounded-xl ' onClick={() => setSend(true)}>Send</button>
         </form>
 
-        <Link href={"/login"} className='text-secondaryBlue text-center  font-[500]'>Return to Login</Link>
+        <Link href={"/sign-in"} className='text-secondaryBlue text-center  font-[500]'>Return to Login</Link>
       </div>
     )
   }

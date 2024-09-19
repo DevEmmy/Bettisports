@@ -2,8 +2,8 @@ import React from 'react'
 
 const EachNotification = () => {
   return (
-    <div className='grid grid-cols-[0.5fr_5fr_1.5fr] py-5  gap-5'>
-        <img src="./img.jpg" alt="" className='size-[50px] rounded-full' />
+    <div className='grid grid-cols-[1fr_5fr_1fr] md:grid-cols-[0.5fr_5fr_1.5fr] items-center py-5 gap-1.5 md:gap-5'>
+        <img src="./img.jpg" alt="" className='size-[2rem] md:size-[50px] rounded-full' />
 
         <div className='flex flex-col gap-2'>
             <p className='text-[16px] font-[500]'>John Doe Replied to your Comment</p>
@@ -13,8 +13,8 @@ const EachNotification = () => {
             </div>  
         </div>
 
-        <div className='w-full text-center text-gray-700'>
-            <p className='text-sm'>Feb 20, 2024</p>
+        <div className='w-full text-center text-gray-700 text-xs'>
+            <p className='text-xs md:text-sm '>Feb 20, 2024</p>
             <p className='text-[12px]'>20min</p>
         </div>
     </div>

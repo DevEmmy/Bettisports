@@ -12,14 +12,14 @@ interface Props{
 const EachNews = ({size,item} : Props)  => {
     
     return (
-        <div className='h-full flex flex-col gap-2'>
+        <div className='h-full flex flex-col gap-2 my-5 sm:my-0'>
             <Link href={`/blog/${item?._id}`}>
             <img src={item?.media} alt="" className='w-full h-[180px] mb-1'/>
             <p className={`${size == "lg" && "text-[20px] font-[600]"}`}>
             {item?.title}
             </p>
             </Link>
-            <div className={`flex items-center ${size == "lg" ? "text-[16px]" : "text-[12px]"} gap-10 text-gray-400`}>
+            <div className={`flex items-center ${size == "lg" ? "text-[16px]" : "text-[12px]"} gap-x-10 text-gray-400`}>
                 <p className='parser line-clamp-2'>
                     {parser(item?.content || "")}
                 </p>

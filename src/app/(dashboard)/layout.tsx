@@ -11,8 +11,10 @@ export default function RootLayout({
     return (
         <>
             <TopNav />
+            <div className="hidden md:flex">
             <LeftNav />
-            <div className="p-20 w-4/5 bg-gray-100 min-h-[100vh] mt-20 ml-[20%]">
+            </div>
+            <div className="px-5 my-3 md:p-20 w-full md:w-4/5 bg-gray-100 min-h-[100vh] pt-20 md:mt-20 md:ml-[20%]">
                 {children}
             </div>
 

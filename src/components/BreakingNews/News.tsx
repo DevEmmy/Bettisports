@@ -50,13 +50,13 @@ const News = () => {
         </div>
       </div>
 
-      <div className='grid grid-cols-4 items-center divide-x my-10'>
+      <div className='md:grid md:grid-cols-4 items-center divide-x my-10'>
         {isLoading ? (
           <Loader />
         ) : newsBreaking?.length > 0 ? 
         (  newsBreaking.slice(start, end)?.map((item: any, i: number) => {
             return (
-              <div key={i} className={`my-2 pr-5 ${i == 0 ? 'pl-0' : 'pl-5'} flex-col gap-2`}>
+              <div key={i} className={`my-4 md:my-2 pr-5 ${i == 0 ? 'pl-0' : 'pl-5'} flex-col gap-2`}>
               
               <Link href={`/blog/${item?._id}`} >
                 <p className='text-[16px] line-clamp-2'>

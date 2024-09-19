@@ -8,26 +8,34 @@ import Loader from '@/components/Loader';
 import Collection from '@/components/Polls/Collection';
 import { useVotePoll } from '@/hooks/PostRequests';
 import { getUser } from '@/hooks/UserRequests';
+import Line from '@/components/UI/Line';
 
 const page = () => {
   const { polls, isLoading, isError } = useFetchPolls();
-  const {votePollFn, error, isSuccess} = useVotePoll(); 
-  const user = getUser()
+  const { votePollFn, error, isSuccess } = useVotePoll();
+  const user = getUser();
 
-  const calculateVotes = (choices : any) => {
-    return choices.reduce((total : any, choice : any) => total + choice.votes, 0);
+  const calculateVotes = (choices: any) => {
+    return choices.reduce((total: any, choice: any) => total + choice.votes, 0);
   };
-  
-  
-  return (
-    <div className='grid grid-cols-6 gap-5 mx-xPadding my-10'>
-      <div className='grid grid-cols-6 col-span-6'>
-        <div />
-        <p className='col-span-5 font-[600]'>Polls</p>
-      </div>
-      <img src='./ads2.png' alt='' />
 
-      <div className='grid col-span-4 grid-cols-3 gap-5'>
+  return (
+    <div className='md:grid md:grid-cols-6 md:gap-5 px-5 md:px-xPadding my-10'>
+      <div className='flex gap-2 col-span-6 my-3 items-center md:hidden'>
+        {/* <div /> */}
+        <p className='font-[600] text-[24px]'>Polls</p>
+        <div className='grow'>
+          <Line />
+        </div>
+      </div>
+      <img
+        src='./ads2.png'
+        className='max-h-[100px] object-cover w-full'
+        alt=''
+      />
+
+      <div className='md:grid col-span-4 grid-cols-3 gap-3 md:gap-5'>
+        <p className='font-[600] text-[24px]'>Polls</p>
         {isLoading ? (
           <Loader />
         ) : polls?.length > 0 ? (
@@ -37,16 +45,17 @@ const page = () => {
             const remainingMinutes = item.duration % 60;
 
             return (
-              <div className='border border-gray-300 shadow-md' key={i}>
+              <div
+                className='border border-gray-300 shadow-md my-3 md:my-0.5'
+                key={i}>
                 <img src='./img.jpg' alt='' className='h-[150px] w-full' />
                 <div className='p-3 flex flex-col gap-2'>
                   <p className='text-[14px] font-[500]'>{item.question}</p>
 
                   <Collection
                     choices={item?.choices?.map((choice: any) => choice)}
-                    id = {item?._id}
-                    totalVotes = {calculateVotes(item?.choices)}
-
+                    id={item?._id}
+                    totalVotes={calculateVotes(item?.choices)}
                   />
 
                   <div className='text-[12px] flex items-center justify-between mt-2 end-2'>
@@ -55,10 +64,9 @@ const page = () => {
                     </div>
 
                     <div>
-                      { days > 0 && `${days} Days ` }
-                      { hours > 0 && `${hours} Hours ` }
-                      { remainingMinutes > 0 && `${remainingMinutes} Minutes ` }
-
+                      {days > 0 && `${days} Days `}
+                      {hours > 0 && `${hours} Hours `}
+                      {remainingMinutes > 0 && `${remainingMinutes} Minutes `}
                     </div>
                   </div>
                 </div>

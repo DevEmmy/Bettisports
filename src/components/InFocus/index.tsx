@@ -35,8 +35,8 @@ const InFocus = () => {
     ]
     const {inFocus,isError,isLoading} = useFetchInFocus();
     return (
-        <div className='px-xPadding my-10'>
-            <div className='grid grid-cols-[4fr_1.5fr]  gap-10'>
+        <div className='px-5 md:px-xPadding my-10'>
+            <div className='md:grid md:grid-cols-[4fr_1.5fr]  gap-10'>
                 <div className='flex flex-col gap-5'>
                     <h1 className='font-[600]'>In Focus</h1>
                     <Line />
@@ -49,7 +49,7 @@ const InFocus = () => {
                         inFocus?.length > 0
                         ?
                         (
-                        <div className="flex flex-col gap-5 relative">
+                        <div className="flex flex-col gap-5 bg-primary1 relative">
                             <img src={inFocus[0].media} alt="" />
                             <div className="overlay" />
                             <div className="details p-10">
@@ -70,7 +70,7 @@ const InFocus = () => {
 
                 </div>
 
-                <div className='flex flex-col gap-5'>
+                <div className='flex flex-col gap-5 md:my-3'>
                     <h1 className='font-[600] uppercase'>Top Competition News</h1>
                     <Line />
 

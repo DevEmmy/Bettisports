@@ -10,8 +10,8 @@ interface Props {
 
 const TableData = ({ item} : any) => {
     return (
-        <div className='grid grid-cols-5 gap-5'>
-            <div className='flex flex-col gap-2'>
+        <tr>
+            <td className='flex flex-col gap-2'>
                 <div className='flex gap-2'>
                     <img src={item?.author?.profilePicture ? item?.author?.profilePicture : './img'} alt="" className='size-[40px]' />
                     <div className='!text-xs'>
@@ -22,14 +22,14 @@ const TableData = ({ item} : any) => {
                     </div>
                 </div>
                 <div className='flex gap-2 !text-[8px] comment-action'>
-                    <p>Edit</p>
-                    <p>Quick Edit</p>
-                    <p>Trash</p>
-                    <p>View</p>
+                    <p className='text-blue-600'>Edit</p>
+                    <p className='text-green-600'>Quick Edit</p>
+                    <p className='text-red-600'>Trash</p>
+                    <p className=''>View</p>
                 </div>
-            </div>
+            </td>
 
-            <div className='col-span-2'>
+            <td>
                 <p className='text-xs text-gray-600'>
                     {item?.comment}
                 </p>
@@ -40,20 +40,20 @@ const TableData = ({ item} : any) => {
                     <p className='text-red-600'>Spam</p>
                     <p className='text-red-600'>Trash</p>
                 </div>
-            </div>
+            </td>
 
-            <div className=''>
-                <p className='text-xs text-secondaryBlue'>{item?.inResponse?.title}</p>
+            <td className='flex'>
+                <p className='text-xs text-secondaryBlue'>{item?.inResponse?.title.slice(0,100)}..</p>
                 <Link href={`/blog/${item?._id}`} className='text-xs text-secondaryBlue'>view post</Link>
                 <RiChat2Fill />
-            </div>
+            </td>
 
-            <div>
-                <p className='text-xs'>
+            <td>
+                <p className='text-xs flex'>
                     <TimeAgo date={item?.createdAt} />
                 </p>
-            </div>
-        </div>
+            </td>
+        </tr>
     )
 }
 

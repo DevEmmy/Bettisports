@@ -7,7 +7,7 @@ import React from 'react'
 const page = () => {
 
   return (
-    <div className='mx-xPadding flex flex-col gap-10 py-10'>
+    <div className=' mx-5 md:mx-xPadding flex flex-col gap-10 py-10'>
 
       <CarouselComponent>
 
@@ -35,7 +35,7 @@ const page = () => {
 
       <HorizontalHeader text='Popular' endText='POPULAR PODCASTS YOU DON’T WANT TO MISS' />
 
-      <div className="grid grid-cols-5 gap-5">
+      <div className="md:grid grid-cols-5 gap-5 my-2">
         {
           [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]?.map((item, i) => {
             return (
@@ -47,7 +47,7 @@ const page = () => {
 
       <HorizontalHeader text='Recents' endText='Latest podcast for you' />
 
-      <div className="grid grid-cols-5 gap-5">
+      <div className="md:grid grid-cols-5 gap-5 my-2">
         {
           [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]?.map((item, i) => {
             return (
@@ -59,7 +59,7 @@ const page = () => {
 
       <HorizontalHeader text='for you' endText='picks just for you' />
 
-      <div className="grid grid-cols-5 gap-5">
+      <div className="md:grid grid-cols-5 gap-5 my-2">
         {
           [1, 2, 3, 4, 5]?.map((item, i) => {
             return (

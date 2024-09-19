@@ -39,11 +39,11 @@ const FootballNews = ({title}: any) => {
 
     ]
     return (
-        <div className='my-10 mx-xPadding'>
+        <div className='my-10 px-4 md:px-xPadding'>
             <div className="flex items-center justify-between pb-5 border-b-4 border-b-secondaryBlue">
                 <p>{title} FOOTBALL</p>
 
-                <div className='flex gap-5'>
+                <div className='overflow-x-auto hidden md:flex gap-5'>
                     {
                         filter?.map((item: any, i: number) => {
                             return (
@@ -52,6 +52,16 @@ const FootballNews = ({title}: any) => {
                         })
                     }
                 </div>
+
+                <select className='px-2 py-3 md:hidden'>
+                {
+                        filter?.map((item: any, i: number) => {
+                            return (
+                                <option className='text-[9px]' key={i}>{item?.title}</option>
+                            )
+                        })
+                    }
+                </select>
             </div>
 
             <Highlight />

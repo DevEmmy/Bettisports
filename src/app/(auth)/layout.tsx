@@ -9,11 +9,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="grid grid-cols-2 ">
+        <div className="md:grid grid-cols-2 ">
             <div>
                 {children}
             </div>
-            <Image width={0} height={0} unoptimized src={image} alt="" className="h-[100vh] w-full object-cover"/>
+            <Image width={0} height={0} unoptimized src={image} alt="" className="hidden md:flex h-[100vh] w-full object-cover"/>
 
         </div>
     );

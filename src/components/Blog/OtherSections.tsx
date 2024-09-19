@@ -24,7 +24,7 @@ const OtherSections = () => {
     const { popular, isError, isLoading } = useFetchPopular();
     const { posts, isLoading: isLoad } = usePostQuery();
   return (
-    <div className='flex flex-col gap-10 p-3'>
+    <div className='flex flex-col gap-10'>
         <div className='flex gap-2 items-center border rounded-3xl p-3'>
             <RiSearch2Line />
             <input type="search" name="" className='bg-transparent focus:outline-none' id="" />
@@ -49,7 +49,7 @@ const OtherSections = () => {
             }
         </div>
 
-        <img src="./ads.png" alt="" />
+        <img src="./ads.png" alt="" className='bg-primary1'/>
 
         <div className='bg-[#F6F8FB] p-5'>
             <p className='text-center border-b-2 border-gray-600 p-3 font-[500]'>Recently Published Post</p>
@@ -69,14 +69,14 @@ const OtherSections = () => {
             }
         </div>
 
-        <div>
+        {/* <div>
             <p className='text-[20px] font-[600]'>Follow us on Social Media</p>
             <div className="flex gap-3">
                 <RiFacebookCircleFill size={30} />
                 <RiTwitterXFill size={30}/>
                 <RiInstagramFill size={30}/>
             </div>
-        </div>
+        </div> */}
 
         <img src="./ads2.png" alt="" />
 
