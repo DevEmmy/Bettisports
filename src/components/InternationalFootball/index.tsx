@@ -92,7 +92,7 @@ const InternationalFootball = () => {
       <div className='grid grid-cols-[3fr_1fr] gap-5'>
         <div className='md:grid grid-cols-2 gap-5'>
           <div className='flex flex-col gap-2 divide-y'>
-            <EachVideo />
+            {/* <EachVideo video={}/> */}
             {/* <SmFootballBlogHighlight />
                         <SmFootballBlogHighlight />
                         <SmFootballBlogHighlight />

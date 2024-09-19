@@ -28,7 +28,7 @@ const Podcast = () => {
                 semper id faucibus magna. Etiam a in dolor pulvinar congue. Nibh
                 adipiscing maecenas urna blandit ultrices a diam tempus quam.
               </p>
-              <Play size={23} otherStyles='p-3.5'/>
+              {/* <Play size={23} otherStyles='p-3.5' video={}/> */}
             </div>
           </div>
           <p className='md:hidden text-[8px] px-2 details  text-white'>March 28, 2024 | 25min</p>
