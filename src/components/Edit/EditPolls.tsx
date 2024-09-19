@@ -12,6 +12,7 @@ import {
 import { toastSuccess, toastError } from '@/utils/toast';
 import { useFetchPolls , useUpdatePollQuery, useDeletePollQuery } from '@/hooks/PostRequests';
 import Link from 'next/link';
+import FileBase64 from 'react-file-base64';
 
 interface duration {
   days: number;
@@ -26,6 +27,7 @@ interface PollProps {
     choices: Choice[];
     duration: number;
     author: string;
+    media: string;
     createdAt: string;
     updatedAt: string;
   };
@@ -47,6 +49,7 @@ const EditPolls = ({ poll }: PollProps) => {
   const remainingHours = hours % 24;
   const remainingMinutes = poll?.duration % 60;
   const [question, setQuestion] = useState<string>(poll?.question);
+  const [media,setMedia] = useState<string>(poll?.media);
   const [choices, setChoices] = useState<string[]>(poll?.choices.map((choice) => choice.choiceText));
   const [pollDuration, setPollDuration] = useState<duration>({
     days: days,
@@ -282,10 +285,29 @@ const EditPolls = ({ poll }: PollProps) => {
               </div>
 
               <div className='max-md:flex max-md:justify-between'>
-                <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
-                  <HiCog />
-                  Add Media
-                </button>
+                
+              <div className={` ${media == '' ? 'max-md:flex items-center max-md:justify-between' : 'p-2'}`}>
+            <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
+            {media ? (
+              <img
+                src={media}
+                alt=''
+                className='w-full object-cover h-[40vh]'
+              />
+            ) : (
+              <>
+                {' '}
+                <HiCog />
+                Add Media
+              </>
+            )}
+            </button>
+
+            <FileBase64
+              multiple={false}
+              onDone={(base64: any) => setMedia(base64.base64)}
+            />
+          </div>
 
                 <button
                   className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit '

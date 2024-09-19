@@ -261,10 +261,10 @@ const page = () => {
             </button>
 
             <FileBase64
-            multiple={false}
-            onDone={(base64: any) => setMedia(base64.base64)}
-          />
-        </div>
+              multiple={false}
+              onDone={(base64: any) => setMedia(base64.base64)}
+            />
+          </div>
 
             <button
               className='border bg-secondaryBlue text-white flex gap-2 px-5 items-center p-2 w-fit '

@@ -1,16 +1,30 @@
 import React from 'react'
-import { RiPlayCircleFill } from 'react-icons/ri'
+import { RiPlayCircleFill, RiTimeLine } from 'react-icons/ri';
+import { Post } from '@/requests/dto';
+import TimeAgo from 'react-timeago';
+import parser from 'html-react-parser';
 
-const Preview = () => {
+
+interface Props {
+  item : Post
+}
+
+const Preview = ( {item} : Props) => {
   return (
-    <div className='flex md:gap-1 flex-col md:my-0 my-3'>
-        <img src="./img.jpg" alt="" className=' h-[300px]'/>
+    <div className='flex md:gap-1 flex-col md:my-0 my-3 rounded-2xl'>
+        <img src={item?.media} alt="" className=' h-[200px] rounded-2xl'/>
         
-        <p className='font-[600] text-sm'>PODCAST TITLE</p>
-        <p className='text-[11px]'>March 24 - 35min</p>
-        <p className='text-[12px]'>Alexander Isak Speaks Out On His Newcastle Future Amid Arsenal Links</p>
+        <p className='font-[600] text-sm'>
+          {item?.title}
+        </p>
+        <p className='text-[11px] flex items-center gap-3'>
+          <RiTimeLine />
+          <TimeAgo date = {item?.createdAt} />
+        </p>
+        <p className='text-[12px]'>
+          {parser(item?.content)}
+        </p>
 
-        
     </div>
   )
 }

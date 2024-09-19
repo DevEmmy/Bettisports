@@ -558,7 +558,7 @@ export const useFetchVideos = () => {
 //  PHOTOSPLASH
 export const useFetchPhotoSplash = () => {
   const fetchData = async () => {
-    const response = await axiosConfig.get('/posts/format/');
+    const response = await axiosConfig.get('/posts/format/PHOTOSPLASH');
     return response.data.payload;
   };
 
@@ -567,4 +567,18 @@ export const useFetchPhotoSplash = () => {
   });
 
   return { photoSplash, isError, isLoading, refetch };
+};
+
+// PODCAST
+export const useFetchPodCast = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/posts/format/PODCAST');
+    return response.data.payload;
+  };
+
+  const { data: podcast, isError, isLoading, refetch  } = useQuery('podcast', fetchData, {
+    enabled: true
+  });
+
+  return { podcast, isError, isLoading, refetch };
 };

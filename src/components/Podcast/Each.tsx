@@ -21,7 +21,7 @@ const Each = ( {item} : Props) => {
         </div>
         <div className='grid'>
             <p className='text-[12px]'>
-            <TimeAgo date={item?.createdAt} />
+              <TimeAgo date={item?.createdAt} />
             </p>
             <p className='text-[12px]'></p>
         </div>

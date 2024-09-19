@@ -93,7 +93,7 @@ const Stories = () => {
             width: `${totalSlides / slidesPerPage * 100}%`,
           }}
         >
-          {stories.map((item : any, index : number) => (
+          {stories.split(0,11).map((item : any, index : number) => (
             <Each key={index} item={item} />
           ))}
         </div>
