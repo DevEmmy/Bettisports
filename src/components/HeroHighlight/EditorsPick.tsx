@@ -9,24 +9,6 @@ import LikeCommentShare from '../UI/LikeCommentShare'
 
 const EditorsPick = () => {
 
-  const news = [
-    {
-      url: "https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg",
-      date: "March 28, 2024",
-      title: "Alexander Isak Speaks Out On His Newcastle Future Amid ",
-    },
-    {
-      url: "https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg",
-      date: "March 28, 2024",
-      title: "Alexander Isak Speaks Out On His Newcastle Future Amid ",
-    },
-    {
-      url: "https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg",
-      date: "March 28, 2024",
-      title: "Alexander Isak Speaks Out On His Newcastle Future Amid ",
-    }
-  ]
-
   const { posts, isError, isLoading } = useFetchEditorsPick()
   return (
     <div className=''>
@@ -39,7 +21,7 @@ const EditorsPick = () => {
             <Loader />
           :
           
-          posts.length > 0
+          posts?.length > 0
             ?
             posts.slice(0,3).map((item: any, i: number) => {
               return (

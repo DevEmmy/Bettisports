@@ -330,7 +330,7 @@ const EditPosts = ({ post }: PostProps) => {
                         // onKeyPress={handleTagKeyPress}
                         value={getTagString(post?.tags)}
                         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                          setTags(e.target.value.replace(/\s+/g, '').split(','))
+                          setTags(e.target.value.replace(/\s+/g, '')?.split(','))
                         }
                         contentEditable
                       />

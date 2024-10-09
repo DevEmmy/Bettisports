@@ -64,7 +64,7 @@ const MainNav = () => {
       })}
       </select>
     </div>
-    <div className='hidden w-full md:flex items-center justify-between px-xPadding border-b-gray-400 border-b py-3 md:py-5 gap-5 overflow-x-auto'>
+    <div className='hidden w-full md:flex items-center justify-between px-xPadding border-b-gray-400 border-b py-3 md:py-5 gap-5 overflow-x-auto scrollbar-thin'>
       {nav.map((item: any, i: number) => {
         return (
           <Link href={item?.link} key={i} className='text-[12px]'>

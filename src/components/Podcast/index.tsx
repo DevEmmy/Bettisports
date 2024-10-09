@@ -12,7 +12,7 @@ import { FaPlay } from 'react-icons/fa';
 const Podcast = () => {
   const { podcast, isError, isLoading, refetch } = useFetchPodCast();
   return (
-    <div className='bg-[#25282B] px-5 md:px-xPadding my-20 py-10'>
+    <div className='bg-[#25282B] text-white px-5 md:px-xPadding my-20 py-10'>
       <div className='flex items-center gap-3'>
         <p className='text-white'>PODCASTS</p>
         <div className='w-full h-[3px] rounded-2xl bg-secondaryGray' />
@@ -21,7 +21,7 @@ const Podcast = () => {
       {isLoading ? (
         <Loader />
       ) : podcast?.length ? (
-        <div className='sm:grid grid-cols-[3fr_1fr] mt-10 gap-5 sm:h-[80vh]'>
+        <div className='sm:grid grid-cols-[3fr_1fr] mt-10 gap-5 sm:h-[80vh] text-white'>
           <div className='relative my-3 sm:h-[80vh] overflow-hidden'>
             <p className='text-sm'>
             <TimeAgo date={podcast[0]?.createdAt} />

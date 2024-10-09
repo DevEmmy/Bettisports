@@ -216,7 +216,7 @@ const Page: React.FC = () => {
 
           <FileBase64
             multiple={false}
-            onDone={(base64: any) => { setMedia(base64.base64); setMediaType(base64.type.split('/')[0])}}
+            onDone={(base64: any) => { setMedia(base64.base64); setMediaType(base64.type?.split('/')[0])}}
           />
 
           <OverviewContainer title={'Excerpt'}>

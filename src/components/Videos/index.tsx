@@ -53,7 +53,7 @@ const VideoComponent = () => {
       )
       : 
       (
-        <p>There are no available Podcast right now.</p>
+        <p>There is no available video right now.</p>
       )
     }
     </div>

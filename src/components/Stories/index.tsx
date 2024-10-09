@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Line from '../UI/Line';
 import Each from './Each';
 import VerticalHeader from '../Shared/VerticalHeader';
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { RiArrowLeftSLine, RiArrowRightSLine, RiCloseFill } from 'react-icons/ri';
 import { useFetchStories } from '@/hooks/PostRequests';
 import Loader from '../Loader';
+import ViewStories from './ViewStories';
 
 const Stories = () => {
-  const [active,setActive] = useState(2);
+  const [active,setActive] = useState<number>(0);
   const news = [
     {
       url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg',
@@ -53,11 +54,12 @@ const Stories = () => {
   ];
 
   const { stories, isError, isLoading, refetch } = useFetchStories();
-  const [currentOffset, setCurrentOffset] = useState<number>(0);
+  let currentOffset = 0;
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [show,setShow] = useState<boolean>(false);
   const [translateX, setTranslateX] = useState(0);
-  const [slidesPerPage, setSlidesPerPage] = useState(4); // adjust this value to set the number of slides per page
+  const [slidesPerPage, setSlidesPerPage] = useState(2); // adjust this value to set the number of slides per page
   const [totalSlides, setTotalSlides] = useState(stories?.length ?? 0);
 
   useEffect(() => {
@@ -77,8 +79,22 @@ const Stories = () => {
       setTranslateX(translateX + 100 / slidesPerPage); // adjust this value based on your slide width
     }
   };
+
   return (
+    <>
+    {
+      show && (
+        <>
+          <span className='z-[1000] fixed text-white p-2.5 rounded-full bg-black glass text-3xl right-3 top-3 cursor-pointer' onClick={() => setShow(!show)}>
+            <RiCloseFill size={25}/>
+          </span>
+          <ViewStories activeIndex={active} stories={stories} show={show} />
+        </>
+      )
+    }
     <div className='md:grid grid-cols-[4fr_1.5fr] md:px-xPadding px-5 my-10 gap-10'>
+
+
       <div className='flex flex-col gap-5 my-2'>
         <VerticalHeader title='Stories' />
 
@@ -93,8 +109,10 @@ const Stories = () => {
             width: `${totalSlides / slidesPerPage * 100}%`,
           }}
         >
-          {stories.split(0,11).map((item : any, index : number) => (
-            <Each key={index} item={item} />
+          {stories?.slice(0,11).map((item : any, index : number) => (
+            <div className='grow cursor-pointer' onClick={() => { setActive(index); setShow(true);  }}>
+              <Each key={index} item={item} />
+            </div>
           ))}
         </div>
       ) : (
@@ -144,6 +162,8 @@ const Stories = () => {
         </div>
       </div>
     </div>
+
+    </>
   );
 };
 

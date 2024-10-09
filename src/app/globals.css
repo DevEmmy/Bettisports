@@ -207,11 +207,14 @@ td {
   text-shadow: 0 0 10px rgba(0,0,0,0.5)
 }
 
-.format-scrollbar {
+
+.scrollbar-thin {
   scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.format-scrollbar {
   scrollbar-color: '#FAC032';
   scrollbar-track-color: '#197DDA';
-  scroll-behavior: smooth;
-  /* border-radius: ; */
-  /* scroll-behavior: smooth; */
+  @apply scrollbar-thin
 }

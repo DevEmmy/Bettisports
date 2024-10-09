@@ -3,6 +3,7 @@ import React from 'react';
 import TimeAgo from 'react-timeago';
 import LikeCommentShare from '../UI/LikeCommentShare';
 import parse from 'html-react-parser'
+import Link from 'next/link';
 
 const MdFootballBlogHighlight = ({item} : any) => {
   return (
@@ -10,7 +11,9 @@ const MdFootballBlogHighlight = ({item} : any) => {
       <img src={item?.media} alt={item?.execrpt} />
 
       <div className='grid'>
+      <Link href={`/blog/${item?._id}`}>
         <p>{item?.title}</p>
+      </Link>
         <div className='flex items-center text-[12px] justify-between'>
           <p className=''>
             {/* <TimeAgo date={item?.createdAt} /> */}
