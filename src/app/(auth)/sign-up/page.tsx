@@ -10,12 +10,14 @@ import {
   RiFacebookCircleFill,
   RiGoogleFill,
 } from 'react-icons/ri';
+import { validateSignUp } from '@/utils/validator';
 
 const Page: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,16 +36,23 @@ const Page: React.FC = () => {
     setPassword(e.target.value);
   };
 
+  const handleConfirmPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
+  };
+
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setLoading(true);
-    let feedback = await signUp({ email, password, firstName, lastName });
-    if (feedback) {
-      router.push('/');
+    if(validateSignUp({email,firstName,lastName,password,confirmPassword})) {
+      setLoading(true);
+      let feedback = await signUp({ email, password, firstName, lastName });
+      if (feedback) {
+        router.push('/');
+      }
+      // setLoading(false);
     }
     setLoading(false);
   };
@@ -55,7 +64,7 @@ const Page: React.FC = () => {
         <p className='font-[500] w-full'>Welcome to Bettisport.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-full'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full'>
         <input
           type='text'
           value={email}
@@ -98,6 +107,18 @@ const Page: React.FC = () => {
             />
           )}
         </div>
+        <input
+            type={showPassword ? 'text' : 'password'}
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+            className='focus:outline-secondaryBlue bg-gray-50 focus:bg-white w-full p-4 rounded-xl'
+            placeholder='Confirm Password'
+          />
+          {/* {confirmPassword != password && (
+            <span className='text-red-700 text-xs'>
+              Password does not match.
+            </span>
+          )} */}
         <button
           type='submit'
           className={`bg-secondaryBlue text-white p-4 rounded-xl ${
@@ -109,7 +130,7 @@ const Page: React.FC = () => {
 
       <p className='text-center  font-[500]'>
         I have an account{' '}
-        <Link href='/sign-in' className='text-secondaryBlue'>
+        <Link href='/sign-in' className='text-secondaryBlue cursor-pointer'>
           Login
         </Link>
       </p>

@@ -11,6 +11,8 @@ import {
   RiFacebookCircleFill,
   RiGoogleFill,
 } from 'react-icons/ri';
+import { validateSignIn } from '@/utils/validator';
+import { toastError } from '@/utils/toast';
 
 const Page: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -31,11 +33,14 @@ const Page: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setLoading(true);
-    let feedback = await login({ email, password });
-    if (feedback) {
-      router.push('/');
+    if (validateSignIn({email,password})) {
+      setLoading(true);
+      let feedback = await login({ email, password });
+      if (feedback) {
+        router.push('/');
+      }
     }
+    
     setLoading(false);
   };
 
@@ -46,13 +51,14 @@ const Page: React.FC = () => {
         <p className='font-[500]'>Welcome back!</p>
       </div>
 
-      <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-full'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-full' noValidate>
         <input
-          type='text'
+          type='email'
           value={email}
           onChange={handleEmailChange}
           className='focus:outline-secondaryBlue bg-gray-50 focus:bg-white w-full p-4 rounded-xl'
           placeholder='Email'
+          required
         />
         <div className='flex-center gap-2 w-full p-4 bg-gray-50 focus:outline-secondaryBlue focus:bg-white rounded-xl'>
           <input
@@ -61,6 +67,7 @@ const Page: React.FC = () => {
             onChange={handlePasswordChange}
             className='focus:outline-none w-full bg-transparent focus:bg-transparent'
             placeholder='Password'
+            required
           />
 
           {showPassword ? (
@@ -92,7 +99,7 @@ const Page: React.FC = () => {
       </Link>
       <p className='text-center  font-[500]'>
         I don&apos;t have an account{' '}
-        <Link href='/sign-up' className='text-secondaryBlue'>
+        <Link href='/sign-up' className='text-secondaryBlue cursor-pointer'>
           Sign Up
         </Link>
       </p>
