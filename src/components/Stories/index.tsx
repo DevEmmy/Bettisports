@@ -88,7 +88,7 @@ const Stories = () => {
           <span className='z-[1000] fixed text-white p-2.5 rounded-full bg-black glass text-3xl right-3 top-3 cursor-pointer' onClick={() => setShow(!show)}>
             <RiCloseFill size={25}/>
           </span>
-          <ViewStories activeIndex={active} stories={stories} show={show} />
+          <ViewStories activeIndex={active}  show={show} />
         </>
       )
     }
