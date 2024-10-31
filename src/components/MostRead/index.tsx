@@ -20,8 +20,8 @@ const MostRead = () => {
       <div className='md:grid grid-cols-3 md:mx-20 divide-x gap-5'>
         {isLoading ? (
           <Loader />
-        ) : popular.length > 0 ? (
-          popular.slice(0, 6).map((item: any, i: number) => {
+        ) : popular?.length > 0 ? (
+          popular?.slice(0, 6).map((item: any, i: number) => {
             return (
               <div className='p-3 flex gap-2' key={i}>
                 <p className='text-defaultYellow text-[24px] font-[600]'>

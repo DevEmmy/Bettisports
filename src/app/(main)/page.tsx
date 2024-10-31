@@ -18,10 +18,15 @@ import Topics from '@/components/Topics';
 import VideoComponent from '@/components/Videos';
 import Image from 'next/image';
 import Fantasy from '@/components/Fantasy';
+import ViewStories from '@/components/Stories/ViewStories';
+
 
 export default function Home() {
+
   return (
     <div className=''>
+
+    
       <div className='flex mt-5 md:mt-10 px-5  md:pl-xPadding overflow-x-hidden '>
         <div className='bg-[#197DDA] text-white p-3 flex items-center px-5'>
           FLASH STORY
@@ -89,6 +94,8 @@ export default function Home() {
         className='w-fit h-auto object-contain mx-auto my-10'
         alt=''
       />
+
+{/* <ViewStories activeIndex={1} show={true}/> */}
     </div>
   );
 }
