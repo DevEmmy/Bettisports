@@ -7,10 +7,11 @@ import TimeAgo from "react-timeago";
 interface Props {
   activeIndex: number;
   show: boolean;
+  stories?: any
 }
 
-const ViewStories = ({ activeIndex, show }: Props) => {
-  const stories = [
+const ViewStories = ({ activeIndex, stories, show }: Props) => {
+  const stores = [
     {
       media:
         "https://upload.wikimedia.org/wikipedia/commons/9/92/Youth-soccer-indiana.jpg",
@@ -90,12 +91,12 @@ const ViewStories = ({ activeIndex, show }: Props) => {
 
   return (
     <div>
-      <div className="black__overlay z-50 items-center h-[100vh] w-[100hw] grid max-sm:place-items-center sm:grid-cols-3 md:grid-cols-6 gap-3 justify-items-end px-3">
+      <div className="black__overlay z-50 items-center h-[100vh] w-[100hw] grid max-sm:place-items-center md:grid-cols-6 gap-3 justify-items-end px-3">
         {stories
           ?.slice(Math.max(active - 2, 0), active)
           .map((item: any, i: number) => (
             <div
-              className="grid place-items-center justify-self-end w-full border  border-primary1 relative h-[50vh] max-md:h-[40vh]"
+              className="grid max-md:hidden place-items-center justify-self-end w-full border  border-primary1 relative h-[50vh] max-md:h-[40vh]"
               key={i}
             >
               Olagoke
@@ -113,10 +114,10 @@ const ViewStories = ({ activeIndex, show }: Props) => {
             </div>
           ))}
 
-        <div className="grid place-items-center w-full border  border-primary1 relative h-[95vh] col-span-2 mx-auto place-self-center col-start-3">
+        <div className="grid place-items-center w-full border border-primary1 relative h-[95vh] col-span-2 mx-auto place-self-center md:col-start-3">
           Olagoke
           <img
-            src={stories[activeIndex]?.media}
+            src={stories[active]?.media}
             className={`h-full absolute`}
             alt=""
           />
@@ -137,18 +138,19 @@ const ViewStories = ({ activeIndex, show }: Props) => {
             >
               <RiArrowRightSLine className="size-8" />
             </button>
-            <div className="absolute bottom-0 text-white px-3 !text-[14px] bg-black/5">
-              <p className="font-[600] md:text-xl lg:text-2xl">
+            <div className="absolute bottom-0 text-white px-3 !text-[14px] bg-black/50 pt-1.5">
+              <p className="font-[600] md:text-xl lg:text-2xl capitalize">
                 {/* {item?.title} */}
-                {stories[activeIndex]?.title}
+                {stories[active]?.title}
               </p>
               <p
                 className={`!text-[11px]  mb-0.5 ${
                   !readMore ? "parser line-clamp-2" : "overflow-y-auto"
                 }`}
               >
-                {/* {parser(item?.content)} */}
-                {stories[activeIndex]?.title}
+                {parser(stories[active]?.content)}
+                {/* {stories[active]?.title} */}
+                
               </p>
               <span
                 className="text-orange-400 text-[10px]"
@@ -174,13 +176,13 @@ const ViewStories = ({ activeIndex, show }: Props) => {
               </div>
               <div className="flex items-center mt-3 justify-between">
                 <img
-                  src={stories[activeIndex]?.media}
+                  src={stories[active]?.author?.profilePicture}
                   className="rounded-full size-8 shadow-sm border"
                 />
 
                 <div className="text-white text-shadow mx-2">
-                  <TimeAgo date={34} />
-                  {active} {stories?.length}
+                  <TimeAgo date={stories[active]?.createdAt} />
+                  {/* {active} {stories?.length} */}
                 </div>
               </div>
             </div>
@@ -190,7 +192,7 @@ const ViewStories = ({ activeIndex, show }: Props) => {
 
         {stories?.slice(active + 1, Math.min(active + 3, stories?.length)).map((item: any, i: number) => (
             <div
-              className="grid place-items-center w-full border  border-primary1 relative h-[50vh] max-md:h-[40vh]"
+              className="grid max-md:hidden place-items-center w-full border  border-primary1 relative h-[50vh] max-md:h-[40vh]"
               key={i}
             >
               Olagoke
