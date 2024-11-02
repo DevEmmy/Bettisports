@@ -79,11 +79,11 @@ const Play = ({ size, otherStyles, video }: Props) => {
       </div>
       {show && (
         <div className='h-[100vh] md:w-[100vw] overflow-x-hidden overflow-y-auto grid place-items-center top-0 black__overlay fixed'>
-          <div className='relative z-[99999] flex flex-col gap-2 md:w-[80vw] left-0 right-0 md:top-0 bg-white px-3 mt-7 md:gap-5 max-w-full pb-32'>
-            <div className="grid grid-cols-[4fr__1fr] gap-3 py-3">
+          <div className='relative z-[99999] flex flex-col gap-2 md:w-[80vw] left-0 right-0 md:top-0 bg-white px-3 md:mt-7 md:gap-5 max-w-full pb-32'>
+            <div className="grid md:grid-cols-[4fr__1fr] gap-3 py-3">
               <div>
                 <ReactPlayer
-                  url={(video.mediaType = 'video' ? video?.media : '')}
+                  url={(video.mediaType == 'video' ? video?.media : '')}
                   controls={true}
                   className='w-full shadow border'
                   style={{
@@ -110,7 +110,7 @@ const Play = ({ size, otherStyles, video }: Props) => {
                   ) : (
                     <p className='text-xs'>There are no comments</p>
                   )}
-                  <CommentForm postId={video?._id} />
+                  <CommentForm postId={video?._id} otherStyles='text-xl' />
                 </div>
               </div>
 

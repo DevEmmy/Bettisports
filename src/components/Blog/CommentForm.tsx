@@ -8,9 +8,10 @@ import { Router, useRouter } from 'next/router';
 
 interface Props {
     postId: string;
+    otherStyles?: string;
 }
 
-const CommentForm = ({postId} : Props) => {
+const CommentForm = ({postId, otherStyles} : Props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [website, setWebsite] = useState('');
@@ -50,7 +51,7 @@ const CommentForm = ({postId} : Props) => {
 }, [isSuccess])
   return (
     <div className='flex flex-col gap-5 my-5'>
-      <p className='text-2xl md:text-[30px] font-[700]'>Leave a Reply</p>
+      <p className={`text-2xl md:text-[30px] font-[700] ${otherStyles? otherStyles : 'text-2xl'}`}>Leave a Reply</p>
       {!user && (
         <p className='text-[#52575C]'>
             Your email address will not be published. Required fields are marked *

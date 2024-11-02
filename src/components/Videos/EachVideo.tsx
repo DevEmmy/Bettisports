@@ -11,7 +11,7 @@ const EachVideo = ({video} : VideoProps) => {
   return (
     <div className='relative'>
       <Play size={16} video={video} otherStyles='absolute -translate-x-[50%] -translate-y-[50%] top-2/4 left-2/4 p-2.5'/>
-      <img src='./img.jpg' alt='' />
+      <img src='./img.jpg' alt='' className='' />
       <div className='overlay' />
       <div className='details p-5'>
         <p className='text-[11px]'>March 28, 2024</p>

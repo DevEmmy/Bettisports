@@ -26,7 +26,7 @@ const VideoComponent = () => {
               video={videos[0]}
             />
             {
-                videos[0].mediaType = 'image' ? (
+                videos[0].mediaType == 'image' ? (
                     <img src={videos[0]?.media} alt={videos[0]?.title} />
                 ) :
                 (
