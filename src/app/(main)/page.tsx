@@ -18,6 +18,7 @@ import Topics from '@/components/Topics';
 import VideoComponent from '@/components/Videos';
 import Image from 'next/image';
 import Fantasy from '@/components/Fantasy';
+import Marquee from "react-fast-marquee";
 
 
 export default function Home() {
@@ -27,11 +28,11 @@ export default function Home() {
 
     
       <div className='flex mt-5 md:mt-10 px-5  md:pl-xPadding overflow-x-hidden '>
-        <div className='bg-[#197DDA] text-white p-3 flex items-center px-5'>
+        <div className='bg-[#197DDA] text-white p-3 flex items-center px-4 text-nowrap'>
           FLASH STORY
         </div>
 
-        <div className='flex bg-[#FCDF984D] px-5 py-2 gap-3.5 md:gap-5 overflow-x-auto scrollbar-thin'>
+        <Marquee className='flex bg-[#FCDF984D] px-5 py-2 gap-3.5 md:gap-5'>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
             return (
               <div className='flex gap-1.5 md:gap-3 items-center min-w-fit mx-3'>
@@ -49,7 +50,7 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
+        </Marquee>
       </div>
 
       <HeroHighlight />
