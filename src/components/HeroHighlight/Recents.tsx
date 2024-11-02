@@ -26,7 +26,7 @@ const Recents = ({howMany} : any) => {
                 </p>
               </Link>
               
-              <LikeCommentShare id={item._id} size={13} />
+              <LikeCommentShare id={item._id} size={15} />
             </div>
 
             <img src={item?.media} width={100} height={100} alt='' />

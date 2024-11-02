@@ -32,7 +32,7 @@ export default function Home() {
           FLASH STORY
         </div>
 
-        <Marquee className='flex bg-[#FCDF984D] px-5 py-2 gap-3.5 md:gap-5'>
+        <Marquee className=' bg-[#FCDF984D] px-5 py-2 gap-3.5 md:gap-5'>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
             return (
               <div className='flex gap-1.5 md:gap-3 items-center min-w-fit mx-3'>

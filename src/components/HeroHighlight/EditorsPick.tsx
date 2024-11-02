@@ -39,7 +39,7 @@ const EditorsPick = () => {
 
                     <p className='!text-[10px] line-clamp-2 parser mb-2'>{parse(item?.content)}</p>
                     </Link>
-                    <LikeCommentShare id={item._id} size={12}/>
+                    <LikeCommentShare id={item._id} size={15}/>
                   </div>
 
                   
