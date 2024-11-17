@@ -1,21 +1,42 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { getUser } from '@/hooks/UserRequests';
-import { RiBookmark3Fill, RiBookmark3Line, RiHeart2Fill, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri';
+import { RiBookmark3Fill, RiBookmark3Line, RiCloseLine, RiHeart2Fill, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri';
 import parser from 'html-react-parser';
 import { useLikePost, useEachPostQuery, useSavePost } from '@/hooks/PostRequests';
 import { toastSuccess } from '@/utils/toast';
-
+import {ShareSocial} from 'react-share-social' 
 interface Props {
     id: string;
     size: number;
 }
+
+const style = {
+    root: {
+    //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+      borderRadius: 3,
+      border: 0,
+    //   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      color: 'white',
+  
+    },
+    copyContainer: {
+      border: '1px solid blue',
+      background: 'rgb(0,0,0,0.7)'
+    },
+    title: {
+      color: '#555',
+      
+    //   fontStyle: 'italic'
+    }
+  };
 
 const LikeCommentShare = ({ id, size }: Props) => {
     const { post, isError, isLoading, refetch } = useEachPostQuery(id);
     const user = getUser();
     const [liked, setLiked] = useState<boolean>(false);
     const [saved, setSaved] = useState<boolean>(false);
+    const [show,setShow] = useState<boolean>(false);
 
     const { likePostFn, isSuccess: isLikeSuccess } = useLikePost();
     const { savePostFn,  isSaveSuccess } = useSavePost();
@@ -61,20 +82,38 @@ const LikeCommentShare = ({ id, size }: Props) => {
     };
 
     return (
-        <div className={`flex gap-2 text-gray-500`}>
-            {liked ? (
-                <RiHeart2Fill size={size} className='text-red-600 cursor-pointer' onClick={handleLike} />
-            ) : (
-                <RiHeart2Line size={size} className='cursor-pointer' onClick={handleLike} />
+        <>
+            <div className={`flex gap-2 text-gray-500`}>
+                {liked ? (
+                    <RiHeart2Fill size={size} className='text-red-600 cursor-pointer' onClick={handleLike} />
+                ) : (
+                    <RiHeart2Line size={size} className='cursor-pointer' onClick={handleLike} />
+                )}
+                
+                {saved ? (
+                    <RiBookmark3Fill size={size} className='text-green-600 cursor-pointer' onClick={handleSave} />
+                ) : (
+                    <RiBookmark3Line size={size} className='cursor-pointer' onClick={handleSave} />
+                )}
+                <RiShareForward2Line size={size} className='cursor-pointer' onClick={() => setShow(!show)} />
+            </div>
+            {show && (
+                <div className=' absolute border shadow-lg z-[999999]'>
+                    <div className='black__overlay' onClick={() => setShow(!show)}/>
+                    <div className='relative z-[999999]'>
+                    <ShareSocial 
+                        title='Share the latest football insights:'
+                        url = {`/blog/${post?._id}`}
+                        socialTypes={['facebook','twitter','reddit','linkedin','whatsapp']}
+                        style={style}
+                    />
+                    <button className='absolute top-3 right-3 z-[999999] text-gray-600 hover:text-gray-400' onClick={() => setShow(false)}>
+                            <RiCloseLine size={26} />
+                    </button>
+                    </div>
+                </div>
             )}
-            
-            {saved ? (
-                <RiBookmark3Fill size={size} className='text-green-600 cursor-pointer' onClick={handleSave} />
-            ) : (
-                <RiBookmark3Line size={size} className='cursor-pointer' onClick={handleSave} />
-            )}
-            <RiShareForward2Line size={size} className='cursor-pointer' />
-        </div>
+        </>
     );
 };
 

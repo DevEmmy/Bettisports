@@ -11,7 +11,7 @@ import {
   RiFacebookCircleFill,
   RiGoogleFill,
 } from 'react-icons/ri';
-import { validateSignIn } from '@/utils/validator';
+// import { validateSignIn } from '@/utils/validator';
 import { toastError } from '@/utils/toast';
 
 const Page: React.FC = () => {
@@ -33,13 +33,13 @@ const Page: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (validateSignIn({email,password})) {
+    // if (validateSignIn({email,password})) {
       setLoading(true);
       let feedback = await login({ email, password });
       if (feedback) {
         router.push('/');
       }
-    }
+    // }
     
     setLoading(false);
   };

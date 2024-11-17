@@ -42,8 +42,6 @@ const EditorsPick = () => {
                     <LikeCommentShare id={item._id} size={15}/>
                   </div>
 
-                  
-
                 </div>
               )
             })

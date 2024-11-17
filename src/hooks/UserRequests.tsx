@@ -108,3 +108,22 @@ export const useCreateUser = () => {
   
     return { user, isError, isLoading };
   };
+
+
+
+  export const useResetPassword = () => {
+    const resetPass = async (data: any) => {
+      let response = await axiosConfig.patch('/auth/forgotten-password', data);
+      response = response.data.payload;
+      return response;
+    };
+  
+    const {
+      mutate: resetPassFn,
+      isLoading,
+      isError,
+      error,
+      isSuccess,
+    } = useMutation(resetPass);
+    return { resetPassFn, isLoading, isError, error, isSuccess };
+  };
