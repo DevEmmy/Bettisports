@@ -283,8 +283,11 @@ const Page: React.FC = () => {
                     name='format'
                     value={item?.value}
                     checked={format == item?.click ? true : false}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setFormat(e.target.value)
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      setFormat(e.target.value);
+
+                      item?.value == 'PODCAST' && setMediaType('video');
+                    }
                     }
                   />
                 </div>

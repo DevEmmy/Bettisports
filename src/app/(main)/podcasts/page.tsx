@@ -14,19 +14,19 @@ const page = () => {
   const {podcast, isError, isLoading} = useFetchPodCast();
   return (
     <>
-      {isLoading ? <Loader />  :
-        podcast?.length > 0 ?
-       (
       <div className=' mx-5 md:mx-xPadding flex flex-col gap-10 py-10'>
 
         <div className='grid md:grid-cols-[4fr__1fr] gap-6'>
           
           <div className='flex flex-col justify-between'>
             <CarouselComponent>
+
               {
-                podcast?.slice(0,11).map((item : Post ,i : number) => {
-                   (
-                    <div className='relative h-[600px] rounded-2xl'>
+                isLoading ? <Loader /> :
+                podcast?.length > 0 ?
+                podcast?.map((item: any, i : number) => 
+                (
+                  <div className='relative h-[600px] rounded-2xl'>
                       <img src={item?.media} alt="" className='h-full rounded-2xl w-full object-cover' />
                       <div className="overlay rounded-2xl" />
                       <div className='text-white text-start absolute bottom-10 left-10 z-[1000]'>
@@ -41,8 +41,10 @@ const page = () => {
                         </p>
                       </div>
                     </div>
-                  )
-                })
+                ) ) :
+                (
+                  <p>There is no podcast</p>
+                )
               }
               
             </CarouselComponent>
@@ -56,7 +58,7 @@ const page = () => {
   
             <div className="flex flex-col gap-5 my-2">
             {
-              podcast?.slice(11,14).map((item : Post, i : number) => {
+              podcast?.map((item : Post, i : number) => {
                 return (
                 <div className='flex md:gap-1 flex-col md:my-0 my-3 rounded-2xl' key={i}>
                   <img src={item?.media} alt="" className=' max-h-[130px]'/>
@@ -80,7 +82,8 @@ const page = () => {
   
         <div className="md:grid grid-cols-5 gap-5 my-2">
           {
-            podcast?.slice(14,30).map((item : Post, i : number) => {
+            // slice(14,30)
+            podcast?.map((item : Post, i : number) => {
               return (
                 <Preview key={i} item={item}/>
               )
@@ -92,7 +95,8 @@ const page = () => {
   
         <div className="md:grid grid-cols-5 gap-5 my-2">
           {
-            podcast?.slice(30,46).map((item : Post, i : any) => {
+            // .slice(30,46)
+            podcast?.map((item : Post, i : any) => {
               return (
                 <Preview key={i} item={item} />
               )
@@ -101,11 +105,6 @@ const page = () => {
         </div>
   
       </div>
-      ) : 
-        (
-          <p className='my-10 mx-auto'>There is no podcast</p>
-        )
-    }
     </>
   )
 }

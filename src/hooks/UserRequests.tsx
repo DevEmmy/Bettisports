@@ -22,7 +22,7 @@ export const getUser = () => {
 
     useEffect(() => {
       const fetchUser = () => {
-          let userObject = localStorage.getItem("user") as string;0
+          let userObject = localStorage.getItem("user") as string;
           userObject = JSON.parse(userObject);
           setUser(userObject);
       };
@@ -127,3 +127,27 @@ export const useCreateUser = () => {
     } = useMutation(resetPass);
     return { resetPassFn, isLoading, isError, error, isSuccess };
   };
+
+
+  export const useUpdateProfile = () => {
+    const profileProps = async (data: any) => {
+      let response = await axiosConfig.patch('/auth/update-profile', data);
+      
+      response = response.data.payload;
+      return response;
+    };
+  
+    const {
+      mutate: updateProfileFn,
+      isLoading,
+      isError,
+      error,
+      isSuccess,
+    } = useMutation(profileProps);
+    return { updateProfileFn, isLoading, isError, error, isSuccess };
+  };
+
+
+  const updateUser = () => {
+    
+  }

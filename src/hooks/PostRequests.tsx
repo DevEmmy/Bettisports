@@ -576,8 +576,8 @@ export const useFetchPhotoSplash = () => {
 // PODCAST
 export const useFetchPodCast = () => {
   const fetchData = async () => {
-    const response = await axiosConfig.get('/posts/format/PODCAST');
-    return response.data.payload;
+    let response = await axiosConfig.get('/posts/format/PODCAST');
+    return response.data.payload.reverse();
   };
 
   const { data: podcast, isError, isLoading, refetch  } = useQuery('podcast', fetchData, {
