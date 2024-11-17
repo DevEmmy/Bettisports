@@ -9,7 +9,7 @@ import Loader from '@/components/Loader'
 
 const page = () => {
     const [showSettings, setShow] = useState(false);
-    const {notification, isError, isLoading } = useFetchNotification();
+    const {notification, isError, isLoading, refetch } = useFetchNotification();
     return (
         <div className='md:grid grid-cols-6 gap-5 px-5 md:px-xPadding my-10'>
             <div className='md:grid grid-cols-6 col-span-6 my-2.5 md:my-0'>
@@ -41,6 +41,7 @@ const page = () => {
                         <p>No notifications for now</p>
                     )
                 }
+
                 <div className='grid grid-cols-[0.5fr_5fr_1.5fr] border-b-2 border-b-gray-400 py-2'>
                     <div />
                     <p className=''>

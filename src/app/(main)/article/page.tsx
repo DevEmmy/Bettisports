@@ -5,6 +5,7 @@ import React from 'react'
 import { useFetchArticle } from '@/hooks/PostRequests'
 import { Post } from '@/requests/dto';
 import Loader from '@/components/Loader';
+import EachNews from '@/components/FootballNews/EachNews';
 
 const page = () => {
     const {article, isError, isLoading} = useFetchArticle();
@@ -20,7 +21,6 @@ const page = () => {
                         article?.map((item : Post, i : number) => {
                             return (
                                 <EachBlog key={i} item={item}/>
-                                // <div key={i} className='bg-primary1'>Each</div>
                             )
                         })
                         : (

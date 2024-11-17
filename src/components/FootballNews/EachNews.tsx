@@ -7,12 +7,13 @@ import LikeCommentShare from '../UI/LikeCommentShare';
 interface Props{
     size?: string | null;
     item: any;
+    otherStyles?: string
 }
 
-const EachNews = ({size,item} : Props)  => {
+const EachNews = ({size,item, otherStyles} : Props)  => {
     
     return (
-        <div className='h-full flex flex-col gap-2 my-5 sm:my-0'>
+        <div className={`h-full flex flex-col gap-2 my-5 sm:my-0 ${otherStyles}`}>
             <Link href={`/blog/${item?._id}`}>
             <img src={item?.media} alt="" className='w-full h-[180px] mb-1'/>
             <p className={`${size == "lg" && "text-[20px] font-[600]"}`}>

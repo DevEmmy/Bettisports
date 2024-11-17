@@ -219,7 +219,7 @@ export const useFetchInFocus = () => {
 // article
 export const useFetchArticle = () => {
   const fetchData = async () => {
-    const response = await axiosConfig.get('/posts/class/article');
+    const response = await axiosConfig.get('/posts/class/articles');
     return response.data.payload;
   };
 
@@ -312,6 +312,25 @@ export const useVotePoll = () => {
   return { votePollFn, isLoading, isError, error, isSuccess };
 };
 
+
+
+// Notification
+
+export const useFetchNotification = () => {
+  const fetchData = async () => {
+    const response = await axiosConfig.get('/notifications');
+    return response.data.reverse();
+  };
+
+  const { data: notification, isError, isLoading, refetch } = useQuery('notifications', fetchData , {
+    enabled: true,
+  });
+
+  return { notification, isError, isLoading , refetch};
+};
+
+
+
 export const useCreateComment = () => {
   const createComment = async (data: any) => {
     let response = await axiosConfig.post('/comments', data);
@@ -388,21 +407,6 @@ export const useSavePost = () => {
 };
 
 
-
-// Notification
-
-export const useFetchNotification = () => {
-    const fetchData = async () => {
-      const response = await axiosConfig.get('/notifications');
-      return response.data.payload;
-    };
-  
-    const { data: notification, isError, isLoading, refetch } = useQuery('notifications', fetchData , {
-      enabled: true,
-    });
-  
-    return { notification, isError, isLoading , refetch};
-  };
   
 
 
