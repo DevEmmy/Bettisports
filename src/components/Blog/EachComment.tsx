@@ -30,14 +30,14 @@ const EachComment = ({ item }: any) => {
   const { firstName, lastName, profilePicture } = item.author;
 
   return (
-    <div className='md:flex gap-3 border p-4 '>
+    <div className='md:flex  gap-3 border p-4 '>
       <img
         src={profilePicture}
         alt=''
-        className='size-[50px] hidden md:flex rounded-full'
+        className='size-[40px] hidden md:flex rounded-full'
       />
-      <div className='flex gap-5 flex-col'>
-        <div className='flex gap-2 items-center'>
+      <div className='flex justify-between gap-5 flex-col'>
+        <div className='flex  justify-between gap-2 items-center'>
           <div className='w-2/3 items-center flex gap-1.5 '>
             <img
               src={profilePicture}

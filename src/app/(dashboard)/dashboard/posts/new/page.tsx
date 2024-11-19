@@ -54,6 +54,7 @@ const Page: React.FC = () => {
   const [article, setArticle] = useState<boolean>(false);
   const [inFocus, setInFocus] = useState<boolean>(false);
   const [mediaType,setMediaType] = useState<string>('');
+  const [thumbNail, setThumbNail] = useState<string>('');
 
   enum PostFormat  {
     STORY = 'STORY',
@@ -62,7 +63,7 @@ const Page: React.FC = () => {
     VIDEO = 'VIDEO',
     STANDARD = 'STANDARD'
   }
-  const [format, setFormat] = useState<string>(PostFormat.STANDARD);
+  const [format, setFormat] = useState<String>(PostFormat.STANDARD);
   
   const gender = ['Men', 'Women'];
 
@@ -96,6 +97,7 @@ const Page: React.FC = () => {
     useCreatePost();
 
   const handleSubmit = async () => {
+    // (format === PostFormat?.PODCAST || format === PostFormat?.VIDEO) && setMediaType('video');
     const postData = {
       title,
       author,
@@ -118,7 +120,8 @@ const Page: React.FC = () => {
       newsBreaking,
       article,
       inFocus,
-      mediaType
+      mediaType,
+      thumbNail
     };
 
     try {
@@ -163,6 +166,8 @@ const Page: React.FC = () => {
       setNewsBreaking(false)
       setFantasy(false)
       setEditorsPick(false)
+      setFormat('');
+      setThumbNail('')
     }
   }, [isSuccess]);
 
@@ -198,26 +203,58 @@ const Page: React.FC = () => {
             className='min-h-[300px] h-fit bg-white mb-3'
           />
 
-          <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
-            {media ? (
-              <img
-                src={media}
-                alt=''
-                className='w-full object-cover h-[40vh]'
-              />
-            ) : (
-              <>
-                {' '}
-                <HiCog />
-                Add Media
-              </>
-            )}
-          </button>
+          <div className="grid grid-cols-2">
+            <div>
+              <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
+              {media ? (
+                <img
+                  src={media}
+                  alt=''
+                  className='w-full object-cover h-[40vh]'
+                />
+              ) : (
+                <>
+                  {' '}
+                  <HiCog />
+                  Add Media
+                </>
+              )}
+              </button>
 
-          <FileBase64
-            multiple={false}
-            onDone={(base64: any) => { setMedia(base64.base64); setMediaType(base64.type?.split('/')[0])}}
-          />
+              <FileBase64
+                multiple={false}
+                onDone={(base64: any) => { setMedia(base64.base64); setMediaType(base64.type?.split('/')[0])}}
+              />
+            </div>
+
+            {
+              (format === PostFormat.VIDEO || format === PostFormat.PODCAST) &&  (
+                <div>
+                  <button className='border border-secondaryBlue text-secondaryBlue flex gap-2 px-5 items-center p-2 w-fit '>
+                    {media ? (
+                      <img
+                        src={thumbNail}
+                        alt=''
+                        className='w-full object-cover h-[40vh]'
+                      />
+                    ) : (
+                      <>
+                        {' '}
+                        <HiCog />
+                        Add Thumbnail
+                      </>
+                    )}
+                  </button>
+
+                  <FileBase64
+                    multiple={false}
+                    onDone={(base64: any) => { setThumbNail(base64.base64); }}
+                  />
+                </div>
+              )
+            }
+            
+          </div>
 
           <OverviewContainer title={'Excerpt'}>
             <div className='flex gap-2 flex-col'>

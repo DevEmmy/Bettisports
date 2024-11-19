@@ -16,7 +16,7 @@ import Loader from '../Loader';
 interface Props {
   size: number;
   otherStyles: string;
-  video: {
+  post: {
     _id: string;
     title: string;
     author: {
@@ -62,9 +62,9 @@ interface Props {
   };
 }
 
-const Play = ({ size, otherStyles, video }: Props) => {
+const Play = ({ size, otherStyles, post }: Props) => {
   const [show, setShow] = useState<boolean>(false);
-  const { comments, isErr, isLoad } = useFetchPostComment(video?._id);
+  const { comments, isErr, isLoad } = useFetchPostComment(post?._id);
   return (
     <>
       <div
@@ -78,12 +78,12 @@ const Play = ({ size, otherStyles, video }: Props) => {
         />
       </div>
       {show && (
-        <div className='h-[100vh] md:w-[100vw] overflow-x-hidden overflow-y-auto grid place-items-center top-0 black__overlay fixed'>
+        <div className='h-[100vh] md:w-[100vw] overflow-x-hidden overflow-y-auto grid place-items-center top-0 black__overlay fixed bg-green-600'>
           <div className='relative z-[99999] flex flex-col gap-2 md:w-[80vw] left-0 right-0 md:top-0 bg-white px-3 md:mt-7 md:gap-5 max-w-full pb-32'>
             <div className="grid md:grid-cols-[4fr__1fr] gap-3 py-3">
               <div>
                 <ReactPlayer
-                  url={(video.mediaType == 'video' ? video?.media : '')}
+                  url={(post.mediaType == 'video' ? post?.media : '')}
                   controls={true}
                   className='w-full shadow border'
                   style={{
@@ -96,13 +96,13 @@ const Play = ({ size, otherStyles, video }: Props) => {
                 <div className=' w-full flex flex-col gap-3 px-3'>
                   <div className='flex items-center justify-between'>
                     <p className='text-[22px] md:text-3xl font-[700] text-primary1 my-3 leading-7'>
-                      {video?.title}{' '}
+                      {post?.title}{' '}
                     </p>
-                    <LikeCommentShare id={video?._id} size={18} />
+                    <LikeCommentShare id={post?._id} size={18} />
                   </div>
-                  <PostedBy author={video.author} createdAt={video.createdAt} />
+                  <PostedBy author={post.author} createdAt={post.createdAt} />
 
-                  <div>{parser(video?.content)}</div>
+                  <div>{parser(post?.content)}</div>
                   {isLoad ? (
                     <Loader />
                   ) : comments?.length > 0 ? (
@@ -110,7 +110,7 @@ const Play = ({ size, otherStyles, video }: Props) => {
                   ) : (
                     <p className='text-xs'>There are no comments</p>
                   )}
-                  <CommentForm postId={video?._id} otherStyles='text-xl' />
+                  <CommentForm postId={post?._id} otherStyles='text-xl' />
                 </div>
               </div>
 

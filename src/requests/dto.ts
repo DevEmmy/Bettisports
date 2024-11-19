@@ -52,5 +52,6 @@ export interface Post {
         createdAt: string;
         updatedAt: string;
         mediaType: string;
+        thumbNail: string;
         __v: number;
 };
