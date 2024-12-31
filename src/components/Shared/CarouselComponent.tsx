@@ -11,6 +11,7 @@ const CarouselComponent = ({ children }: any) => {
             showThumbs={false}
             centerMode={false}
             className='items-start justify-start h-fit '
+            
         >
             {children}
         </Carousel>
