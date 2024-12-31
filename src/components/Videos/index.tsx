@@ -5,13 +5,15 @@ import Play from '../UI/Play';
 import { useFetchVideos } from '@/hooks/PostRequests';
 import Loader from '../Loader';
 import TimeAgo from 'react-timeago';
+import SectionHead from '../UI/SectionHead';
 
 const VideoComponent = () => {
   const { videos, isError, isLoading, refetch } = useFetchVideos();
   return (
     <div className='bg-[#25282B] px-5 md:px-xPadding my-20 py-10'>
       <div className='flex items-center gap-3'>
-        <p className='text-white'>VIDEOS</p>
+        {/* <p className='text-white'>VIDEOS</p> */}
+        <SectionHead title='VIDEOS' otherStyles='text-white' />
         <div className='w-full h-[3px] rounded-2xl bg-secondaryGray' />
       </div>
 
@@ -27,10 +29,10 @@ const VideoComponent = () => {
             />
             {
                 videos[0].mediaType == 'image' ? (
-                    <img src={videos[0]?.media} alt={videos[0]?.title} />
+                    <img src={videos[0]?.thumbNail} alt={videos[0]?.title} />
                 ) :
                 (
-                    <img src='./img.png' alt='' />
+                    <img src={videos[0]?.thumbNail} alt='' />
                 )
             }
             <div className='overlay' />

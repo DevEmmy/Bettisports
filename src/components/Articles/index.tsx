@@ -4,12 +4,14 @@ import Line from '../UI/Line'
 import EachNews from '../FootballNews/EachNews'
 import Loader from '../Loader'
 import { useFetchArticle } from '@/hooks/PostRequests'
+import SectionHead from '../UI/SectionHead';
 
 const Articles = () => {
     const { article,isError,isLoading} = useFetchArticle();
     return (
-        <div className='flex flex-col my-5 md:my-smXPadding gap-5 px-4 md:px-xPadding'>
-            <h1 className='font-[600]'>MORE ARTICLES</h1>
+        <div className='flex flex-col my-5 md:my-smXPadding gap-5 px-4 md:px-xPadding' id='article'>
+            {/* <h1 className='font-[600]'>MORE ARTICLES</h1> */}
+            <SectionHead title='Articles' />
             <Line />
 
             <div className="md:grid md:grid-cols-5 gap-5">

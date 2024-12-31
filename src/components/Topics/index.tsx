@@ -1,11 +1,13 @@
 import React from 'react'
 import Line from '../UI/Line'
+import SectionHead from '../UI/SectionHead'
 
 const Topics = () => {
     return (
         <div className='px-5 md:px-xPadding my-8 md:my-20'>
             <div className='flex flex-col gap-5'>
-                <h1 className='font-[600]'>Browse Over 200 Topics</h1>
+                {/* <h1 className='font-[600]'>Browse Over 200 Topics</h1> */}
+                <SectionHead title='Browse Over 200 Topics' />
                 <Line />
             </div>
 

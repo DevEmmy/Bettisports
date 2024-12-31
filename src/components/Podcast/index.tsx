@@ -1,16 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import Each from "./Each";
-import Play from "../UI/Play";
 import { useFetchPodCast } from "@/hooks/PostRequests";
 import Loader from "../Loader";
 import parser from "html-react-parser";
 import TimeAgo from "react-timeago";
-import { Post } from "@/requests/dto";
 import { FaPlay } from "react-icons/fa";
 import AudioDuration from "./PodcastDuration";
 import { PiClockDuotone } from "react-icons/pi";
 import AudioPlayer from "../UI/AudioPlayer";
+import SectionHead from "../UI/SectionHead";
 
 const Podcast = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -27,7 +25,8 @@ const Podcast = () => {
       )}
       <div className="bg-[#25282B] text-white px-5 md:px-xPadding my-20 py-10">
         <div className="flex items-center gap-3">
-          <p className="text-white">PODCASTS</p>
+          {/* <p className="text-white">PODCASTS</p> */}
+          <SectionHead title='PODCASTS' otherStyles='text-white' />
           <div className="w-full h-[3px] rounded-2xl bg-secondaryGray" />
         </div>
 
@@ -76,7 +75,7 @@ const Podcast = () => {
                     <img
                       src={item?.thumbNail}
                       alt=""
-                      className="w-full h-full rounded-lg"
+                      className="w-full h-full object-cover rounded-lg"
                     />
                     <div className="grid">
                       <p className="text-sm uppercase font-[600]">

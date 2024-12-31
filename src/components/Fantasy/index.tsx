@@ -6,12 +6,14 @@ import Loader from '../Loader';
 import MdFootballBlogHighlight from '../FootballNews/MdFootallBlogHighlight';
 import TimeAgo from 'react-timeago';
 import parse from 'html-react-parser';
+import SectionHead from '../UI/SectionHead';
 
 const Fantasy = () => {
   const { fantasy, isError, isLoading } = useFetchFantasy();
   return (
-    <div className='my-3 md:my-0 flex flex-col gap-5 px-5 md:px-xPadding'>
-      <h1 className='font-[600]'>FANTASY</h1>
+    <div className='my-3 md:my-0 flex flex-col gap-5 px-5 md:px-xPadding' id='fantasy'>
+      {/* <h1 className='font-[600]'>FANTASY</h1> */}
+      <SectionHead title='FANTASY' />
       <Line />
 
       <div className='md:grid md:grid-cols-3 gap-3'>
@@ -28,7 +30,7 @@ const Fantasy = () => {
                   <p>
                     <TimeAgo date={item?.createdAt} />
                   </p>
-                  <p className='text-[28px] font-[600]'>{item?.title}</p>
+                  <p className='text-[28px] font-[600] line-clamp-2'>{item?.title}</p>
                   <p></p>
                 </div>
                 

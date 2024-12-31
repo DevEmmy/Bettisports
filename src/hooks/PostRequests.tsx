@@ -580,9 +580,9 @@ export const useFetchPodCast = () => {
     return response.data.payload.reverse();
   };
 
-  const { data: podcast, isError, isLoading, refetch  } = useQuery('podcast', fetchData, {
+  const { data: podcast, isError, isSuccess, isLoading, refetch  } = useQuery('podcast', fetchData, {
     enabled: true
   });
 
-  return { podcast, isError, isLoading, refetch };
+  return { podcast, isError, isSuccess, isLoading, refetch };
 };

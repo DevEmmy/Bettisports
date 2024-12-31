@@ -24,10 +24,6 @@ const Each = ( {item} : Props) => {
         </div>
         <div className='grid'>
         <div
-              onClick={() => {
-                setShow(!show);
-                setAudio(podcast[0]);
-              }}
               className="absolute -translate-x-[50%] -translate-y-[50%] top-2/4 left-2/4 p-3 text-white cursor-pointer z-[100] font-[700] bg-[#373A3C]/5 border border-[#373A3C] bg-opacity-80 backdrop-filter backdrop-blur-md border-opacity-20 shadow-xl  rounded-full"
             >
               <FaPlay className="text-defaultYellow" size={23} />

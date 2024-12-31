@@ -33,7 +33,7 @@ const EditorsPick = () => {
                   <div className="details p-3">
                     
                   <Link href={`/blog/${item?._id}`}>
-                    <p className='font-[600] text-[12px]'>
+                    <p className='font-[600] text-[12px] line-clamp-2'>
                       {item?.title}
                     </p>
 

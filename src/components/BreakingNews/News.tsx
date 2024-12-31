@@ -7,6 +7,8 @@ import parser from 'html-react-parser';
 import Link from 'next/link';
 import { toastError, toastSuccess } from '@/utils/toast';
 import LikeCommentShare from '../UI/LikeCommentShare';
+import VerticalHeader from '../Shared/VerticalHeader';
+import SectionHead from '../UI/SectionHead';
 
 const News = () => {
   const { newsBreaking, isError, isLoading } = useFetchNewsBreaking();
@@ -35,9 +37,9 @@ const News = () => {
   return (
     <div>
       <div className='grid grid-cols-[2fr_6fr_0.5fr] gap-5 w-full items-center'>
-        <p className='uppercase text-[24px] leading-[24px] font-[700] '>
-          News Breaking
-        </p>
+        
+        <SectionHead title='News Breaking'/>
+        {/* <VerticalHeader title='News Breaking' /> */}
         <div className='w-full h-[5px] bg-secondaryBlue'></div>
         <div className='click-options flex gap-3'>
           <div className='flex'>

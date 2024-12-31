@@ -76,6 +76,7 @@ const Page: React.FC = () => {
     'Interviews',
     'Fantasy',
     'Betting',
+
   ];
 
 
@@ -166,7 +167,7 @@ const Page: React.FC = () => {
       setNewsBreaking(false)
       setFantasy(false)
       setEditorsPick(false)
-      setFormat('');
+      setFormat(PostFormat.STANDARD);
       setThumbNail('')
     }
   }, [isSuccess]);
@@ -365,6 +366,15 @@ const Page: React.FC = () => {
                   onChange={() => setNewsBreaking(!newsBreaking)}
                 />
                 <p>News Breaking</p>
+              </div>
+
+              <div className='flex-center gap-3 border-b py-3'>
+                <input
+                  type='checkbox'
+                  checked={inFocus}
+                  onChange={() => setInFocus(!inFocus)}
+                />
+                <p>In Focus</p>
               </div>
               
 

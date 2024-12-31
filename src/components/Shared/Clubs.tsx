@@ -79,7 +79,7 @@ const Clubs = ({ abb, size, full = false , rev=false}: ClubsProp) => {
 
     if (!full) {
         return (
-            <div style={{flexDirection: rev ? "row-reverse" : "row"}} className='flex gap-2 items-center'>
+            <div style={{flexDirection: rev ? "row-reverse" : "row"}} className='flex gap-2 items-center cursor-pointer'>
                 <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
                 <p style={{ fontSize: size || "14px" }} className='font-[600]'>{club.abb}</p>
             </div>
@@ -87,7 +87,7 @@ const Clubs = ({ abb, size, full = false , rev=false}: ClubsProp) => {
     }
     else {
         return (
-            <div className='flex gap-2 items-center'>
+            <div className='flex gap-2 items-center cursor-pointer'>
                 <img src={club.icon} alt="" className='w-[20px] h-auto object-contain' />
                 <p style={{ fontSize: size || "14px" }} className='font-[500]'>{club.full}</p>
             </div>

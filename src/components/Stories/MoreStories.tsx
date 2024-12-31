@@ -5,6 +5,7 @@ import Each from './Each';
 import { Post } from '@/requests/dto';
 import { useFetchStories } from '@/hooks/PostRequests';
 import Loader from '../Loader';
+import SectionHead from '../UI/SectionHead';
 
 const MoreStories = () => {
     const { stories, isError, isLoading, refetch } = useFetchStories();
@@ -33,7 +34,8 @@ const MoreStories = () => {
     ]
     return (
         <div className='flex flex-col gap-5 my-10 px-5 md:px-xPadding'>
-            <h1 className='font-[600] uppercase'>More Stories</h1>
+            {/* <h1 className='font-[600] uppercase'>More Stories</h1> */}
+            <SectionHead title='More Stories' />
             <Line />
 
             <div className="flex gap-2 md:gap-5 overflow-auto">
@@ -41,7 +43,7 @@ const MoreStories = () => {
                 {
                     isLoading? <Loader /> :
                     stories?.length > 10 ?
-                    stories.slice(10,21).map((item: Post, i: number) => {
+                    stories.slice(4,8).map((item: Post, i: number) => {
                         return (
                             <div className=" bg-secondaryBlue min-w-[75%] md:min-w-min ">
                                 <Each item={item} key={i} />

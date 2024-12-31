@@ -16,7 +16,7 @@ const EachNews = ({size,item, otherStyles} : Props)  => {
         <div className={`h-full flex flex-col gap-2 my-5 sm:my-0 ${otherStyles}`}>
             <Link href={`/blog/${item?._id}`}>
             <img src={item?.media} alt="" className='w-full h-[180px] mb-1'/>
-            <p className={`${size == "lg" && "text-[20px] font-[600]"}`}>
+            <p className={`${size == "lg" && "text-[20px] font-[600]"} line-clamp-2`}>
             {item?.title}
             </p>
             </Link>

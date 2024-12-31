@@ -3,13 +3,15 @@ import { useFetchFeatured } from '@/hooks/PostRequests';
 import React from 'react';
 import Loader from '../Loader';
 import Link from 'next/link';
+import SectionHead from '../UI/SectionHead';
 
 const Featured = () => {
   const { featured, isError, isLoading } = useFetchFeatured();
   return (
     <div>
       <div className='flex justify-between pb-5 border-b-4 border-b-secondaryBlue'>
-        <p>Featured</p>
+        {/* <p>Featured</p> */}
+        <SectionHead title='Featured' />
 
         <div className='flex gap-10'>
           <p>ALL</p>

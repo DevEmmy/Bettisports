@@ -5,6 +5,7 @@ import Line from '../UI/Line';
 import Loader from '../Loader';
 import  {useFetchForYou}  from '@/hooks/PostRequests';
 import Link from 'next/link';
+import SectionHead from '../UI/SectionHead';
 
 
 const ForYou = () => {
@@ -41,10 +42,11 @@ const ForYou = () => {
   const { forYou, isError, isLoading } = useFetchForYou()
   return (
     <div className='md:px-xPadding px-4'>
-      <div className='flex items-center'>
-        <p className='uppercase md:text-[24px] text-[19px] leading-[24px] gap-5 font-[700] w-1/6 '>
+      <div className='flex items-center gap-3'>
+        {/* <p className='uppercase md:text-[24px] text-[19px] leading-[24px] gap-5 font-[700] w-1/6 '>
           For You
-        </p>
+        </p> */}
+        <SectionHead title='for you' />
         <Line />
       </div>
 

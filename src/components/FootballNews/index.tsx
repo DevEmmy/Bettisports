@@ -1,6 +1,7 @@
 import React from 'react';
 import Highlight from './Highlight';
 import News from './News';
+import SectionHead from '../UI/SectionHead';
 
 const FootballNews = ({ title }: any) => {
   const filter = [
@@ -40,7 +41,8 @@ const FootballNews = ({ title }: any) => {
   return (
     <div className='my-10 px-4 md:px-xPadding'>
       <div className='flex items-center justify-between pb-5 border-b-4 border-b-secondaryBlue'>
-        <p>{title} FOOTBALL</p>
+        {/* <p>{title} FOOTBALL</p> */}
+        <SectionHead title={title + ' FOOTBALL'} />
 
         <div className='overflow-x-auto hidden md:flex gap-5'>
           {filter?.map((item: any, i: number) => {

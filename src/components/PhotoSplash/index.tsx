@@ -4,6 +4,7 @@ import Line from '../UI/Line';
 import Preview from './Preview';
 import Loader from '../Loader';
 import { useFetchPhotoSplash } from '@/hooks/PostRequests';
+import SectionHead from '../UI/SectionHead';
 
 const PhotoSplash = () => {
   const [images, setImages] = useState<String[] | null>(null);
@@ -36,7 +37,8 @@ const PhotoSplash = () => {
 
   return (
     <div className='flex flex-col gap-5 my-10 px-5 md:px-xPadding'>
-      <h1 className='font-[600] uppercase'>BSB PHOTOSPLASH</h1>
+      {/* <h1 className='font-[600] uppercase'>BSB PHOTOSPLASH</h1> */}
+      <SectionHead title='BSB PHOTOSPLASH' />
       <Line />
 
       <div className='md:grid md:grid-cols-4 gap-5'>

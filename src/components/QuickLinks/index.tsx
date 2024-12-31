@@ -4,6 +4,7 @@ import Line from '../UI/Line'
 import { icons } from '../Shared/Clubs'
 import { useSuscribeNewsletter } from '@/hooks/PostRequests';
 import { toastSuccess } from '@/utils/toast'
+import SectionHead from '../UI/SectionHead';
 
 const QuickLinks = () => {
     const [email,setEmail] = useState<string>('')
@@ -33,7 +34,8 @@ const QuickLinks = () => {
                 <img src="./frame.png" alt="" />
 
                 <div className="flex items-center">
-                    <p className='uppercase text-[20px] leading-[16 px] gap-5 font-[500] w-1/4 '>Quick Links</p>
+                    {/* <p className='uppercase text-[20px] leading-[16 px] gap-5 font-[500] w-1/4 '>Quick Links</p> */}
+                    <SectionHead title='quick links' />
                     <Line />
                 </div>
 
@@ -52,7 +54,7 @@ const QuickLinks = () => {
 
             </div>
 
-            <div className='bg-[#E8E8E8] p-5 text-center flex flex-col gap-3 my-3 md:my-1'>
+            <div className='bg-[#E8E8E8] p-5 text-center flex flex-col gap-3 my-3 md:my-1' id='subscribe'>
                 <h1 className='font-[600]'>JOIN THE NEWSLETTER</h1>
                 <p className='text-[14px]'>Receive the latest news and updates on your favourites </p>
                 <input type="text" placeholder='Email Address' className='p-3 text-[14px]' value={email} onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />

@@ -12,43 +12,43 @@ const MainNav = () => {
     },
     {
       title: 'LIVE',
-      link: '/live',
+      link: '#live',
     },
     {
       title: 'INTERNATIONAL',
-      link: '/international',
+      link: '#international',
     },
-    {
-      title: 'REGIONS',
-      link: '/regions',
-    },
+    // {
+    //   title: 'REGIONS',
+    //   link: '/regions',
+    // },
     {
       title: 'NEWS',
-      link: '/news',
+      link: '#news',
     },
     {
       title: 'ARTICLE',
-      link: '/article',
+      link: '#article',
     },
-    {
-      title: 'MATCHDAYS',
-      link: '/match-days',
-    },
-    {
-      title: 'INTERVIEWS',
-      link: '/interviews',
-    },
-    {
-      title: 'TRANSFERS',
-      link: '/transfers',
-    },
+    // {
+    //   title: 'MATCHDAYS',
+    //   link: '/match-days',
+    // },
+    // {
+    //   title: 'INTERVIEWS',
+    //   link: '/interviews',
+    // },
+    // {
+    //   title: 'TRANSFERS',
+    //   link: '/transfers',
+    // },
     {
       title: 'FANTASY',
-      link: '/fantasy',
+      link: '#fantasy',
     },
     {
       title: 'SUBSCRIBE',
-      link: '/subscribe',
+      link: '#subscribe',
     },
   ];
   return (

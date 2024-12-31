@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import { MatchDetails, data } from './data';
 import Clubs from '../Shared/Clubs';
 

@@ -12,7 +12,7 @@ const MdFootballBlogHighlight = ({item} : any) => {
 
       <div className='grid'>
       <Link href={`/blog/${item?._id}`}>
-        <p>{item?.title}</p>
+        <p className='line-clamp-2'>{item?.title}</p>
       </Link>
         <div className='flex items-center text-[12px] justify-between'>
           <p className=''>

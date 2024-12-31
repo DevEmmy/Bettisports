@@ -11,7 +11,7 @@ const SmFootballBlogHighlight = ({item} : any) => {
     <div className='grid grid-cols-[2fr_1fr] gap-3 py-2'>
         <div className='flex flex-col gap-2'>
           <Link href={`/blog/${item?._id}`}>
-            <p>{item?.title}</p>
+            <p className='line-clamp-2'>{item?.title}</p>
           </Link>
             <div className="flex items-center text-[12px] gap-0.5 justify-between">
                 <p className='text-[10px]'>

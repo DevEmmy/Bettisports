@@ -7,13 +7,15 @@ import parser from 'html-react-parser';
 import ReactTimeago from 'react-timeago';
 import Link from 'next/link';
 import LikeCommentShare from '../UI/LikeCommentShare';
+import SectionHead from '../UI/SectionHead';
 
 const MostRead = () => {
   const { isError, isLoading, popular } = useFetchPopular();
   return (
     <div className='px-4 md:px-xPadding my-20 py-10'>
       <div className='md:flex items-center gap-3'>
-        <h1 className='text-black md:w-1/6 font-[600] text-base '>Most Read</h1>
+        {/* <h1 className='text-black md:w-1/6 font-[600] text-base '>Most Read</h1> */}
+        <SectionHead title='Most Read' />
         <Line />
       </div>
 

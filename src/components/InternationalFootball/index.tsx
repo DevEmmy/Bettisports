@@ -3,6 +3,7 @@ import EachVideo from '../Videos/EachVideo';
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight';
 // import MdFootallBlogHighlight from '../FootballNews/MdFootallBlogHighlight'
 import MdFootballBlogHighlight from '../FootballNews/MdFootallBlogHighlight';
+import SectionHead from '../UI/SectionHead';
 
 const InternationalFootball = () => {
   const filter = [
@@ -52,9 +53,10 @@ const InternationalFootball = () => {
   ];
 
   return (
-    <div className='my-10 px-5 md:px-xPadding'>
+    <div className='my-10 px-5 md:px-xPadding' id='international'>
       <div className='flex items-center justify-between pb-5 border-b-4 border-b-secondaryBlue'>
-        <p>INTERNATIONAL FOOTBALL</p>
+        {/* <p>INTERNATIONAL FOOTBALL</p> */}
+        <SectionHead title='INTERNATIONAL FOOTBALL' />
 
         <div className='flex gap-5'>
           {filter.map((item: any, i: number) => {

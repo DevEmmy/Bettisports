@@ -5,6 +5,9 @@ import { RiArrowRightLine } from 'react-icons/ri'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
 import Loader from '../Loader'
 import { useFetchInFocus } from '@/hooks/PostRequests'
+import SectionHead from '../UI/SectionHead';
+import Link from 'next/link';
+import MdFootballBlogHighlight from '../FootballNews/MdFootallBlogHighlight';
 
 const InFocus = () => {
     const competition = [
@@ -38,7 +41,8 @@ const InFocus = () => {
         <div className='px-5 md:px-xPadding my-10'>
             <div className='md:grid md:grid-cols-[4fr_1.5fr]  gap-10'>
                 <div className='flex flex-col gap-5'>
-                    <h1 className='font-[600]'>In Focus</h1>
+                    {/* <h1 className='font-[600]'>In Focus</h1> */}
+                    <SectionHead title='In Focus' />
                     <Line />
 
 
@@ -56,9 +60,10 @@ const InFocus = () => {
                                 <p>
                                     {inFocus[0]?.date}
                                 </p>
-                                <p className='text-[28px] font-[600]'>
-                                    {inFocus[0]?.title}
+                                <Link href={`/blog/${inFocus[0]?._id}`} ><p className=' font-[600] line-clamp-2 text-2xl'>
+                                    {inFocus[0]?.title} bmn,
                                 </p>
+                                </Link>
                             </div>
                         </div>
                         )
@@ -89,14 +94,14 @@ const InFocus = () => {
                 </div>
             </div>
 
-            <div className="flex gap-5 my-5">
+            <div className="grid grid-cols-4 gap-5 my-5">
                 {
                     isLoading ?
                     <Loader/>
                     : inFocus?.slice(1,4).length > 0 ?
                     inFocus?.slice(1,4).map((item: any, i:number) => {
                         return (
-                            <SmFootballBlogHighlight key={i} item={item} />
+                            <MdFootballBlogHighlight key={i} item={item} />
                         )
                     }) :
                     (

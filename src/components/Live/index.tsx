@@ -2,12 +2,14 @@ import React from 'react'
 import Line from '../UI/Line'
 import SmFootballBlogHighlight from '../FootballNews/SmFootballBlogHighlight'
 import { RiFacebookCircleFill, RiInstagramFill, RiTwitterXFill } from 'react-icons/ri'
+import SectionHead from '../UI/SectionHead'
 
 const Live = () => {
     return (
-        <div className='md:grid md:grid-cols-[4fr_1.5fr] px-5 md:px-xPadding my-10 gap-10'>
+        <div className='md:grid md:grid-cols-[4fr_1.5fr] px-5 md:px-xPadding my-10 gap-10' id='live'>
             <div className='flex flex-col gap-5'>
-                <h1 className='font-[600]'>Live</h1>
+                {/* <h1 className='font-[600]'>Live</h1> */}
+                <SectionHead title='Live' />
                 <Line />
 
                 <div className='relative h-96 md:h-fit'>

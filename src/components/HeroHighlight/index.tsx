@@ -12,7 +12,7 @@ const HeroHighlight = () => {
       <div className='my-3.5'>
         <EditorsPick />
       </div>
-      <div className='hidden md:flex'>
+      <div className='max-md:hidden'>
         <MajorHighlight />
       </div>
       <div className='my-3.5'>

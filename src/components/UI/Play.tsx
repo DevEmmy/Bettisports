@@ -78,12 +78,12 @@ const Play = ({ size, otherStyles, post }: Props) => {
         />
       </div>
       {show && (
-        <div className='h-[100vh] md:w-[100vw] overflow-x-hidden overflow-y-auto grid place-items-center top-0 black__overlay fixed bg-green-600'>
+        <div className='h-[100vh] md:w-[100vw] overflow-x-hidden overflow-y-auto grid place-items-center top-0 black__overlay fixed'>
           <div className='relative z-[99999] flex flex-col gap-2 md:w-[80vw] left-0 right-0 md:top-0 bg-white px-3 md:mt-7 md:gap-5 max-w-full pb-32'>
             <div className="grid md:grid-cols-[4fr__1fr] gap-3 py-3">
               <div>
                 <ReactPlayer
-                  url={(post.mediaType == 'video' ? post?.media : '')}
+                  url={post?.media}
                   controls={true}
                   className='w-full shadow border'
                   style={{
