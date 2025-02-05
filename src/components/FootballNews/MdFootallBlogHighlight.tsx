@@ -12,14 +12,14 @@ const MdFootballBlogHighlight = ({item} : any) => {
 
       <div className='grid'>
       <Link href={`/blog/${item?._id}`}>
-        <p className='line-clamp-2'>{item?.title}</p>
+        <p className='line-clamp-2 font-semibold'>{item?.title}</p>
       </Link>
         <div className='flex items-center text-[12px] justify-between'>
-          <p className=''>
-            {/* <TimeAgo date={item?.createdAt} /> */}
-          </p>
+          {/* <p className=''>
+            <TimeAgo date={item?.createdAt} />
+          </p> */}
 
-          <p className='!text-[10px] line-clamp-2 parser mb-2'>
+          <p className='!text-[10px] line-clamp-2 leading-snug parser mb-2'>
             {parse(`${item?.content}`)}
           </p>
 

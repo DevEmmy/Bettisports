@@ -10,15 +10,15 @@ const CategoricalNews = () => {
     const filter = [
         {
             title: "Trending",
-            tag: <Trending howMany={3} />
+            tag: <Trending howMany={4} />
         },
         {
             title: "Recents",
-            tag: <Recents howMany={3}/>
+            tag: <Recents howMany={4}/>
         },
         {
             title: "Popular",
-            tag: <Popular howMany={3}/>
+            tag: <Popular howMany={4}/>
         }
     ]
 

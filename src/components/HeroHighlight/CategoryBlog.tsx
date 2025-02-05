@@ -13,7 +13,7 @@ const CategoryBlog = ({item} : any) => {
                 {/* <p className='text-[12px] font-[400] line-clamp-2 parser'>
                   {parse(item?.content)}
                 </p> */}
-                <p className='!text-[10px] line-clamp-3 parser mb-2'>{parse(item?.content)}</p>
+                <p className='!text-[10px] line-clamp-2 parser mb-2'>{parse(item?.content)}</p>
               </Link>
               
               <LikeCommentShare id={item._id} size={15} />

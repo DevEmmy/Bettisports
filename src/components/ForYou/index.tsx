@@ -3,7 +3,7 @@
 import React from 'react';
 import Line from '../UI/Line';
 import Loader from '../Loader';
-import  {useFetchForYou}  from '@/hooks/PostRequests';
+import  {useFetchForYou, useFetchNewsBreaking}  from '@/hooks/PostRequests';
 import Link from 'next/link';
 import SectionHead from '../UI/SectionHead';
 
@@ -39,7 +39,8 @@ const ForYou = () => {
 
   const dataId = ['01', '02', '03', '04', '05'];
 
-  const { forYou, isError, isLoading } = useFetchForYou()
+  // const { forYou, isError, isLoading } = useFetchForYou()
+  const { newsBreaking, isError, isLoading } = useFetchNewsBreaking();
   return (
     <div className='md:px-xPadding px-4'>
       <div className='flex items-center gap-3'>
@@ -53,9 +54,9 @@ const ForYou = () => {
       <div className='md:grid md:grid-cols-3 grid-cols-5 items-center divide-x my-10'>
         {isLoading ? (
           <Loader />
-        ) : forYou?.length > 0 
+        ) : newsBreaking?.length > 0 
         ? 
-          forYou.map((item: any, i: number) => {
+          newsBreaking.map((item: any, i: number) => {
             return (
               <Link href={`/blog/${item?._id}`} className='my-2'>
               <div

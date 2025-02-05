@@ -4,8 +4,10 @@ import { getUser } from '@/hooks/UserRequests';
 import { RiBookmark3Fill, RiBookmark3Line, RiCloseLine, RiHeart2Fill, RiHeart2Line, RiShareForward2Line } from 'react-icons/ri';
 import parser from 'html-react-parser';
 import { useLikePost, useEachPostQuery, useSavePost } from '@/hooks/PostRequests';
-import { toastSuccess } from '@/utils/toast';
-import {ShareSocial} from 'react-share-social' 
+import { toastSuccess, toastError } from '@/utils/toast';
+import {ShareSocial} from 'react-share-social';
+import { redirect } from 'next/navigation';
+
 interface Props {
     id: string;
     size: number;
@@ -62,17 +64,36 @@ const LikeCommentShare = ({ id, size }: Props) => {
         }
     }, [isLikeSuccess, isSaveSuccess, liked, saved]);
 
+
+    const checkUser = () => {
+        if (!user) {
+            // alert('Login needed');
+            toastError('You need to be logged in');
+            redirect('/sign-in')
+            return; // Stop function execution if no user
+        }
+    }
+
     
     const handleLike = async () => {
-        setLiked(!liked);
+
+        checkUser();
+        
+        const newLikedState = !liked;
+        setLiked(newLikedState);
+
         try {
             likePostFn(parser(id));
         } catch (error) {
             console.error('Error:', error);
+            setLiked(!newLikedState); 
         }
     };
 
     const handleSave = async () => {
+
+        checkUser();
+        
         setSaved((prev) => !prev);
         try {
             savePostFn(parser(id));

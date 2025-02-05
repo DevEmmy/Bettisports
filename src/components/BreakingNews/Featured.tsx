@@ -1,19 +1,23 @@
-'use client';
-import { useFetchFeatured } from '@/hooks/PostRequests';
-import React from 'react';
-import Loader from '../Loader';
-import Link from 'next/link';
-import SectionHead from '../UI/SectionHead';
+"use client";
+import { useFetchFeatured, useFetchNewsBreaking } from "@/hooks/PostRequests";
+import React from "react";
+import Loader from "../Loader";
+import Link from "next/link";
+import SectionHead from "../UI/SectionHead";
+import LikeCommentShare from "../UI/LikeCommentShare";
+import parser from 'html-react-parser';
 
 const Featured = () => {
-  const { featured, isError, isLoading } = useFetchFeatured();
+  const { newsBreaking, isError, isLoading } = useFetchNewsBreaking();
+
+  const featured = newsBreaking;
   return (
     <div>
-      <div className='flex justify-between pb-5 border-b-4 border-b-secondaryBlue'>
+      <div className="flex justify-between pb-5 border-b-4 border-b-secondaryBlue">
         {/* <p>Featured</p> */}
-        <SectionHead title='Featured' />
+        <SectionHead title="Featured" />
 
-        <div className='flex gap-10'>
+        <div className="flex gap-10">
           <p>ALL</p>
           <p>MEN</p>
           <p>WOMEN</p>
@@ -23,57 +27,49 @@ const Featured = () => {
       {isLoading ? (
         <Loader />
       ) : featured?.length > 0 ? (
-        <div className='grid grid-cols-[2fr_3fr_2fr] mt-10 gap-5'>
-          <div className='grid gap-5'>
-            <img src='./ads.png' alt='' />
+        <div className=" mt-10 gap-5">
+          {/* <div className="grid gap-5">
+            <img src="./ads.png" alt="" />
+          </div> */}
 
-            <Link href={`/blog/${featured[0]?._id}`} className='flex gap-3 flex-col'>
-              <img src={featured[0]?.media} alt='' />
-              <div>
-                <p className='text-[16px] line-clamp-2'>
-                  {featured[0]?.content}
-                </p>
-                <p className='text-[14px] text-grayColor'>
-                  {featured[0]?.date ? featured[0].date : 'March 23, 2024'}
-                </p>
-              </div>
-            </Link>
-          </div>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 bgblack/30">
+          <img src="./ads.png" alt="" />
+            {isLoading ? (
+              <Loader />
+            ) : newsBreaking?.length > 0 ? (
+              newsBreaking.slice(0, 5)?.map((item: any, i: number) => {
+                return (
+                  <div
+                    key={i}
+                    className={`my-4 md:my-2 col-span-1 ${
+                      i == 0 ? "" : ""
+                    } flex-col gap-2`}
+                  >
+                    <Link
+                      href={`/blog/${item?._id}`}
+                      className="flex gap-3 flex-col mb-1"
+                    >
+                      <img src={item?.media} alt="" className="h-40 w-full" />
+                      <div>
+                      <p className="text-[14px]  font-medium line-clamp-2">
+                          {parser(item?.title)}
+                        </p>
+                        <p className="text-[11px] parser line-clamp-2 mt-1">
+                          {parser(item?.content)}
+                        </p>
+                        <p className="text-[10px] text-grayColor">
+                          {item?.date ? item?.date : "March 23, 2024"}
+                        </p>
+                      </div>
+                    </Link>
+                    <LikeCommentShare id={item?._id} size={15} />
+                  </div>
+                );
+              })
+            ) : (
+              <p>There is no featured post</p>
+            )}
 
-          <Link href={`/blog/${featured[1]?._id}`} className='flex gap-3 flex-col'>
-            <img src={featured[1].media} alt='' />
-            <div>
-              <p className='text-[16px] line-clamp-2'>{featured[1]?.content}</p>
-              <p className='text-[14px] text-grayColor'>
-                {featured[1]?.date ? featured[1].date : 'March 23, 2024'}
-              </p>
-            </div>
-          </Link>
-
-          <div className='grid gap-5'>
-            <Link href={`/blog/${featured[2]?._id}`} className='flex gap-3 flex-col'>
-              <img src={featured[2]?.media} alt='' />
-              <div>
-                <p className='text-[16px] line-clamp-2'>
-                  {featured[2]?.content}
-                </p>
-                <p className='text-[14px] text-grayColor'>
-                  {featured[2]?.date ? featured[2].date : 'March 23, 2024'}
-                </p>
-              </div>
-            </Link>
-
-            <Link href={`/blog/${featured[3]?._id}`} className='flex gap-3 flex-col'>
-              <img src={featured[3]?.media} alt='' />
-              <div>
-                <p className='text-[16px] line-clamp-2'>
-                  {featured[3]?.content}
-                </p>
-                <p className='text-[14px] text-grayColor'>
-                  {featured[3]?.date ? featured[3].date : 'March 23, 2024'}
-                </p>
-              </div>
-            </Link>
           </div>
         </div>
       ) : (

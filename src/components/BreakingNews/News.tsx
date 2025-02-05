@@ -15,7 +15,7 @@ const News = () => {
 
   const [sliced, setSliced] = useState({
     start: 0,
-    end: 8,
+    end: 10,
   });
   const { start, end } = sliced;
 

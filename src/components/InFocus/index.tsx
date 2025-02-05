@@ -99,7 +99,7 @@ const InFocus = () => {
                     isLoading ?
                     <Loader/>
                     : inFocus?.slice(1,4).length > 0 ?
-                    inFocus?.slice(1,4).map((item: any, i:number) => {
+                    inFocus?.slice(1,5).map((item: any, i:number) => {
                         return (
                             <MdFootballBlogHighlight key={i} item={item} />
                         )
